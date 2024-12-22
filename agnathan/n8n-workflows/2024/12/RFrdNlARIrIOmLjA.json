@@ -1,0 +1,163 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "NocoDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-10T01:51:17.230Z",
+  "id": "RFrdNlARIrIOmLjA",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Guest Speaker Description Write to NocoDB",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "4141ebac-7766-4edf-9cc8-7c2466afa1ca",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        820,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "workspaceId": "w0dgkv8w",
+        "projectId": "pcgglqm4cq36ccb",
+        "table": "mfbn3165o2melnc",
+        "options": {}
+      },
+      "id": "4fdccfa1-aefb-474f-83bf-dee54654c41c",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        980,
+        380
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "DahiteaxE7qHp5k3",
+          "name": "NocoDB Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "assistant",
+        "assistantId": {
+          "__rl": true,
+          "value": "asst_5OP8XchkBmzc3ccBWelkgnF3",
+          "mode": "list",
+          "cachedResultName": "AIC Speaker Description Writer"
+        },
+        "prompt": "define",
+        "text": "={{ $json.guestDescription }}",
+        "options": {}
+      },
+      "id": "86ccc193-6ae4-4686-ac56-aaffea878ddd",
+      "name": "OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.7,
+      "position": [
+        1160,
+        380
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "FXa5oPwfEyVR0oL0",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "update",
+        "workspaceId": "w0dgkv8w",
+        "projectId": "pcgglqm4cq36ccb",
+        "table": "mfbn3165o2melnc",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Id",
+              "fieldValue": "={{ $('NocoDB').item.json.Id }}"
+            },
+            {
+              "fieldName": "aiDescription",
+              "fieldValue": "={{ $json.output }}"
+            }
+          ]
+        }
+      },
+      "id": "a6dc1a0a-622b-4461-8e7e-a8236c853865",
+      "name": "NocoDB1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1520,
+        380
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "DahiteaxE7qHp5k3",
+          "name": "NocoDB Token account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:23:56.869Z",
+      "updatedAt": "2024-12-01T14:23:56.869Z",
+      "id": "Paq9K6w31GZ583JD",
+      "name": "My Drafts"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-10T06:57:33.000Z",
+  "versionId": "07f690e2-0926-4f3a-b27a-b63caf305a46"
+}
