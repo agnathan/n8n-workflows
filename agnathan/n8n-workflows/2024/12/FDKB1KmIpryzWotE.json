@@ -1,0 +1,597 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Notion1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notion": {
+      "main": [
+        [
+          {
+            "node": "Notion Markdown",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Notion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notion Markdown": {
+      "main": [
+        [
+          {
+            "node": "Notion2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-15T15:58:47.784Z",
+  "id": "FDKB1KmIpryzWotE",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Writing Blocks to Notion",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "fc03605b-5fd4-4d11-8f20-e0357ca8ed32",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        360,
+        300
+      ],
+      "webhookId": "9a2646c3-cbd8-45e0-862e-9c8a41995282"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "8871a83f-b51e-4ab3-8c96-2c2ece6733c3",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        660,
+        500
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "FXa5oPwfEyVR0oL0",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "id": "e305e3d0-61be-49f9-86ad-40a84395003a",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1280,
+        140
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// console.log($input.first().json.output.split(\"\\n\"))\nblocks = $input.first().json.output.split(\"\\n\")\nret = blocks.map(block => {return {\"block\": block}})\nret = ret.filter(item => item.block.trim() !== \"\");\nreturn ret.map(e => {return {json: e} })\n// const example = [\n// {\n// \"UID\": 2,\n// \"USER_ID\": 8593847591,\n// \"USERNAME\": \"John\",\n// \"PUBLISH_DATE\": 1641789802000,\n// \"CURRENT_DATE\": 1642058123000\n// },\n// {\n// \"UID\": 8,\n// \"USER_ID\": 59384595045,\n// \"USERNAME\": \"Susan\",\n// \"PUBLISH_DATE\": 1641952418000,\n// \"CURRENT_DATE\": 1642058123000\n// },\n// {\n// \"UID\": 9,\n// \"USER_ID\": 9504832934,\n// \"USERNAME\": \"Chris\",\n// \"PUBLISH_DATE\": 1641836651000,\n// \"CURRENT_DATE\": 1642058123000\n// }\n// ];\n\n// return example.map(e => {return {json: e} })"
+      },
+      "id": "5b4b9031-fd9a-476e-bb29-d00e09465a3d",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1400,
+        680
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "databaseId": {
+          "__rl": true,
+          "value": "15d32141-5464-804e-a35d-df7932a07980",
+          "mode": "list",
+          "cachedResultName": "Database API Playground",
+          "cachedResultUrl": "https://www.notion.so/15d321415464804ea35ddf7932a07980"
+        },
+        "title": "Again and Again",
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Category|multi_select",
+              "multiSelectValue": [
+                "Social Media"
+              ]
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c347803b-1867-4ec6-9115-cac2a98b6eaf",
+      "name": "Notion",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        1140,
+        340
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion GYBWAI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "block",
+        "blockId": {
+          "__rl": true,
+          "value": "={{ $('Notion').item.json.id }}",
+          "mode": "id"
+        },
+        "blockUi": {
+          "blockValues": [
+            {
+              "textContent": "={{ $json.block }}"
+            }
+          ]
+        }
+      },
+      "id": "e284e2c7-d0a2-4f2b-89ee-6ddc76f02aaf",
+      "name": "Notion1",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        1660,
+        680
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion GYBWAI"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "inputMarkdown": "={{ $('AI Agent').item.json.output }}"
+      },
+      "id": "d1cfc64a-c6f5-47e5-83d8-143e56f7a365",
+      "name": "Notion Markdown",
+      "type": "n8n-nodes-notion-markdown.notionMarkdown",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "0102f801-9d7e-4c85-a41d-b6820bcc0ef5",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        660,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "block",
+        "blockId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "blockUi": {
+          "blockValues": [
+            {},
+            {}
+          ]
+        }
+      },
+      "id": "ca5d78d5-f83a-4bb2-b115-914673b725dd",
+      "name": "Notion2",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        1620,
+        340
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion GYBWAI"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Code": [
+      {
+        "json": {
+          "block": "# Deep Work in Commercial Real Estate Investment"
+        }
+      },
+      {
+        "json": {
+          "block": "## Deep Work Definition"
+        }
+      },
+      {
+        "json": {
+          "block": "Deep work refers to the professional activities performed in a state of distraction-free concentration that push cognitive capabilities to their limit. This term, coined by Cal Newport in his book \"Deep Work: Rules for Focused Success in a Distracted World,\" underscores the importance of focused effort in increasing productivity and fostering innovation (Newport, 2016)."
+        }
+      },
+      {
+        "json": {
+          "block": "## Industry Overview"
+        }
+      },
+      {
+        "json": {
+          "block": "### Industry Name"
+        }
+      },
+      {
+        "json": {
+          "block": "Commercial Real Estate Investment"
+        }
+      },
+      {
+        "json": {
+          "block": "### Current Productivity Challenges"
+        }
+      },
+      {
+        "json": {
+          "block": "The commercial real estate investment industry faces several productivity challenges:"
+        }
+      },
+      {
+        "json": {
+          "block": "- **High Distraction Levels**: Professionals often deal with constant interruptions from emails, calls, and meetings."
+        }
+      },
+      {
+        "json": {
+          "block": "- **Information Overload**: Investors must analyze vast amounts of data regarding market trends, property values, and investment risks."
+        }
+      },
+      {
+        "json": {
+          "block": "- **Time-consuming Processes**: Transactions often involve lengthy procedures that can detract from focusing on strategic activities."
+        }
+      },
+      {
+        "json": {
+          "block": "- **Networking Demands**: Continuous relationship-building can lead to scattered focus, diminishing periods of deep work."
+        }
+      },
+      {
+        "json": {
+          "block": "### Potential Benefits of Deep Work"
+        }
+      },
+      {
+        "json": {
+          "block": "Implementing deep work principles can lead to several key benefits in commercial real estate investment:"
+        }
+      },
+      {
+        "json": {
+          "block": "- **Enhanced Analytical Skills**: Focused work allows for deeper analysis of investment opportunities."
+        }
+      },
+      {
+        "json": {
+          "block": "- **Better Decision Making**: Reduced distractions can enhance critical thinking and lead to more strategic decisions."
+        }
+      },
+      {
+        "json": {
+          "block": "- **Increased Innovation**: Long periods of concentration can foster creativity in identifying new investment strategies and markets."
+        }
+      },
+      {
+        "json": {
+          "block": "- **Greater Work Satisfaction**: Focusing deeply on challenging tasks often leads to a sense of accomplishment and professional fulfillment."
+        }
+      },
+      {
+        "json": {
+          "block": "## Deep Work Framework"
+        }
+      },
+      {
+        "json": {
+          "block": "### Step 1: Setting Clear Goals"
+        }
+      },
+      {
+        "json": {
+          "block": "- **Title**: Define Weekly Objectives"
+        }
+      },
+      {
+        "json": {
+          "block": "- **Description**: Begin each week by outlining clear, specific objectives for what deep work will be accomplished. Break down larger projects into manageable tasks."
+        }
+      },
+      {
+        "json": {
+          "block": "- **Obstacles**: Unclear priorities, lack of time designation."
+        }
+      },
+      {
+        "json": {
+          "block": "- **Solutions**: Use goal-setting frameworks (e.g., SMART goals) and allocate specific blocks of time for these tasks in your calendar."
+        }
+      },
+      {
+        "json": {
+          "block": "### Step 2: Creating a Conducive Environment"
+        }
+      },
+      {
+        "json": {
+          "block": "- **Title**: Optimize Workspaces for Focus"
+        }
+      },
+      {
+        "json": {
+          "block": "- **Description**: Designate a distraction-free workspace equipped with necessary resources. Make use of tools that limit interruptions, such as noise-canceling headphones or specific apps that block distracting websites."
+        }
+      },
+      {
+        "json": {
+          "block": "- **Obstacles**: Environmental distractions, open-office layouts, or busy home environments."
+        }
+      },
+      {
+        "json": {
+          "block": "- **Solutions**: Schedule “deep work” hours in a quiet location; consider co-working spaces or dedicated home offices during these times."
+        }
+      },
+      {
+        "json": {
+          "block": "### Step 3: Time Blocking for Deep Work"
+        }
+      },
+      {
+        "json": {
+          "block": "- **Title**: Implement Time Blocking"
+        }
+      },
+      {
+        "json": {
+          "block": "- **Description**: Allocate specific time blocks in your daily schedule exclusively for deep work, ideally at times when energy levels are highest."
+        }
+      },
+      {
+        "json": {
+          "block": "- **Obstacles**: Scheduling conflicts, spontaneous meetings or calls."
+        }
+      },
+      {
+        "json": {
+          "block": "- **Solutions**: Communicate availability with teams and clients; use shared calendars to avoid booking over deep work sessions."
+        }
+      },
+      {
+        "json": {
+          "block": "### Step 4: Establishing Rituals"
+        }
+      },
+      {
+        "json": {
+          "block": "- **Title**: Create Deep Work Rituals"
+        }
+      },
+      {
+        "json": {
+          "block": "- **Description**: Develop routines that signal the beginning and end of deep work periods, including activities like meditation, reading, or specific preparatory tasks."
+        }
+      },
+      {
+        "json": {
+          "block": "- **Obstacles**: Inconsistency in performing rituals, difficulty maintaining focus."
+        }
+      },
+      {
+        "json": {
+          "block": "- **Solutions**: Commit to rituals on a trial basis (e.g., 30 days) and adjust based on effectiveness; use reminders or alarms to stick to rituals."
+        }
+      },
+      {
+        "json": {
+          "block": "### Step 5: Regular Reflection and Adjustment"
+        }
+      },
+      {
+        "json": {
+          "block": "- **Title**: Review and Adapt"
+        }
+      },
+      {
+        "json": {
+          "block": "- **Description**: At the end of each week, review the effectiveness of the deep work sessions by assessing productivity regarding the initial goals."
+        }
+      },
+      {
+        "json": {
+          "block": "- **Obstacles**: Lack of time for reflection, difficulty measuring qualitative outcomes."
+        }
+      },
+      {
+        "json": {
+          "block": "- **Solutions**: Schedule a weekly review session; create a simple rubric to assess effectiveness, such as rate productivity or feelings of satisfaction after deep work sessions."
+        }
+      },
+      {
+        "json": {
+          "block": "## Measuring Success"
+        }
+      },
+      {
+        "json": {
+          "block": "### Metrics"
+        }
+      },
+      {
+        "json": {
+          "block": "- **Completion Rate**: Track the number of objectives achieved against goals set at the beginning of the week."
+        }
+      },
+      {
+        "json": {
+          "block": "- **Focus Duration**: Monitor the duration spent on deep work versus shallow work."
+        }
+      },
+      {
+        "json": {
+          "block": "- **Quality of Work**: Assess the quality of decisions or outputs produced under deep work conditions through peer review or client feedback."
+        }
+      },
+      {
+        "json": {
+          "block": "### Tracking Methods"
+        }
+      },
+      {
+        "json": {
+          "block": "- **Journal or Logs**: Keep a daily log of deep work hours and accomplishments."
+        }
+      },
+      {
+        "json": {
+          "block": "- **Productivity Apps**: Utilize apps that track focus time, such as Toggl or Focus@Will."
+        }
+      },
+      {
+        "json": {
+          "block": "- **Weekly Reviews**: Conduct regular assessments to analyze progress toward set goals and adjust strategies as necessary."
+        }
+      },
+      {
+        "json": {
+          "block": "## Sources"
+        }
+      },
+      {
+        "json": {
+          "block": "1. Newport, C. (2016). *Deep Work: Rules for Focused Success in a Distracted World*. Grand Central Publishing."
+        }
+      },
+      {
+        "json": {
+          "block": "2. Pritchett, C. (2020). *Real Estate Investment: A Strategic Approach*. Palgrave Macmillan."
+        }
+      },
+      {
+        "json": {
+          "block": "3. Allen, D. (2015). *Getting Things Done: The Art of Stress-Free Productivity*. Penguin Books."
+        }
+      },
+      {
+        "json": {
+          "block": "4. Calhoun, C. (2022). *The Analytics Revolution: How to Improve Your Decision-Making and Drive Business Performance*. Wiley."
+        }
+      },
+      {
+        "json": {
+          "block": "5. Koller, T., & Wyman, D. (2021). *Tech-Enabled Asset Investment: Strategies for Commercial Real Estate Professionals*. Wiley."
+        }
+      },
+      {
+        "json": {
+          "block": "This structured approach aims to help professionals in commercial real estate investment leverage deep work methodologies to significantly improve productivity and enhance innovation. By following these steps and continuously refining their strategies based on outcomes, individuals can cultivate a more focused and productive work environment."
+        }
+      }
+    ],
+    "AI Agent": [
+      {
+        "json": {
+          "output": "# Deep Work in Commercial Real Estate Investment\n\n## Deep Work Definition\nDeep work refers to the professional activities performed in a state of distraction-free concentration that push cognitive capabilities to their limit. This term, coined by Cal Newport in his book \"Deep Work: Rules for Focused Success in a Distracted World,\" underscores the importance of focused effort in increasing productivity and fostering innovation (Newport, 2016).\n\n## Industry Overview\n\n### Industry Name\nCommercial Real Estate Investment\n\n### Current Productivity Challenges\nThe commercial real estate investment industry faces several productivity challenges:\n- **High Distraction Levels**: Professionals often deal with constant interruptions from emails, calls, and meetings.\n- **Information Overload**: Investors must analyze vast amounts of data regarding market trends, property values, and investment risks.\n- **Time-consuming Processes**: Transactions often involve lengthy procedures that can detract from focusing on strategic activities.\n- **Networking Demands**: Continuous relationship-building can lead to scattered focus, diminishing periods of deep work.\n\n### Potential Benefits of Deep Work\nImplementing deep work principles can lead to several key benefits in commercial real estate investment:\n- **Enhanced Analytical Skills**: Focused work allows for deeper analysis of investment opportunities.\n- **Better Decision Making**: Reduced distractions can enhance critical thinking and lead to more strategic decisions.\n- **Increased Innovation**: Long periods of concentration can foster creativity in identifying new investment strategies and markets.\n- **Greater Work Satisfaction**: Focusing deeply on challenging tasks often leads to a sense of accomplishment and professional fulfillment.\n\n## Deep Work Framework\n\n### Step 1: Setting Clear Goals\n- **Title**: Define Weekly Objectives\n- **Description**: Begin each week by outlining clear, specific objectives for what deep work will be accomplished. Break down larger projects into manageable tasks.\n- **Obstacles**: Unclear priorities, lack of time designation.\n- **Solutions**: Use goal-setting frameworks (e.g., SMART goals) and allocate specific blocks of time for these tasks in your calendar.\n\n### Step 2: Creating a Conducive Environment\n- **Title**: Optimize Workspaces for Focus\n- **Description**: Designate a distraction-free workspace equipped with necessary resources. Make use of tools that limit interruptions, such as noise-canceling headphones or specific apps that block distracting websites.\n- **Obstacles**: Environmental distractions, open-office layouts, or busy home environments.\n- **Solutions**: Schedule “deep work” hours in a quiet location; consider co-working spaces or dedicated home offices during these times.\n\n### Step 3: Time Blocking for Deep Work\n- **Title**: Implement Time Blocking\n- **Description**: Allocate specific time blocks in your daily schedule exclusively for deep work, ideally at times when energy levels are highest.\n- **Obstacles**: Scheduling conflicts, spontaneous meetings or calls.\n- **Solutions**: Communicate availability with teams and clients; use shared calendars to avoid booking over deep work sessions.\n\n### Step 4: Establishing Rituals\n- **Title**: Create Deep Work Rituals\n- **Description**: Develop routines that signal the beginning and end of deep work periods, including activities like meditation, reading, or specific preparatory tasks.\n- **Obstacles**: Inconsistency in performing rituals, difficulty maintaining focus.\n- **Solutions**: Commit to rituals on a trial basis (e.g., 30 days) and adjust based on effectiveness; use reminders or alarms to stick to rituals.\n\n### Step 5: Regular Reflection and Adjustment\n- **Title**: Review and Adapt\n- **Description**: At the end of each week, review the effectiveness of the deep work sessions by assessing productivity regarding the initial goals.\n- **Obstacles**: Lack of time for reflection, difficulty measuring qualitative outcomes.\n- **Solutions**: Schedule a weekly review session; create a simple rubric to assess effectiveness, such as rate productivity or feelings of satisfaction after deep work sessions.\n\n## Measuring Success\n\n### Metrics\n- **Completion Rate**: Track the number of objectives achieved against goals set at the beginning of the week.\n- **Focus Duration**: Monitor the duration spent on deep work versus shallow work.\n- **Quality of Work**: Assess the quality of decisions or outputs produced under deep work conditions through peer review or client feedback.\n\n### Tracking Methods\n- **Journal or Logs**: Keep a daily log of deep work hours and accomplishments.\n- **Productivity Apps**: Utilize apps that track focus time, such as Toggl or Focus@Will.\n- **Weekly Reviews**: Conduct regular assessments to analyze progress toward set goals and adjust strategies as necessary.\n\n## Sources\n1. Newport, C. (2016). *Deep Work: Rules for Focused Success in a Distracted World*. Grand Central Publishing.\n2. Pritchett, C. (2020). *Real Estate Investment: A Strategic Approach*. Palgrave Macmillan.\n3. Allen, D. (2015). *Getting Things Done: The Art of Stress-Free Productivity*. Penguin Books.\n4. Calhoun, C. (2022). *The Analytics Revolution: How to Improve Your Decision-Making and Drive Business Performance*. Wiley.\n5. Koller, T., & Wyman, D. (2021). *Tech-Enabled Asset Investment: Strategies for Commercial Real Estate Professionals*. Wiley.\n\nThis structured approach aims to help professionals in commercial real estate investment leverage deep work methodologies to significantly improve productivity and enhance innovation. By following these steps and continuously refining their strategies based on outcomes, individuals can cultivate a more focused and productive work environment."
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:23:56.869Z",
+      "updatedAt": "2024-12-01T14:23:56.869Z",
+      "id": "Paq9K6w31GZ583JD",
+      "name": "My Drafts"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-16T04:36:55.000Z",
+  "versionId": "f2462ae4-2fdf-49b3-befa-16ac1af50cb3"
+}
