@@ -1,0 +1,109 @@
+{
+  "active": false,
+  "connections": {
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "LinkedIn",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-09T14:49:47.271Z",
+  "id": "Jg1L5OAP3OZYmSJQ",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "LinkedIn Playground",
+  "nodes": [
+    {
+      "parameters": {
+        "person": "vyo9zALtWx",
+        "text": "={{ $json.text }}",
+        "additionalFields": {}
+      },
+      "id": "8c4c77ae-2da4-4997-972a-7cd1b45b90e3",
+      "name": "LinkedIn",
+      "type": "n8n-nodes-base.linkedIn",
+      "typeVersion": 1,
+      "position": [
+        900,
+        360
+      ],
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "ieJiSUDPhgzv0dhN",
+          "name": "LinkedIn account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f166aa68-13c4-4c17-a54d-c42c2284a62d",
+              "name": "text",
+              "value": "This is a n8n post",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5393e68a-e7ea-4e9d-a005-6e857d480b9a",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        760,
+        360
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "50bbfe0b-dee3-4518-b210-d7f121c292b3",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        620,
+        360
+      ]
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:20:20.071Z",
+      "updatedAt": "2024-12-01T14:21:40.229Z",
+      "id": "hvphHbQ14WJzrgp9",
+      "name": "My Learning"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-09T19:14:56.000Z",
+  "versionId": "628897b4-8db5-42dd-b5b2-d334a9aaacef"
+}
