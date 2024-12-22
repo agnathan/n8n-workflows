@@ -1,0 +1,86 @@
+{
+  "active": false,
+  "connections": {
+    "Cal.com Trigger": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-29T19:56:52.840Z",
+  "id": "Gpp1jkKxe8Xdyztk",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AIC Speaker Booking",
+  "nodes": [
+    {
+      "parameters": {
+        "events": [
+          "BOOKING_CREATED"
+        ],
+        "options": {}
+      },
+      "id": "4dcb6429-5bec-402c-be55-68d7e4d9e6bd",
+      "name": "Cal.com Trigger",
+      "type": "n8n-nodes-base.calTrigger",
+      "typeVersion": 2,
+      "position": [
+        80,
+        240
+      ],
+      "webhookId": "885b3255-9b72-4019-84af-ff920028bcc4",
+      "credentials": {
+        "calApi": {
+          "id": "pKkWh7vr9SWf8EKB",
+          "name": "Cal account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create"
+      },
+      "id": "92e220b2-83f6-43b1-bca4-38683d7e0dce",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        300,
+        240
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "DahiteaxE7qHp5k3",
+          "name": "NocoDB Token account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:23:56.869Z",
+      "updatedAt": "2024-12-01T14:23:56.869Z",
+      "id": "Paq9K6w31GZ583JD",
+      "name": "My Drafts"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-09T22:29:13.000Z",
+  "versionId": "1c92de8e-308f-4790-9149-a9fada68211e"
+}
