@@ -1,0 +1,354 @@
+{
+  "active": false,
+  "connections": {
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse JSON": {
+      "main": [
+        [
+          {
+            "node": "Make JSON Table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save to Disk": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to CSV": {
+      "main": [
+        [
+          {
+            "node": "Strip UTF BOM bytes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Make JSON Table": {
+      "main": [
+        [
+          {
+            "node": "Convert to CSV",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split In Batches": {
+      "main": [
+        [
+          {
+            "node": "Parse JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create valid binary": {
+      "main": [
+        [
+          {
+            "node": "Save to Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Strip UTF BOM bytes": {
+      "main": [
+        [
+          {
+            "node": "Create valid binary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-30T02:14:19.512Z",
+  "id": "5togbVW5NE1VHsNR",
+  "meta": null,
+  "name": "Prepare CSV files with GPT-4",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "bc08277f-117a-4ec9-ab55-e71200add0bd",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        480,
+        620
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "model": "gpt-4",
+        "prompt": {
+          "messages": [
+            {
+              "content": "=please create a list of 10 random users. Return back ONLY a JSON array. Character names of famous fiction characters. Make Names and Surnames start with the same letter. Name and Surname can be from different characters. If subscribed is false then make date_subscribed empty. If date_subscribed is not empty then make it random and no later then 2023-10-01. Make JSON in a single line, avoid line breaks. Here's an example: [{\"user_name\": \"Jack Jones\", \"user_email\":\"jackjo@yahoo.com\",\"subscribed\": true, \"date_subscribed\":\"2023-10-01\" },{\"user_name\": \"Martin Moor\", \"user_email\":\"mmoor@gmail.com\",\"subscribed\": false, \"date_subscribed\":\"\" }]"
+            }
+          ]
+        },
+        "options": {
+          "maxTokens": 2500,
+          "n": 3,
+          "temperature": 1
+        },
+        "requestOptions": {}
+      },
+      "id": "8eac1e70-7e15-4c54-965a-618d8ec2b7df",
+      "name": "OpenAI",
+      "type": "n8n-nodes-base.openAi",
+      "position": [
+        680,
+        620
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "29a9bd92-1276-41bb-babe-1c81ffbb8a8c",
+      "name": "Split In Batches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "position": [
+        860,
+        620
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "content": "## This is a helper workflow to create 3 CSV files\n### Feel free to adapt as needed\n### Some mock data from GPT is pinned for convenience",
+        "height": 126,
+        "width": 600
+      },
+      "id": "e1e929e3-9967-48fc-9d29-1dde306457c6",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        460,
+        460
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "content",
+              "type": "arrayValue",
+              "arrayValue": "={{JSON.parse($json.message.content)}}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "b8f4a16d-4e10-4ac6-8eeb-891de44153d5",
+      "name": "Parse JSON",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1040,
+        620
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "content",
+        "options": {}
+      },
+      "id": "f8a3b2f3-9294-4d14-8253-35e3a4464873",
+      "name": "Make JSON Table",
+      "type": "n8n-nodes-base.itemLists",
+      "position": [
+        1220,
+        620
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {
+        "operation": "toFile",
+        "fileFormat": "csv",
+        "options": {
+          "fileName": "=funny_names_{{ $('Split In Batches').item.json.index+1 }}.{{ $parameter[\"fileFormat\"] }}",
+          "headerRow": true
+        }
+      },
+      "id": "f01e8c93-b3b9-4e6b-8b8b-f9da38646879",
+      "name": "Convert to CSV",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "position": [
+        1400,
+        620
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "fileName": "=./.n8n/{{ $binary.data.fileName }}",
+        "options": {}
+      },
+      "id": "563b8079-d321-4ea0-ab18-195e058fc773",
+      "name": "Save to Disk",
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "position": [
+        1940,
+        620
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "setAllData": false,
+        "options": {
+          "encoding": "utf8",
+          "stripBOM": true,
+          "jsonParse": false,
+          "keepSource": false
+        }
+      },
+      "id": "497c74a6-e924-4fc8-84d1-0efa2e5e59b1",
+      "name": "Strip UTF BOM bytes",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "position": [
+        1580,
+        620
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "mode": "jsonToBinary",
+        "convertAllData": false,
+        "options": {
+          "addBOM": false,
+          "encoding": "utf8",
+          "fileName": "=funny_names_{{ $('Split In Batches').item.json.index+1 }}.{{ $('Convert to CSV').first().binary.data.fileExtension }}",
+          "keepSource": false,
+          "mimeType": "text/csv",
+          "useRawData": true
+        }
+      },
+      "id": "45615975-7fd4-49a2-8d1a-9842168f3fda",
+      "name": "Create valid binary",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "position": [
+        1760,
+        620
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### These 2 nodes fix an issue with BOM bytes in the beginning of the file.\nWithout them reading the CSV file back becomes tricky",
+        "height": 254,
+        "width": 394
+      },
+      "id": "7189b90f-6406-499b-aa23-16981dd615de",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1527,
+        520
+      ],
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {
+    "OpenAI": [
+      {
+        "json": {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "[{\"user_name\": \"Harry Holmes\", \"user_email\": \"harryholmes@gmail.com\", \"subscribed\": true, \"date_subscribed\": \"2022-08-15\"}, {\"user_name\": \"Frodo Fawkes\", \"user_email\": \"frodo.fawks01@gmail.com\", \"subscribed\": false, \"date_subscribed\": \"\"}, {\"user_name\": \"Luke Longbottom\", \"user_email\": \"lukeLongbottom@gmail.com\", \"subscribed\": true, \"date_subscribed\": \"2023-09-25\"}, {\"user_name\": \"Perry Potter\", \"user_email\": \"perry_potter@yahoo.com\", \"subscribed\": false, \"date_subscribed\": \"\"}, {\"user_name\": \"James Joyce\", \"user_email\": \"jjoyce@gmail.com\", \"subscribed\": true, \"date_subscribed\": \"2023-06-12\"}, {\"user_name\": \"Bilbo Baggins\", \"user_email\": \"bilbobaggins@gmail.com\", \"subscribed\": true, \"date_subscribed\": \"2023-03-12\"}, {\"user_name\": \"Tom Tompkins\", \"user_email\": \"tompkins.tom@outlook.com\", \"subscribed\": false, \"date_subscribed\": \"\"}, {\"user_name\": \"Ronald Reagan\", \"user_email\": \"ronald.reagan@gmail.com\", \"subscribed\": true, \"date_subscribed\": \"2023-01-05\"}, {\"user_name\": \"Mary Morstan\", \"user_email\": \"maryMorstan@gmail.com\", \"subscribed\": false, \"date_subscribed\": \"\"}, {\"user_name\": \"Arthur Arthur\", \"user_email\": \"arthur.arthur@aol.com\", \"subscribed\": true, \"date_subscribed\": \"2023-04-17\"}]"
+          },
+          "finish_reason": "stop"
+        }
+      },
+      {
+        "json": {
+          "index": 1,
+          "message": {
+            "role": "assistant",
+            "content": "[{\"user_name\": \"Harry Holmes\", \"user_email\":\"hholmes@email.com\", \"subscribed\": true, \"date_subscribed\":\"2021-12-15\"}, {\"user_name\": \"James Jasper\", \"user_email\":\"jjasper@yahoo.com\", \"subscribed\": false, \"date_subscribed\":\"\"}, {\"user_name\": \"Frodo Fenton\", \"user_email\":\"frodonot@gmail.com\", \"subscribed\": true, \"date_subscribed\":\"2022-07-09\"}, {\"user_name\": \"Katniss Kennedy\", \"user_email\":\"kennedy@hotmail.com\", \"subscribed\": false, \"date_subscribed\":\"\"}, {\"user_name\": \"Bilbo Brandy\", \"user_email\":\"bbrandy@gmail.net\",\"subscribed\": true, \"date_subscribed\":\"2022-02-20\"}, {\"user_name\": \"Percy Pepper\", \"user_email\":\"percy@gmail.com\", \"subscribed\": false, \"date_subscribed\":\"\"}, {\"user_name\": \"Samwise Sprint\", \"user_email\":\"ssprint@outlook.com\", \"subscribed\": true, \"date_subscribed\":\"2021-06-01\"}, {\"user_name\": \"Gandalf Gatsby\", \"user_email\":\"gandalfg@gmail.com\", \"subscribed\": true, \"date_subscribed\":\"2023-01-22\"}, {\"user_name\": \"Dumbledore Dane\", \"user_email\":\"ddane@gmail.com\",\"subscribed\": false, \"date_subscribed\":\"\"}, {\"user_name\": \"Tommy Torrance\", \"user_email\":\"ttorrance@hotmail.com\", \"subscribed\": true, \"date_subscribed\":\"2023-08-15\"}]"
+          },
+          "finish_reason": "stop"
+        }
+      },
+      {
+        "json": {
+          "index": 2,
+          "message": {
+            "role": "assistant",
+            "content": "[{\"user_name\": \"Harry Holmes\", \"user_email\":\"harryholmes@hotmail.com\", \"subscribed\": true, \"date_subscribed\":\"2023-01-09\"}, {\"user_name\": \"Sam Spade\", \"user_email\":\"samspade@gmail.com\", \"subscribed\": false, \"date_subscribed\":\"\"}, {\"user_name\": \"Tom Sawyer\", \"user_email\":\"tomsawyer@yahoo.com\", \"subscribed\": true, \"date_subscribed\":\"2022-12-12\"}, {\"user_name\": \"Frodo Fawkes\", \"user_email\":\"frodofawkes@gmail.com\", \"subscribed\": true, \"date_subscribed\":\"2023-09-30\"}, {\"user_name\": \"Bruce Bond\", \"user_email\":\"brucebond@gmail.com\", \"subscribed\": true, \"date_subscribed\":\"2023-08-15\"}, {\"user_name\": \"Peter Pan\", \"user_email\":\"peterpan@gmail.com\", \"subscribed\": false, \"date_subscribed\":\"\"}, {\"user_name\": \"Hermione Holmes\", \"user_email\":\"hermioneholmes@yahoo.com\", \"subscribed\": true, \"date_subscribed\":\"2023-02-21\"}, {\"user_name\": \"Walter White\", \"user_email\":\"walterwhite@hotmail.com\", \"subscribed\": false, \"date_subscribed\":\"\"}, {\"user_name\": \"Tony Twist\", \"user_email\":\"tonytwist@gmail.com\", \"subscribed\": true, \"date_subscribed\":\"2023-04-27\"}, {\"user_name\": \"Ron Ranger\", \"user_email\":\"ronranger@yahoo.com\", \"subscribed\": true, \"date_subscribed\":\"2023-07-13\"}]"
+          },
+          "finish_reason": "stop"
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:21:25.482Z",
+      "updatedAt": "2024-12-01T14:21:25.482Z",
+      "id": "SIJWhQ43whBotfGd",
+      "name": "Community Examples"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-01T14:24:20.000Z",
+  "versionId": "f632eddf-7a8d-4740-8ef4-c9380d8d5b19"
+}
