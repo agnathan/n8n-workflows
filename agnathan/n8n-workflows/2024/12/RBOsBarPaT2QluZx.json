@@ -1,0 +1,75 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "X",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-02T02:54:36.316Z",
+  "id": "RBOsBarPaT2QluZx",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "X.com AIC Chatbot",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "c2c46d53-d71d-4945-8940-a296485eafa9",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        620,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "text": "The Alternative Investing Club started as an employee club at Intel Corporation, but since we've opened to the public and help hundreds of people invest in real estate and private investments.",
+        "additionalFields": {}
+      },
+      "id": "d3dd2287-c98d-4dda-b1e4-d06b9f9de37d",
+      "name": "X",
+      "type": "n8n-nodes-base.twitter",
+      "typeVersion": 2,
+      "position": [
+        840,
+        260
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "twitterOAuth2Api": {
+          "id": "gnP4W43zIPbVci3B",
+          "name": "X account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:23:56.869Z",
+      "updatedAt": "2024-12-01T14:23:56.869Z",
+      "id": "Paq9K6w31GZ583JD",
+      "name": "My Drafts"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-02T03:17:03.000Z",
+  "versionId": "0e1b2eb6-d582-4d4f-9a81-f12d90247956"
+}
