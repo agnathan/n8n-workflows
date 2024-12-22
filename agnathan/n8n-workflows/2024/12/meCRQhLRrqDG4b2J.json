@@ -1,0 +1,349 @@
+{
+  "active": false,
+  "connections": {
+    "Post on LinkedIn": {
+      "main": [
+        [
+          {
+            "node": "Set post status to \"Done\"",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "query entries from Notion table for today",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Combine text+image": {
+      "main": [
+        [
+          {
+            "node": "Post on LinkedIn",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reformat Post Text": {
+      "main": [
+        [
+          {
+            "node": "Combine text+image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch image from post": {
+      "main": [
+        [
+          {
+            "node": "Combine text+image",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "get all content from post page": {
+      "main": [
+        [
+          {
+            "node": "Pull together all text blocks + image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pull together all text blocks + image": {
+      "main": [
+        [
+          {
+            "node": "Fetch image from post",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Reformat Post Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "query entries from Notion table for today": {
+      "main": [
+        [
+          {
+            "node": "get all content from post page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-02T03:57:28.170Z",
+  "id": "meCRQhLRrqDG4b2J",
+  "meta": null,
+  "name": "Notion to LinkedIn Messages",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 15
+            }
+          ]
+        }
+      },
+      "id": "423e93de-e9d5-4686-b457-db32508f8e47",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        -480,
+        915
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "content": "## Fetch the day's post from my Notion database\nA Notion _\"database\"_ is just a table on a Notion Page.\nThis table will have various rows, for which a minimum of three columns are required:\n- Name\n- Status\n- Date\n\nThe Date column is the most important, which will dictate when that row from your Notion table containing the text should be posted.\n\nNOTE: each post is required to have a copy and pasted image!",
+        "height": 542.0867486896091,
+        "width": 652.1201853643956,
+        "color": 6
+      },
+      "id": "9b525f73-924e-4fc6-b718-8c33da31bb56",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -300,
+        600
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Format Post\nSend the post to OpenAI, where it will attempt to ask your assistant how to take the incoming blob of text, and soup it up into something more palpable for LinkedIn engagement.",
+        "height": 540.7357881640437,
+        "width": 860.9829802912225
+      },
+      "id": "7aa3505c-ffcb-4ba5-a8d1-1677c083cabc",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        460,
+        595
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "update",
+        "pageId": {
+          "__rl": true,
+          "mode": "url",
+          "value": "={{ $('query entries from Notion table for today').item.json.url }}"
+        },
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Status|status",
+              "statusValue": "Done"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e30946d9-a463-4d78-91f9-379db0701038",
+      "name": "Set post status to \"Done\"",
+      "type": "n8n-nodes-base.notion",
+      "position": [
+        1700,
+        915
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "person": "_RmSSZc0jB",
+        "text": "={{ $json.output }}",
+        "shareMediaCategory": "IMAGE",
+        "additionalFields": {}
+      },
+      "id": "c278a957-7b16-4875-96fd-de49f7f9c8bc",
+      "name": "Post on LinkedIn",
+      "type": "n8n-nodes-base.linkedIn",
+      "position": [
+        1440,
+        915
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "443ced54-9dba-406c-8e8a-768e840da6b0",
+      "name": "Combine text+image",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        1040,
+        915
+      ],
+      "typeVersion": 2.1
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url[0] }}",
+        "options": {}
+      },
+      "id": "6a55ae7c-8fd7-441d-a3bc-69952dcd80e2",
+      "name": "Fetch image from post",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        580,
+        995
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "resource": "assistant",
+        "assistantId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "asst_J1KuOx5wTLrjEHuy5q94jEgh",
+          "cachedResultName": "LinkedIn Post Reviewer"
+        },
+        "prompt": "define",
+        "text": "=Thank you kindly for your help, please refer to the following LinkedIn post, and output a reformatted version employing thoroughly thought-out paragraph breaks, and lists if present:\n```\n{{ $json.content.join(\" \") }}\n```",
+        "options": {}
+      },
+      "id": "bd6c132d-b88b-4668-beae-b0884cd294e1",
+      "name": "Reformat Post Text",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "position": [
+        560,
+        815
+      ],
+      "typeVersion": 1.3
+    },
+    {
+      "parameters": {
+        "resource": "block",
+        "operation": "getAll",
+        "blockId": {
+          "__rl": true,
+          "mode": "url",
+          "value": "={{ $json.url }}"
+        },
+        "returnAll": true
+      },
+      "id": "06356389-5b3c-4671-9374-b6c4015ac3d5",
+      "name": "get all content from post page",
+      "type": "n8n-nodes-base.notion",
+      "position": [
+        -40,
+        915
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "content"
+            },
+            {
+              "fieldToAggregate": "image.file.url"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c7bb9ac0-3d5f-447f-9b87-b37b0be0ac17",
+      "name": "Pull together all text blocks + image",
+      "type": "n8n-nodes-base.aggregate",
+      "position": [
+        180,
+        915
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "9aba7f55-a7de-4329-9d5b-6d127937fa49",
+          "cachedResultUrl": "https://www.notion.so/9aba7f55a7de43299d5b6d127937fa49",
+          "cachedResultName": "LinkedIn Posts example"
+        },
+        "filterType": "manual",
+        "filters": {
+          "conditions": [
+            {
+              "key": "Date|date",
+              "condition": "equals",
+              "date": "={{ $today.format(\"yyyy/mM/dd\") }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d114e2c1-48ce-48c2-a18e-fa0413ebd63e",
+      "name": "query entries from Notion table for today",
+      "type": "n8n-nodes-base.notion",
+      "position": [
+        -260,
+        915
+      ],
+      "typeVersion": 2.2,
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:21:25.482Z",
+      "updatedAt": "2024-12-01T14:21:25.482Z",
+      "id": "SIJWhQ43whBotfGd",
+      "name": "Community Examples"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-02T03:57:33.000Z",
+  "versionId": "7b1a278c-fbee-402e-9ce5-25735e1d1b80"
+}
