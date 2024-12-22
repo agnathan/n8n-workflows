@@ -1,0 +1,382 @@
+{
+  "active": false,
+  "connections": {
+    "A. Queen": {
+      "main": [
+        [
+          {
+            "node": "Super Band",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "A. Ingredients": {
+      "main": [
+        [
+          {
+            "node": "Merge recipe",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "B. Led Zeppelin": {
+      "main": [
+        [
+          {
+            "node": "Super Band",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "B. Recipe quantities": {
+      "main": [
+        [
+          {
+            "node": "Merge recipe",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "A. Ingredients Needed": {
+      "main": [
+        [
+          {
+            "node": "Ingredients in stock from recipe",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "A. Ingredients Needed",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "B. Ingredients in stock",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "A. Ingredients",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "B. Recipe quantities",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "A. Queen",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "B. Led Zeppelin",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "B. Ingredients in stock": {
+      "main": [
+        [
+          {
+            "node": "Ingredients in stock from recipe",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-01T14:26:33.180Z",
+  "id": "4ODRIRUQcAOIXhlK",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Aggregating data with the Merge node",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "f2fe635b-89fa-4406-bf8e-79096bbce7b4",
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        660,
+        1000
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "# 3. Add items from B below items from A\n",
+        "height": 360,
+        "width": 1020
+      },
+      "id": "c7cdf335-eb21-4a33-9fe9-a70d34505542",
+      "name": "Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        940,
+        1240
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "# 1. Keep items from A if there's a match in B\n",
+        "height": 380,
+        "width": 1020
+      },
+      "id": "be35814f-60e8-46b9-82f3-8f275ea559c1",
+      "name": "Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        940,
+        440
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "# 2. Enrich items from A with matching data from B",
+        "height": 380,
+        "width": 1020
+      },
+      "id": "c57a2c1f-d08c-4fb1-a97f-3993875d0e79",
+      "name": "Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        940,
+        840
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "# Aggregating data with the Merge node\n\n## The merge node is one of the most useful nodes in n8n. In this workflow we show how to merge data from two different sources (similar to SQL joins).\n\n## The most-used operations of the merge node are presented here. For more info, browse the [merge node docs](https://docs.n8n.io/integrations/core-nodes/n8n-nodes-base.merge/)\n\n## Click the `Execute Workflow` button and double click on the nodes to see the input and output items.",
+        "height": 460,
+        "width": 740
+      },
+      "id": "2bd09ca8-a918-435f-8ce8-cd635c04406d",
+      "name": "Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -205,
+        875
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Adds the quantity needed to each ingredient in the recipe\n\n## Similar to SQL Left join\n\n",
+        "width": 480
+      },
+      "id": "e5a42646-afb7-4bc6-a9e2-7509b1c054e4",
+      "name": "Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1475,
+        975
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## This will keep only the ingredients needed that are also in stock\n\n## Similar to SQL Inner join",
+        "width": 480
+      },
+      "id": "a5e423ed-d4b2-4eb0-8496-17a2270fd752",
+      "name": "Note8",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1475,
+        575
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## This will create a super band by merging Queen and Led Zeppelin\n\n## Similar to SQL Union All \n(more flexible as not requires all fields to be the same)",
+        "height": 200,
+        "width": 480
+      },
+      "id": "c6ed035a-330e-4609-a12a-a49448d04823",
+      "name": "Note9",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1475,
+        1335
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "Name",
+              "field2": "Name"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "66bac944-9dca-4441-a60b-0f3f2cca834a",
+      "name": "Ingredients in stock from recipe",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        1220,
+        620
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {},
+      "id": "16901b43-f630-4c93-abcb-94fa6eec8da9",
+      "name": "Super Band",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        1240,
+        1400
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "jsCode": " return [\n  {\n    \"Name\": \"Flour\",\n  },\n  {\n    \"Name\": \"Eggs\",\n  },\n  {\n    \"Name\": \"Milk\",\n  },\n  {\n    \"Name\": \"Lemon\",\n  },\n  {\n    \"Name\": \"Sugar\",\n  },\n];\n"
+      },
+      "id": "1d5bd945-4f3e-4f45-bc4c-e8e29d2620be",
+      "name": "A. Ingredients Needed",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        980,
+        540
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "jsCode": " return [\n  {\n    \"Name\": \"Eggs\",\n  },\n  {\n    \"Name\": \"Lemon\",\n  },\n  {\n    \"Name\": \"Sugar\",\n  },\n];\n"
+      },
+      "id": "ae1d274f-4f1f-4c3b-a6bd-77064fcfc7c6",
+      "name": "B. Ingredients in stock",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        980,
+        680
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "Name",
+              "field2": "Name"
+            }
+          ]
+        },
+        "joinMode": "enrichInput1",
+        "options": {}
+      },
+      "id": "37396c6c-7818-413b-b952-8db9f207148e",
+      "name": "Merge recipe",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        1240,
+        1020
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "jsCode": " return [\n  {\n    \"Name\": \"Flour\",\n  },\n  {\n    \"Name\": \"Eggs\",\n  },\n  {\n    \"Name\": \"Milk\",\n  },\n  {\n    \"Name\": \"Lemon\",\n  },\n  {\n    \"Name\": \"Sugar\",\n  },\n];\n"
+      },
+      "id": "89be5ba8-e37f-48e8-bc0e-90ff834c169b",
+      "name": "A. Ingredients",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        980,
+        940
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "jsCode": " return [\n  {\n    \"Name\": \"Flour\",\n    \"Quantity\": \"100g\",\n  },\n  {\n    \"Name\": \"Eggs\",\n    \"Quantity\": 2,\n  },\n  {\n    \"Name\": \"Salt\",\n    \"Quantity\": \"50g\"\n  },\n  {\n    \"Name\": \"Lemon\",\n    \"Quantity\": 1,\n  },\n  {\n    \"Name\": \"Sugar\",\n    \"Quantity\": \"6tbsp\",\n  },\n];\n"
+      },
+      "id": "30b75681-82e4-4e21-932d-28b40c02e08f",
+      "name": "B. Recipe quantities",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        980,
+        1080
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "jsCode": " return [\n{\n\"FirstName\": \"John\",\n\"LastName\": \"Deacon\",\n\"Instrument\": \"Drums\",\n},\n{\n\"FirstName\": \"Freddy\",\n\"LastName\": \"Mercury\",\n\"Instrument\": \"Vocals and Piano\",\n\"Superpower\": \"Crowd control\"\n},\n{\n\"FirstName\": \"Brian\",\n\"LastName\": \"May\",\n\"Instrument\": \"Guitar\",\n},\n{\n\"FirstName\": \"Roger\",\n\"LastName\": \"Taylor\",\n\"Instrument\": \"Bass\",\n}\n];\n"
+      },
+      "id": "124f40d3-9c5e-491b-a197-905395a30ccf",
+      "name": "A. Queen",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        980,
+        1320
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "jsCode": " return [\n{\n\"FirstName\": \"Jimmy\",\n\"LastName\": \"Page\",\n\"Instrument\": \"Guitar\"\n},\n{\n\"FirstName\": \"Robert\",\n\"LastName\": \"Plant\",\n\"Instrument\": \"Vocals\",\n},\n{\n\"FirstName\": \"John\",\n\"LastName\": \"Bonham\",\n\"Instrument\": \"Drums\",\n},\n{\n\"FirstName\": \"John\",\n\"LastName\": \"Paul Jones\",\n\"Instrument\": \"Bass\",\n\"Second Instrument\": \"Keyboard\",\n}\n];\n"
+      },
+      "id": "c081e7e6-aa42-452a-9675-0e247659a792",
+      "name": "B. Led Zeppelin",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        980,
+        1460
+      ],
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:21:25.482Z",
+      "updatedAt": "2024-12-01T14:21:25.482Z",
+      "id": "SIJWhQ43whBotfGd",
+      "name": "Community Examples"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-01T15:18:47.000Z",
+  "versionId": "e9609cf5-5614-4ef9-99fa-52ff973516e6"
+}
