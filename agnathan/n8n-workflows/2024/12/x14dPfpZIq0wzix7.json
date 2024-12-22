@@ -1,0 +1,1950 @@
+{
+  "active": false,
+  "connections": {
+    "If": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete Session5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Go on url",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Go on url1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Go on url2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Go on url3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Inject Cookie",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Refresh browser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "If Block1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI1": {
+      "main": [
+        [
+          {
+            "node": "If Block",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete Session6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields (For testing prupose )",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Block": {
+      "main": [
+        [
+          {
+            "node": "Delete Session1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete Session",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Go on url": {
+      "main": [
+        [
+          {
+            "node": "Get ScreenShot 1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete Session6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Block1": {
+      "main": [
+        [
+          {
+            "node": "Delete Session2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete Session3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Go on url1": {
+      "main": [
+        [
+          {
+            "node": "Get ScreenShot 1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete Session6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Go on url2": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete Session4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Go on url3": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete Session4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Target Url": {
+      "main": [
+        [
+          {
+            "node": "Google search Query ",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create Selenium Session",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Inject Cookie": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete Session": {
+      "main": [
+        [
+          {
+            "node": "Information Extractor1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete Session4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete Session1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete Session2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete Session3": {
+      "main": [
+        [
+          {
+            "node": "Information Extractor2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete Session4": {
+      "main": [
+        [
+          {
+            "node": "Error1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete Session5": {
+      "main": [
+        [
+          {
+            "node": "Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete Session6": {
+      "main": [
+        [
+          {
+            "node": "Error3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete Session7": {
+      "main": [
+        [
+          {
+            "node": "Error2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get ScreenShot ": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete Session4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Refresh browser": {
+      "main": [
+        [
+          {
+            "node": "Get ScreenShot ",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete Session4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clean Webdriver ": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File1": {
+      "main": [
+        [
+          {
+            "node": "OpenAI1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete Session6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get ScreenShot 1": {
+      "main": [
+        [
+          {
+            "node": "Convert to File1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete Session6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get ScreenShot 2": {
+      "main": [
+        [
+          {
+            "node": "Convert to File2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete Session8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Go on ip-api.com": {
+      "main": [
+        [
+          {
+            "node": "Get ScreenShot 2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete Session8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Information Extractor",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Information Extractor1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Information Extractor2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check if empty of NA": {
+      "main": [
+        [
+          {
+            "node": "Error can't find url",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create Selenium Session",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google search Query ": {
+      "main": [
+        [
+          {
+            "node": "Extract First Url Match",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Information Extractor": {
+      "main": [
+        [
+          {
+            "node": "Check if empty of NA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resize browser window": {
+      "main": [
+        [
+          {
+            "node": "Clean Webdriver ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Information Extractor1": {
+      "main": [
+        [
+          {
+            "node": "Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Information Extractor2": {
+      "main": [
+        [
+          {
+            "node": "Success with cookie",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Selenium Session": {
+      "main": [
+        [
+          {
+            "node": "Resize browser window",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete Session7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract First Url Match": {
+      "main": [
+        [
+          {
+            "node": "Information Extractor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields (For testing prupose )": {
+      "main": [
+        [
+          {
+            "node": "If Target Url",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-10T06:57:08.991Z",
+  "id": "x14dPfpZIq0wzix7",
+  "meta": null,
+  "name": "Ultimate Webscraper",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "extractHtmlContent",
+        "extractionValues": {
+          "values": [
+            {
+              "key": "Url Find ",
+              "cssSelector": "=a[href*=\"https://\"][href*=\"{{ $('Edit Fields (For testing prupose )').item.json['Website Domaine'] }}\"]\n",
+              "returnValue": "attribute",
+              "attribute": "href",
+              "returnArray": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9964d97a-27a7-407f-b2da-6c79a93402bb",
+      "name": "Extract First Url Match",
+      "type": "n8n-nodes-base.html",
+      "position": [
+        1360,
+        2023.3944834469928
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "options": {}
+      },
+      "id": "274e84e3-7f75-4914-8c9b-c655c9a267a8",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        1600,
+        2183.394483446993
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://selenium_chrome:4444/wd/hub/session/{{ $('Create Selenium Session').item.json.value.sessionId }}/execute/sync",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"script\": \"Object.defineProperty(navigator, 'webdriver', { get: () => undefined }); window.navigator.chrome = { runtime: {} }; Object.defineProperty(navigator, 'languages', { get: () => ['en-US', 'en'] }); Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3, 4, 5] });\",\n  \"args\": []\n}\n",
+        "options": {}
+      },
+      "id": "1a960656-0211-46a5-ba66-c5b49e96fd4c",
+      "name": "Clean Webdriver ",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        2660,
+        2043.3944834469928
+      ],
+      "notesInFlow": false,
+      "typeVersion": 4.2,
+      "notes": "Script to delete traces of selenium in the browser "
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "=http://selenium_chrome:4444/wd/hub/session/{{ $('Create Selenium Session').item.json.value.sessionId }}",
+        "options": {}
+      },
+      "id": "2376a547-af41-4bf5-9f0a-60145c6fdf5c",
+      "name": "Delete Session",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        4720,
+        2403.394483446993
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "=http://selenium_chrome:4444/wd/hub/session/{{ $('Create Selenium Session').item.json.value.sessionId }}",
+        "options": {}
+      },
+      "id": "956b52eb-331a-4132-a588-c82a55abcc6f",
+      "name": "Delete Session2",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        6280,
+        1323.3944834469928
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "e6e6e15d-1cfe-48be-8ea0-f112e9781c9d",
+              "operator": {
+                "name": "filter.operator.equals",
+                "type": "string",
+                "operation": "equals"
+              },
+              "leftValue": "={{ $json.content }}",
+              "rightValue": "BLOCK"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2c31a73b-ac98-4a38-b48b-efe56d74ea89",
+      "name": "If Block1",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        6060,
+        1463.3944834469928
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "=http://selenium_chrome:4444/wd/hub/session/{{ $('Create Selenium Session').item.json.value.sessionId }}",
+        "options": {}
+      },
+      "id": "ab96dddc-c820-405b-9c73-717f6b8d1e9e",
+      "name": "Delete Session3",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        6280,
+        1543.3944834469928
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {},
+      "id": "f54c2df5-a9a9-4649-a131-dfea00674c70",
+      "name": "Limit",
+      "type": "n8n-nodes-base.limit",
+      "position": [
+        4660,
+        1383.3944834469928
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "=http://selenium_chrome:4444/wd/hub/session/{{ $('Create Selenium Session').item.json.value.sessionId }}",
+        "options": {}
+      },
+      "id": "61ad379d-19e1-48ea-86f9-66241aa68397",
+      "name": "Delete Session1",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        4720,
+        2203.394483446993
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "=http://selenium_chrome:4444/wd/hub/session/{{ $('Create Selenium Session').item.json.value.sessionId }}",
+        "options": {}
+      },
+      "id": "fac226b3-5c3b-424d-9f70-d5c3df811d95",
+      "name": "Delete Session4",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        5320,
+        1743.3944834469928
+      ],
+      "retryOnFail": false,
+      "typeVersion": 4.2,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "72a8e513-4108-44d1-8cf2-b1e2e394b66e",
+      "name": "Success with cookie",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        6800,
+        1543.3944834469928
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"Success \": \"Request has been block by the targeted website\"\n}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "9bec3d94-f94e-4a05-8781-066c8e997b15",
+      "name": "Respond to Webhook2",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        6460,
+        1323.3944834469928
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "jsCode": "// Récupère les données du nœud Webhook (en remplaçant \"Webhook\" par le nom du nœud Webhook dans votre workflow)\nconst webhookData = $node[\"Webhook\"].json;\n\n// Fonction pour convertir la valeur de sameSite\nfunction convertSameSite(value) {\n    // Conversion spécifique des valeurs de sameSite\n    const conversionMap = {\n        \"unspecified\": \"None\",\n        \"lax\": \"Lax\",\n        \"strict\": \"Strict\"\n    };\n    \n    // Si la valeur existe dans le tableau de conversion, on la convertit\n    if (value in conversionMap) {\n        return conversionMap[value];\n    }\n    \n    // Si la valeur est déjà une des valeurs acceptées par Selenium\n    const allowedValues = [\"Strict\", \"Lax\", \"None\"];\n    if (allowedValues.includes(value)) {\n        return value;\n    } else {\n        // Si la valeur n'est pas reconnue, on la remplace par \"Lax\" (par défaut)\n        return \"Lax\";\n    }\n}\n\n// Vérifiez et traitez les données des cookies\nif (webhookData.body && webhookData.body.cookies) {\n    let items = [];\n    for (const cookieObject of webhookData.body.cookies) {\n        if (cookieObject.cookie) {\n            // Convertir la valeur de sameSite\n            cookieObject.cookie.sameSite = convertSameSite(cookieObject.cookie.sameSite);\n            \n            // Ajouter le cookie à la liste des items\n            items.push({\n                json: cookieObject.cookie\n            });\n        }\n    }\n    return items;\n}\n\n// Si les cookies ne sont pas trouvés, renvoyer un tableau vide\nreturn [];\n"
+      },
+      "id": "49ecb8b6-ed3c-45a7-b852-713c90e12b76",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        4240,
+        1383.3944834469928
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "=http://selenium_chrome:4444/wd/hub/session/{{ $('Create Selenium Session').item.json.value.sessionId }}",
+        "options": {}
+      },
+      "id": "ad053acb-1877-4170-a667-52d64cd70c26",
+      "name": "Delete Session5",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        3480,
+        1843.3944834469928
+      ],
+      "retryOnFail": false,
+      "typeVersion": 4.2,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"Error\": \"Cookies are note for the targeted url\"\n}",
+        "options": {
+          "responseCode": 404
+        }
+      },
+      "id": "98af1d95-4370-44d2-9b1c-71b93aba8c78",
+      "name": "Error",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        3660,
+        1843.3944834469928
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "options": {
+          "responseCode": 500
+        }
+      },
+      "id": "53532ebe-d02d-49b7-9ce6-f4d8dda7279c",
+      "name": "Error1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        5540,
+        1743.3944834469928
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "options": {
+          "responseCode": 500
+        }
+      },
+      "id": "e1d65cfe-d871-48f4-9a42-1168c7936d1f",
+      "name": "Error2",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        2600,
+        2263.394483446993
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "1bffbc80-9913-46e7-a594-ebc26948c83b",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              },
+              "leftValue": "={{ $('Webhook').item.json.body.cookies[0].cookie.domain }}",
+              "rightValue": "={{ $('Webhook').item.json.body.Url }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8ce0729a-ea2c-4617-b24e-42d68ad0c1c2",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        3300,
+        1683.3944834469928
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://selenium_chrome:4444/wd/hub/session/{{ $('Create Selenium Session').item.json.value.sessionId }}/cookie",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"cookie\": {\n    \"name\": \"{{ $json.name }}\",\n    \"value\": \"{{ $json.value }}\",\n    \"domain\": \"{{ $json.domain }}\",\n    \"path\": \"{{ $json.path }}\",\n    \"secure\": {{ $json.secure }},\n    \"httpOnly\": {{ $json.httpOnly }},\n    \"sameSite\": \"{{ $json.sameSite }}\",\n    \"expirationDate\": {{ $json.expirationDate }}\n  }\n}",
+        "options": {}
+      },
+      "id": "22909a0e-667c-485a-87e0-82aab1be00eb",
+      "name": "Inject Cookie",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        4440,
+        1383.3944834469928
+      ],
+      "typeVersion": 4.2,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"Success \": \"Request has been block by the targeted website\"\n}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "28e57765-e095-4b04-bab1-41694aa5c502",
+      "name": "Respond to Webhook3",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        4940,
+        2203.394483446993
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "options": {
+          "responseCode": 200,
+          "responseKey": "={{ $json.output }}"
+        }
+      },
+      "id": "be1b53ad-1687-4e9b-b5bf-74d94b76f964",
+      "name": "Success",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        5280,
+        2403.394483446993
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://selenium_chrome:4444/wd/hub/session/{{ $('Create Selenium Session').item.json.value.sessionId }}/url",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"url\": \"{{ $('Webhook').item.json.body['Target Url'] }}\"\n}\n",
+        "options": {}
+      },
+      "id": "37872078-7268-4597-b42b-952afec1af13",
+      "name": "Go on url",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        3440,
+        2263.394483446993
+      ],
+      "retryOnFail": true,
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "=http://selenium_chrome:4444/wd/hub/session/{{ $('Create Selenium Session').item.json.value.sessionId }}",
+        "options": {}
+      },
+      "id": "79f2abd7-ba22-495e-b94d-1c56d63df51b",
+      "name": "Delete Session6",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        3900,
+        2683.394483446993
+      ],
+      "retryOnFail": false,
+      "typeVersion": 4.2,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"Error\": \"Page crash on the extracted url\"\n}",
+        "options": {
+          "responseCode": 500
+        }
+      },
+      "id": "74fd8c00-512e-4cab-b012-d6bfcb1a7c7c",
+      "name": "Error3",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        4060,
+        2683.394483446993
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "text": "={{ $json['Url Find '][1] }}{{ $json['Url Find '][2] }}{{ $json['Url Find '][3] }}",
+        "attributes": {
+          "attributes": [
+            {
+              "name": "Good_url_for_etract_information",
+              "description": "=The url where I can extract relevant infroamtion on this subject : {{ $('Edit Fields (For testing prupose )').item.json.Subject }} on this domaine name : {{ $('Edit Fields (For testing prupose )').item.json['Website Domaine'] }}",
+              "required": true
+            }
+          ]
+        },
+        "options": {
+          "systemPromptTemplate": "=You are an expert extraction algorithm.\nOnly extract relevant url from the unstructured urls array.\nA relevant url is a url whre you can find relevant information about this subject : {{ $('Edit Fields (For testing prupose )').item.json.Subject }}, on this domaine name : {{ $('Edit Fields (For testing prupose )').item.json['Website Domaine'] }}.\nIf you do not know the value of an attribute asked to extract, you need \\ attribute's value as NA."
+        }
+      },
+      "id": "19e03b2b-c934-419a-a840-806708def394",
+      "name": "Information Extractor",
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "position": [
+        1580,
+        2023.3944834469928
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "or",
+          "conditions": [
+            {
+              "id": "9470fb6c-e367-4af7-a697-275e724fe771",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              },
+              "leftValue": "={{ $json.output.Good_url_for_etract_information }}",
+              "rightValue": ""
+            },
+            {
+              "id": "8518e9a9-5b0c-4699-97c5-d9b7b1943918",
+              "operator": {
+                "name": "filter.operator.equals",
+                "type": "string",
+                "operation": "equals"
+              },
+              "leftValue": "={{ $json.output.Good_url_for_etract_information }}",
+              "rightValue": "NA"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fa0fc52f-d010-4ca2-94ee-bf7f1d139b0d",
+      "name": "Check if empty of NA",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1980,
+        2023.3944834469928
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "e6e6e15d-1cfe-48be-8ea0-f112e9781c9d",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              },
+              "leftValue": "={{ $json.content }}",
+              "rightValue": "BLOCK"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "85b6df25-fc60-48de-a28f-5426cbc58414",
+      "name": "If Block",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        4500,
+        2323.394483446993
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "url": "=https://www.google.com/search?q=site:{{ $json['Website Domaine'] }}+{{$json.Subject}}&oq=site&gs_lcrp=EgZjaHJvbWUqCAgAEEUYJxg7MggIABBFGCcYOzIICAEQRRgnGDsyBggCEEUYOzIRCAMQRRg5GEMYyQMYgAQYigUyBggEEEUYQDIGCAUQRRg9MgYIBhBFGD0yBggHEEUYPdIBCDEwNTRqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8",
+        "options": {}
+      },
+      "id": "b68e4c73-d89d-4504-80d7-a5611741e66e",
+      "name": "Google search Query ",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1140,
+        2023.3944834469928
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://selenium_chrome:4444/wd/hub/session",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"capabilities\": {\n    \"alwaysMatch\": {\n      \"browserName\": \"chrome\",\n      \"goog:chromeOptions\": {\n        \"args\": [  \n          \"--disable-blink-features=AutomationControlled\",\n          \"--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\"\n        ]\n      }\n    }\n  }\n}\n",
+        "options": {
+          "timeout": 5000
+        }
+      },
+      "id": "e54a61e7-941c-425e-918b-f4b0b4c4a707",
+      "name": "Create Selenium Session",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        2220,
+        2123.394483446993
+      ],
+      "retryOnFail": true,
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "url": "=http://selenium_chrome:4444/wd/hub/session/{{ $('Create Selenium Session').item.json.value.sessionId }}/screenshot",
+        "options": {}
+      },
+      "id": "bff732b2-a7c5-47c7-8d3e-8ad955659073",
+      "name": "Get ScreenShot 1",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        3960,
+        2323.394483446993
+      ],
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http:///selenium_chrome:4444/wd/hub/session/{{ $('Create Selenium Session').item.json.value.sessionId }}/refresh",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{}",
+        "options": {}
+      },
+      "id": "9577cd79-d2a4-4497-9c22-97d6de08f0ca",
+      "name": "Refresh browser",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        4860,
+        1383.3944834469928
+      ],
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "url": "=http://selenium_chrome:4444/wd/hub/session/{{ $('Create Selenium Session').item.json.value.sessionId }}/screenshot",
+        "options": {}
+      },
+      "id": "7cb47cc7-4c24-4d7b-8d7b-3f58611bdabf",
+      "name": "Get ScreenShot ",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        5420,
+        1463.3944834469928
+      ],
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "value",
+        "options": {}
+      },
+      "id": "fc495c10-1e31-4d25-98ff-fb9a0004061d",
+      "name": "Convert to File",
+      "type": "n8n-nodes-base.convertToFile",
+      "position": [
+        5700,
+        1463.3944834469928
+      ],
+      "typeVersion": 1.1,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "value",
+        "options": {}
+      },
+      "id": "46781d06-dfde-4b62-8725-0936a49e9864",
+      "name": "Convert to File1",
+      "type": "n8n-nodes-base.convertToFile",
+      "position": [
+        4140,
+        2323.394483446993
+      ],
+      "typeVersion": 1.1,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "=http://selenium_chrome:4444/wd/hub/session/{{ $('Create Selenium Session').item.json.value.sessionId }}",
+        "options": {}
+      },
+      "id": "d6473814-56e1-4648-a7ab-446c476fb2fd",
+      "name": "Delete Session7",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        2460,
+        2263.394483446993
+      ],
+      "retryOnFail": false,
+      "typeVersion": 4.2,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "content": "## N8N Ultimate Scraper - Workflow\n\nThis workflow's objective is to collect data from any website page, whether it requires login or not.\n\nFor example, you can collect the number of stars of the n8n-ultimate-scraper project on GitHub.\n\n## Requirements\n**Selenium Container**: Selenium is an open-source automation framework for web applications, enabling browser control and interaction through scripts in various programming languages.\nYou can deploy the Docker Compose file from the associated GitHub project to set up your Selenium container and configuration: https://github.com/Touxan/n8n-ultimate-scraper\n\n**Residential Proxy Server**: To scrape data at scale without being blocked, I personally recommend GeoNode. They offer affordable, high-quality residential proxies: https://geonode.com/invite/98895\n\n**OpenAI API Key**: For using GPT-4.\n\n## Optional\nSession Cookies Collection: To use login functionality with the n8n Ultimate Scraper, you need to collect session cookies from the target website. You can do this using the extension created for this application in the GitHub project: https://github.com/Touxan/n8n-ultimate-scraper. Follow the installation procedure to use it.\n\n## How to use \nDeploy the project with all the requiremnts and request your webhook.\n\n**Example of request**:\ncurl -X POST http://localhost:5678/webhook-test/yourwebhookid \\\n-H \"Content-Type: application/json\" \\\n-d '{\n  \"subject\": \"Hugging Face\",\n  \"Url\": \"github.com\",\n  \"Target data\": [\n    {\n      \"DataName\": \"Followers\",\n      \"description\": \"The number of followers of the GitHub page\"\n    },\n    {\n      \"DataName\": \"Total Stars\",\n      \"description\": \"The total numbers of stars on the different repos\"\n    }\n  ],\n  \"cookies\": []\n}'\n\nYou can also scrape link like this : \ncurl -X POST http://localhost:5678/webhook-test/67d77918-2d5b-48c1-ae73-2004b32125f0 \\\n-H \"Content-Type: application/json\" \\\n-d '{\n  \"Target Url\": \"https://github.com\",\n  \"Target data\": [\n    {\n      \"DataName\": \"Followers\",\n      \"description\": \"The number of followers of the GitHub page\"\n    },\n    {\n      \"DataName\": \"Total Stars\",\n      \"description\": \"The total numbers of stars on the different repo\"\n    }\n]\n}'\n\n**Note**\nThe maximum nimber of Target data is 5.",
+        "height": 1333.3079943516484,
+        "width": 851.2111300888805,
+        "color": 4
+      },
+      "id": "ce2108ec-c19a-41af-ac24-7601605141b9",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        460,
+        460
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3895040f-0a21-47ee-a73f-d3c7fd6edf36",
+              "name": "Subject",
+              "type": "string",
+              "value": "={{ $json.body.subject }}"
+            },
+            {
+              "id": "304e4240-513f-4c87-ae9d-4efda7d0c4ab",
+              "name": "Website Domaine",
+              "type": "string",
+              "value": "={{ $json.body.Url }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "83edec16-8b73-4c5a-9876-117302ec681b",
+      "name": "Edit Fields (For testing prupose )",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        700,
+        2023.3944834469928
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "url": "=http://selenium_chrome:4444/wd/hub/session/{{ $('Create Selenium Session').item.json.value.sessionId }}/screenshot",
+        "options": {}
+      },
+      "id": "8594eeae-0791-4f70-9b82-1e8cfe9092b3",
+      "name": "Get ScreenShot 2",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        5740,
+        2334.394483446993
+      ],
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "value",
+        "options": {}
+      },
+      "id": "7c93f014-1c48-41f7-8e3a-d98755b88e9a",
+      "name": "Convert to File2",
+      "type": "n8n-nodes-base.convertToFile",
+      "position": [
+        5980,
+        2334.394483446993
+      ],
+      "typeVersion": 1.1,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://selenium_chrome:4444/wd/hub/session/{{ $('Create Selenium Session').item.json.value.sessionId }}/url",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"url\": \"https://ip-api.com/\"\n}\n",
+        "options": {}
+      },
+      "id": "5ffb0c71-66b6-4d20-b394-87d6650b767c",
+      "name": "Go on ip-api.com",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        5500,
+        2334.394483446993
+      ],
+      "retryOnFail": true,
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "=http://selenium_chrome:4444/wd/hub/session/{{ $('Create Selenium Session').item.json.value.sessionId }}",
+        "options": {}
+      },
+      "id": "a7a01ab2-be68-4197-9bb4-270113faa379",
+      "name": "Delete Session8",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        5980,
+        2554.394483446993
+      ],
+      "retryOnFail": false,
+      "typeVersion": 4.2,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "content": "## Debug IP\n\nThis small debug flow aims to check the IP you're requesting with, in case you're using a proxy",
+        "height": 520.0741248156677,
+        "width": 784.9798841202522,
+        "color": 6
+      },
+      "id": "0cfca395-35a7-4411-8d6d-a1d49d2d01d5",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        5460,
+        2210.394483446993
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Search\n\n**Description** :\nThis part aims to search on Google for the subject and find the URL of the subject page based on the input URL.",
+        "height": 430.433007240277,
+        "width": 751.8596006980003
+      },
+      "id": "a77eab30-875e-4fd7-8773-80cbc593c252",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1120,
+        1903.3944834469928
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"Error\": \"Can't find url\"\n}",
+        "options": {
+          "responseCode": 404
+        }
+      },
+      "id": "e85641c0-6f3d-49b5-8897-58ad83a529a5",
+      "name": "Error can't find url",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        2340,
+        1763.3944834469928
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "content": "## Selenium Session\n\n**Description**:\nCreation and configuration of the Selenium session.",
+        "height": 502.0185388323068,
+        "width": 827.9448220213314
+      },
+      "id": "103917b2-4c95-4c16-9954-3241b9ce62f0",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1960,
+        1903.3944834469928
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://selenium_chrome:4444/wd/hub/session/{{ $json.value.sessionId }}/window/rect",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"width\": 1920,\n  \"height\": 1080,\n  \"x\": 0,\n  \"y\": 0\n}\n",
+        "options": {}
+      },
+      "id": "ce3d8074-7c11-4edd-aa06-fb6eeacd1e05",
+      "name": "Resize browser window",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        2460,
+        2043.3944834469928
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "content": "## Scrape with cookies session\n\n**Description**\nThis part goes to the extracted URL, injects the cookies passed into the webhook, takes a screenshot of the webpage, and analyzes the image with GPT to extract the targeted data.",
+        "height": 821.0847869745435,
+        "width": 3939.555135735299
+      },
+      "id": "e363eb22-199a-4fad-9e2d-16278c4a1ed9",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3040,
+        1183.3944834469928
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Scrape without cookies session\n\n**Description**\nSame as the 'Scrape with cookies session' flow, but without the cookie injection",
+        "height": 821.0847869745435,
+        "width": 3336.952424000919
+      },
+      "id": "1dd6f51a-efca-4df5-8ee2-b0927ec37395",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3040,
+        2063.394483446993
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o",
+          "cachedResultName": "GPT-4O"
+        },
+        "text": "=Analyse this image and extract revlant infromation about this subject : {{ $('Webhook').item.json.body.subject }}. \n\nIf the webpage seem block by waf, or don't have any relant information about the subject reurn BLOCK with out any aditinonal information.",
+        "inputType": "base64",
+        "options": {
+          "detail": "auto",
+          "maxTokens": 300
+        }
+      },
+      "id": "0027da8b-03ac-4cee-bc6a-d00460855f9e",
+      "name": "OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "position": [
+        5880,
+        1463.3944834469928
+      ],
+      "typeVersion": 1.5
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o",
+          "cachedResultName": "GPT-4O"
+        },
+        "text": "=Analyse this image and extract revlant infromation about this subject : {{ $('Webhook').item.json.body.subject }}. \n\nIf the webpage seem block by waf, or don't have any relant information about the subject reurn BLOCK with out any aditinonal information.",
+        "inputType": "base64",
+        "options": {
+          "detail": "auto",
+          "maxTokens": 300
+        }
+      },
+      "id": "8871f3f0-22e2-4446-8c7a-68621104e437",
+      "name": "OpenAI1",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "position": [
+        4320,
+        2323.394483446993
+      ],
+      "typeVersion": 1.5,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "text": "={{ $('OpenAI1').item.json.content }}",
+        "attributes": {
+          "attributes": [
+            {
+              "name": "={{ $('Webhook').item.json.body['Target data'][0].DataName }}",
+              "description": "={{ $('Webhook').item.json.body['Target data'][0].description }}"
+            },
+            {
+              "name": "={{ $('Webhook').item.json.body['Target data'][1].DataName }}",
+              "description": "=The total number of stars on all project"
+            },
+            {
+              "name": "={{ $('Webhook').item.json.body['Target data'][2].DataName }}",
+              "description": "={{ $('Webhook').item.json.body['Target data'][2].description }}"
+            },
+            {
+              "name": "={{ $('Webhook').item.json.body['Target data'][3].DataName }}",
+              "description": "={{ $('Webhook').item.json.body['Target data'][3].description }}"
+            },
+            {
+              "name": "={{ $('Webhook').item.json.body['Target data'][4].DataName }}",
+              "description": "={{ $('Webhook').item.json.body['Target data'][4].description }}"
+            }
+          ]
+        },
+        "options": {
+          "systemPromptTemplate": "You are an expert extraction algorithm.\nOnly extract relevant information from the text.\nIf you do not know the value of an attribute asked to extract, set the attribute's value to NA."
+        }
+      },
+      "id": "e5086141-da76-4016-a059-d27239029abc",
+      "name": "Information Extractor1",
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "position": [
+        4940,
+        2403.394483446993
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "79d713d6-3223-4b82-b925-e737c131e0d2",
+      "name": "OpenAI Chat Model1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        4940,
+        2623.394483446993
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "text": "={{ $('OpenAI').item.json.content }}",
+        "attributes": {
+          "attributes": [
+            {
+              "name": "={{ $('Webhook').item.json.body['Target data'][0].DataName }}",
+              "description": "={{ $('Webhook').item.json.body['Target data'][0].description }}"
+            },
+            {
+              "name": "={{ $('Webhook').item.json.body['Target data'][1].DataName }}",
+              "description": "=The total number of stars on all project"
+            },
+            {
+              "name": "={{ $('Webhook').item.json.body['Target data'][2].DataName }}",
+              "description": "={{ $('Webhook').item.json.body['Target data'][2].description }}"
+            },
+            {
+              "name": "={{ $('Webhook').item.json.body['Target data'][3].DataName }}",
+              "description": "={{ $('Webhook').item.json.body['Target data'][3].description }}"
+            },
+            {
+              "name": "={{ $('Webhook').item.json.body['Target data'][4].DataName }}",
+              "description": "={{ $('Webhook').item.json.body['Target data'][4].description }}"
+            }
+          ]
+        },
+        "options": {
+          "systemPromptTemplate": "You are an expert extraction algorithm.\nOnly extract relevant information from the text.\nIf you do not know the value of an attribute asked to extract, set the attribute's value to NA. If the attribute is empty you can omit it."
+        }
+      },
+      "id": "8157c1a3-16f4-48fc-99e5-4c2387cb772b",
+      "name": "Information Extractor2",
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "position": [
+        6460,
+        1543.3944834469928
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b584860b-bfb6-4a87-a804-10aa4244d667",
+      "name": "OpenAI Chat Model2",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        6480,
+        1703.3944834469928
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Proxy\n\n**Configuration**\n\nTo configure your proxy with the project, follow the instructions on the GitHub project: https://github.com/Touxan/n8n-ultimate-scraper. To configure the docker-compose, you also need to add this argument to the 'Create Selenium Session' node : --proxy-server=address:port.\n\n### ⚠️Warning⚠️\n Selenium does not support proxy authentication, so you need to add your server IP to the proxy whitelist. On GeoNode, it's here: https://app.geonode.com/whitelist-ip!",
+        "height": 507.4126722815008,
+        "width": 813.0685668942513,
+        "color": 3
+      },
+      "id": "8797df36-4940-434a-bb07-85a1d1caf8e4",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1360,
+        803.3944834469928
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "67d77918-2d5b-48c1-ae73-2004b32125f0",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "f844af3c-23b9-44eb-bbb9-6617eb978ea6",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        480,
+        2023.3944834469928
+      ],
+      "webhookId": "67d77918-2d5b-48c1-ae73-2004b32125f0",
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "4b608dcd-a175-4019-82c2-560320a2abce",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              },
+              "leftValue": "={{ $('Webhook').item.json.body['Target Url'] }}",
+              "rightValue": ""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7e2e4329-82fb-45a4-b53c-fc5d2e7145c9",
+      "name": "If Target Url",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        920,
+        2103.394483446993
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "ff919945-b8c2-492a-b496-8617e9147389",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              },
+              "leftValue": "={{ $('Webhook').item.json.body['Target Url'] }}",
+              "rightValue": ""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "214fdded-f584-4257-8de9-ea097e031fec",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        3240,
+        2383.394483446993
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://selenium_chrome:4444/wd/hub/session/{{ $('Create Selenium Session').item.json.value.sessionId }}/url",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"url\": \"{{ $('Information Extractor').item.json.output.Good_url_for_etract_information }}\"\n}\n",
+        "options": {}
+      },
+      "id": "6796fbfd-8488-441f-b361-d10bd49fb015",
+      "name": "Go on url1",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        3440,
+        2443.394483446993
+      ],
+      "retryOnFail": true,
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "2a1bfc1e-28a6-45d1-9581-53b632af90e0",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              },
+              "leftValue": "={{ $('Webhook').item.json.body.cookies }}",
+              "rightValue": ""
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "c9c4f1cd-5518-4f16-abb1-b71ced495463",
+      "name": "If2",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        2880,
+        2043.3944834469928
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://selenium_chrome:4444/wd/hub/session/{{ $('Create Selenium Session').item.json.value.sessionId }}/url",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"url\": \"{{ $('Webhook').item.json.body['Target Url'] }}\"\n}\n",
+        "options": {}
+      },
+      "id": "cb117565-55c2-4bad-be12-f62de2f14787",
+      "name": "Go on url2",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        3800,
+        1463.3944834469928
+      ],
+      "retryOnFail": true,
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "ff919945-b8c2-492a-b496-8617e9147389",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              },
+              "leftValue": "={{ $('Webhook').item.json.body['Target Url'] }}",
+              "rightValue": ""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "af836b4f-4f51-4bf8-a5d0-6b3f21634585",
+      "name": "If3",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        3600,
+        1583.3944834469928
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://selenium_chrome:4444/wd/hub/session/{{ $('Create Selenium Session').item.json.value.sessionId }}/url",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"url\": \"{{ $('Information Extractor').item.json.output.Good_url_for_etract_information }}\"\n}\n",
+        "options": {}
+      },
+      "id": "badfd18c-d51c-4fbc-9178-c527dc714960",
+      "name": "Go on url3",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        3800,
+        1643.3944834469928
+      ],
+      "retryOnFail": true,
+      "typeVersion": 4.2,
+      "onError": "continueErrorOutput"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:21:25.482Z",
+      "updatedAt": "2024-12-01T14:21:25.482Z",
+      "id": "SIJWhQ43whBotfGd",
+      "name": "Community Examples"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-10T06:57:12.000Z",
+  "versionId": "429cf94b-4871-4f3e-a014-e67892682847"
+}
