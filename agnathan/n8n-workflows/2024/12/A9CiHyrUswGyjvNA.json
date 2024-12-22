@@ -1,0 +1,98 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Todoist",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-03T15:52:13.447Z",
+  "id": "A9CiHyrUswGyjvNA",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Todoist Playground",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "9842e8e8-960f-422b-a55a-5b9d1881ff97",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        820,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "project": {
+          "__rl": true,
+          "value": "2322257825",
+          "mode": "list",
+          "cachedResultName": "AIC Speakers"
+        },
+        "content": "Send jason.fleming@neohomeloans.com a request to be a speaker on the Alternative Investing Club podcast.",
+        "options": {
+          "dueString": "today at 11am",
+          "priority": 1
+        }
+      },
+      "id": "9bfcd37a-8469-478b-b6eb-a27838d69d4e",
+      "name": "Todoist",
+      "type": "n8n-nodes-base.todoist",
+      "typeVersion": 2.1,
+      "position": [
+        1040,
+        380
+      ],
+      "credentials": {
+        "todoistApi": {
+          "id": "EukCcnrLAqkjbrbQ",
+          "name": "Todoist account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Todoist Create a Task",
+        "height": 221,
+        "width": 496
+      },
+      "id": "52b02760-23e6-4838-a180-ca5947d82f51",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        770,
+        330
+      ]
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:20:20.071Z",
+      "updatedAt": "2024-12-01T14:21:40.229Z",
+      "id": "hvphHbQ14WJzrgp9",
+      "name": "My Learning"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-03T16:21:15.000Z",
+  "versionId": "66ffb038-bdca-4739-9212-8fc8f8c82ce7"
+}
