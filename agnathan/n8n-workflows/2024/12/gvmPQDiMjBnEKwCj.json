@@ -1,0 +1,225 @@
+{
+  "active": true,
+  "connections": {
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "LinkedIn",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call from Recent News Article Automator": {
+      "main": [
+        [
+          {
+            "node": "RSS Read",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-12T13:35:46.376Z",
+  "id": "gvmPQDiMjBnEKwCj",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Recent News Article Automator",
+  "nodes": [
+    {
+      "parameters": {
+        "person": "vyo9zALtWx",
+        "text": "={{ $json.text }}",
+        "additionalFields": {}
+      },
+      "id": "30f270a4-4782-4282-9556-a20deaae4b58",
+      "name": "LinkedIn",
+      "type": "n8n-nodes-base.linkedIn",
+      "typeVersion": 1,
+      "position": [
+        780,
+        420
+      ],
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "ieJiSUDPhgzv0dhN",
+          "name": "LinkedIn account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f166aa68-13c4-4c17-a54d-c42c2284a62d",
+              "name": "=text",
+              "value": "={{ $json.body.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c7ca9c00-acdf-4000-a1c9-dd7af7842b3b",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        640,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "e2be4525-55bf-4199-bf5b-f462f64acbb3",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "7fc2930c-ea97-4788-9efa-26396064244c",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        500,
+        420
+      ],
+      "webhookId": "e2be4525-55bf-4199-bf5b-f462f64acbb3"
+    },
+    {
+      "parameters": {
+        "url": "https://rss.app/feeds/thw00oE7IpnAtKgZ.xml",
+        "options": {
+          "ignoreSSL": false
+        }
+      },
+      "id": "71964f37-e8ed-4cf8-b41f-d97e092efe6e",
+      "name": "RSS Read",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [
+        680,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Fetches the Latest on an RSS feed\n",
+        "height": 314.5,
+        "width": 500,
+        "color": 5
+      },
+      "id": "882c8f63-e436-46ea-b6dc-ae2cf2ca58a6",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        460,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Post the Article Summary to LinkedIn",
+        "height": 269.5,
+        "width": 503,
+        "color": 5
+      },
+      "id": "d85677b1-1517-49e6-a542-b53ca618a091",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        460,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Recent News Article Automator Fetches the Latest on an RSS feed\n\n[Link to the Custom GPT](https://chatgpt.com/share/675aed81-aaec-8002-a16b-ae2e84aee944)\n\n- Edit the RSS Feed Link to Change the Category of articles fetched\n- LinkedIn current only posts to Daniel Holmlund's LinkedIn account",
+        "height": 605.75,
+        "width": 513.25,
+        "color": 2
+      },
+      "id": "d523e099-db84-45b2-9a18-68424c4520a7",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "path": "77b9ce02-bf80-4b3a-a815-f92d0713e372",
+        "responseMode": "lastNode",
+        "responseData": "allEntries",
+        "options": {}
+      },
+      "id": "de6bae59-9f2c-48fe-b26a-8cc766e4561b",
+      "name": "Call from Recent News Article Automator",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        520,
+        100
+      ],
+      "webhookId": "77b9ce02-bf80-4b3a-a815-f92d0713e372"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-12T14:06:41.494Z",
+      "updatedAt": "2024-12-12T14:06:41.494Z",
+      "id": "BgfSOFtP6wzZ2Ju6",
+      "name": "Custom GPT"
+    },
+    {
+      "createdAt": "2024-12-05T14:43:34.278Z",
+      "updatedAt": "2024-12-05T14:43:34.278Z",
+      "id": "YWL3bc4oYdzguiTJ",
+      "name": "Production"
+    },
+    {
+      "createdAt": "2024-12-12T14:07:08.085Z",
+      "updatedAt": "2024-12-12T14:07:08.085Z",
+      "id": "d1FYrk5saECGEima",
+      "name": "Social Media"
+    },
+    {
+      "createdAt": "2024-12-12T14:07:00.663Z",
+      "updatedAt": "2024-12-12T14:07:00.663Z",
+      "id": "lHuZXmJX18YBxQSV",
+      "name": "LinkedIn"
+    }
+  ],
+  "triggerCount": 2,
+  "updatedAt": "2024-12-12T16:26:40.000Z",
+  "versionId": "a39ae1b0-17ab-4327-8fc5-a405650f2148"
+}
