@@ -1,0 +1,28 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-12-04T04:54:44.733Z",
+  "id": "WLoUOOUusL9W8ehy",
+  "meta": null,
+  "name": "X.com Playground",
+  "nodes": [],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:20:20.071Z",
+      "updatedAt": "2024-12-01T14:21:40.229Z",
+      "id": "hvphHbQ14WJzrgp9",
+      "name": "My Learning"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-04T04:55:52.000Z",
+  "versionId": "eeadc1f5-f721-48dc-915d-6e4771b9d978"
+}
