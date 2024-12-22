@@ -1,0 +1,85 @@
+{
+  "active": false,
+  "connections": {
+    "Call from Recent News Article Automator": {
+      "main": [
+        [
+          {
+            "node": "RSS Read",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-12T16:27:39.546Z",
+  "id": "X9npFOwksMOcSx2H",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "N8N Core Node Playground",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://rss.app/feeds/thw00oE7IpnAtKgZ.xml",
+        "options": {
+          "ignoreSSL": false
+        }
+      },
+      "id": "f3d53b7e-4849-45d0-9143-9f04534caad8",
+      "name": "RSS Read",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [
+        680,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Fetches the Latest on an RSS feed\n",
+        "height": 314.5,
+        "width": 500,
+        "color": 5
+      },
+      "id": "faf56960-0a2e-4511-ac7b-8cd83e4241aa",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "path": "77b9ce02-bf80-4b3a-a815-f92d0713e372",
+        "responseMode": "lastNode",
+        "responseData": "allEntries",
+        "options": {}
+      },
+      "id": "c131158e-73fd-4016-b947-5c83f1441c0a",
+      "name": "Call from Recent News Article Automator",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        520,
+        560
+      ],
+      "webhookId": "77b9ce02-bf80-4b3a-a815-f92d0713e372"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-12T16:27:39.546Z",
+  "versionId": "879b9123-4333-4caa-88dd-1706dcbd48a8"
+}
