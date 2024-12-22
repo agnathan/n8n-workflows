@@ -1,0 +1,402 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get Meetings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Write Meeting to Notion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Is Meeting in Notion?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Meeting in Notion?": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Meetings": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Meeting to Notion": {
+      "main": [
+        [
+          {
+            "node": "Update Supabase Record is Written",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Supabase Record is Written": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-18T19:01:24.010Z",
+  "id": "xJ9c0BeUAZjwj7Ou",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AIC Meetings from Supabase to Notion",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "754aa551-27fc-4182-bb95-99a529a0e042",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        820,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "47e766a9-5cf6-4bdd-bf6f-27779a67d13a",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "24e87b04-b1af-45a1-9bda-91181a45c13e",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1660,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "a1094048-261a-4ee1-a87e-92c28a183a24",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1200,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "value": "15032141-5464-800c-b1e0-fabee053a6e8",
+          "mode": "list",
+          "cachedResultName": "Friday Speaker Meetings",
+          "cachedResultUrl": "https://www.notion.so/150321415464800cb1e0fabee053a6e8"
+        },
+        "returnAll": true,
+        "filterType": "manual",
+        "filters": {
+          "conditions": [
+            {
+              "key": "Meeting Date|date",
+              "condition": "equals",
+              "date": "={{ $json.date }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b200d0e5-cdaa-4a61-a737-c4d9950edac7",
+      "name": "Is Meeting in Notion?",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        1460,
+        500
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion GYBWAI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "Meeting",
+        "limit": 30,
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "transcript",
+              "condition": "neq",
+              "keyValue": "null"
+            },
+            {
+              "keyName": "enabled",
+              "condition": "eq",
+              "keyValue": "FALSE"
+            },
+            {
+              "keyName": "photourl",
+              "condition": "neq",
+              "keyValue": "null"
+            },
+            {
+              "keyName": "thumbnailurl",
+              "condition": "neq",
+              "keyValue": "null"
+            },
+            {
+              "keyName": "youtubeurl",
+              "condition": "neq",
+              "keyValue": "null"
+            }
+          ]
+        }
+      },
+      "id": "4fb138a1-b240-44b6-853c-cc90db6be000",
+      "name": "Get Meetings",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        380
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "HwcsUCmO5EkOB3Rg",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "databaseId": {
+          "__rl": true,
+          "value": "15032141-5464-800c-b1e0-fabee053a6e8",
+          "mode": "list",
+          "cachedResultName": "Friday Speaker Meetings",
+          "cachedResultUrl": "https://www.notion.so/150321415464800cb1e0fabee053a6e8"
+        },
+        "title": "={{ $('Loop Over Items').item.json.title }}",
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Meeting Date|date",
+              "date": "={{ $('Loop Over Items').item.json.date }}"
+            },
+            {
+              "key": "Speaker|rich_text",
+              "textContent": "={{ $('Loop Over Items').item.json.speaker }}"
+            },
+            {
+              "key": "Profile Photo|files",
+              "fileUrls": {
+                "fileUrl": [
+                  {
+                    "name": "profile.jpg",
+                    "url": "={{ $('Loop Over Items').item.json.photourl }}"
+                  }
+                ]
+              }
+            },
+            {
+              "key": "Thumbnail|files",
+              "fileUrls": {
+                "fileUrl": [
+                  {
+                    "name": "thumbnail.jpg",
+                    "url": "={{ $('Loop Over Items').item.json.thumbnailurl }}"
+                  }
+                ]
+              }
+            },
+            {
+              "key": "Youtube|url",
+              "urlValue": "={{ $('Loop Over Items').item.json.youtubeurl }}"
+            },
+            {
+              "key": "Description|rich_text",
+              "textContent": "= {{ $('Loop Over Items').item.json.description.slice(0, 1999) }}"
+            },
+            {
+              "key": "Rumble|url",
+              "urlValue": "={{ $('Loop Over Items').item.json.rumbleurl }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "550d9e8b-c0fc-4a11-84ed-eae5496298da",
+      "name": "Write Meeting to Notion",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        1920,
+        640
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion GYBWAI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "Meeting",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('Loop Over Items').item.json.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "enabled",
+              "fieldValue": "TRUE"
+            }
+          ]
+        }
+      },
+      "id": "7b0fedd1-d2b8-4848-a0af-8833b5a78a85",
+      "name": "Update Supabase Record is Written",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2180,
+        680
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "HwcsUCmO5EkOB3Rg",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "id": "4d864381-ff6e-485d-aee7-74ee7f8d3451",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2400,
+        680
+      ],
+      "webhookId": "c21c647f-e2da-4bd4-923f-2942a4a4ff25"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:23:56.869Z",
+      "updatedAt": "2024-12-01T14:23:56.869Z",
+      "id": "Paq9K6w31GZ583JD",
+      "name": "My Drafts"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-18T22:09:17.000Z",
+  "versionId": "011871f5-ff23-4530-b91c-9e8b075aaf6c"
+}
