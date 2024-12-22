@@ -1,0 +1,48 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2024-12-17T18:01:45.207Z",
+  "id": "RFT7Y3vkFJjsH8pk",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "YouTube Videos to Knowledge Base",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "65a8f960-c125-42a2-92fc-040e9cc9cf10",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        620,
+        260
+      ]
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:23:56.869Z",
+      "updatedAt": "2024-12-01T14:23:56.869Z",
+      "id": "Paq9K6w31GZ583JD",
+      "name": "My Drafts"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-17T18:09:08.000Z",
+  "versionId": "9d7a12c9-0f8b-427d-b77b-c29af930380b"
+}
