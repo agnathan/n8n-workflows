@@ -1,0 +1,614 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "HubSpot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HubSpot": {
+      "main": [
+        [
+          {
+            "node": "HubSpot1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-07T13:31:21.685Z",
+  "id": "yaF11BwWcUiU0AuQ",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Hubspot Playground",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "2a6aa83d-69b0-4e72-9ddf-576d1c3458fb",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        820,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "appToken",
+        "email": "daniel@goodsamaritancapital.com",
+        "additionalFields": {
+          "city": "Hillsboro",
+          "dateOfBirth": "2024-12-07T05:31:20",
+          "firstName": "Daniel",
+          "lastName": "Holmlund",
+          "phoneNumber": "9714599147",
+          "postalCode": "97123",
+          "stateRegion": "Oregon",
+          "streetAddress": "721 SE 39th Ct."
+        },
+        "options": {
+          "resolveData": false
+        }
+      },
+      "id": "19d85f61-d08c-44d0-90a7-7fb9c4c73c95",
+      "name": "HubSpot",
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.1,
+      "position": [
+        1040,
+        380
+      ],
+      "credentials": {
+        "hubspotAppToken": {
+          "id": "8EPzO2ej7TvaOPOp",
+          "name": "HubSpot account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "appToken",
+        "resource": "deal",
+        "stage": "appointmentscheduled",
+        "additionalFields": {
+          "dealName": "Colorado #3 Oil and Gas",
+          "dealOwner": {
+            "__rl": true,
+            "value": 1544215747,
+            "mode": "list",
+            "cachedResultName": "daniel@alternativeinvestingclub.com"
+          }
+        }
+      },
+      "id": "b4814268-3357-4bcc-a76b-a366f0b55ead",
+      "name": "HubSpot1",
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.1,
+      "position": [
+        1260,
+        380
+      ],
+      "credentials": {
+        "hubspotAppToken": {
+          "id": "8EPzO2ej7TvaOPOp",
+          "name": "HubSpot account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "HubSpot": [
+      {
+        "json": {
+          "vid": 82932885325,
+          "canonical-vid": 82932885325,
+          "merged-vids": [],
+          "portal-id": 46377095,
+          "is-contact": true,
+          "properties": {
+            "hs_is_unworked": {
+              "value": "true",
+              "versions": [
+                {
+                  "value": "true",
+                  "source-type": "CALCULATED",
+                  "source-id": "CalculatedPropertyComputer",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282339,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "firstname": {
+              "value": "Daniel",
+              "versions": [
+                {
+                  "value": "Daniel",
+                  "source-type": "INTEGRATION",
+                  "source-id": "5301589",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282220,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "city": {
+              "value": "Hillsboro",
+              "versions": [
+                {
+                  "value": "Hillsboro",
+                  "source-type": "INTEGRATION",
+                  "source-id": "5301589",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282220,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "date_of_birth": {
+              "value": "2024-12-07T05:31:20",
+              "versions": [
+                {
+                  "value": "2024-12-07T05:31:20",
+                  "source-type": "INTEGRATION",
+                  "source-id": "5301589",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282220,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "hs_pipeline": {
+              "value": "contacts-lifecycle-pipeline",
+              "versions": [
+                {
+                  "value": "contacts-lifecycle-pipeline",
+                  "source-type": "INTEGRATION",
+                  "source-id": "5301589",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282339,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "hs_membership_has_accessed_private_content": {
+              "value": "0",
+              "versions": [
+                {
+                  "value": "0",
+                  "source-type": "CALCULATED",
+                  "source-id": "CalculatedPropertyComputer",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282339,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "createdate": {
+              "value": "1733578282339",
+              "versions": [
+                {
+                  "value": "1733578282339",
+                  "source-type": "INTEGRATION",
+                  "source-id": "5301589",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282339,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "hs_calculated_phone_number_country_code": {
+              "value": "US",
+              "versions": [
+                {
+                  "value": "US",
+                  "source-type": "CALCULATED",
+                  "source-id": null,
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282339,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "hs_registered_member": {
+              "value": "0",
+              "versions": [
+                {
+                  "value": "0",
+                  "source-type": "CALCULATED",
+                  "source-id": "CalculatedPropertyComputer",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282339,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "hs_object_source_label": {
+              "value": "INTEGRATION",
+              "versions": [
+                {
+                  "value": "INTEGRATION",
+                  "source-type": "INTEGRATION",
+                  "source-id": "5301589",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282339,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "hs_object_source_id": {
+              "value": "5301589",
+              "versions": [
+                {
+                  "value": "5301589",
+                  "source-type": "INTEGRATION",
+                  "source-id": "5301589",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282339,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "hs_searchable_calculated_phone_number": {
+              "value": "9714599147",
+              "versions": [
+                {
+                  "value": "9714599147",
+                  "source-type": "CALCULATED",
+                  "source-id": null,
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282339,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "hs_email_domain": {
+              "value": "goodsamaritancapital.com",
+              "versions": [
+                {
+                  "value": "goodsamaritancapital.com",
+                  "source-type": "CALCULATED",
+                  "source-id": null,
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282339,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "hs_currently_enrolled_in_prospecting_agent": {
+              "value": "false",
+              "versions": [
+                {
+                  "value": "false",
+                  "source-type": "CALCULATED",
+                  "source-id": "CalculatedPropertyComputer",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282339,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "state": {
+              "value": "Oregon",
+              "versions": [
+                {
+                  "value": "Oregon",
+                  "source-type": "INTEGRATION",
+                  "source-id": "5301589",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282220,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "hs_calculated_phone_number": {
+              "value": "+19714599147",
+              "versions": [
+                {
+                  "value": "+19714599147",
+                  "source-type": "CALCULATED",
+                  "source-id": null,
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282339,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "email": {
+              "value": "daniel@goodsamaritancapital.com",
+              "versions": [
+                {
+                  "value": "daniel@goodsamaritancapital.com",
+                  "source-type": "INTEGRATION",
+                  "source-id": "5301589",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282232,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "zip": {
+              "value": "97123",
+              "versions": [
+                {
+                  "value": "97123",
+                  "source-type": "INTEGRATION",
+                  "source-id": "5301589",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282220,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "address": {
+              "value": "721 SE 39th Ct.",
+              "versions": [
+                {
+                  "value": "721 SE 39th Ct.",
+                  "source-type": "INTEGRATION",
+                  "source-id": "5301589",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282220,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "lastmodifieddate": {
+              "value": "1733578282339",
+              "versions": [
+                {
+                  "value": "1733578282339",
+                  "source-type": "INTEGRATION",
+                  "source-id": "5301589",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282339,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "lastname": {
+              "value": "Holmlund",
+              "versions": [
+                {
+                  "value": "Holmlund",
+                  "source-type": "INTEGRATION",
+                  "source-id": "5301589",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282220,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "hs_all_contact_vids": {
+              "value": "82932885325",
+              "versions": [
+                {
+                  "value": "82932885325",
+                  "source-type": "INTEGRATION",
+                  "source-id": "5301589",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282339,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "hs_is_contact": {
+              "value": "true",
+              "versions": [
+                {
+                  "value": "true",
+                  "source-type": "CALCULATED",
+                  "source-id": null,
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282339,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "phone": {
+              "value": "9714599147",
+              "versions": [
+                {
+                  "value": "9714599147",
+                  "source-type": "INTEGRATION",
+                  "source-id": "5301589",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282220,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "hs_object_id": {
+              "value": "82932885325",
+              "versions": [
+                {
+                  "value": "82932885325",
+                  "source-type": "INTEGRATION",
+                  "source-id": "5301589",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282339,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "hs_object_source": {
+              "value": "INTEGRATION",
+              "versions": [
+                {
+                  "value": "INTEGRATION",
+                  "source-type": "INTEGRATION",
+                  "source-id": "5301589",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282339,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "hs_lifecyclestage_lead_date": {
+              "value": "1733578282339",
+              "versions": [
+                {
+                  "value": "1733578282339",
+                  "source-type": "INTEGRATION",
+                  "source-id": "5301589",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282339,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            },
+            "lifecyclestage": {
+              "value": "lead",
+              "versions": [
+                {
+                  "value": "lead",
+                  "source-type": "INTEGRATION",
+                  "source-id": "5301589",
+                  "source-label": null,
+                  "updated-by-user-id": null,
+                  "timestamp": 1733578282339,
+                  "selected": false,
+                  "data-sensitivity": null,
+                  "is-encrypted": null
+                }
+              ]
+            }
+          },
+          "form-submissions": [],
+          "list-memberships": [],
+          "identity-profiles": [
+            {
+              "vid": 82932885325,
+              "saved-at-timestamp": 1733578282270,
+              "deleted-changed-timestamp": 0,
+              "identities": [
+                {
+                  "type": "EMAIL",
+                  "value": "daniel@goodsamaritancapital.com",
+                  "timestamp": 1733578282232,
+                  "is-primary": true
+                },
+                {
+                  "type": "LEAD_GUID",
+                  "value": "10bc0df9-5577-4ee8-a5fd-bacfa5e8a253",
+                  "timestamp": 1733578282268
+                }
+              ]
+            }
+          ],
+          "merge-audits": [],
+          "isNew": true
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:20:20.071Z",
+      "updatedAt": "2024-12-01T14:21:40.229Z",
+      "id": "hvphHbQ14WJzrgp9",
+      "name": "My Learning"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-07T14:21:21.000Z",
+  "versionId": "544e5921-db88-48f1-8c93-a173396df81e"
+}
