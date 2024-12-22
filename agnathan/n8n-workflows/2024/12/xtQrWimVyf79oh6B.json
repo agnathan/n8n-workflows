@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "n8n": {
       "main": [
@@ -840,7 +840,11 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "staticData": null,
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
   "tags": [
     {
       "createdAt": "2024-12-01T14:21:25.482Z",
@@ -849,7 +853,7 @@
       "name": "Community Examples"
     }
   ],
-  "triggerCount": 0,
-  "updatedAt": "2024-12-22T03:49:43.000Z",
-  "versionId": "100dea9c-3c97-4df4-947a-79347d81a7e0"
+  "triggerCount": 1,
+  "updatedAt": "2024-12-22T03:50:19.000Z",
+  "versionId": "79a75a06-cbea-4770-a7aa-61535300eb1b"
 }
