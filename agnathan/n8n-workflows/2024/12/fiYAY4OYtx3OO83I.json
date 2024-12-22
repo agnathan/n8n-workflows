@@ -1,17 +1,6 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
-    "When clicking ‘Test workflow’": {
-      "main": [
-        [
-          {
-            "node": "Supabase",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Google Gemini Chat Model": {
       "ai_languageModel": [
         [
@@ -32,7 +21,7 @@
             "index": 1
           },
           {
-            "node": "Hot Take Prompt",
+            "node": "LinkedIn Post for thanking AIC Speaker",
             "type": "main",
             "index": 0
           }
@@ -42,11 +31,6 @@
     "Merge": {
       "main": [
         [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 0
-          },
           {
             "node": "NocoDB",
             "type": "main",
@@ -84,7 +68,13 @@
     },
     "LinkedIn Post for thanking AIC Speaker": {
       "main": [
-        []
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Hot Take Prompt": {
@@ -92,6 +82,28 @@
         [
           {
             "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Supabase1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
             "type": "main",
             "index": 0
           }
@@ -106,17 +118,6 @@
   },
   "name": "Meeting Transcript to Social Media",
   "nodes": [
-    {
-      "parameters": {},
-      "id": "306993e4-2603-457b-9ea8-57662dbf1598",
-      "name": "When clicking ‘Test workflow’",
-      "type": "n8n-nodes-base.manualTrigger",
-      "typeVersion": 1,
-      "position": [
-        -1440,
-        260
-      ]
-    },
     {
       "parameters": {
         "operation": "getAll",
@@ -133,7 +134,7 @@
             {
               "keyName": "enabled",
               "condition": "is",
-              "keyValue": "true"
+              "keyValue": "false"
             },
             {
               "keyName": "speaker",
@@ -148,7 +149,7 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        -1220,
+        -900,
         260
       ],
       "credentials": {
@@ -168,7 +169,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        -400,
+        -180,
         240
       ],
       "credentials": {
@@ -179,27 +180,13 @@
       }
     },
     {
-      "parameters": {
-        "options": {}
-      },
-      "id": "6dd1d062-50ee-4d53-8b51-a3f9c0d4e924",
-      "name": "When chat message received",
-      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
-      "typeVersion": 1.1,
-      "position": [
-        -1440,
-        60
-      ],
-      "webhookId": "ea13ea9d-5fb3-4b2a-ae41-9f220d3d2bf4"
-    },
-    {
       "parameters": {},
       "id": "e3c20c64-1363-4485-8e63-2d8f8be6e0b7",
       "name": "Postgres Chat Memory",
       "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
       "typeVersion": 1.3,
       "position": [
-        -280,
+        0,
         240
       ],
       "credentials": {
@@ -242,7 +229,7 @@
       "type": "n8n-nodes-base.nocoDb",
       "typeVersion": 3,
       "position": [
-        360,
+        580,
         340
       ],
       "credentials": {
@@ -263,7 +250,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        40,
+        260,
         400
       ]
     },
@@ -277,7 +264,7 @@
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
       "position": [
-        300,
+        520,
         580
       ],
       "credentials": {
@@ -305,7 +292,7 @@
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
       "position": [
-        520,
+        740,
         580
       ],
       "credentials": {
@@ -327,7 +314,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.7,
       "position": [
-        -360,
+        -140,
         -120
       ]
     },
@@ -338,7 +325,7 @@
             {
               "id": "bb13e985-deb1-4f8b-a59c-13da1e17c38d",
               "name": "chatInput",
-              "value": "=# Role\nAdopt the role of an Investment Speaker LinkedIn Post Summarizer with expertise in distilling complex financial topics into clear, engaging insights. Your task is to summarize LinkedIn posts related to investments, finance trends, or market updates into concise and impactful summaries that capture the key message and insights. The tone must be professional yet approachable, tailored for LinkedIn audiences who value expertise and brevity. The goal is to highlight the core takeaways of each post to ensure clarity, engagement, and easy shareability among professionals and investors.\n\n# Context\nThe Alternative Investing Club invites guest speaker who are experts in investing to share their knowledge with the club members each Friday at 12pm Pacific time. The transcript of the meeting will be provided for you.\n\n# Goal\nTo write a LinkedIn post that finds the most interesting and informative points in the speaker's presentation and summarizes them for a LinkedIn post targeted at accredited investors.\n\n# Information\n- Guest Speaker's Name: {{ $json.speaker }}\n- Guest Speaker's Topic: {{ $json.title }}\n- Link to the Speaker's Talk: [link]\n\n# Instructions\n- If any variable in the Information section are not given then ask the user for the information.\n- At the beginning mention that I'm thankful for all the great speaker that have been at the club over the last 6 years so I'm going to highlight some of our previous speakers.\n- Write in short paragraphs, one maybe two sentences that are separated by two new lines\n- Don't use bullet points\n- Don't include a title or say that this is a LinkedIn post\n- Don't talk about the day that the talk took place\n- Use emoticons at the beginnings of the paragraphs\n- Always! Always! Always! include the Link to the Speaker's Talk at the end of the post. If the link is not found, then ask for it.\n- Ask people if they would write in the comments a Thank You to the speaker for presenting\n- Always include the hashtags #aic and #AlternativeInvestingClub and other relevant tags\n\n# Tone\nFriendly, professional but not sensationalistic\n\n# Target Audience: Accredited Investors\n\n# Output Format: LinkedIn Post\n\n\n{{ $json.transcript }}",
+              "value": "=# Role\nAdopt the role of an Investment Speaker LinkedIn Post Summarizer with expertise in distilling complex financial topics into clear, engaging insights. Your task is to summarize LinkedIn posts related to investments, finance trends, or market updates into concise and impactful summaries that capture the key message and insights. The tone must be professional yet approachable, tailored for LinkedIn audiences who value expertise and brevity. The goal is to highlight the core takeaways of each post to ensure clarity, engagement, and easy shareability among professionals and investors.\n\n# Context\nThe Alternative Investing Club invites guest speaker who are experts in investing to share their knowledge with the club members each Friday at 12pm Pacific time. The transcript of the meeting will be provided for you.\n\n# Goal\nTo write a LinkedIn post that finds the most interesting and informative points in the speaker's presentation and summarizes them for a LinkedIn post targeted at accredited investors.\n\n# Information\n- Guest Speaker's Name: {{ $json.speaker }}\n- Guest Speaker's Topic: {{ $json.title }}\n- Link to the Speaker's Talk: https://alternativeinvestingclub.com/speakers/{{ $json.id }}\n\n# Instructions\n- If any variable in the Information section are not given then ask the user for the information.\n- At the beginning mention that I'm thankful for all the great speaker that have been at the club over the last 6 years so I'm going to highlight some of our previous speakers.\n- Write in short paragraphs, one maybe two sentences that are separated by two new lines\n- Don't use bullet points\n- Don't include a title or say that this is a LinkedIn post\n- Don't talk about the day that the talk took place\n- Use emoticons at the beginnings of the paragraphs\n- Always! Always! Always! include the Link to the Speaker's Talk at the end of the post. If the link is not found, then ask for it.\n- Always! Always! Always! Say Join Alternative Investing Club Page for Live Speakers and updates  https://www.linkedin.com/company/104823948/\n- Ask people if they would write in the comments a Thank You to the speaker for presenting\n- Always include the hashtags #aic and #AlternativeInvestingClub and other relevant tags\n\n# Tone\nFriendly, professional but not sensationalistic\n\n# Target Audience: Accredited Investors\n\n# Output Format: LinkedIn Post\n\n\n{{ $json.transcript }}",
               "type": "string"
             }
           ]
@@ -350,8 +337,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -800,
-        40
+        -520,
+        60
       ]
     },
     {
@@ -373,9 +360,66 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -800,
-        -160
+        -840,
+        -220
       ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "Meeting",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('Supabase').item.json.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "enabled",
+              "fieldValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        800,
+        340
+      ],
+      "id": "3f0b9870-6d9c-46a3-b57c-d24cb3bf9448",
+      "name": "Supabase1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "bX97yHQCD7Z1jFll",
+          "name": "aicweb_prod"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 1
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -1100,
+        260
+      ],
+      "id": "e1113296-f2ce-4d05-89f3-8a0ca8ee79c0",
+      "name": "Schedule Trigger"
     }
   ],
   "pinData": {},
@@ -385,7 +429,11 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "staticData": null,
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
   "tags": [
     {
       "createdAt": "2024-12-01T14:23:56.869Z",
@@ -394,7 +442,7 @@
       "name": "My Drafts"
     }
   ],
-  "triggerCount": 0,
-  "updatedAt": "2024-12-21T20:24:05.000Z",
-  "versionId": "c90bbe28-963d-44b5-b673-b4bf76584307"
+  "triggerCount": 1,
+  "updatedAt": "2024-12-22T06:38:41.000Z",
+  "versionId": "46d16cfd-456a-4e89-9863-1fd15b75a0da"
 }
