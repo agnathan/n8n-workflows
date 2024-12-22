@@ -1,0 +1,119 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-09T18:40:28.634Z",
+  "id": "bsKfPPIGCTW1Snmy",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Call Another Workflow Playground",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "309b4705-a4fb-49e2-9c85-ccc1d693780e",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        180,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fa144d11-13d9-460a-9bac-880fb316f1b7",
+              "name": "name",
+              "value": "Daniel Holmlund",
+              "type": "string"
+            },
+            {
+              "id": "0fb01cfa-b4ec-4652-810a-917d8bb5c643",
+              "name": "company",
+              "value": "Alternative Investing Club LLC",
+              "type": "string"
+            },
+            {
+              "id": "2adfd3e8-e4a8-49b3-86e5-0711881375eb",
+              "name": "platform",
+              "value": "LinkedIn",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1097409e-d07b-437b-9014-dafaf881767e",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        340,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "Jg1L5OAP3OZYmSJQ",
+          "mode": "list",
+          "cachedResultName": "LinkedIn Playground"
+        },
+        "options": {}
+      },
+      "id": "01d70beb-3716-46af-b558-86d286873ded",
+      "name": "Execute Workflow",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        480,
+        300
+      ]
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:20:20.071Z",
+      "updatedAt": "2024-12-01T14:21:40.229Z",
+      "id": "hvphHbQ14WJzrgp9",
+      "name": "My Learning"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-09T18:47:16.000Z",
+  "versionId": "08c2041c-5e8c-4e51-9627-3c0916a98c38"
+}
