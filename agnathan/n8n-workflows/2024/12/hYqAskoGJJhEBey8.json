@@ -1,0 +1,1174 @@
+{
+  "active": false,
+  "connections": {
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Single Integration Native",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Single Integration Cred-only",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Single Integration Non-native",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Categories",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Categories": {
+      "main": [
+        [
+          {
+            "node": "Question to List1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If has Data": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "For Each Service...",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Job": {
+      "main": [
+        [
+          {
+            "node": "For Each Sheet...",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Services": {
+      "main": [
+        [
+          {
+            "node": "Prepare Job",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Define Sheets": {
+      "main": [
+        [
+          {
+            "node": "Sheets To List...",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Completion1": {
+      "main": [
+        [
+          {
+            "node": "Format QA Pair1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format QA Pair1": {
+      "main": [
+        [
+          {
+            "node": "For Each Question...1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create From Text": {
+      "main": [
+        [
+          {
+            "node": "Update Row Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow": {
+      "main": [
+        [
+          {
+            "node": "For Each Service...",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "For Each Sheet...": {
+      "main": [
+        [
+          {
+            "node": "For Each Service...",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Services",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Completion1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Question to List1": {
+      "main": [
+        [
+          {
+            "node": "For Each Question...1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sheets To List...": {
+      "main": [
+        [
+          {
+            "node": "For Each Sheet...",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Row Status": {
+      "main": [
+        [
+          {
+            "node": "Strapi",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "For Each Service...": {
+      "main": [
+        [],
+        [
+          {
+            "node": "If has Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "For Each Question...1": {
+      "main": [
+        [
+          {
+            "node": "Questions to Object...1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Needs AI Completion?1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Needs AI Completion?1": {
+      "main": [
+        [
+          {
+            "node": "Format QA Pair1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Completion1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Questions to Object...1": {
+      "main": [
+        [
+          {
+            "node": "Format DisplayName + Questions1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Single Integration Native": {
+      "main": [
+        [
+          {
+            "node": "Question to List1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Single Integration Cred-only": {
+      "main": [
+        [
+          {
+            "node": "Question to List1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Single Integration Non-native": {
+      "main": [
+        [
+          {
+            "node": "Question to List1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format DisplayName + Questions1": {
+      "main": [
+        [
+          {
+            "node": "Create From Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Define Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-21T16:40:55.337Z",
+  "id": "hYqAskoGJJhEBey8",
+  "meta": null,
+  "name": "Enrich FAQ sections on your website pages at scale with AI",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "b3d23a36-695f-4220-b102-458c68ee0c12",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        558.4444710709047,
+        660
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "fcf7a45e-4ba8-4f4c-990e-108d8c6f50f2",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        2158.444471070905,
+        2160
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2c1bd408-29f0-487b-9a33-7513d5bbfe23",
+              "name": "question",
+              "type": "string",
+              "value": "={{ $('Needs AI Completion?1').item.json.question }}"
+            },
+            {
+              "id": "02ffc3b7-3d77-4dfe-ba3f-2052f5cc9e83",
+              "name": "answer",
+              "type": "string",
+              "value": "={{\n[\n  $('Needs AI Completion?1').item.json.answer,\n  $json.text\n    ? $json.text[0].toLowerCase() + $json.text.substring(1, $json.text.length)\n    : '',\n  $('Needs AI Completion?1').item.json.append || '',\n].join(' ').trim()\n}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "762e56a6-75c5-4ccf-960f-bd4f2ac7252e",
+      "name": "Format QA Pair1",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        2498.444471070905,
+        2020
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "58583b6a-b8a0-44bc-97a2-973d24299081",
+      "name": "For Each Question...1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "position": [
+        1718.4444710709047,
+        1540
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "id": "9da9068b-8da3-4289-9ea7-a9de095b3101",
+      "name": "Question to List1",
+      "type": "n8n-nodes-base.splitOut",
+      "position": [
+        1518.4444710709047,
+        1540
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "id": "241cb15d-20e8-435c-8436-a8c0bd57e3d6",
+      "name": "Questions to Object...1",
+      "type": "n8n-nodes-base.aggregate",
+      "position": [
+        2458.444471070905,
+        1520
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "66318f17-a3bd-4bcf-b326-50208b503143",
+              "name": "name",
+              "type": "string",
+              "value": "={{ $('Execute Workflow Trigger').first().json.data.displayName || $('Execute Workflow Trigger').first().json.data['Category name'] }}"
+            },
+            {
+              "id": "a83abac5-ddc6-4316-a916-7eab338f97cf",
+              "name": "questions",
+              "type": "array",
+              "value": "={{ $json.data }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "51189ca0-31a2-4927-8a92-095022e932e0",
+      "name": "Format DisplayName + Questions1",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        2678.444471070905,
+        1520
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "operation": "createFromText",
+        "content": "={{ JSON.stringify($json, null, 4) }}",
+        "name": "={{ $json.name + '-' + $now.format('yyyyMMdd') }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "folderId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $('Execute Workflow Trigger').first().json.outdir }}"
+        },
+        "options": {}
+      },
+      "id": "e8dfaaa5-e590-4706-a44a-5accaccb10fa",
+      "name": "Create From Text",
+      "type": "n8n-nodes-base.googleDrive",
+      "position": [
+        2860,
+        1520
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n  \"data\": [\n    \"Single Integration Native\",\n    \"Single Integration Cred-only\",\n    \"Single Integration Non-native\",\n    \"Categories\"\n  ]\n}\n",
+        "options": {}
+      },
+      "id": "755c92b9-2bd4-4484-be4c-49b9f04a6286",
+      "name": "Define Sheets",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        998.4444710709047,
+        660
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "id": "c1f6067f-0d52-415d-be72-815e439cd2c3",
+      "name": "Sheets To List...",
+      "type": "n8n-nodes-base.splitOut",
+      "position": [
+        1178.4444710709047,
+        660
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "={{ $json.data }}"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "=status"
+            }
+          ]
+        },
+        "options": {
+          "returnAllMatches": "returnAllMatches"
+        }
+      },
+      "id": "7a935f81-eaf4-4b50-8f11-f4938b59580a",
+      "name": "Get Services",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [
+        1578.4444710709047,
+        800
+      ],
+      "typeVersion": 4.3,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"data\": [\n    {\n      \"question\": \"How can I set up {{ $json.data.displayName }} integration in n8n?\",\n      \"answer\": \"To use {{ $json.data.displayName }} integration in n8n, start by adding the HTTP Request node to your workflow canvas and authenticate it using a predefined credential type. This allows you to perform custom operations, without additional authentication setup. Once connected, you can make custom API calls to {{ $json.data.displayName }} to query the data you need using the URLs you provide, for example:\",\n      \"ai_example\": \"Assume useris advanced in n8n integration and sending HTTP requests, focus instead on examples operations and/or use-cases such as creating records, updating records, or retrieving data.\",\n      \"ai_completion\": {{ true }}\n    },\n    {\n      \"question\": \"Do I need any special permissions or API keys to integrate {{ $json.data.displayName }} with n8n?\",\n      \"answer\": \"Yes, you need an API key with the necessary permissions to integrate {{ $json.data.displayName }} with n8n. You will typically need to use the {{ $json.data.displayName }} API docs to construct your request via the HTTP Request node. Ensure the API key has the appropriate access rights for the data and actions you want to automate within your workflows.\",\n      \"ai_completion\": {{ false }}\n    },\n    {\n      \"question\": \"Can I combine {{ $json.data.displayName }} with other apps in n8n workflows?\",\n      \"answer\": \"Definitely! n8n enables you to create workflows that combine {{ $json.data.displayName }} with other apps and services. For instance,\",\n      \"ai_completion\": {{ true }}\n    },\n    {\n      \"question\": \"What are some common use cases for {{ $json.data.displayName }} integrations with n8n?\",\n      \"answer\": \"Common use cases for {{ $json.data.displayName }} automation include\",\n      \"append\": \"With n8n, you can customize these workflows to fit your specific needs and extend them by adding other 400+ integrations or incorporating advanced AI logic.\",\n      \"ai_completion\": {{ true }}\n    },\n    {\n      \"question\": \"How does n8n’s pricing model benefit me when integrating {{ $json.data.displayName }}?\",\n      \"answer\": \"n8n’s pricing model is designed to be both affordable and scalable, which is particularly beneficial when integrating with {{ $json.data.displayName }}. Unlike other platforms that charge per operation or task, n8n charges only for full workflow executions. This means you can create complex workflows with {{ $json.data.displayName }}, involving thousands of tasks or steps, without worrying about escalating costs. For example, if your {{ $json.data.displayName }} workflows perform around 100k tasks, you could be paying $500+/month on other platforms, but with n8n's pro plan, you start at around $50. This approach allows you to scale your {{ $json.data.displayName }} integrations efficiently while maintaining predictable costs.\",\n      \"ai_completion\": {{ false }}\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "1bcbd3cc-c362-4b6c-9774-e12b3b9f7a37",
+      "name": "Single Integration Cred-only",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1258.4444710709047,
+        1540
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"data\": [\n    {\n      \"question\": \"How can I set up {{ $json.data.displayName }} integration in n8n?\",\n      \"answer\": \"To use {{ $json.data.displayName }} integration in n8n, start by adding the {{ $json.data.displayName }} node to your workflow. You'll need to authenticate your {{ $json.data.displayName }} account using supported authentication methods. Once connected, you can choose from the list of supported actions or make custom API calls via the HTTP Request node, for example:\",\n      \"ai_completion\": {{ true }}\n    },\n    {\n      \"question\": \"Do I need any special permissions or API keys to integrate {{ $json.data.displayName }} with n8n?\",\n      \"answer\": \"Yes, you will typically need an API key, token, or similar credentials to add {{ $json.data.displayName }} integration to n8n. These can usually be found in your account settings for the service. Ensure that your credentials have the necessary permissions to access and manage the data or actions you want to automate within your workflows.\",\n      \"ai_completion\": {{ false }}\n    },\n    {\n      \"question\": \"Can I combine {{ $json.data.displayName }} with other apps in n8n workflows?\",\n      \"answer\": \"Definitely! n8n enables you to create workflows that combine {{ $json.data.displayName }} with other apps and services. For instance,\",\n      \"ai_completion\": {{ true }}\n    },\n    {\n      \"question\": \"What are some common use cases for {{ $json.data.displayName }} integrations with n8n?\",\n      \"answer\": \"Common use cases for {{ $json.data.displayName }} automation include\",\n      \"append\": \"With n8n, you can customize these workflows to fit your specific needs and extend them by adding other 400+ integrations or incorporating advanced AI logic.\",\n      \"ai_completion\": {{ true }}\n    },\n    {\n      \"question\": \"How does n8n’s pricing model benefit me when integrating {{ $json.data.displayName }}?\",\n      \"answer\": \"n8n’s pricing model is designed to be both affordable and scalable, which is particularly beneficial when integrating with {{ $json.data.displayName }}. Unlike other platforms that charge per operation or task, n8n charges only for full workflow executions. This means you can create complex workflows with {{ $json.data.displayName }}, involving thousands of tasks or steps, without worrying about escalating costs. For example, if your {{ $json.data.displayName }} workflows perform around 100k tasks, you could be paying $500+/month on other platforms, but with n8n's pro plan, you start at around $50. This approach allows you to scale your {{ $json.data.displayName }} integrations efficiently while maintaining predictable costs.\",\n    \"ai_completion\": {{ false }}\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "03067d7b-f8b5-47c2-a220-791a8e2a39b6",
+      "name": "Single Integration Native",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1258.4444710709047,
+        1380
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{\n{\n  \"data\": [\n    {\n      \"question\": `What types of ${$json.data['Category name']} tools can I integrate with n8n?`,\n      \"answer\": `n8n offers integrations with a wide range of ${$json.data['Category name']} tools, including`,\n      \"append\": `These integrations allow you to streamline your ${$json.data['Category name']} workflows, automate repetitive tasks, and improve collaboration across your team.`,\n      \"ai_completion\": true\n    },\n    {\n      \"question\": `Are there any specific requirements or limitations for using ${$json.data['Category name']} integrations?`,\n      \"answer\": `Yes, each ${$json.data['Category name']} integration may have specific requirements. For example,`,\n      \"append\": `n8n offers a significant number of pre-built ${$json.data['Category name']} integrations (called nodes). If n8n doesn't support the integration you need, use the HTTP Request node or custom code to connect to the service's API. Be sure to review the integration documentation for any app-specific prerequisites. Additionally, consider any API rate limits or usage constraints that might affect your workflows.`,\n      \"ai_completion\": true\n    },\n    {\n      \"question\": `What are some popular use cases for ${$json.data['Category name']} integrations in n8n?`,\n      \"answer\": `${$json.data['Category name']} integrations with n8n offer a variety of practical use cases. For example:`,\n      \"ai_completion\": true,\n      \"ai_completion_format\": \"list\"\n    },\n    {\n      \"question\": `How does n8n’s pricing model benefit ${$json.data['Category name']} workflows?`,\n      \"answer\": `n8n's pricing model, which charges only for full workflow executions rather than individual tasks or steps, is particularly advantageous for ${$json.data['Category name']} workflows. This means you can build complex, multi-step workflows involving various ${$json.data['Category name']} tools without worrying about cost increases due to the number of operations. For example, if your ${$json.data['Category name']} workflows perform around 100k tasks, you could be paying $500+/month on other platforms, but with n8n's pro plan, you start at around $50. This approach allows you to scale your ${$json.data['Category name']} integrations efficiently while maintaining predictable costs.`,\n      \"ai_completion\": false\n    },\n    {\n      \"question\": `How can I leverage n8n's AI capabilities in my ${$json.data['Category name']} workflows?`,\n      \"answer\": `n8n offers powerful AI capabilities that can enhance your ${$json.data['Category name']} workflows. For example, you can integrate AI tools like OpenAI with n8n to`,\n      \"append\": `To add AI capabilities, navigate to the AI category in n8n's integrations directory and set up the integration with your chosen AI service. This combination of AI and ${$json.data['Category name']} integrations can significantly boost your development efficiency and innovation.`,\n      \"ai_completion\": true\n    }\n  ]\n}\n}}",
+        "options": {}
+      },
+      "id": "aa941e2b-5626-41c5-9f48-71379006ed62",
+      "name": "Categories",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1258.4444710709047,
+        1900
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "6ee3cd44-fa37-425e-ab82-7a5363287f05",
+      "name": "For Each Sheet...",
+      "type": "n8n-nodes-base.splitInBatches",
+      "position": [
+        1398.4444710709047,
+        660
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {},
+      "id": "65e2809d-12e2-4cb7-a1a5-0f354e37dd44",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        778.4444710709047,
+        1540
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "workflowId": "={{ $workflow.id }}",
+        "mode": "each",
+        "options": {}
+      },
+      "id": "d76bb74a-0292-4125-a8c4-efa69580939b",
+      "name": "Execute Workflow",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "position": [
+        2378.444471070905,
+        800
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2755153b-d38c-4aba-be8f-f72c3bf91cf2",
+              "name": "sheet",
+              "type": "string",
+              "value": "={{ $('For Each Sheet...').item.json.data }}"
+            },
+            {
+              "id": "eed4a03a-451b-4b74-b591-ce970d84f990",
+              "name": "data",
+              "type": "object",
+              "value": "={{ $json }}"
+            },
+            {
+              "id": "ee73316c-0316-4389-aa13-4bb145637262",
+              "name": "outdir",
+              "type": "string",
+              "value": "={{\n{\n  \"Single Integration Native\": \"Insert the corresponding Google Drive folder ID here\",\n  \"Single Integration Cred-only\": \"Insert the corresponding Google Drive folder ID here\",\n  \"Single Integration Non-native\": \"Insert the corresponding Google Drive folder ID here\",\n  \"Categories\": \"Insert the corresponding Google Drive folder ID here\",\n}[$('For Each Sheet...').item.json.data]\n}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4e9be1fa-31a9-470a-ae77-88879bfb2df1",
+      "name": "Prepare Job",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1758.4444710709047,
+        800
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "id": "01103606-4123-43d0-ba61-f229e9c48662",
+      "name": "For Each Service...",
+      "type": "n8n-nodes-base.splitInBatches",
+      "position": [
+        1978.4444710709047,
+        660
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "={{ $('Execute Workflow Trigger').first().json.sheet }}"
+        },
+        "columns": {
+          "value": {
+            "status": "done",
+            "row_number": "={{ $('Execute Workflow Trigger').first().json.data.row_number }}"
+          },
+          "schema": [
+            {
+              "id": "displayName",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "displayName",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "status",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "readOnly": true,
+              "required": false,
+              "displayName": "row_number",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            }
+          ],
+          "mappingMode": "defineBelow",
+          "matchingColumns": [
+            "row_number"
+          ]
+        },
+        "options": {}
+      },
+      "id": "51c64789-a60f-48eb-9d9d-011147a05b26",
+      "name": "Update Row Status",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [
+        3038.444471070905,
+        1520
+      ],
+      "typeVersion": 4.4
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{\n{\n  \"data\": [\n    {\n      \"question\": `How can I set up ${$json.data.displayName} integration in n8n?`,\n      \"answer\": `To use ${$json.data.displayName} integration in n8n, start by adding the HTTP Request node to your workflow canvas and authenticate it using a generic authentication method. Once connected, you can make custom API calls to ${$json.data.displayName} to query the data you need using the URLs you provide, for example:`,\n      \"ai_example\": \"Assume useris advanced in n8n integration and sending HTTP requests, focus instead on examples operations and/or use-cases such as creating records, updating records, or retrieving data.\",\n      \"ai_completion\": true\n    },\n{\n      \"question\": `Do I need any special permissions or API keys to integrate ${$json.data.displayName} with n8n?`,\n      \"answer\": `Yes, with generic authentication, you'll typically need to provide endpoint URLs, headers, parameters, and any other authentication details specific to **${$json.data.displayName}**:  - Find the&nbsp;**${$json.data.displayName}** API documentation and see if the API supports HTTP requests;  - Most APIs require some form of authentication and you can configure this in the HTTP Request mode (Basic Auth, Custom Auth, Digest Auth, Header Auth, OAuth1 API, OAuth2 API, Query Auth).`,\n      \"ai_completion\": false\n    },\n{\n      \"question\": `Can I combine ${$json.data.displayName} with other apps in n8n workflows?`,\n      \"answer\": `Definitely! n8n enables you to create workflows that combine ${$json.data.displayName} with other apps and services. For instance,`,\n      \"ai_completion\": true\n    },\n    {\n      \"question\": `What are some common use cases for ${$json.data.displayName} integrations with n8n?`,\n      \"answer\": `Common use cases for ${$json.data.displayName} automation include`,\n      \"append\": `With n8n, you can customize these workflows to fit your specific needs and extend them by adding other 400+ integrations or incorporating advanced AI logic.`,\n      \"ai_completion\": true\n    },\n    {\n      \"question\": `How does n8n’s pricing model benefit me when integrating ${$json.data.displayName}?`,\n      \"answer\": `n8n's pricing model is designed to be both affordable and scalable, which is particularly beneficial when integrating with ${ $json.data.displayName}. Unlike other platforms that charge per operation or task, n8n charges only for full workflow executions. This means you can create complex workflows with ${ $json.data.displayName}, involving thousands of tasks or steps, without worrying about escalating costs. For example, if your ${ $json.data.displayName} workflows perform around 100k tasks, you could be paying $500+/month on other platforms, but with n8n's pro plan, you start at around $50. This approach allows you to scale your ${ $json.data.displayName} integrations efficiently while maintaining predictable costs.`,\n      \"ai_completion\": false\n    }\n  ]\n}\n}}",
+        "options": {}
+      },
+      "id": "59d3a4be-0163-4824-a1af-56c5c5401fc6",
+      "name": "Single Integration Non-native",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1258.4444710709047,
+        1720
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "aea0bac0-4d4a-4359-8df0-1309c3126376",
+              "operator": {
+                "type": "object",
+                "operation": "notEmpty",
+                "singleValue": true
+              },
+              "leftValue": "={{ $json.data }}",
+              "rightValue": ""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5007fb0e-3a60-47da-99f9-49284fdf6bf3",
+      "name": "If has Data",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        2158.444471070905,
+        780
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n### 🚨 Set Destination Folders Here",
+        "height": 317.09090909090907,
+        "width": 193.4545454545455
+      },
+      "id": "c0220811-faf0-4941-b30a-6be95355709e",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1718.4444710709047,
+        760
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "leftValue": "",
+                  "caseSensitive": true,
+                  "typeValidation": "strict"
+                },
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "false",
+                      "singleValue": true
+                    },
+                    "leftValue": "={{ $json.ai_completion }}",
+                    "rightValue": ""
+                  }
+                ]
+              },
+              "renameOutput": true,
+              "outputKey": "TEXT_REPLACE"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "leftValue": "",
+                  "caseSensitive": true,
+                  "typeValidation": "strict"
+                },
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "f3fcd8ea-6cfa-4658-86c3-3ace9b81d3f2",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    },
+                    "leftValue": "={{ $json.ai_completion }}",
+                    "rightValue": ""
+                  }
+                ]
+              },
+              "renameOutput": true,
+              "outputKey": "AI_COMPLETE"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e9468fa5-3e1b-4843-9c81-3eb0370ad238",
+      "name": "Needs AI Completion?1",
+      "type": "n8n-nodes-base.switch",
+      "position": [
+        1938.4444710709047,
+        1920
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {
+        "content": "## Trigger event\nThis could be changed to whatever trigger event you need: an app event, a schedule, a webhook call, another workflow or an AI chat. Sometimes, the HTTP Request node might already serve as your starting point.",
+        "height": 374.7055783044638,
+        "width": 322.9750655002858,
+        "color": 7
+      },
+      "id": "38fecbbc-7092-4d3b-b0e6-a1a0adff2fb9",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        460,
+        460
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "leftValue": "",
+                  "caseSensitive": true,
+                  "typeValidation": "strict"
+                },
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "leftValue": "={{ $json.sheet }}",
+                    "rightValue": "Single Integration Native"
+                  }
+                ]
+              },
+              "renameOutput": true,
+              "outputKey": "Single - Native"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "leftValue": "",
+                  "caseSensitive": true,
+                  "typeValidation": "strict"
+                },
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "6dcb9e09-5eb6-4527-9c22-7eb8867643f4",
+                    "operator": {
+                      "name": "filter.operator.equals",
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "leftValue": "={{ $json.sheet }}",
+                    "rightValue": "Single Integration Cred-only"
+                  }
+                ]
+              },
+              "renameOutput": true,
+              "outputKey": "Single - Cred Only"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "leftValue": "",
+                  "caseSensitive": true,
+                  "typeValidation": "strict"
+                },
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "04ee4ccd-9efc-46a9-9521-fe50fb0c3087",
+                    "operator": {
+                      "name": "filter.operator.equals",
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "leftValue": "={{ $json.sheet }}",
+                    "rightValue": "Single Integration Non-native"
+                  }
+                ]
+              },
+              "renameOutput": true,
+              "outputKey": "Single - Non Native"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "leftValue": "",
+                  "caseSensitive": true,
+                  "typeValidation": "strict"
+                },
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "21579253-15c5-4cb4-869b-5760322ae5b5",
+                    "operator": {
+                      "name": "filter.operator.equals",
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "leftValue": "={{ $json.sheet }}",
+                    "rightValue": "Categories"
+                  }
+                ]
+              },
+              "renameOutput": true,
+              "outputKey": "Categories"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c17f7e60-7b5e-4f2d-9150-8be0b1d7591d",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "position": [
+        1018.4444710709047,
+        1540
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {
+        "content": "## Prepare data in Google Sheets\nThis part of the workflow prepares the data for reading from a Google Sheets document containing information about different services or categories. Here's an example of Google Sheet: https://docs.google.com/spreadsheets/d/1DCf-phfLWvuTwu02bumx-qykVQeFANnacTTAkRj5tZk/edit?usp=sharing",
+        "height": 636.4009080766225,
+        "width": 1627.0681704544622,
+        "color": 7
+      },
+      "id": "520a855c-b8b1-4bde-8098-12fc09445d52",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        939.1561069271204,
+        460
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Create your Q&A templates\nFor each service or category, this part of the workflow generates a set of standard questions and answers covering setup, permissions, integrations, use cases, and pricing benefits. You can modify here the input that you will feed to AI.",
+        "height": 840.0651105548446,
+        "width": 513.3200522929088,
+        "color": 7
+      },
+      "id": "e4bdba37-c628-4af3-a439-2b4d8fbe5ac3",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        978.4444710709047,
+        1220
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Complete your Q&A templates with AI\n* An AI model (OpenAI's GPT) is used to enhance or complete some of the answers, making the content more comprehensive and natural-sounding.\n* The workflow formats the Q&A pairs, combining AI-generated content with predefined answers where applicable.",
+        "height": 523.7514972875132,
+        "width": 989.1782467385665,
+        "color": 7
+      },
+      "id": "5dd92a2c-908f-4cbc-9324-a01ba30924a6",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1718.4444710709047,
+        1780
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Generate JSON schemas and upload to Google Drive\n* The generated files are saved to specific folders in Google Drive, organized by the type of integration (native, credential-only, non-native) or category.\n* After processing each service or category, it updates the status in the original Google Sheets document to mark it as completed.",
+        "height": 396.4865508957922,
+        "width": 907.1258470912726,
+        "color": 7
+      },
+      "id": "9ddcaf8f-acde-46ac-9772-8ff64c50f596",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2338.444471070905,
+        1340
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "create"
+      },
+      "id": "2d1db8f3-1286-403a-ad4b-02bd1b61496b",
+      "name": "Strapi",
+      "type": "n8n-nodes-base.strapi",
+      "position": [
+        3458.444471070905,
+        1520
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Send the JSON schemas to your CMS\nThis step is up to you to finish: you can choose either pre-built n8n nodes to connect with your CMS or use the HTTP Request node if you CMS is not supported directly in n8n.",
+        "height": 1073.2774375197612,
+        "width": 437.8755022115163,
+        "color": 7
+      },
+      "id": "da77ddfe-e33d-4a97-9ff0-ff4fe608cca2",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3398.444471070905,
+        1240
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "additionalFields": {}
+      },
+      "id": "0329d7be-71b2-4290-a610-388610da3180",
+      "name": "Wordpress",
+      "type": "n8n-nodes-base.wordpress",
+      "position": [
+        3458.444471070905,
+        1720
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "create"
+      },
+      "id": "e7f1a2bb-1d03-4eb8-b700-d54859f15177",
+      "name": "Webflow",
+      "type": "n8n-nodes-base.webflow",
+      "position": [
+        3458.444471070905,
+        1920
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "a4f08324-aaf7-42e2-91f2-fc71095a3167",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        3458.444471070905,
+        2120
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=### The question\n{{ $json.question }}\n### Prefered answer format\n{{ $json.ai_completion_format ? 'markdown bullet list' : 'markdown' }}\n### User's answer\n{{ $json.answer }}\n{{\n$json.ai_example\n  ? `### Guidance\\nWhen giving answer, follow this blueprint: ${$json.ai_example}`\n  : ''\n}}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=You are assisting with writing a FAQ for the service, {{ $('Execute Workflow Trigger').first().json.data.displayName || $('Execute Workflow Trigger').first().json.data['Category name'] }}. Complete the user's answer in regards to the given question. Ensure the answer is consistent by assuming the tone and style of the user's answer. Give your answer as succinctly as you can with no more than 3 sentences. Do not mention the user or use markdown, return plain text only as this output will be directly appended."
+            }
+          ]
+        }
+      },
+      "id": "9c1ac020-e861-482b-bc28-d8cd6f2a3aa0",
+      "name": "AI Completion1",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "position": [
+        2158.444471070905,
+        2020
+      ],
+      "executeOnce": false,
+      "typeVersion": 1.4
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:21:25.482Z",
+      "updatedAt": "2024-12-01T14:21:25.482Z",
+      "id": "SIJWhQ43whBotfGd",
+      "name": "Community Examples"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-21T16:40:57.000Z",
+  "versionId": "d87dc117-16d9-492d-8ba2-5032d793195c"
+}
