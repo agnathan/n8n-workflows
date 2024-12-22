@@ -1,0 +1,193 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Notion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notion": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-07T05:25:46.083Z",
+  "id": "yAJyqp4zZZLlZ5TB",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Guest Speakers Google Sheets to Notion Database Page",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "b9b2fca2-9e62-4520-a09e-61f72160d14f",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        840,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "19bQBxVt7ZfOYPanLqTGfA3kLa2PuqWm3rT97M2bOuTI",
+          "mode": "list",
+          "cachedResultName": "Podcast Real State Data",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19bQBxVt7ZfOYPanLqTGfA3kLa2PuqWm3rT97M2bOuTI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1600393975,
+          "mode": "list",
+          "cachedResultName": "Sheet2",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19bQBxVt7ZfOYPanLqTGfA3kLa2PuqWm3rT97M2bOuTI/edit#gid=1600393975"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Invite",
+              "lookupValue": "true"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5dc9c5de-d25f-439c-a9fa-24704a8e3c99",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1060,
+        440
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "9YFxgWcYXZDQ2dtk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "4a22a745-8fc5-49a8-8fa1-18c0f8f040e1",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1280,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "databaseId": {
+          "__rl": true,
+          "value": "15532141-5464-8082-863f-f1d24d08bf59",
+          "mode": "list",
+          "cachedResultName": "Guest Speaker Tracker",
+          "cachedResultUrl": "https://www.notion.so/1553214154648082863ff1d24d08bf59"
+        },
+        "title": "={{ $json['Speaker\\'s Name'] }}",
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Name|title",
+              "title": "={{ $json['Speaker\\'s Name'] }}"
+            },
+            {
+              "key": "Email Address|email",
+              "emailValue": "={{ $json.Email }}"
+            },
+            {
+              "key": "Status|select",
+              "selectValue": "Start of Funnel"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6aa60a67-d6a3-4b89-96a8-9d27255f59e3",
+      "name": "Notion",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        1520,
+        460
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-05T14:43:34.278Z",
+      "updatedAt": "2024-12-05T14:43:34.278Z",
+      "id": "YWL3bc4oYdzguiTJ",
+      "name": "Production"
+    },
+    {
+      "createdAt": "2024-12-07T06:11:13.857Z",
+      "updatedAt": "2024-12-07T06:11:13.857Z",
+      "id": "bt1t5V5KUyuErc7s",
+      "name": "AIC Speaker Workflow"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-07T06:11:15.000Z",
+  "versionId": "8f12959d-e9d3-4e21-adab-d1130679dfe7"
+}
