@@ -1,0 +1,803 @@
+{
+  "active": false,
+  "connections": {
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Get page blocks",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notion Trigger": {
+      "main": [
+        [
+          {
+            "node": "Input Reference",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Token Splitter": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get page blocks": {
+      "main": [
+        [
+          {
+            "node": "Concatenate to single string",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Input Reference": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Delete old embeddings if exist",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get updated pages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          },
+          {
+            "node": "Supabase Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Question and Answer Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase Vector Store": {
+      "main": [
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase Vector Store1": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Retriever",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vector Store Retriever": {
+      "ai_retriever": [
+        [
+          {
+            "node": "Question and Answer Chain",
+            "type": "ai_retriever",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Question and Answer Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Concatenate to single string": {
+      "main": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete old embeddings if exist": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get updated pages": {
+      "main": [
+        [
+          {
+            "node": "Input Reference",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-02T02:22:22.306Z",
+  "id": "ZSB91XxoG6vrUFjZ",
+  "meta": null,
+  "name": "Notion and Supabase",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "fdf3c84f-a22d-4601-a986-b3e3dfab2214",
+      "name": "Embeddings OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "position": [
+        1760,
+        1820
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "chunkSize": 500
+      },
+      "id": "649ce8af-2520-433c-9629-f5e061da8f65",
+      "name": "Token Splitter",
+      "type": "@n8n/n8n-nodes-langchain.textSplitterTokenSplitter",
+      "position": [
+        2400,
+        1320
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "cb0c86c0-b82e-44eb-a496-5fa5aa5c6ffa",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "position": [
+        1200,
+        580
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "192a1459-d9f3-4f05-b701-a710f90a289c",
+      "name": "Question and Answer Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainRetrievalQa",
+      "position": [
+        764,
+        1275
+      ],
+      "typeVersion": 1.3
+    },
+    {
+      "parameters": {},
+      "id": "9820a8c6-82a9-49a2-8665-676c1dda37ed",
+      "name": "Vector Store Retriever",
+      "type": "@n8n/n8n-nodes-langchain.retrieverVectorStore",
+      "position": [
+        864,
+        1495
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "options": {}
+      },
+      "id": "103cb648-4385-41f8-b608-9fca991cc01d",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        724,
+        1495
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {}
+      },
+      "id": "73f8252f-bbec-47a2-b7fd-42f46b1b0b53",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "position": [
+        544,
+        1275
+      ],
+      "webhookId": "74479a54-418f-4de2-b70d-cfb3e3fdd5a7",
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 1
+            }
+          ]
+        }
+      },
+      "id": "7cea0e6a-5100-4892-a39d-b7ebf65d16c4",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        540,
+        580
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "content": "## Switch trigger (optional)\nIf you are on the cloud plan, consider switching to the Notion Trigger Node instead, to save on executions.",
+        "height": 312.52803480051045,
+        "width": 329.16412916774584
+      },
+      "id": "95d1a546-3a66-4642-b696-3d3d0958fcee",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        640,
+        780
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "8a2c9fd9-6c80-4405-b84d-e85fd4be9b6b",
+      "name": "Limit",
+      "type": "n8n-nodes-base.limit",
+      "position": [
+        1640,
+        720
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "a7dcaa1d-28d3-4a97-89af-c2027f07f074",
+      "name": "Limit1",
+      "type": "n8n-nodes-base.limit",
+      "position": [
+        2680,
+        720
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "tableId": "documents",
+        "filterType": "string",
+        "filterString": "=metadata->>id=eq.{{ $('Input Reference').item.json.id }}"
+      },
+      "id": "938bc4ab-8c71-4f62-8165-dedbb4836a86",
+      "name": "Delete old embeddings if exist",
+      "type": "n8n-nodes-base.supabase",
+      "position": [
+        1420,
+        720
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "HwcsUCmO5EkOB3Rg",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "block",
+        "operation": "getAll",
+        "blockId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $('Input Reference').item.json.id }}"
+        },
+        "returnAll": true,
+        "fetchNestedBlocks": true
+      },
+      "id": "84c8287b-6272-460f-add9-c5de3060700d",
+      "name": "Get page blocks",
+      "type": "n8n-nodes-base.notion",
+      "position": [
+        1860,
+        720
+      ],
+      "executeOnce": true,
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "id",
+                "value": "={{ $('Input Reference').item.json.id }}"
+              },
+              {
+                "name": "name",
+                "value": "={{ $('Input Reference').item.json.name }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "2dfad0dd-7121-4478-94ed-60f3f8e9ad0c",
+      "name": "Default Data Loader",
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "position": [
+        2320,
+        1040
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Adjust chunk size and overlap\nFor more accurate search results, increase the overlap. For the *text-embedding-ada-002* model the chunk size plus overlap must not exceed 8191",
+        "height": 264.37628764336097,
+        "width": 376.2098538932132
+      },
+      "id": "783cbe52-0294-4e79-aebb-8e033f5b2f98",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2240,
+        1180
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "c4fefdf4-990d-4d1d-a949-fa6cd5fb6af8",
+      "name": "Input Reference",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        980,
+        580
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "event": "pagedUpdatedInDatabase",
+        "databaseId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "ec6dc7b4-9ce0-47f7-8025-ef09295999fd",
+          "cachedResultUrl": "https://www.notion.so/ec6dc7b49ce047f78025ef09295999fd",
+          "cachedResultName": "Knowledge Base"
+        }
+      },
+      "id": "c7a2b69c-2a5f-4419-b6e2-de4b98bd61bd",
+      "name": "Notion Trigger",
+      "type": "n8n-nodes-base.notionTrigger",
+      "position": [
+        760,
+        900
+      ],
+      "typeVersion": 1,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "This placeholder serves as a reference point so it is easier to swap the data source with a different service",
+        "height": 275.841854198618,
+        "width": 216.47293010628914,
+        "color": 7
+      },
+      "id": "8ec60e58-38b6-4df2-b5db-f6e17cb58a01",
+      "name": "Sticky Note23",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        920,
+        480
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "All chunks of a previous version of the document are being deleted by filtering the meta data by the given ID",
+        "height": 275.841854198618,
+        "width": 216.47293010628914,
+        "color": 7
+      },
+      "id": "fc15d6ed-7cee-42f0-8b94-4793e59be4e5",
+      "name": "Sticky Note24",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1360,
+        620
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Reduce the active streams/items to just 1 to prevent the following nodes from double-processing",
+        "height": 275.841854198618,
+        "width": 216.47293010628914,
+        "color": 7
+      },
+      "id": "5c79feb0-e3e3-490e-89c3-1c2fc1a6b6a7",
+      "name": "Sticky Note25",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1580,
+        620
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Retrieve all page contents/blocks",
+        "height": 275.841854198618,
+        "width": 216.47293010628914,
+        "color": 7
+      },
+      "id": "e71cce44-9a14-4bbc-9f29-7722e3aacff3",
+      "name": "Sticky Note26",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1800,
+        620
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Reduce the active streams/items to just 1 to prevent the following nodes from double-processing",
+        "height": 275.841854198618,
+        "width": 216.47293010628914,
+        "color": 7
+      },
+      "id": "921faf3e-fcfc-4044-b7f7-1e108dfc46cf",
+      "name": "Sticky Note27",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2620,
+        620
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Embed item and store in Vector Store. Depending on the length the content is being split up into multiple chunks/embeds",
+        "height": 275.841854198618,
+        "width": 375.9283286479995,
+        "color": 7
+      },
+      "id": "4ecadcb6-220d-42a3-a7b1-eef64ba81575",
+      "name": "Sticky Note28",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2240,
+        620
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "tableName": {
+          "__rl": true,
+          "mode": "list",
+          "value": "documents",
+          "cachedResultName": "documents"
+        },
+        "options": {}
+      },
+      "id": "f304ca4a-33db-43b8-b117-3b86ba1df783",
+      "name": "Supabase Vector Store1",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "position": [
+        944,
+        1715
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Simple chat bot to ask specific questions while having access to the context of the Notion Knowledge Base which was stored in the Vector Store",
+        "height": 668.724737081502,
+        "width": 730.7522093855692,
+        "color": 7
+      },
+      "id": "9f850bb7-6587-43f2-866e-eccb06082b1f",
+      "name": "Sticky Note30",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        480,
+        1180
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Model used for both creating and reading embeddings",
+        "height": 275.841854198618,
+        "width": 219.31927574471658,
+        "color": 7
+      },
+      "id": "49a5214c-5896-481c-a550-e63df448c0d2",
+      "name": "Sticky Note31",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1680,
+        1680
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "tableName": {
+          "__rl": true,
+          "mode": "list",
+          "value": "documents",
+          "cachedResultName": "documents"
+        },
+        "options": {}
+      },
+      "id": "e4f24f22-8644-4ad9-a74c-fc329a546ca2",
+      "name": "Supabase Vector Store",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "position": [
+        2300,
+        720
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Process each page/document separately.",
+        "height": 275.841854198618,
+        "width": 216.47293010628914,
+        "color": 7
+      },
+      "id": "9c6abb1c-4229-4db0-a787-55431b6ed2ec",
+      "name": "Sticky Note32",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1140,
+        480
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Store additional meta data with each embed, especially the Notion ID, which can be later used to find all belonging entries of one page, even if they got split into multiple embeds.",
+        "height": 275.841854198618,
+        "width": 376.0759088111347,
+        "color": 7
+      },
+      "id": "58c5e45b-43be-4ddd-b64d-222f32582350",
+      "name": "Sticky Note29",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2240,
+        900
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Using a manual approach for polling data from Notion for more accuracy.",
+        "height": 275.841854198618,
+        "width": 216.47293010628914,
+        "color": 7
+      },
+      "id": "72ad07e4-51b7-4680-970b-e0ed63df2776",
+      "name": "Sticky Note33",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        480,
+        480
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Select Database\nChoose the database which represents your Knowledge Base",
+        "height": 275.841854198618,
+        "width": 216.47293010628914
+      },
+      "id": "0a3954b0-4a38-4305-b621-fe257077084b",
+      "name": "Sticky Note34",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        700,
+        480
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Combine all contents to a single text formatted into one line which can be easily stored as an embed",
+        "height": 275.841854198618,
+        "width": 216.47293010628914,
+        "color": 7
+      },
+      "id": "98817a62-8283-447a-824f-10e4a9872250",
+      "name": "Sticky Note35",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2020,
+        620
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "aggregation": "concatenate",
+              "field": "content",
+              "separateBy": "\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1880656c-db2b-459e-99ca-60caa86ba748",
+      "name": "Concatenate to single string",
+      "type": "n8n-nodes-base.summarize",
+      "position": [
+        2080,
+        720
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "databaseId": {
+          "__rl": true,
+          "value": "13f32141-5464-8052-b03f-e6f9cfa2571e",
+          "mode": "list",
+          "cachedResultName": "LinkedIn Content Calendar",
+          "cachedResultUrl": "https://www.notion.so/13f3214154648052b03fe6f9cfa2571e"
+        },
+        "options": {}
+      },
+      "id": "1f29182b-4947-4bfb-a1c5-c56795730204",
+      "name": "Get updated pages",
+      "type": "n8n-nodes-base.notion",
+      "position": [
+        760,
+        580
+      ],
+      "typeVersion": 2.2,
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:21:25.482Z",
+      "updatedAt": "2024-12-01T14:21:25.482Z",
+      "id": "SIJWhQ43whBotfGd",
+      "name": "Community Examples"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-02T02:40:28.000Z",
+  "versionId": "771a8257-c95b-40cc-ac47-8353a104c7d3"
+}
