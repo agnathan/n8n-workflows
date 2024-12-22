@@ -1,0 +1,138 @@
+{
+  "active": false,
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Function",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "NoOp",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "NoOp1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-01T14:12:23.542Z",
+  "id": "PHkHwgf5FU9sNbVS",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Random Number and If Statement",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Start",
+      "type": "n8n-nodes-base.start",
+      "typeVersion": 1,
+      "position": [
+        740,
+        660
+      ],
+      "id": "353b58c1-040f-471e-b5f3-5a4645de4cb6"
+    },
+    {
+      "parameters": {
+        "functionCode": "items[0].json.RandomNumber = Math.floor(Math.random() * 7);\nreturn items;"
+      },
+      "name": "Function",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        940,
+        660
+      ],
+      "id": "31e10da3-c6d1-4b1d-b691-562d4e795f2b"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$node[\"Function\"].json[\"RandomNumber\"]}}",
+              "value2": 3
+            }
+          ]
+        }
+      },
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1140,
+        660
+      ],
+      "id": "09e2bd65-6422-40da-bb5a-7b6b24a2cd2f"
+    },
+    {
+      "parameters": {},
+      "name": "NoOp",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        560
+      ],
+      "id": "2bcd2e96-7d8c-4807-ad36-3c577c846e3b"
+    },
+    {
+      "parameters": {},
+      "name": "NoOp1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        750
+      ],
+      "id": "392c42ed-0deb-4ffa-b836-55f7c0966a34"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:20:20.071Z",
+      "updatedAt": "2024-12-01T14:21:40.229Z",
+      "id": "hvphHbQ14WJzrgp9",
+      "name": "My Learning"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-01T14:20:21.000Z",
+  "versionId": "9512a9cd-8e8e-4833-a627-7e1d770f1b73"
+}
