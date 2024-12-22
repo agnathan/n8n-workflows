@@ -1,0 +1,80 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "LinkedIn",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LinkedIn": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2024-12-02T03:46:22.766Z",
+  "id": "HtoHdsNy4Od0GIGf",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AIC Linkedin",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "7c572cc2-03db-4a38-88b1-dc181e585a74",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        620,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "person": "UcZR5aMiDD",
+        "text": "asdf",
+        "additionalFields": {}
+      },
+      "id": "283fd7b9-a7ee-4fff-b255-cd57a9ce6b52",
+      "name": "LinkedIn",
+      "type": "n8n-nodes-base.linkedIn",
+      "typeVersion": 1,
+      "position": [
+        780,
+        380
+      ],
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "xRDEDUl1Pqg60kBr",
+          "name": "LinkedIn account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:23:56.869Z",
+      "updatedAt": "2024-12-01T14:23:56.869Z",
+      "id": "Paq9K6w31GZ583JD",
+      "name": "My Drafts"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-17T03:13:10.000Z",
+  "versionId": "83e3e39f-ac08-4ac5-9306-2c0eeae39442"
+}
