@@ -1,0 +1,400 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "Hot Take Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Google Docs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Docs": {
+      "main": [
+        [
+          {
+            "node": "Google Docs1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LinkedIn Post for thanking AIC Speaker": {
+      "main": [
+        []
+      ]
+    },
+    "Hot Take Prompt": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-21T15:47:44.869Z",
+  "id": "fiYAY4OYtx3OO83I",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Meeting Transcript to Social Media",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "306993e4-2603-457b-9ea8-57662dbf1598",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1440,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "Meeting",
+        "limit": 1,
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "transcript",
+              "condition": "neq",
+              "keyValue": "null"
+            },
+            {
+              "keyName": "enabled",
+              "condition": "is",
+              "keyValue": "true"
+            },
+            {
+              "keyName": "speaker",
+              "condition": "neq",
+              "keyValue": "Daniel Holmlund"
+            }
+          ]
+        }
+      },
+      "id": "ac66dc00-f77e-4d94-bcf3-0e36e8367d77",
+      "name": "Supabase",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1220,
+        260
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "bX97yHQCD7Z1jFll",
+          "name": "aicweb_prod"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash-exp",
+        "options": {}
+      },
+      "id": "c6a2e6de-0d00-44d8-97e6-f21f72da85bc",
+      "name": "Google Gemini Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -400,
+        240
+      ],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "eUkvc1cv7n7zwa7I",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "6dd1d062-50ee-4d53-8b51-a3f9c0d4e924",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1440,
+        60
+      ],
+      "webhookId": "ea13ea9d-5fb3-4b2a-ae41-9f220d3d2bf4"
+    },
+    {
+      "parameters": {},
+      "id": "e3c20c64-1363-4485-8e63-2d8f8be6e0b7",
+      "name": "Postgres Chat Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        -280,
+        240
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "UETUW6QxfWBdiDiD",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "workspaceId": "wz9ck3ux",
+        "projectId": "pco8lygkciohgj9",
+        "table": "m3m8yy7hs2xh30u",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "supabaseId",
+              "fieldValue": "={{ $json.id }}"
+            },
+            {
+              "fieldName": "Title",
+              "fieldValue": "={{ $json.title }}"
+            },
+            {
+              "fieldName": "Content",
+              "fieldValue": "={{ $json.output }}"
+            },
+            {
+              "fieldName": "Social Media Platform",
+              "fieldValue": "LinkedIn"
+            }
+          ]
+        }
+      },
+      "id": "1fd91b46-122c-466e-8c2e-2ded103a0210",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        360,
+        340
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "DahiteaxE7qHp5k3",
+          "name": "NocoDB Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "b8fc97fb-fa8e-42d2-9c0f-00b740044a0b",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        40,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "folderId": "1L2A96_5hGYPuOsWkZmlAsCuC7Up-DiMT",
+        "title": "={{ $json.title }} - LinkedIn"
+      },
+      "id": "cdf82845-30ad-4820-bd4f-a8f8c27b3c6c",
+      "name": "Google Docs",
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        300,
+        580
+      ],
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "JfgTVEap5aqP33tu",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentURL": "={{ $json.id }}",
+        "actionsUi": {
+          "actionFields": [
+            {
+              "action": "insert",
+              "text": "={{ $('Merge').item.json.output }}"
+            }
+          ]
+        }
+      },
+      "id": "b42dbf7b-5d9a-4318-9613-271bfabe768b",
+      "name": "Google Docs1",
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        520,
+        580
+      ],
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "JfgTVEap5aqP33tu",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "agent": "conversationalAgent",
+        "promptType": "define",
+        "text": "={{ $json.chatInput }}",
+        "options": {}
+      },
+      "id": "a0683a32-26be-4a0e-9f13-a46075e29513",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        -360,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bb13e985-deb1-4f8b-a59c-13da1e17c38d",
+              "name": "chatInput",
+              "value": "=# Role\nAdopt the role of an Investment Speaker LinkedIn Post Summarizer with expertise in distilling complex financial topics into clear, engaging insights. Your task is to summarize LinkedIn posts related to investments, finance trends, or market updates into concise and impactful summaries that capture the key message and insights. The tone must be professional yet approachable, tailored for LinkedIn audiences who value expertise and brevity. The goal is to highlight the core takeaways of each post to ensure clarity, engagement, and easy shareability among professionals and investors.\n\n# Context\nThe Alternative Investing Club invites guest speaker who are experts in investing to share their knowledge with the club members each Friday at 12pm Pacific time. The transcript of the meeting will be provided for you.\n\n# Goal\nTo write a LinkedIn post that finds the most interesting and informative points in the speaker's presentation and summarizes them for a LinkedIn post targeted at accredited investors.\n\n# Information\n- Guest Speaker's Name: {{ $json.speaker }}\n- Guest Speaker's Topic: {{ $json.title }}\n- Link to the Speaker's Talk: [link]\n\n# Instructions\n- If any variable in the Information section are not given then ask the user for the information.\n- At the beginning mention that I'm thankful for all the great speaker that have been at the club over the last 6 years so I'm going to highlight some of our previous speakers.\n- Write in short paragraphs, one maybe two sentences that are separated by two new lines\n- Don't use bullet points\n- Don't include a title or say that this is a LinkedIn post\n- Don't talk about the day that the talk took place\n- Use emoticons at the beginnings of the paragraphs\n- Always! Always! Always! include the Link to the Speaker's Talk at the end of the post. If the link is not found, then ask for it.\n- Ask people if they would write in the comments a Thank You to the speaker for presenting\n- Always include the hashtags #aic and #AlternativeInvestingClub and other relevant tags\n\n# Tone\nFriendly, professional but not sensationalistic\n\n# Target Audience: Accredited Investors\n\n# Output Format: LinkedIn Post\n\n\n{{ $json.transcript }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d23e6b60-84a8-433d-ae4c-6bd3b00327cd",
+      "name": "LinkedIn Post for thanking AIC Speaker",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -800,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bb13e985-deb1-4f8b-a59c-13da1e17c38d",
+              "name": "chatInput",
+              "value": "=#CONTEXT:\nYou are Hot Takes AI, a professional personal brand coach who helps Creators build an audience on Twitter. You are a world-class expert in generating irritating tweet ideas to boost engagement.\n\n#GOAL:\nI want you to generate 10 irritating or controversial message ideas for my Twitter account from the TRANSCRIPT that is provided. I will post these hot takes to get more engagement and followers.\n\n#HOT TAKE CRITERIA:\n- We don't want to offend anyone. Instead, we make a bold thought-provoking statement that makes people question their beliefs.\n- Hot take should be polarizing. We want some people to argue with it and others to praise it for boosting their egos.\n- Hot take should be fresh and unconventional. Get creative and prioritize ideas that are not mainstream\n- Describe each hot take in 1-2 sentences to clarify why it will work. I want to understand what emotions it will provoke.\n- Only generate tweet ideas for me. I will write tweets myself based on your ideas. Delete all hashtags before returning your ideas to me.\n\n#INFORMATION ABOUT ME:\n- My target audience: accredited investors\n\n#RESPONSE FORMATTING:\nFormat your response as rich text and emoticons\n\n#TRANSCRIPT\n{{ $json.transcript }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c7be7858-8eeb-4549-8e7d-9c81c58c4a67",
+      "name": "Hot Take Prompt",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -800,
+        -160
+      ]
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:23:56.869Z",
+      "updatedAt": "2024-12-01T14:23:56.869Z",
+      "id": "Paq9K6w31GZ583JD",
+      "name": "My Drafts"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-21T20:24:05.000Z",
+  "versionId": "c90bbe28-963d-44b5-b673-b4bf76584307"
+}
