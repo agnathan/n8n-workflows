@@ -1,0 +1,278 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "RSS Read",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hugging Face Inference Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-07T14:39:33.587Z",
+  "id": "2uQ0iK1TUMyC3FEl",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "RSS to Google Sheets",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "5d11d4f9-8b45-47f9-ad15-21f566f39137",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        820,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://feeds.buzzsprout.com/489505.rss",
+        "options": {}
+      },
+      "id": "dfbddfd1-a87d-42ed-b64e-0890cc4c4ece",
+      "name": "RSS Read",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [
+        1040,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1qmf3DNoTXNX4ug0JnfKHt-_pTRfaRu34s3CDMednrPg",
+          "mode": "list",
+          "cachedResultName": "Real Estate Syndication Show Guest List",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qmf3DNoTXNX4ug0JnfKHt-_pTRfaRu34s3CDMednrPg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qmf3DNoTXNX4ug0JnfKHt-_pTRfaRu34s3CDMednrPg/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "title": "={{ $json.title }}",
+            "pubDate": "={{ $json.pubDate }}",
+            "url": "={{ $json.enclosure.url }}",
+            "content": "={{ $json.content }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "title",
+              "displayName": "title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "pubDate",
+              "displayName": "pubDate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "url",
+              "displayName": "url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "content",
+              "displayName": "content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {
+          "useAppend": true
+        }
+      },
+      "id": "3a2ba751-caf8-4bcf-bebe-2667e4557288",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1620,
+        400
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "9YFxgWcYXZDQ2dtk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "batchSize": 50,
+        "options": {}
+      },
+      "id": "14c4b88e-c0e8-4d02-a83b-63d3c3c06939",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1260,
+        380
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "74285ed9-731f-4e1f-be85-4593184f7006",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1480,
+        400
+      ],
+      "webhookId": "736ec699-30f6-4437-83a0-225a5297e4a8"
+    },
+    {
+      "parameters": {
+        "content": "## RSS to Google Sheets\n\nConfigured to use the Real Estate Syndication Show RSS Feed and save the title, pubDate, url and content to a Google Spreadsheet.\n\nBatchsize: 50 items\nWait between API calls: 5 seconds",
+        "height": 395,
+        "width": 1009,
+        "color": 5
+      },
+      "id": "ca31784a-f445-4a07-9629-9d551d41a460",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        780,
+        215
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "26282b5f-e00e-479b-be48-94d82bcc4541",
+      "name": "Basic LLM Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        2260,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "415a6a6c-a726-45b5-bf9c-ef1499af9f79",
+      "name": "Hugging Face Inference Model",
+      "type": "@n8n/n8n-nodes-langchain.lmOpenHuggingFaceInference",
+      "typeVersion": 1,
+      "position": [
+        2230,
+        330
+      ]
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-05T14:43:34.278Z",
+      "updatedAt": "2024-12-05T14:43:34.278Z",
+      "id": "YWL3bc4oYdzguiTJ",
+      "name": "Production"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-07T17:25:13.000Z",
+  "versionId": "6e72db25-518d-4239-887b-cc8954eb8d55"
+}
