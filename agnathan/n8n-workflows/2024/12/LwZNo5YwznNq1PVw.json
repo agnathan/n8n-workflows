@@ -1,0 +1,357 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "MBE Criminal Procedure",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Concepts To List": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MBE Criminal Procedure": {
+      "main": [
+        [
+          {
+            "node": "Concepts To List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wikipedia": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Markdown to Notion Block",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "JSON Parser": {
+      "main": [
+        [
+          {
+            "node": "Upload via Notion API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Markdown to Notion Block",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Markdown to Notion Block": {
+      "main": [
+        [
+          {
+            "node": "JSON Parser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-16T02:26:04.710Z",
+  "id": "LwZNo5YwznNq1PVw",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "cb52ce35-c209-4590-a0d6-71e8db96b7bc",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "id": "58858824-a088-4185-ae61-e3a6afba0bb9",
+      "name": "Concepts To List",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        800,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n  \"data\": [\n    \"Arrests, Searches & Seizures\",\n    \"Right to Counsel and Identification Procedures\",\n    \"Trial Rights & Procedures\"\n  ]\n}\n",
+        "options": {}
+      },
+      "id": "e25c95a8-b3f1-4b51-9c2b-56f53a2364ac",
+      "name": "MBE Criminal Procedure",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        640,
+        460
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "55810c19-539d-412f-bb81-0dc5cbec3706",
+      "name": "Wikipedia",
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "f532f551-41b3-4644-bcf7-6440851c3b85",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        980,
+        640
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "FXa5oPwfEyVR0oL0",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n    \"topic\": \"\",\n\t\"front_of_card\": \"\",\n\t\"back_of_card\": \"\"\n}"
+      },
+      "id": "0f4c6f0c-0ed7-43a7-a218-5cc15970d822",
+      "name": "Structured Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        1220,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b119bb3e-72ea-4045-a03a-9c4091fcb9d2",
+      "name": "OpenAI Chat Model1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        640
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "FXa5oPwfEyVR0oL0",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.notion.com/v1/pages",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "notionApi",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "parent",
+              "value": "={{ { \"page_id\": \"15d32141546481c5b055cf60430ce692\" } }}"
+            },
+            {
+              "name": "properties",
+              "value": "={{ { \"title\": [{ \"text\": {\"content\": $('AI Agent').item.json.output.topic } } ] } }}"
+            },
+            {
+              "name": "children",
+              "value": "={{ $json.data }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f378099f-8ac1-4acc-90d2-92e0e13f31c2",
+      "name": "Upload via Notion API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1940,
+        460
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion GYBWAI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e5363ffc-51ef-4a98-a9c2-4efd0c6bcc7b",
+              "name": "data",
+              "value": "={{ JSON.parse($json.text.replaceAll(/\\n|\\s{2}/g, '').replace('```json','').replace('```','')) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6c99a78a-0b59-4ea0-b326-b84e200c10d0",
+      "name": "JSON Parser",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1760,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "content": "### Interested in AI topics?\nCheck out my other community posts: https://community.n8n.io/u/jim_le/activity",
+        "height": 98.75,
+        "width": 325,
+        "color": 5
+      },
+      "id": "41c3d830-760d-45a8-8a1b-18b87d8b6073",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1620,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=The topic of the flashcard is \"{{ $json.data }}\"",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "Assist the user in creating Mochi-compatible flashcards for the given topic. Provide both simple and detailed explainations for each card. Use markdown as preferred formatting. "
+        }
+      },
+      "id": "01317878-8d98-4e71-9962-2ea34c06c67e",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        1000,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Convert the following to one or more notion blocks:\n```\n## {{ $json.output.topic }}\n\n### Front\n{{ $json.output.front_of_card }}\n\n### Back\n{{ $json.output.back_of_card }}\n```",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=You help the user convert markdown to notion blocks. In your response, return only the notion blocks json so that the user may upload directly via the notion api.\n\nNotion rules:\n1. ensure all heading blocks use rich_text."
+            }
+          ]
+        }
+      },
+      "id": "b80e6bc5-8819-48ff-af24-a0d1ffc90540",
+      "name": "Markdown to Notion Block",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        1400,
+        460
+      ]
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-16T05:24:15.000Z",
+  "versionId": "9a0ae860-a9b2-4c40-9f92-9fdeb467906f"
+}
