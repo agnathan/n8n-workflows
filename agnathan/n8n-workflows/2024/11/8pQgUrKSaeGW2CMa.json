@@ -1,0 +1,256 @@
+{
+  "active": false,
+  "connections": {
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Function",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "HTML Extract Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML Extract Data": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML Extract Items": {
+      "main": [
+        [
+          {
+            "node": "HTML Extract Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cron": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-30T15:54:51.709Z",
+  "id": "8pQgUrKSaeGW2CMa",
+  "meta": null,
+  "name": "HTML Parsing Data and Sending to Email",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$node[\"HTML Extract Data\"].data[\"title\"]}}",
+              "operation": "contains",
+              "value2": "Show HN:"
+            }
+          ]
+        }
+      },
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        260,
+        560
+      ],
+      "typeVersion": 1,
+      "id": "dec5d4b5-8049-49b7-83da-cdc56bd5161e"
+    },
+    {
+      "parameters": {
+        "subject": "Trending Show HN",
+        "text": "={{$node[\"Function\"].data[\"emailText\"]}}",
+        "options": {}
+      },
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "position": [
+        660,
+        460
+      ],
+      "typeVersion": 1,
+      "id": "083c3452-5a33-457d-a7dd-76c3033166ca"
+    },
+    {
+      "parameters": {
+        "functionCode": "let emailText = 'Currently trending \"Show HN\":\\n\\n';\n\nfor (let item of items) {\n  emailText += `${item.json.rank} ${item.json.title}\\n${item.json.url}\\n\\n`;\n}\n\nreturn [{json: {emailText}}]\n"
+      },
+      "name": "Function",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        460,
+        460
+      ],
+      "typeVersion": 1,
+      "id": "ca1e8cc3-f2a2-4614-9711-9b3ecf2b48df"
+    },
+    {
+      "parameters": {
+        "url": "https://news.ycombinator.com/",
+        "responseFormat": "string",
+        "options": {}
+      },
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        -340,
+        560
+      ],
+      "typeVersion": 1,
+      "id": "58ea4d1f-3e6f-4f83-827e-05faedd1e214"
+    },
+    {
+      "parameters": {
+        "extractionValues": {
+          "values": [
+            {
+              "key": "item",
+              "cssSelector": "tr.athing",
+              "returnValue": "html",
+              "returnArray": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "HTML Extract Items",
+      "type": "n8n-nodes-base.htmlExtract",
+      "position": [
+        -140,
+        560
+      ],
+      "typeVersion": 1,
+      "id": "adc02eff-d4ac-4197-be31-423cb12735ed"
+    },
+    {
+      "parameters": {
+        "dataPropertyName": "item",
+        "extractionValues": {
+          "values": [
+            {
+              "key": "title",
+              "cssSelector": "a"
+            },
+            {
+              "key": "url",
+              "cssSelector": "a.storylink",
+              "returnValue": "attribute",
+              "attribute": "href"
+            },
+            {
+              "key": "rank",
+              "cssSelector": ".rank"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "HTML Extract Data",
+      "type": "n8n-nodes-base.htmlExtract",
+      "position": [
+        60,
+        560
+      ],
+      "typeVersion": 1,
+      "id": "a869cd71-59d8-45d2-8caa-cfdb5bca5846"
+    },
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "hour": 13
+            }
+          ]
+        }
+      },
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        -540,
+        560
+      ],
+      "typeVersion": 1,
+      "id": "cd01dfc9-2e15-4e90-a2bb-c6f5309e9260"
+    },
+    {
+      "parameters": {},
+      "id": "bd0b3c02-17fe-4bbc-81db-4adbd32e2622",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -580,
+        760
+      ]
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:21:25.482Z",
+      "updatedAt": "2024-12-01T14:21:25.482Z",
+      "id": "SIJWhQ43whBotfGd",
+      "name": "Community Examples"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-01T14:24:53.000Z",
+  "versionId": "d97ba8c0-8456-43b8-b3e9-272faecf681a"
+}
