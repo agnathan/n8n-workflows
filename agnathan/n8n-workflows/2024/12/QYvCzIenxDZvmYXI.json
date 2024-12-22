@@ -1,0 +1,104 @@
+{
+  "active": false,
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "HubSpot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-07T06:12:00.731Z",
+  "id": "QYvCzIenxDZvmYXI",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Gmail Playground",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "simple": false,
+        "filters": {},
+        "options": {}
+      },
+      "id": "ec42ae3a-ce99-400c-ae94-e92c4fef6384",
+      "name": "Gmail Trigger",
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        820,
+        380
+      ],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "1u2Mmlsq8KlKt3Dn",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "appToken",
+        "resource": "engagement",
+        "type": "email",
+        "metadata": {
+          "fromEmail": "daniel@alternativeinvestingclub.com",
+          "firstName": "Daniel",
+          "html": "Holmlund",
+          "subject": "Hi from n8n",
+          "toEmail": [
+            "daniel@goodsamaritancapital.com"
+          ]
+        },
+        "additionalFields": {
+          "associations": {}
+        }
+      },
+      "id": "1a6e04a5-ae67-4261-b409-6042dd2baa37",
+      "name": "HubSpot",
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.1,
+      "position": [
+        1040,
+        380
+      ],
+      "credentials": {
+        "hubspotAppToken": {
+          "id": "8EPzO2ej7TvaOPOp",
+          "name": "HubSpot account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:20:20.071Z",
+      "updatedAt": "2024-12-01T14:21:40.229Z",
+      "id": "hvphHbQ14WJzrgp9",
+      "name": "My Learning"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-11T00:07:43.000Z",
+  "versionId": "4214d608-a3fd-4a11-81a7-421838d79502"
+}
