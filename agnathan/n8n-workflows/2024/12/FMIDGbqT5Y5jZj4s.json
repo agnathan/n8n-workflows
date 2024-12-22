@@ -1,0 +1,71 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-05T19:31:12.024Z",
+  "id": "FMIDGbqT5Y5jZj4s",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Supabase Playground",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "2da42c6c-2545-48a2-8621-a2d67c85cda8",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        680,
+        160
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "355aec97-3207-4f7f-a846-55f7672f26cb",
+      "name": "Supabase",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        840,
+        160
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "HwcsUCmO5EkOB3Rg",
+          "name": "Supabase account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:20:20.071Z",
+      "updatedAt": "2024-12-01T14:21:40.229Z",
+      "id": "hvphHbQ14WJzrgp9",
+      "name": "My Learning"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-14T13:13:37.000Z",
+  "versionId": "1dba392c-4fb2-4443-8533-9c8456100fde"
+}
