@@ -1,0 +1,572 @@
+{
+  "active": true,
+  "connections": {
+    "Move Binary Data": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find caption ID by language": {
+      "main": [
+        [
+          {
+            "node": "Download caption",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Video Id1": {
+      "main": [
+        [
+          {
+            "node": "List captions for video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase1": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Supabase1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Parse Video Id1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List captions for video": {
+      "main": [
+        [
+          {
+            "node": "Find caption ID by language",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download caption": {
+      "main": [
+        [
+          {
+            "node": "Move Binary Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Supabase2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-14T13:15:02.636Z",
+  "id": "D5YaANgY5NoDMMmc",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Youtube Get Video Subtitles",
+  "nodes": [
+    {
+      "parameters": {
+        "setAllData": false,
+        "destinationKey": "content",
+        "options": {}
+      },
+      "id": "d91bac04-f214-41cc-9c52-1ed55478271f",
+      "name": "Move Binary Data",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "typeVersion": 1,
+      "position": [
+        3120,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "caption",
+              "value": "={{ $jmespath( $json.items, \"[?snippet.language == 'en'] | [0]\" ) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9c613057-07b1-4e70-b17f-fa5c48fc1ab7",
+      "name": "Find caption ID by language",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        3740,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "Meeting",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $json.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "transcript",
+              "fieldValue": "={{ $('Edit Fields').item.json.transcript }}"
+            }
+          ]
+        }
+      },
+      "id": "3fdf8f12-87d8-4f15-b31e-042d3ac8ae10",
+      "name": "Supabase1",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3760,
+        480
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "HwcsUCmO5EkOB3Rg",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4a92eb3d-1e03-46d6-8d34-2ab84cb900c1",
+              "name": "id",
+              "value": "={{ $('Parse Video Id1').item.json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "e1c23864-d77d-49ea-acb8-58fc54d2c614",
+              "name": "title",
+              "value": "={{ $('Parse Video Id1').item.json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "373c9bbd-df6d-4284-b1cf-b900d7af3a3d",
+              "name": "speaker",
+              "value": "={{ $('Parse Video Id1').item.json.speaker }}",
+              "type": "string"
+            },
+            {
+              "id": "2684180f-4915-426e-a590-7fe6430b12f2",
+              "name": "videoId",
+              "value": "={{ $('Parse Video Id1').item.json.videoId }}",
+              "type": "string"
+            },
+            {
+              "id": "b3863ab2-ccee-4426-8787-b16880e58562",
+              "name": "youtubeurl",
+              "value": "={{ $('Parse Video Id1').item.json.youtubeurl }}",
+              "type": "string"
+            },
+            {
+              "id": "b7b33085-46d8-423c-94f2-ee1f20f46672",
+              "name": "transcript",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": "=",
+        "options": {}
+      },
+      "id": "f22bed94-57fb-4e5f-b74c-542ff36fd85a",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3340,
+        480
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1D3C00PX5sXsc5I6uz6UoaIU55nkyApad8AFvgYHmX_Y",
+          "mode": "list",
+          "cachedResultName": "n8n debug",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1D3C00PX5sXsc5I6uz6UoaIU55nkyApad8AFvgYHmX_Y/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1D3C00PX5sXsc5I6uz6UoaIU55nkyApad8AFvgYHmX_Y/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "youtubeurl": "={{ $json.youtubeurl }}",
+            "id": "={{ $json.id }}",
+            "title": "={{ $json.title }}",
+            "speaker": "={{ $json.speaker }}",
+            "videoId": "={{ $json.videoId }}"
+          },
+          "matchingColumns": [
+            "youtubeurl"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "title",
+              "displayName": "title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "speaker",
+              "displayName": "speaker",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "videoId",
+              "displayName": "videoId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "youtubeurl",
+              "displayName": "youtubeurl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "transcript",
+              "displayName": "transcript",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bfff88d3-1d5f-4694-af25-72b8a461c628",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        3540,
+        480
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "9YFxgWcYXZDQ2dtk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "Meeting",
+        "limit": 20,
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "youtubeurl",
+              "condition": "neq",
+              "keyValue": "null"
+            },
+            {
+              "keyName": "transcript",
+              "condition": "is",
+              "keyValue": "null"
+            }
+          ]
+        }
+      },
+      "id": "9dedbf0f-dc84-4227-a863-459573f3b285",
+      "name": "Supabase2",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2880,
+        260
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "HwcsUCmO5EkOB3Rg",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// console.log($jmespath(obj, \"json.url\"))\n// console.log(urlParams)\n// console.log(videoId)\n\n\n// console.log($('Loop Over Items1'))\nobj = $input.first()\n// console.log(obj)\nurl = $jmespath(obj, \"json.youtubeurl\")\n// console.log(url)\nurlParams = url.split(\"v=\")\nconsole.log(urlParams)\nif (urlParams.length > 1){\n  videoId = urlParams[1] || \"\"\n  items[0].json.videoId = videoId\n}\nurlParams = url.split(\"live/\")\nconsole.log(urlParams)\nif (urlParams.length > 1){\n  videoId = urlParams[1] || \"\"\n  items[0].json.videoId = videoId\n}\n\n\n// console.log(items)\nreturn $input.all();"
+      },
+      "id": "8ada9c77-990b-42ae-a5bc-5b7837c652b2",
+      "name": "Parse Video Id1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3320,
+        280
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {},
+      "id": "eef9b709-45da-434e-b9eb-7d174f8dd1d6",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3980,
+        480
+      ],
+      "webhookId": "3e6b4f52-6a12-4940-98c3-0d415be9395f"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "9d5c5d34-56b4-4a90-beb1-a3a0565d550e",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        3100,
+        260
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "url": "https://www.googleapis.com/youtube/v3/captions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "youTubeOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "videoId",
+              "value": "={{ $json.videoId }}"
+            },
+            {
+              "name": "part",
+              "value": "snippet"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7ab705a5-f895-40f7-bf72-049c61dec4a0",
+      "name": "List captions for video",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        3520,
+        280
+      ],
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "trOpthyPE3OjXWYC",
+          "name": "YouTube account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://www.googleapis.com/youtube/v3/captions/{{ $json.caption.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "youTubeOAuth2Api",
+        "options": {}
+      },
+      "id": "63e07bf2-293b-4557-89f1-0e768f594776",
+      "name": "Download caption",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        3920,
+        280
+      ],
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "trOpthyPE3OjXWYC",
+          "name": "YouTube account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 6
+            }
+          ]
+        }
+      },
+      "id": "4d864725-e1d3-40be-9274-a72f8b7c003b",
+      "name": "Schedule Trigger1",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        2700,
+        260
+      ]
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    },
+    "node:Schedule Trigger1": {
+      "recurrenceRules": [
+        18
+      ]
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-12-05T14:43:34.278Z",
+      "updatedAt": "2024-12-05T14:43:34.278Z",
+      "id": "YWL3bc4oYdzguiTJ",
+      "name": "Production"
+    },
+    {
+      "createdAt": "2024-12-07T06:11:13.857Z",
+      "updatedAt": "2024-12-07T06:11:13.857Z",
+      "id": "bt1t5V5KUyuErc7s",
+      "name": "AIC Speaker Workflow"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-12-15T15:50:03.000Z",
+  "versionId": "bebee2f2-9580-4ca6-89a7-47147c647d98"
+}
