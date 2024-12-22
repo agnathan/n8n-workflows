@@ -1,0 +1,77 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-10T00:29:15.746Z",
+  "id": "ThtALo6EguvWrKRx",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "NocoDB Playground",
+  "nodes": [
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "workspaceId": "w0dgkv8w",
+        "projectId": "pcgglqm4cq36ccb",
+        "table": "mfbn3165o2melnc"
+      },
+      "id": "43e642a2-d80a-442b-af19-c08253ccaf48",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        920,
+        380
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "DahiteaxE7qHp5k3",
+          "name": "NocoDB Token account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "c700b05a-8e52-4fe6-b6e9-d11625e0f841",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        760,
+        380
+      ]
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:20:20.071Z",
+      "updatedAt": "2024-12-01T14:21:40.229Z",
+      "id": "hvphHbQ14WJzrgp9",
+      "name": "My Learning"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-11T00:10:41.000Z",
+  "versionId": "1861fb2e-d236-4386-8376-3f412346e8ad"
+}
