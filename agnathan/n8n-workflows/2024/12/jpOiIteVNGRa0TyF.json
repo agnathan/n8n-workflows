@@ -1,0 +1,403 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get All Users",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create Notion Page",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get Notion Page",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Notion2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create Database Page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Database Page": {
+      "main": [
+        [
+          {
+            "node": "Append Block",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append Block": {
+      "main": [
+        [
+          {
+            "node": "Get all Blocks",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-02T23:40:38.185Z",
+  "id": "jpOiIteVNGRa0TyF",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Notion API Playground",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Database API\nThis API allows the caller to create database pages, edit their properties and edit the blocks within the pages.\n",
+        "height": 655.6479190101229,
+        "width": 1055.2384701912272,
+        "color": 2
+      },
+      "id": "2dbff5a6-ea03-4e41-9929-2f850782f1aa",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        800,
+        1240
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "6475744d-15fd-459c-ab90-715ddf951e7b",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        300,
+        1400
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Users API\n\nGet all users connected to your Notion account",
+        "height": 351.59730033745757,
+        "width": 441.4825646794152,
+        "color": 7
+      },
+      "id": "22bbbf51-82bb-4b44-a622-a0742a43bf2c",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        880,
+        3960
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "user",
+        "operation": "getAll"
+      },
+      "id": "0cd54e0d-fdca-47f2-a082-916b73cc4594",
+      "name": "Get All Users",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        1000,
+        4100
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## Notion API\n\nThe Notion API allows access to the following information\n\n- Pages: Create, update, and retrieve page content.\n- Databases: Manage database, properties, entries, and schemas.\n- Users: Access user profiles and permissions.\n- Comments: Handle page and inline comments.\n- Content Queries: Search through workspace content.\n- Authentication: Secure integrations with OAuth 2.0.\n- Link Previews: Customize how links appear when shared.",
+        "height": 340.72006934042435,
+        "width": 499.57973596170075
+      },
+      "id": "679c38e5-4a45-4346-8a4d-1fe41c1500e0",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Pages API\n\nCreate, Read, Update, Delete\n",
+        "height": 755.0576131939197,
+        "width": 916.5599699433535,
+        "color": 2
+      },
+      "id": "34ca07cd-3622-485d-9e74-2aeeb07768f6",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        800,
+        400
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "pageId": {
+          "__rl": true,
+          "value": "https://www.notion.so/Page-API-Playground-15d321415464804393b1c1101cc13f73",
+          "mode": "url"
+        },
+        "title": "Page Test",
+        "options": {}
+      },
+      "id": "4459ca0f-b98c-43d5-9a4f-670b177b04bb",
+      "name": "Create Notion Page",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        860,
+        540
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "get",
+        "pageId": {
+          "__rl": true,
+          "value": "={{ $json.url }}",
+          "mode": "url"
+        }
+      },
+      "id": "5befc8ac-2dbd-48bc-a620-8007ee281850",
+      "name": "Get Notion Page",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        860,
+        760
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "text": "API",
+        "options": {}
+      },
+      "id": "9a948b1c-faba-4fba-96ce-8c8887e3df08",
+      "name": "Notion2",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        860,
+        960
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "This workflow creates a Notion Database Page, adds some blocks and then gets all the blocks on the page for the automation",
+        "height": 81.66213430204073,
+        "width": 305.22258195130706,
+        "color": 5
+      },
+      "id": "27333788-7fcc-45fb-93cd-ba7cea358be5",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1500,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "databaseId": {
+          "__rl": true,
+          "value": "15d32141-5464-804e-a35d-df7932a07980",
+          "mode": "list",
+          "cachedResultName": "Database API Playground",
+          "cachedResultUrl": "https://www.notion.so/15d321415464804ea35ddf7932a07980"
+        },
+        "title": "Hello, Social Media with Rich Paragraph",
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Category|multi_select",
+              "multiSelectValue": [
+                "Social Media"
+              ]
+            }
+          ]
+        },
+        "blockUi": {
+          "blockValues": [
+            {
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "This",
+                    "annotationUi": {}
+                  },
+                  {
+                    "text": " is bold",
+                    "annotationUi": {
+                      "bold": false
+                    }
+                  },
+                  {
+                    "text": " is a link ",
+                    "isLink": true,
+                    "textLink": "https://example.com",
+                    "annotationUi": {}
+                  },
+                  {
+                    "textType": "mention",
+                    "mentionType": "database",
+                    "database": {
+                      "__rl": true,
+                      "value": "15032141-5464-800c-b1e0-fabee053a6e8",
+                      "mode": "list",
+                      "cachedResultName": "Friday Speaker Meetings",
+                      "cachedResultUrl": "https://www.notion.so/150321415464800cb1e0fabee053a6e8"
+                    },
+                    "annotationUi": {}
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cb58d041-fa78-461b-a30a-9c084841419e",
+      "name": "Create Database Page",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        860,
+        1340
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "block",
+        "blockId": {
+          "__rl": true,
+          "value": "={{ $json.url }}",
+          "mode": "url"
+        },
+        "blockUi": {
+          "blockValues": [
+            {
+              "textContent": "This block was added in a separate API call"
+            }
+          ]
+        }
+      },
+      "id": "6534667a-4f35-4249-82e0-1abcd9f194ff",
+      "name": "Append Block",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        1080,
+        1340
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "block",
+        "operation": "getAll",
+        "blockId": {
+          "__rl": true,
+          "value": "={{ $('Create Database Page').item.json.url }}",
+          "mode": "url"
+        }
+      },
+      "id": "58e55cc3-a29a-4511-803e-c446f7e78470",
+      "name": "Get all Blocks",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        1300,
+        1340
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:20:20.071Z",
+      "updatedAt": "2024-12-01T14:21:40.229Z",
+      "id": "hvphHbQ14WJzrgp9",
+      "name": "My Learning"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-15T15:04:53.000Z",
+  "versionId": "664a089d-148f-476d-952d-56ce5185231e"
+}
