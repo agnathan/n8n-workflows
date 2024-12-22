@@ -1,0 +1,412 @@
+{
+  "active": false,
+  "connections": {
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Update Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Parse JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse JSON": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "HTML Extract": {
+      "main": [
+        [
+          {
+            "node": "Clean Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "HTML Extract",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clean Content": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split In Batches": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Read Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-16T05:04:33.884Z",
+  "id": "6CkvcBRvmSwPqPRx",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Website Enrichment",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "779aba5a-ca15-4b07-94c8-803d2f6d5a25",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        460,
+        460
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "url": "=https://www.{{ $node[\"Split In Batches\"].json[\"Domain\"] }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {
+              "followRedirects": true
+            }
+          }
+        }
+      },
+      "id": "246d9270-c780-4b7c-86f9-5d764e5b609a",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1080,
+        600
+      ],
+      "typeVersion": 3,
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "extractionValues": {
+          "values": [
+            {
+              "key": "body",
+              "cssSelector": "html"
+            }
+          ]
+        },
+        "options": {
+          "trimValues": false
+        }
+      },
+      "id": "886f9e1c-2f19-4ba6-ac33-bd84688b98c8",
+      "name": "HTML Extract",
+      "type": "n8n-nodes-base.htmlExtract",
+      "position": [
+        1260,
+        720
+      ],
+      "typeVersion": 1,
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "prompt": "=This is the content of the website {{ $node[\"Split In Batches\"].json[\"Domain\"] }}:\"{{ $json[\"contentShort\"] }}\"\n\nIn a JSON format:\n\n- Give me the value proposition of the company. In less than 25 words. In English. Casual Tone. Format is: \"[Company Name] helps [target audience] [achieve desired outcome] and [additional benefit]\"\n\n- Give me the industry of the company. (Classify using this industry list: [Agriculture, Arts, Construction, Consumer Goods, Education, Entertainment, Finance, Other, Health Care, Legal, Manufacturing, Media & Communications, Public Administration, Advertisements, Real Estate, Recreation & Travel, Retail, Software, Transportation & Logistics, Wellness & Fitness] if it's ambiguous between Sofware and Consumer Goods, prefer Consumer Goods)\n\n- Guess the target audience of each company.(Classify and choose 1 from this list: [sales teams, marketing teams, HR teams, customer Service teams, consumers, C-levels] Write it in lowercase)\n\n- Tell me if they are B2B or B2C\n\nformat should be:\n{\"value_proposition\": value_proposition,\n\"industry\": industry,\n\"target_audience\": target_audience, \n\"market\": market }\n\nJSON:",
+        "options": {
+          "maxTokens": 120,
+          "temperature": 0,
+          "topP": 1
+        },
+        "requestOptions": {}
+      },
+      "id": "e1c63b02-51a5-4cc0-81d4-89aac5062f0b",
+      "name": "OpenAI",
+      "type": "n8n-nodes-base.openAi",
+      "position": [
+        1580,
+        720
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "openAiApi": {
+          "id": "FXa5oPwfEyVR0oL0",
+          "name": "OpenAi account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "85125f72-fcaa-4121-9893-8a003157d12d",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        1920,
+        480
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "if ($input.item.json.body){\n\n\n\n$input.item.json.content = $input.item.json.body.replaceAll('/^\\s+|\\s+$/g', '').replace('/(\\r\\n|\\n|\\r)/gm', \"\").replace(/\\s+/g, ' ')\n\n\n  $input.item.json.contentShort = $input.item.json.content.slice(0, 10000)\n}\n\n\n\n\nreturn $input.item"
+      },
+      "id": "b5fca8ca-42ea-4e95-b589-15ccd46066a7",
+      "name": "Clean Content",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        1420,
+        600
+      ],
+      "executeOnce": false,
+      "typeVersion": 1,
+      "alwaysOutputData": true,
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "14MHCd1zbaVnGVFsLot6l3lb_XeM4mO2SCgOSzxg9rtI",
+          "mode": "list",
+          "cachedResultName": "Company List",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/14MHCd1zbaVnGVFsLot6l3lb_XeM4mO2SCgOSzxg9rtI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/14MHCd1zbaVnGVFsLot6l3lb_XeM4mO2SCgOSzxg9rtI/edit#gid=0"
+        },
+        "columnToMatchOn": "Domain",
+        "valueToMatchOn": "={{ $json[\"Domain\"] }}",
+        "fieldsUi": {
+          "values": [
+            {
+              "column": "market",
+              "fieldValue": "={{ $json[\"market\"] }}"
+            },
+            {
+              "column": "industry",
+              "fieldValue": "={{ $json[\"industry\"] }}"
+            },
+            {
+              "column": "value_proposition",
+              "fieldValue": "={{ $json[\"value_proposition\"] }}"
+            },
+            {
+              "column": "target_audience",
+              "fieldValue": "={{ $json[\"target_audience\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "64909a83-5a3e-492d-8b8d-8039ab3ee4c3",
+      "name": "Update Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [
+        2140,
+        660
+      ],
+      "typeVersion": 3,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "9YFxgWcYXZDQ2dtk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Add a new field called 'myNewField' to the\n// JSON of the item\n$input.item.json.value_proposition=JSON.parse($input.item.json.text).value_proposition\n\n$input.item.json.industry=JSON.parse($input.item.json.text).industry\n\n$input.item.json.market=JSON.parse($input.item.json.text).market\n\n$input.item.json.target_audience=JSON.parse($input.item.json.text).target_audience\n\nreturn $input.item;"
+      },
+      "id": "4d090111-c160-4c08-bbae-372938577449",
+      "name": "Parse JSON",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        1740,
+        600
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "14MHCd1zbaVnGVFsLot6l3lb_XeM4mO2SCgOSzxg9rtI",
+          "mode": "list",
+          "cachedResultName": "Company List",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/14MHCd1zbaVnGVFsLot6l3lb_XeM4mO2SCgOSzxg9rtI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/14MHCd1zbaVnGVFsLot6l3lb_XeM4mO2SCgOSzxg9rtI/edit#gid=0"
+        },
+        "options": {}
+      },
+      "id": "14c8bee5-79d3-40fd-85d7-284be10b026d",
+      "name": "Read Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [
+        680,
+        460
+      ],
+      "typeVersion": 3,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "9YFxgWcYXZDQ2dtk",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "batchSize": 3,
+        "options": {}
+      },
+      "id": "f97e304b-7c2b-42bb-88ee-8f5f4a9ba090",
+      "name": "Split In Batches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "position": [
+        900,
+        460
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "unit": "seconds"
+      },
+      "id": "412bc281-d5b4-4f0a-9e73-3bdafed04e12",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "position": [
+        2420,
+        820
+      ],
+      "webhookId": "d44bc024-1c21-44e0-b2b4-5cff6fb9f402",
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:23:56.869Z",
+      "updatedAt": "2024-12-01T14:23:56.869Z",
+      "id": "Paq9K6w31GZ583JD",
+      "name": "My Drafts"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-16T05:44:27.000Z",
+  "versionId": "4f5f33a1-4d93-448f-8eac-5bc036caec10"
+}
