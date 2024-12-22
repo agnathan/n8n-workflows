@@ -1,0 +1,60 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "DocumentGenerator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-21T05:25:00.879Z",
+  "id": "Fn67evmPAZCcESwO",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "27b554d7-1f9d-4187-81e6-a0c76158ee68",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        820,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "template": "{{"
+      },
+      "id": "e23d240e-2507-4642-aea4-265c90888582",
+      "name": "DocumentGenerator",
+      "type": "n8n-nodes-document-generator.documentGenerator",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        380
+      ]
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-21T05:25:00.879Z",
+  "versionId": "d5be9a06-7ec1-4814-ad21-cb8ef1563d26"
+}
