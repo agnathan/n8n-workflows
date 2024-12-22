@@ -1,0 +1,698 @@
+{
+  "active": true,
+  "connections": {
+    "HTML": {
+      "main": [
+        [
+          {
+            "node": "Sendy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cal.com Trigger": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Get Meeting If It Exists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Update Meeting",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create Meeting",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Meeting If It Exists": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-02T23:55:01.816Z",
+  "id": "2ynZA09cTjgcKP4w",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "When AIC Educational Meeting is Created Store in Notion",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "value": "15032141-5464-800c-b1e0-fabee053a6e8",
+          "mode": "list",
+          "cachedResultName": "Friday Speaker Meetings",
+          "cachedResultUrl": "https://www.notion.so/150321415464800cb1e0fabee053a6e8"
+        },
+        "returnAll": true,
+        "simple": false,
+        "options": {}
+      },
+      "id": "0fdae1ac-fa04-440c-92c7-a9dfc90abf40",
+      "name": "Notion",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        1880,
+        1080
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "campaign",
+        "fromName": "Daniel Holmlund",
+        "fromEmail": "daniel@alternativeinvestingclub.com",
+        "replyTo": "daniel@alternativeinvestingclub.com",
+        "title": "=Alternative Investing Club:{{ $('Edit Fields').item.json.title }} ",
+        "subject": "=Alternative Investing Club:{{ $('Edit Fields').item.json.title }} ",
+        "htmlText": "={{ $json.html }}",
+        "brandId": "1",
+        "additionalFields": {}
+      },
+      "id": "a511fabf-88a4-4030-af70-9e0af3a9554d",
+      "name": "Sendy",
+      "type": "n8n-nodes-base.sendy",
+      "typeVersion": 1,
+      "position": [
+        2440,
+        1080
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "sendyApi": {
+          "id": "SYANw9t0tdE0UIKF",
+          "name": "Sendy account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "html": "<!doctype html><html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\"><head><title>Discount Light</title><!--[if !mso]><!-- --><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><!--<![endif]--><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><style type=\"text/css\">#outlook a { padding:0; }\n          .ReadMsgBody { width:100%; }\n          .ExternalClass { width:100%; }\n          .ExternalClass * { line-height:100%; }\n          body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%; }\n          table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; }\n          img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }\n          p { display:block;margin:13px 0; }</style><!--[if !mso]><!--><style type=\"text/css\">@media only screen and (max-width:480px) {\n            @-ms-viewport { width:320px; }\n            @viewport { width:320px; }\n          }</style><!--<![endif]--><!--[if mso]>\n        <xml>\n        <o:OfficeDocumentSettings>\n          <o:AllowPNG/>\n          <o:PixelsPerInch>96</o:PixelsPerInch>\n        </o:OfficeDocumentSettings>\n        </xml>\n        <![endif]--><!--[if lte mso 11]>\n        <style type=\"text/css\">\n          .outlook-group-fix { width:100% !important; }\n        </style>\n        <![endif]--><!--[if !mso]><!--><link href=\"https://fonts.googleapis.com/css?family=Lato\" rel=\"stylesheet\" type=\"text/css\"><style type=\"text/css\">@import url(https://fonts.googleapis.com/css?family=Lato);</style><!--<![endif]--><style type=\"text/css\">@media only screen and (min-width:480px) {\n        .mj-column-per-100 { width:100% !important; max-width: 100%; }\n.mj-column-per-30 { width:30% !important; max-width: 30%; }\n.mj-column-per-70 { width:70% !important; max-width: 70%; }\n      }</style><style type=\"text/css\">@media only screen and (max-width:480px) {\n      table.full-width-mobile { width: 100% !important; }\n      td.full-width-mobile { width: auto !important; }\n    }</style></head><body style=\"background-color:#E7E7E7;\"><div style=\"display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;\">Pre-header Text</div><div style=\"background-color:#E7E7E7;\"><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width:100%;\"><tbody><tr><td><!--[if mso | IE]><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" style=\"width:600px;\" width=\"600\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]--><div style=\"Margin:0px auto;max-width:600px;\"><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width:100%;\"><tbody><tr><td style=\"direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0;text-align:center;vertical-align:top;\"><!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"\" style=\"vertical-align:top;width:600px;\" ><![endif]--><div class=\"mj-column-per-100 outlook-group-fix\" style=\"font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\"><tr><td align=\"center\" style=\"font-size:0px;padding:0;word-break:break-word;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse:collapse;border-spacing:0px;\"><tbody><tr><td style=\"width:600px;\"><a href=\"https://alternativeinvestingclub.com\" target=\"_blank\"><img alt=\"\" height=\"auto\" src=\"https://alternativeinvestingclub.com/images/email-header.jpg\" style=\"border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;\" width=\"600\"></a></td></tr></tbody></table></td></tr></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbody></table><!--[if mso | IE]><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"body-section-outlook\" style=\"width:600px;\" width=\"600\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]--><div class=\"body-section\" style=\"-webkit-box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15); -moz-box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15); box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15); Margin: 0px auto; max-width: 600px;\"><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width:100%;\"><tbody><tr><td style=\"direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0;padding-top:0;text-align:center;vertical-align:top;\"><!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"\" width=\"600px\" ><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" style=\"width:600px;\" width=\"600\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]--><div style=\"background:#ffffff;background-color:#ffffff;Margin:0px auto;max-width:600px;\"><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#ffffff;background-color:#ffffff;width:100%;\"><tbody><tr><td style=\"direction:ltr;font-size:0px;padding:20px 0;padding-left:15px;padding-right:15px;text-align:center;vertical-align:top;\"><!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"\" style=\"vertical-align:top;width:570px;\" ><![endif]--><div class=\"mj-column-per-100 outlook-group-fix\" style=\"font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\"><tr><td align=\"center\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"><div style=\"font-family:Lato;font-size:16px;font-weight:bold;line-height:24px;text-align:center;color:#212b35;\">🔥 Alternative Investing Club Friday Speaker Event 🔥</div></td></tr><tr><td align=\"center\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"><div style=\"font-family:Lato;font-size:32px;font-weight:bold;line-height:24px;text-align:center;color:#212b35;\">{{ $json.title }}</div></td></tr><tr><td align=\"center\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"><div style=\"font-family:Lato;font-size:16px;font-weight:bold;line-height:24px;text-align:center;color:#212b35;\">{{ $json.date }} at 12:00 PM PST</div></td></tr><tr><td align=\"center\" vertical-align=\"middle\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse:separate;line-height:100%;\"><tr><td align=\"center\" bgcolor=\"#4f46e5\" role=\"presentation\" style=\"border:none;border-radius:3px;cursor:auto;padding:10px 25px;background:#4f46e5;\" valign=\"middle\"><a href=\"https://us02web.zoom.us/meeting/register/tZ0sdu6trzgiEteWCpsNVTeUosePjoZg1NBe#/registration\" style=\"background:#4f46e5;color:white;font-family:Lato;font-size:13px;font-weight:bold;line-height:120%;Margin:0;text-decoration:none;text-transform:none;\" target=\"_blank\">REGISTER TO ATTEND</a></td></tr></table></td></tr></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table></td></tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"body-section-outlook\" style=\"width:600px;\" width=\"600\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]--><div class=\"body-section\" style=\"-webkit-box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15); -moz-box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15); box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15); Margin: 0px auto; max-width: 600px;\"><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width:100%;\"><tbody><tr><td style=\"direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0;padding-top:0;text-align:center;vertical-align:top;\"><!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"\" width=\"600px\" ><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" style=\"width:600px;\" width=\"600\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]--><div style=\"background:#ffffff;background-color:#ffffff;Margin:0px auto;max-width:600px;\"><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#ffffff;background-color:#ffffff;width:100%;\"><tbody><tr><td style=\"direction:ltr;font-size:0px;padding:20px 0;padding-left:15px;padding-right:15px;padding-top:2px;text-align:center;vertical-align:top;\"><!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"\" style=\"vertical-align:top;width:570px;\" ><![endif]--><div class=\"mj-column-per-100 outlook-group-fix\" style=\"font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\"><tr><td align=\"center\" style=\"font-size:0px;padding:0;padding-right:20%;padding-left:20%;word-break:break-word;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse:collapse;border-spacing:0px;\"><tbody><tr><td style=\"width:530px;\"><img alt=\"\" height=\"auto\" src=\"https://altweb-speakers.s3.us-west-2.amazonaws.com/2024-12-06_Meredith-Williamson_Estate-Planning/profile_2024-12-06_Meredith-Williamson_Estate-Planning.jpg\" style=\"border:0;border-radius:5px;display:block;outline:none;text-decoration:none;height:auto;width:100%;\" width=\"530\"></td></tr></tbody></table></td></tr><tr><td align=\"center\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"><div style=\"font-family:Lato;font-size:18px;font-weight:bold;line-height:24px;text-align:center;color:#212b35;\">{{ $json.speaker }}</div></td></tr><tr><td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"><div style=\"font-family:Lato;font-size:16px;font-weight:400;line-height:24px;text-align:left;color:#637381;\">{{ $json.description }}</div></td></tr></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table></td></tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"body-section-outlook\" style=\"width:600px;\" width=\"600\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]--><div class=\"body-section\" style=\"-webkit-box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15); -moz-box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15); box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15); Margin: 0px auto; max-width: 600px;\"><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width:100%;\"><tbody><tr><td style=\"direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0;padding-top:0;text-align:center;vertical-align:top;\"><!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"\" width=\"600px\" ><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" style=\"width:600px;\" width=\"600\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]--><div style=\"background:#ffffff;background-color:#ffffff;Margin:0px auto;max-width:600px;\"><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#ffffff;background-color:#ffffff;width:100%;\"><tbody><tr><td style=\"direction:ltr;font-size:0px;padding:20px 0;padding-left:15px;padding-right:15px;padding-top:10px;text-align:center;vertical-align:top;\"><!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"\" style=\"vertical-align:top;width:570px;\" ><![endif]--><div class=\"mj-column-per-100 outlook-group-fix\" style=\"font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\"><tr><td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"><div style=\"font-family:Lato;font-size:18px;font-weight:bold;line-height:24px;text-align:left;color:#212b35;\">Visit Our Speaker Hall of Fame</div></td></tr><tr><td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"><div style=\"font-family:Lato;font-size:16px;font-weight:400;line-height:24px;text-align:left;color:#637381;\">We recording all of our past Friday meetings on the <a href=\"https://alternativeinvestingclub.com/speakers\">Speaker Hall of Fame</a> Page on the <a href=\"https://alternativeinvestingclub.com\">Alternative Investing Club</a> website. Feel free to browse and learn. Becoming a smarter investor is free!</div></td></tr><tr><td align=\"center\" style=\"font-size:0px;padding:0;padding-right:0%;padding-left:2%;word-break:break-word;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse:collapse;border-spacing:0px;\"><tbody><tr><td style=\"width:568px;\"><a href=\"https://alternativeinvestingclub.com/speakers\" target=\"_blank\"><img alt=\"\" height=\"auto\" src=\"https://alternativeinvestingclub.com/images/aic-speakers-hall-of-fame-light.jpg\" style=\"border:0;border-radius:5px;display:block;outline:none;text-decoration:none;height:auto;width:100%;\" width=\"568\"></a></td></tr></tbody></table></td></tr></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table></td></tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"body-section-outlook\" style=\"width:600px;\" width=\"600\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]--><div class=\"body-section\" style=\"-webkit-box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15); -moz-box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15); box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15); Margin: 0px auto; max-width: 600px;\"><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width:100%;\"><tbody><tr><td style=\"direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0;padding-top:0;text-align:center;vertical-align:top;\"><!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"\" width=\"600px\" ><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" style=\"width:600px;\" width=\"600\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]--><div style=\"background:#ffffff;background-color:#ffffff;Margin:0px auto;max-width:600px;\"><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#ffffff;background-color:#ffffff;width:100%;\"><tbody><tr><td style=\"direction:ltr;font-size:0px;padding:20px 0;padding-left:15px;padding-right:15px;text-align:center;vertical-align:top;\"><!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"\" style=\"vertical-align:top;width:171px;\" ><![endif]--><div class=\"mj-column-per-30 outlook-group-fix\" style=\"font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\"><tr><td align=\"center\" style=\"font-size:0px;padding:0;word-break:break-word;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse:collapse;border-spacing:0px;\"><tbody><tr><td style=\"width:171px;\"><img alt=\"Daniel Holmlund\" height=\"auto\" src=\"https://altweb-speakers.s3.us-west-2.amazonaws.com/2022-11-04_Daniel-Holmlund_Investing-Strategies-for-Rising-Interest-Rates/profile_2022-11-04_Daniel-Holmlund_Investing-Strategies-for-Rising-Interest-Rates.jpg\" style=\"border:0;border-radius:5px;display:block;outline:none;text-decoration:none;height:auto;width:100%;\" width=\"171\"></td></tr></tbody></table></td></tr></table></div><!--[if mso | IE]></td><td class=\"\" style=\"vertical-align:top;width:399px;\" ><![endif]--><div class=\"mj-column-per-70 outlook-group-fix\" style=\"font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\"><tr><td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"><div style=\"font-family:Lato;font-size:20px;font-style:italic;font-weight:bold;line-height:24px;text-align:left;color:#212b35;\">Daniel Holmlund</div></td></tr><tr><td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"><div style=\"font-family:Lato;font-size:16px;font-style:italic;font-weight:bold;line-height:24px;text-align:left;color:#212b35;\">Founder of the Alternative Investing Club</div></td></tr><tr><td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"><div style=\"font-family:Lato;font-size:14px;font-style:italic;font-weight:400;line-height:5px;text-align:left;color:#212b35;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\" ry=\"2\"/><path d=\"M3 7l9 6 9-6\"/></svg> <a href=\"https://alternativeinvestingclub.com\" class=\"text-link\" style=\"color: #5e6ebf;\">daniel@alternativeinvestingclub.com</a></div></td></tr><tr><td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"><div style=\"font-family:Lato;font-size:14px;font-style:italic;font-weight:400;line-height:5px;text-align:left;color:#212b35;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><!-- Globe --><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M2 12h20\"/><path d=\"M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z\"/></svg> <a href=\"https://alternativeinvestingclub.com\" class=\"text-link\" style=\"color: #5e6ebf;\">Alternative Investing Club</a></div></td></tr><tr><td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"><div style=\"font-family:Lato;font-size:14px;font-style:italic;font-weight:400;line-height:5px;text-align:left;color:#212b35;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.45 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.09 4.18 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72 12.44 12.44 0 0 0 .71 2.81 2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.44 12.44 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"/></svg> <a href=\"https://alternativeinvestingclub.com\" class=\"text-link\" style=\"color: #5e6ebf;\">Schedule a Call with Me</a></div></td></tr></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table></td></tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]--><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width:100%;\"><tbody><tr><td><!--[if mso | IE]><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" style=\"width:600px;\" width=\"600\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]--><div style=\"Margin:0px auto;max-width:600px;\"><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width:100%;\"><tbody><tr><td style=\"direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top;\"><!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"\" width=\"600px\" ><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" style=\"width:600px;\" width=\"600\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]--><div style=\"Margin:0px auto;max-width:600px;\"><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width:100%;\"><tbody><tr><td style=\"direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top;\"><!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"\" style=\"vertical-align:top;width:600px;\" ><![endif]--><div class=\"mj-column-per-100 outlook-group-fix\" style=\"font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" width=\"100%\"><tbody><tr><td style=\"vertical-align:top;padding:0;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" width=\"100%\"><tr><td align=\"center\" style=\"font-size:0px;padding:0;word-break:break-word;\"><!--[if mso | IE]><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" ><tr><td><![endif]--><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"float:none;display:inline-table;\"><tr><td style=\"padding:4px;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#A1A0A0;border-radius:3px;width:30px;\"><tr><td style=\"font-size:0;height:30px;vertical-align:middle;width:30px;\"><a href=\"https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/groups/1455024964841058\" target=\"_blank\"><img height=\"30\" src=\"https://www.mailjet.com/images/theme/v1/icons/ico-social/facebook.png\" style=\"border-radius:3px;\" width=\"30\"></a></td></tr></table></td></tr></table><!--[if mso | IE]></td><td><![endif]--><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"float:none;display:inline-table;\"><!-- <mj-social-element name=\"twitter\" href=\"https://mjml.io/\" background-color=\"#A1A0A0\">\n            </mj-social-element> --></table><!--[if mso | IE]></td><td><![endif]--><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"float:none;display:inline-table;\"><tr><td style=\"padding:4px;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#A1A0A0;border-radius:3px;width:30px;\"><tr><td style=\"font-size:0;height:30px;vertical-align:middle;width:30px;\"><a href=\"https://www.linkedin.com/shareArticle?mini=true&url=https://www.linkedin.com/company/alternativeinvestingclub/&title=&summary=&source=\" target=\"_blank\"><img height=\"30\" src=\"https://www.mailjet.com/images/theme/v1/icons/ico-social/linkedin.png\" style=\"border-radius:3px;\" width=\"30\"></a></td></tr></table></td></tr></table><!--[if mso | IE]></td></tr></table><![endif]--></td></tr><tr><td align=\"center\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"><div style=\"font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:11px;font-weight:400;line-height:16px;text-align:center;color:#445566;\">You are receiving this email advertisement because you registered with Alternative Investing Club LLC. (30 N Gould St Ste R, Sheridan, WY 82801) and agreed to receive emails from us.</div></td></tr><tr><td align=\"center\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\"><div style=\"font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:11px;font-weight:400;line-height:16px;text-align:center;color:#445566;\">[unsubscribe]</div></td></tr></table></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table></td></tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbody></table></div></body></html>"
+      },
+      "id": "4ffe53d9-a248-48cd-a11b-3029880b02c4",
+      "name": "HTML",
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        2240,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"date\": \"{{ new Date($('Notion').item.json.properties['Meeting Date'].date.start).toLocaleDateString(\"en-US\", { month: \"long\", day: \"numeric\", year: \"numeric\" }) }}\",\n  \"title\": \"{{ $('Notion').item.json.properties.Title.title[0].text.content }}\",\n  \"speaker\": \"{{ $('Notion').item.json.properties.Speaker.rich_text[0].text.content }}\",\n  \"description\": \"{{ $json.message.content }}\"\n}\n\n\n",
+        "options": {}
+      },
+      "id": "8539d4d6-7a1b-424d-8df1-9a0fd3a13187",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2040,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Create the Alternative Investing Club Friday Meeting Email Invitation\n\nThis workflow fetches speaker information from a Notion Database Page and generates an email invitation to come to the Friday Speaker meeting.",
+        "height": 601.3934262436792,
+        "width": 1460.3823673539391
+      },
+      "id": "24c1bad4-408b-499f-9449-d0c737eb65b0",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1740,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "58b4ec47-9cc4-42c8-8dc9-5e1b1c4b87b6",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "={{ $json.properties.Status.status.name }}",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "4d6a4941-d169-4e75-8723-cc4a67a17150",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2680,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "events": [
+          "BOOKING_CREATED"
+        ],
+        "options": {
+          "eventTypeId": 668464
+        }
+      },
+      "id": "9c661f07-c188-4bd9-8b44-b7c020723d2e",
+      "name": "Cal.com Trigger",
+      "type": "n8n-nodes-base.calTrigger",
+      "typeVersion": 2,
+      "position": [
+        1840,
+        420
+      ],
+      "webhookId": "bd3fc269-0f4d-42de-bc6f-d66555e60bd0",
+      "credentials": {
+        "calApi": {
+          "id": "pKkWh7vr9SWf8EKB",
+          "name": "Cal account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You are a Person Description Writer. Write a short paragraph, in a friendly voice that does not use exagerating words, describing the a person using the following text. Be sure to include any information about their business in the description. Also include what value an attendee listening this person would get. \n\n{{ $json.description }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0e472d2a-3624-4e06-93bd-61fd4a1c9969",
+      "name": "OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.7,
+      "position": [
+        2080,
+        420
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "FXa5oPwfEyVR0oL0",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Cal.com Trigger\nWhen a new educational speaker books for the Alternative Investing Club",
+        "height": 295.66043274476715,
+        "width": 230.6733452487975,
+        "color": 5
+      },
+      "id": "560a3b01-7d84-4523-b575-b523fc4c41a4",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1780,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## ChatGPT\nThe speaker gives a description of themselves. ChatGPT will rewrite it to also state the value to the AIC Friday Speaker meeting attendee",
+        "height": 297.3561881540762,
+        "width": 320.5483819422067,
+        "color": 5
+      },
+      "id": "ba38e3a7-635d-49fd-8c8c-16a29ee154a9",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2051.3714750722274,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Does the Meeting Exist in Notion?\nIf yes, then use Notion Database Page update\nIf no, then use Notion Database Page create",
+        "height": 293.1167996308028,
+        "width": 472.31849107541365,
+        "color": 5
+      },
+      "id": "607bf763-24b9-4025-9140-98e06e0f286f",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2415.6108635955015,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "value": "15032141-5464-800c-b1e0-fabee053a6e8",
+          "mode": "list",
+          "cachedResultName": "Friday Speaker Meetings",
+          "cachedResultUrl": "https://www.notion.so/150321415464800cb1e0fabee053a6e8"
+        },
+        "filterType": "manual",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "key": "Meeting Date|date",
+              "condition": "equals",
+              "date": "={{ $('Cal.com Trigger').item.json.startTime }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "301618ed-4a22-45ff-b739-488729ad6d52",
+      "name": "Get Meeting If It Exists",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        2480,
+        420
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "update",
+        "pageId": {
+          "__rl": true,
+          "value": "={{ $('Get Meeting If It Exists').item.json.id }}",
+          "mode": "id"
+        },
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "AI Draft Description |rich_text",
+              "textContent": "={{ $('Edit Fields').item.json.description }}"
+            },
+            {
+              "key": "Status|status",
+              "statusValue": "Scheduled"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f571419a-bc54-4073-bac8-b2b019534774",
+      "name": "Update Meeting",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        2960,
+        300
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "databaseId": {
+          "__rl": true,
+          "value": "15032141-5464-800c-b1e0-fabee053a6e8",
+          "mode": "list",
+          "cachedResultName": "Friday Speaker Meetings",
+          "cachedResultUrl": "https://www.notion.so/150321415464800cb1e0fabee053a6e8"
+        },
+        "title": "={{ $('Cal.com Trigger').item.json.responses.title.value }}",
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Meeting Date|date",
+              "date": "={{ $('Cal.com Trigger').item.json.startTime }}"
+            },
+            {
+              "key": "Speaker|rich_text",
+              "textContent": "={{ $('Cal.com Trigger').item.json.responses.name.value }}"
+            },
+            {
+              "key": "Status|status",
+              "statusValue": "Not Scheduled Email Invitation"
+            },
+            {
+              "key": "AI Draft Description |rich_text"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f60fb459-cddb-426e-ad57-f23b62027030",
+      "name": "Create Meeting",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        2960,
+        500
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Notion Database Page Create or Update",
+        "height": 486.4329162920968,
+        "color": 5
+      },
+      "id": "6438f720-0ada-40c0-9747-710765e15bbd",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2920,
+        183.04244590690394
+      ]
+    }
+  ],
+  "pinData": {
+    "Cal.com Trigger": [
+      {
+        "json": {
+          "triggerEvent": "BOOKING_CREATED",
+          "createdAt": "2024-12-05T04:19:44.159Z",
+          "bookerUrl": "https://cal.com",
+          "type": "alternative-investing-club-educational-talk-booking",
+          "title": "Alternative Investing Club",
+          "description": "The Alternative Investing Club meetings every Friday at 12pm Pacific time. By booking this meeting, you are the guest speaker on this particular Friday.\n\nThis is an educational talk. Please no solicitation.\n\nThe format is that I'll introduce you as a person who's come to speak to us. You will be able to present your screen and share slides if you wish, and you'll have 30 to 45 minutes to give an educational talk on the topic. You can either have people ask questions during the talk or you can ask the audience to hold them to the end. I'm sure there'll probably be a lot of questions.",
+          "additionalNotes": "",
+          "customInputs": {},
+          "startTime": "2025-04-04T19:00:00Z",
+          "endTime": "2025-04-04T20:00:00Z",
+          "organizer": {
+            "id": 689767,
+            "name": "Daniel Holmlund",
+            "email": "daniel@goodsamaritancapital.com",
+            "username": "danielholmlund",
+            "timeZone": "America/Los_Angeles",
+            "language": {
+              "locale": "en"
+            },
+            "timeFormat": "h:mma",
+            "utcOffset": -420
+          },
+          "responses": {
+            "name": {
+              "label": "your_name",
+              "value": "Daniel Holmlund",
+              "isHidden": false
+            },
+            "email": {
+              "label": "email_address",
+              "value": "daniel@goodsamaritancapital.com",
+              "isHidden": false
+            },
+            "location": {
+              "label": "location",
+              "value": {
+                "optionValue": "",
+                "value": "integrations:zoom"
+              },
+              "isHidden": false
+            },
+            "title": {
+              "label": "Title of Your Talk",
+              "value": "Grow Your Business with AI",
+              "isHidden": false
+            },
+            "business-website": {
+              "label": "Your Business Website",
+              "value": "https://growyourbusinesswithai.com/",
+              "isHidden": false
+            },
+            "notes": {
+              "label": "additional_notes",
+              "isHidden": true
+            },
+            "guests": {
+              "label": "additional_guests",
+              "value": [],
+              "isHidden": false
+            },
+            "rescheduleReason": {
+              "label": "reason_for_reschedule",
+              "isHidden": true
+            },
+            "phone": {
+              "label": "Phone",
+              "value": "+19714599147",
+              "isHidden": false
+            },
+            "guestDescription": {
+              "label": "Give us a short description of the speaker that can be used to introduce you",
+              "value": "Jason is the principal of Mitre [Pronounced My`-ter] Peak Company, an industrial real estate investment and development company based in Salt Lake City and focused on the Salt Lake City, Denver, and Phoenix markets. Since 2019, Mitre Peak Company has operated as a fee-based operating partner and deal captain for institutional industrial real estate investors and sponsors. Jason has led the acquisitions, underwriting, planning, financing, entitling, development, lease-up, and disposition of 2 million square feet of industrial real estate. Mitre Peak Company is in the early stages of its evolution from a fee-based operator and developer into a GP and Co-GP operator focusing on flex and shallow bay industrial real estate.",
+              "isHidden": false
+            },
+            "photoUploaded": {
+              "label": "I have uploaded a profile photo with this form -> https://forms.gle/dzUsSRSB8rJuWwLMA",
+              "value": true,
+              "isHidden": false
+            },
+            "permission": {
+              "label": "The Alternative Investing Club has my permission to use this photo to advertise the club meeting on social media.",
+              "value": true,
+              "isHidden": false
+            }
+          },
+          "userFieldsResponses": {
+            "business-website": {
+              "label": "Your Business Website",
+              "value": "https://growyourbusinesswithai.com/",
+              "isHidden": false
+            },
+            "phone": {
+              "label": "Phone",
+              "value": "+19714599147",
+              "isHidden": false
+            },
+            "guestDescription": {
+              "label": "Give us a short description of the speaker that can be used to introduce you",
+              "value": "Jason is the principal of Mitre [Pronounced My`-ter] Peak Company, an industrial real estate investment and development company based in Salt Lake City and focused on the Salt Lake City, Denver, and Phoenix markets. Since 2019, Mitre Peak Company has operated as a fee-based operating partner and deal captain for institutional industrial real estate investors and sponsors. Jason has led the acquisitions, underwriting, planning, financing, entitling, development, lease-up, and disposition of 2 million square feet of industrial real estate. Mitre Peak Company is in the early stages of its evolution from a fee-based operator and developer into a GP and Co-GP operator focusing on flex and shallow bay industrial real estate.",
+              "isHidden": false
+            },
+            "photoUploaded": {
+              "label": "I have uploaded a profile photo with this form -> https://forms.gle/dzUsSRSB8rJuWwLMA",
+              "value": true,
+              "isHidden": false
+            },
+            "permission": {
+              "label": "The Alternative Investing Club has my permission to use this photo to advertise the club meeting on social media.",
+              "value": true,
+              "isHidden": false
+            }
+          },
+          "attendees": [
+            {
+              "email": "daniel@goodsamaritancapital.com",
+              "name": "Daniel Holmlund",
+              "firstName": "",
+              "lastName": "",
+              "timeZone": "America/Los_Angeles",
+              "language": {
+                "locale": "en"
+              },
+              "utcOffset": -420
+            }
+          ],
+          "location": "integrations:zoom",
+          "conferenceCredentialId": 325799,
+          "destinationCalendar": [
+            {
+              "id": 313824,
+              "integration": "google_calendar",
+              "externalId": "daniel@alternativeinvestingclub.com",
+              "primaryEmail": "daniel@alternativeinvestingclub.com",
+              "userId": 689767,
+              "eventTypeId": null,
+              "credentialId": 500392
+            }
+          ],
+          "hideCalendarNotes": false,
+          "hideCalendarEventDetails": false,
+          "requiresConfirmation": false,
+          "eventTypeId": 668464,
+          "seatsShowAttendees": true,
+          "seatsPerTimeSlot": null,
+          "seatsShowAvailabilityCount": true,
+          "schedulingType": null,
+          "iCalUID": "xAZHTVxuC3Cgboa9aKm2Lq@Cal.com",
+          "iCalSequence": 0,
+          "oneTimePassword": null,
+          "uid": "xAZHTVxuC3Cgboa9aKm2Lq",
+          "conferenceData": {
+            "createRequest": {
+              "requestId": "8867fe6c-9326-5912-9766-fb3553f58d20"
+            }
+          },
+          "videoCallData": {
+            "type": "zoom_video",
+            "id": "81355349561",
+            "password": "",
+            "url": "https://us02web.zoom.us/j/81355349561"
+          },
+          "appsStatus": [
+            {
+              "appName": "zoom",
+              "type": "zoom_video",
+              "success": 1,
+              "failures": 0,
+              "errors": []
+            },
+            {
+              "appName": "google-calendar",
+              "type": "google_calendar",
+              "success": 1,
+              "failures": 0,
+              "errors": [],
+              "warnings": []
+            }
+          ],
+          "eventTitle": "Alternative Investing Club: Educational Talk Booking",
+          "eventDescription": "The Alternative Investing Club meetings every Friday at 12pm Pacific time. By booking this meeting, you are the guest speaker on this particular Friday.\n\nThis is an educational talk. Please no solicitation.\n\nThe format is that I'll introduce you as a person who's come to speak to us. You will be able to present your screen and share slides if you wish, and you'll have 30 to 45 minutes to give an educational talk on the topic. You can either have people ask questions during the talk or you can ask the audience to hold them to the end. I'm sure there'll probably be a lot of questions.",
+          "price": 0,
+          "currency": "usd",
+          "length": 60,
+          "bookingId": 4713515,
+          "metadata": {
+            "videoCallUrl": "https://us02web.zoom.us/j/81355349561"
+          },
+          "status": "ACCEPTED"
+        }
+      }
+    ],
+    "OpenAI": [
+      {
+        "json": {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "Meet Alex, a knowledgeable and approachable expert in the field of alternative investing. Every Friday at 12pm Pacific time, Alex joins the Alternative Investing Club, where they share insights that are both informative and accessible. With a passion for educating others, Alex leads engaging discussions that invite participation and curiosity. Attendees can expect to gain a deeper understanding of alternative investment strategies, with the opportunity to ask questions throughout the session or save them for the end. Whether you're looking to enhance your investment knowledge or explore new opportunities, Alex's talk promises to be an enriching experience.",
+            "refusal": null
+          },
+          "logprobs": null,
+          "finish_reason": "stop"
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Cal.com Trigger": {
+      "webhookId": "592c886b-4d07-44cb-9bcf-0b782fdff958"
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:23:56.869Z",
+      "updatedAt": "2024-12-01T14:23:56.869Z",
+      "id": "Paq9K6w31GZ583JD",
+      "name": "My Drafts"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-12-05T12:20:51.000Z",
+  "versionId": "2338b87a-4dcf-434e-8f41-2cea631a39c2"
+}
