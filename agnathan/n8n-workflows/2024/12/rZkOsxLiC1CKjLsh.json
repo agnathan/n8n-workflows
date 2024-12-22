@@ -1,0 +1,80 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Sendy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-05T13:07:02.603Z",
+  "id": "rZkOsxLiC1CKjLsh",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AIC Member Onboarding to Sendy",
+  "nodes": [
+    {
+      "parameters": {
+        "email": "={{ $json.body.record.email }}",
+        "listId": "foLcFsVbKYq0QX0o1BgGrQ",
+        "additionalFields": {}
+      },
+      "id": "68b71720-fefc-4b16-9a7a-6dea12c5ecb0",
+      "name": "Sendy",
+      "type": "n8n-nodes-base.sendy",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        320
+      ],
+      "credentials": {
+        "sendyApi": {
+          "id": "SYANw9t0tdE0UIKF",
+          "name": "Sendy account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "f8e38aa4-8855-42f8-a1b9-3186a7a3dfa9",
+        "options": {}
+      },
+      "id": "582bcfc5-e3c3-4d94-a56a-2c59b32bb21c",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        780,
+        320
+      ],
+      "webhookId": "f8e38aa4-8855-42f8-a1b9-3186a7a3dfa9"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-05T14:43:34.278Z",
+      "updatedAt": "2024-12-05T14:43:34.278Z",
+      "id": "YWL3bc4oYdzguiTJ",
+      "name": "Production"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-12-05T14:43:36.000Z",
+  "versionId": "a03438e4-f9be-4693-b262-d84676da6aec"
+}
