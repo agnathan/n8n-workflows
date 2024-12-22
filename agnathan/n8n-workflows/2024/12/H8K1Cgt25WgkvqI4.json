@@ -1,0 +1,539 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Input variables",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "prepare response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "intensity > 0.6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "has intensity data?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Input variables": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "intensity > 0.6": {
+      "main": [
+        [
+          {
+            "node": "millisecs to seconds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "prepare response": {
+      "main": [
+        [
+          {
+            "node": "Respond with moments",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has intensity data?": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No intensity data available for video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "millisecs to seconds": {
+      "main": [
+        [
+          {
+            "node": "Filter out moments close to each other",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create each moment (human readable)": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No intensity data available for video": {
+      "main": [
+        [
+          {
+            "node": "Respond with \"no results\"",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter out moments close to each other": {
+      "main": [
+        [
+          {
+            "node": "Create each moment (human readable)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-11T12:34:32.237Z",
+  "id": "H8K1Cgt25WgkvqI4",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Youtube Extract Moments",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "=https://yt.lemnoslife.com/videos?part=mostReplayed&id={{ $json.youtubeVideoID }}",
+        "options": {}
+      },
+      "id": "2a0d6285-e756-4837-a63b-a7878cd842fc",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        900,
+        960
+      ],
+      "typeVersion": 4.1
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "items[0].mostReplayed.markers",
+        "options": {}
+      },
+      "id": "322a966b-2d57-4a4d-8efa-c81bc4cbe0d8",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "position": [
+        1380,
+        900
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "91f8b87d-228f-4877-ad25-5b9cef3a0f86",
+              "operator": {
+                "type": "object",
+                "operation": "exists",
+                "singleValue": true
+              },
+              "leftValue": "={{ $json.items[0].mostReplayed }}",
+              "rightValue": ""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a166207b-a9c8-4fe7-a78d-bd3b33e70d77",
+      "name": "has intensity data?",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1120,
+        960
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {},
+      "id": "049e41a5-7e58-4656-87be-ae01489daf6e",
+      "name": "No intensity data available for video",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        1380,
+        1140
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "86716013-333d-4418-b516-f86f5098abca",
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              },
+              "leftValue": "={{ $json.intensityScoreNormalized }}",
+              "rightValue": 0.6
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a7c34bad-3255-48ed-a84e-c5d0ba31cbd5",
+      "name": "intensity > 0.6",
+      "type": "n8n-nodes-base.filter",
+      "position": [
+        1580,
+        900
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "7f682942-953b-4489-b892-811b0bec22ce",
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              },
+              "leftValue": "={{ $input.all()[ $itemIndex + 1].json.startSec }}",
+              "rightValue": "={{ $input.all()[ $itemIndex ].json.startSec + 20 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bb962999-37aa-42d8-86c2-75d91cf38647",
+      "name": "Filter out moments close to each other",
+      "type": "n8n-nodes-base.filter",
+      "position": [
+        1960,
+        900
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fcd7c7ef-8b06-45fa-8257-d44ed772cf08",
+              "name": "youtubeVideoID",
+              "type": "string",
+              "value": "={{ $json.query.ytID }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8c1912f3-aaf6-47c4-aa69-a1320819df50",
+      "name": "Input variables",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        680,
+        960
+      ],
+      "typeVersion": 3.3
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "engagingMoments",
+        "options": {}
+      },
+      "id": "facb94a9-ab8a-4a86-946c-c02843e2c9cd",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "position": [
+        2360,
+        900
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2ad5088d-f42a-42f6-931e-bc11e5ce43da",
+              "name": "humanReadableMessage",
+              "type": "string",
+              "value": "=Engaging moment #{{ $itemIndex +1 }}: https://youtu.be/{{ $('Input variables').first().json.youtubeVideoID }}?t={{ $json.startSec.round() - 3 }}\n"
+            },
+            {
+              "id": "dcbe5150-2aaa-46d4-960e-4cad0204dbf4",
+              "name": "startSec",
+              "type": "string",
+              "value": "={{ $json.startSec.round() }}"
+            },
+            {
+              "id": "6a554773-9caf-4682-9e36-5d7dfee6d5f5",
+              "name": "directYTURL",
+              "type": "string",
+              "value": "=https://youtu.be/{{ $('Input variables').first().json.youtubeVideoID }}?t={{ $json.startSec.round() - 3 }}"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "e0f66403-8240-4dab-a12c-2f105729d620",
+      "name": "Create each moment (human readable)",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        2160,
+        900
+      ],
+      "typeVersion": 3.3
+    },
+    {
+      "parameters": {
+        "path": "youtube-engaging-moments-extractor",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "4066f9f4-7be1-4e56-bcd2-bc376649a526",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        460,
+        960
+      ],
+      "webhookId": "21504b31-88e6-4cd9-aaf3-7587427ca5c5",
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8b350b84-b78f-46d4-adfb-7115b64494ba",
+              "name": "startSec",
+              "type": "number",
+              "value": "={{ $json.startMillis / 1000 }}"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "include": "except",
+        "excludeFields": "startMillis",
+        "options": {}
+      },
+      "id": "c990d231-30c8-44b7-b4e8-edd3d76c2cce",
+      "name": "millisecs to seconds",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1760,
+        900
+      ],
+      "typeVersion": 3.3
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "35261be7-c208-4025-bca1-0b41cf011c38",
+              "name": "youtubeID",
+              "type": "string",
+              "value": "={{ $('Webhook').item.json.query.ytID }}"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "95ed0828-29d2-4cf4-9366-50ebe8e79003",
+      "name": "prepare response",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        2580,
+        900
+      ],
+      "typeVersion": 3.3
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"engagingMoments\": null,\n  \"youtubeID\": \"{{ $('Webhook').item.json.query.ytID }}\"\n}",
+        "options": {}
+      },
+      "id": "c762723d-4a1a-4679-91cf-31d78622defd",
+      "name": "Respond with \"no results\"",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        1620,
+        1140
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "c81bfcf9-2c14-4543-a754-01cb8a7af008",
+      "name": "Respond with moments",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        2820,
+        900
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\nExample response 👇\n![](https://i.ibb.co/7VZVFBh/error-response.png#full-width)",
+        "height": 357.96212854181044,
+        "width": 307.626814098134,
+        "color": 3
+      },
+      "id": "18974469-b8c3-4038-8f98-2ad029d3f94c",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1580,
+        1120
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExample response 👇\n![](https://i.ibb.co/ssymRNt/success-response.png#full-width)",
+        "height": 480.9199723565991,
+        "width": 402.30435383552106,
+        "color": 4
+      },
+      "id": "b3549667-b1e2-4082-8c44-1b55a2454a45",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2760,
+        880
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Extract engaging moments from YouTube video\nThis template takes a YouTube video ID and returns potentially engaging moments, based on the \"intensity\" of a certain timestamp 👇\n\n![](https://i.ibb.co/Xz2CDnW/Screenshot-2024-02-28-at-15-51-02.png#full-width)",
+        "height": 424.35936420179615,
+        "width": 362.9578438147888,
+        "color": 5
+      },
+      "id": "b5b43ede-f643-4a8d-89b6-8f61d6f03561",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        460,
+        460
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### How to use\n1. Open `Webhook` node and copy the `Production URL`\n2. Activate the workflow\n3. In a web browser, PostMan or n8n HTTP Request invoke the Production URL: `{prod url}?ytID={youtube ID}`. \ne.g. `{your instance URL}/webhook/youtube-engaging-moments-extractor?ytID=IZsQqarWXtYy`",
+        "height": 184.59156876295762,
+        "width": 445.3395991706974,
+        "color": 5
+      },
+      "id": "542d338a-54da-4b58-9346-1608b7fd206e",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        840,
+        700
+      ],
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:21:25.482Z",
+      "updatedAt": "2024-12-01T14:21:25.482Z",
+      "id": "SIJWhQ43whBotfGd",
+      "name": "Community Examples"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-11T12:34:35.000Z",
+  "versionId": "ceab20ec-b903-460a-bf66-360a1de5330e"
+}
