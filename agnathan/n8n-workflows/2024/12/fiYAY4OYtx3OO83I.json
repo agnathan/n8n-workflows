@@ -405,10 +405,7 @@
       "parameters": {
         "rule": {
           "interval": [
-            {
-              "field": "minutes",
-              "minutesInterval": 1
-            }
+            {}
           ]
         }
       },
@@ -443,6 +440,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-12-22T06:38:41.000Z",
-  "versionId": "46d16cfd-456a-4e89-9863-1fd15b75a0da"
+  "updatedAt": "2024-12-22T16:21:14.000Z",
+  "versionId": "a6daaac7-e1e4-45ef-8199-3c020b579190"
 }
