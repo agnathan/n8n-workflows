@@ -3333,7 +3333,13 @@
         700
       ],
       "typeVersion": 4.5,
-      "alwaysOutputData": true
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "9YFxgWcYXZDQ2dtk",
+          "name": "Google Sheets account"
+        }
+      }
     },
     {
       "parameters": {
@@ -3791,6 +3797,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-12-21T16:39:40.000Z",
-  "versionId": "05ff5806-c1d3-45fd-b803-630b4589fb71"
+  "updatedAt": "2024-12-22T14:45:57.000Z",
+  "versionId": "9a543998-3ab5-4b08-860c-1ab4ecd2ee65"
 }
