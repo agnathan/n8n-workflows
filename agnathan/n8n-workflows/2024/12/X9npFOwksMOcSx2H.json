@@ -1,11 +1,38 @@
 {
   "active": false,
   "connections": {
-    "Call from Recent News Article Automator": {
+    "Mock Data": {
       "main": [
         [
           {
-            "node": "RSS Read",
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mock Data1": {
+      "main": [
+        []
+      ]
+    },
+    "Mock Data2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Mock Data",
             "type": "main",
             "index": 0
           }
@@ -22,52 +49,136 @@
   "nodes": [
     {
       "parameters": {
-        "url": "https://rss.app/feeds/thw00oE7IpnAtKgZ.xml",
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "investor"
+            }
+          ]
+        },
         "options": {
-          "ignoreSSL": false
+          "includeBinaries": false
         }
       },
-      "id": "f3d53b7e-4849-45d0-9143-9f04534caad8",
-      "name": "RSS Read",
-      "type": "n8n-nodes-base.rssFeedRead",
-      "typeVersion": 1.1,
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
       "position": [
-        680,
-        560
-      ]
+        440,
+        0
+      ],
+      "id": "182b1ee0-41b4-49e1-a4b1-c8f3c5d85798",
+      "name": "Aggregate"
     },
     {
       "parameters": {
-        "content": "## Fetches the Latest on an RSS feed\n",
-        "height": 314.5,
-        "width": 500,
+        "mode": "raw",
+        "jsonOutput": "{\n  \"name\": \"Daniel Holmlund\",\n  \"time\": null\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        -120
+      ],
+      "id": "9860efe3-5d4a-4fef-91cd-aa58752a790f",
+      "name": "Mock Data"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n  \"name\": \"Ethan Gao\",\n  \"email\": \"ethan@gaolaw.com\",\n  \"investor\": true\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        120
+      ],
+      "id": "76c18eae-9aeb-4c93-b7bc-09693de4e474",
+      "name": "Mock Data1"
+    },
+    {
+      "parameters": {
+        "content": "## Aggregate Testing",
+        "height": 500,
+        "width": 760,
         "color": 5
       },
-      "id": "faf56960-0a2e-4511-ac7b-8cd83e4241aa",
-      "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        460,
+        -80,
+        -200
+      ],
+      "id": "5b340929-1244-4c29-89e1-fdc42c116ef9",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -520,
         460
-      ]
+      ],
+      "id": "2be65a10-c575-4df2-afd1-206c92abc0eb",
+      "name": "When clicking ‘Test workflow’"
     },
     {
       "parameters": {
-        "path": "77b9ce02-bf80-4b3a-a815-f92d0713e372",
-        "responseMode": "lastNode",
-        "responseData": "allEntries",
+        "content": "## Aggregate Testing",
+        "height": 500,
+        "width": 760,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        360
+      ],
+      "id": "efcf6caa-fcbc-4f33-b8c2-df08307cf5e5",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "[\n  {\n    \"name\": \"Daniel Holmlund\",\n    \"email\": \"daniel@alternativeinvestingclub.com\",\n    \"website\": \"www.alternativeinvestingclub.com\"\n  },\n   {\n    \"name\": \"Daniel Holmlund\",\n    \"email\": \"daniel@alternativeinvestingclub.com\",\n    \"website\": \"www.alternativeinvestingclub.com\"\n  },\n]",
         "options": {}
       },
-      "id": "c131158e-73fd-4016-b947-5c83f1441c0a",
-      "name": "Call from Recent News Article Automator",
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
       "position": [
-        520,
-        560
+        -40,
+        540
       ],
-      "webhookId": "77b9ce02-bf80-4b3a-a815-f92d0713e372"
+      "id": "e113c186-54a6-4d71-b202-0a259a27e64f",
+      "name": "Mock Data2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "de1922ee-36ee-4f9e-90f3-58658df586f8",
+              "name": "name",
+              "value": "={{ $json.email.extractDomain() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        180,
+        540
+      ],
+      "id": "a4dab187-cb6a-42b8-98d3-17569f3824e1",
+      "name": "Edit Fields"
     }
   ],
   "pinData": {},
@@ -80,6 +191,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-12-12T16:27:39.546Z",
-  "versionId": "879b9123-4333-4caa-88dd-1706dcbd48a8"
+  "updatedAt": "2024-12-24T01:22:07.000Z",
+  "versionId": "f59a4630-02ec-4fd4-8816-b445d48b9310"
 }
