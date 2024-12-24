@@ -1,0 +1,214 @@
+{
+  "active": false,
+  "connections": {
+    "Get n8n Workflow": {
+      "main": [
+        [
+          {
+            "node": "Magic Positioning IA2S",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update n8n Workflow": {
+      "main": [
+        [
+          {
+            "node": "Simple Webhook Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Magic Positioning IA2S": {
+      "main": [
+        [
+          {
+            "node": "Update n8n Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "POST /workflow/magic/position/id": {
+      "main": [
+        [
+          {
+            "node": "Get n8n Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-24T04:53:24.141Z",
+  "id": "1u2TY0lKxsLigYOD",
+  "meta": null,
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "update",
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $('POST /workflow/magic/position/id').last().json.body.workflow_id }}"
+        },
+        "workflowObject": "fiYAY4OYtx3OO83I",
+        "requestOptions": {}
+      },
+      "id": "bc4c0a75-1638-4c21-abce-2d3ab72aaa69",
+      "name": "Update n8n Workflow",
+      "type": "n8n-nodes-base.n8n",
+      "position": [
+        740,
+        420
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "n8nApi": {
+          "id": "OxzsX7ld6qvBBB5l",
+          "name": "n8n account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.ia2s.app/webhook/workflow/magic/position/id",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "workflow_id",
+              "value": "={{ $workflow.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b93bda85-2aec-4296-b616-09c02582863e",
+      "name": "Magic Positioning",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        80,
+        200
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.ia2s.app/webhook/workflow/magic/position",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "workflow",
+              "value": "={{ $json }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d0ff9e94-6697-4e50-a463-8a602695ddf7",
+      "name": "Magic Positioning IA2S",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        520,
+        420
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "workflow/magic/position/id",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "29498631-c6af-44ea-9f25-01bc02ad4d60",
+      "name": "POST /workflow/magic/position/id",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        80,
+        420
+      ],
+      "webhookId": "3f637a82-df5e-4580-b1af-81ebec0b345a",
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "content": "## Put this node in any workflow.\n1. **Save the workfow** (Ctrl + S)\n2. **Execute the Magic Positioning Node**\n3. **Reload the page** (Ctrl + R)\n..and voilà !",
+        "height": 380,
+        "width": 280,
+        "color": 6
+      },
+      "id": "f649a563-2fd8-425e-88bd-ab64503fc7df",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "workflowId": {
+          "__rl": true,
+          "value": "fiYAY4OYtx3OO83I",
+          "mode": "id"
+        },
+        "requestOptions": {}
+      },
+      "id": "f82f1023-88d8-4411-9420-16c8feaeeb2e",
+      "name": "Get n8n Workflow",
+      "type": "n8n-nodes-base.n8n",
+      "position": [
+        300,
+        420
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "n8nApi": {
+          "id": "OxzsX7ld6qvBBB5l",
+          "name": "n8n account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "Workflow Updated",
+        "options": {}
+      },
+      "id": "f46586b6-230a-4c7a-82cc-4d5969704ed2",
+      "name": "Simple Webhook Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        960,
+        420
+      ],
+      "typeVersion": 1.1
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-24T04:54:26.000Z",
+  "versionId": "9165918a-3149-40ad-9e22-6950b647506c"
+}
