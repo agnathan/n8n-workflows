@@ -1,0 +1,361 @@
+{
+  "active": true,
+  "connections": {
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Stop and Error",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-24T01:23:46.580Z",
+  "id": "1kuOJPGQ1D9AgUsC",
+  "meta": null,
+  "name": "Company Data Enrichment",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "681092c8-5452-4218-ae60-051d4c5422df",
+              "name": "URL_list",
+              "value": "={{ $json.URL.replace(/\\s+/g,'').split(',') }}",
+              "type": "array"
+            },
+            {
+              "id": "82ddfb04-3bee-46a6-9f8e-45c3711b3fb2",
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        0
+      ],
+      "id": "6721c8af-ba6a-4a20-9585-03cf12a11dc1",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "URL_list",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        440,
+        0
+      ],
+      "id": "c755b3de-bdcd-47e5-86bc-3f8016d02935",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        660,
+        0
+      ],
+      "id": "ca39fdf1-9afd-4291-ace1-1da1da1220b3",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "url": "https://api.peopledatalabs.com/v5/company/search",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "size",
+              "value": "1"
+            },
+            {
+              "name": "sql",
+              "value": "={{ \"SELECT * FROM company WHERE website='\"+ $json.URL_list +\"'\"}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        880,
+        100
+      ],
+      "id": "d15f7608-44d9-47c9-a20f-9f421e305baf",
+      "name": "HTTP Request",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "jFAWkSdqUlkQYCn1",
+          "name": "People Data Labs"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "88b85150-105d-43b0-ae8f-80ef06c71f7b",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": 200,
+              "operator": {
+                "type": "number",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1240,
+        100
+      ],
+      "id": "5f08c709-a96c-4630-b285-ee9c44994ac2",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "errorMessage": "Error on PDL enrichment"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        1560,
+        60
+      ],
+      "id": "9b17148f-d725-4ad5-80f0-43d79ef23f5f",
+      "name": "Stop and Error"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "32ba48b2-a149-40c9-a99b-0a1a889e10c8",
+              "name": "name",
+              "value": "={{ $json.data[0].name }}",
+              "type": "string"
+            },
+            {
+              "id": "49656655-4580-44db-aab6-0f52f1b114c7",
+              "name": "employees",
+              "value": "={{ $json.data[0].employee_count }}",
+              "type": "string"
+            },
+            {
+              "id": "999444fd-59ed-47f6-93ac-e21bdf777ab6",
+              "name": "country",
+              "value": "={{ $json.data[0].location.country }}",
+              "type": "string"
+            },
+            {
+              "id": "7b7d14b3-5b0a-497c-a825-8337a24a1e9a",
+              "name": "continent",
+              "value": "={{ $json.data[0].location.continent }}",
+              "type": "string"
+            },
+            {
+              "id": "c9f7fc0a-5c8e-4fe4-af95-5d9fe3f6e942",
+              "name": "total_funding_raised",
+              "value": "={{ $json.data[0].total_funding_raised }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        900,
+        -120
+      ],
+      "id": "b7b0c43d-50f0-4f9d-89b0-1da7b2e5f269",
+      "name": "Edit Fields1",
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "5ba031dd-722c-4558-8959-6945ab813b6b",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1120,
+        -120
+      ],
+      "id": "514468e7-0696-40b0-9a51-9ee487e027df",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "path": "b93db201-4984-4a35-921c-8f4bd1c4570e",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e54cdf01-70d3-49b6-89e2-9e2ae22b2d9c",
+      "name": "Webhook",
+      "webhookId": "b93db201-4984-4a35-921c-8f4bd1c4570e"
+    }
+  ],
+  "pinData": {
+    "Edit Fields": [
+      {
+        "json": {
+          "URL_list": [
+            "google.com",
+            "n8n.io",
+            "pennylane.com",
+            "spendesk.com"
+          ]
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-12-24T04:53:02.000Z",
+  "versionId": "899811ce-8d05-4164-999d-29b14187fb7a"
+}
