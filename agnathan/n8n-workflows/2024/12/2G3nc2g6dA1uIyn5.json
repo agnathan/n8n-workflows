@@ -1,0 +1,310 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Model Inputs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Notion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prompt Input": {
+      "main": [
+        [
+          {
+            "node": "Combining all Inputs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Combining all Inputs": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Model Inputs": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Prompt Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notion": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-25T15:39:38.865Z",
+  "id": "2G3nc2g6dA1uIyn5",
+  "meta": null,
+  "name": "Prompt Analysis",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -780,
+        -220
+      ],
+      "id": "b6fe3042-c639-4790-ab06-993602adb5e4",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=I'm going to show you a prompt. Your job is analysis the prompt and understand what it does. If there are multiple steps to the prompt, then understand that. Then write three bullet points that describe what the prompt does.\n\n#PROMPT\n{{ $json.chatInput }}\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        980,
+        -220
+      ],
+      "id": "15504269-884c-4295-ba2f-7e87a53fee26",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "modelName": "={{ $('Combining all Inputs').item.json.models[0] }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        880,
+        0
+      ],
+      "id": "d9e0f1d3-5950-47f4-bd9c-bc0a00756509",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "eUkvc1cv7n7zwa7I",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "block",
+        "blockId": {
+          "__rl": true,
+          "value": "https://www.notion.so/Analyze-Prompts-with-n8n-16732141546480de94a6e7644467582f",
+          "mode": "url"
+        },
+        "blockUi": {
+          "blockValues": [
+            {
+              "type": "heading_2",
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "={{ $('Combining all Inputs').item.json.models[0] }}",
+                    "annotationUi": {}
+                  }
+                ]
+              }
+            },
+            {
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "={{ $json.output }}",
+                    "annotationUi": {}
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        1360,
+        -220
+      ],
+      "id": "f3ac7bb6-c79e-4bc9-9e6a-f1a74e3e58ca",
+      "name": "Notion",
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion GYBWAI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2fc75610-9329-4818-b033-1478224a6068",
+              "name": "chatInput",
+              "value": "#CONTEXT: Adopt the role of an experienced content creator with expertise in LinkedIn marketing. Your task is to generate a list of compelling LinkedIn post ideas centered around a specific topic. Each idea should be tailored to engage a professional audience, drive meaningful interactions, and position the brand or individual as a thought leader in the given area. The goal is to encourage shares, comments, and likes, boosting visibility and engagement on the platform.  #GOAL: You will create diverse LinkedIn post ideas ranging from informative articles and industry insights to interactive polls and thought-provoking questions. These ideas should be designed to engage a professional audience and foster discussions that position the brand or individual as a leader in their field.  #RESPONSE GUIDELINES: Follow a step-by-step approach below to create the LinkedIn post ideas:  Industry Trends and Insights: Share the latest trends and insights in [topic]. This could involve emerging technologies, shifts in consumer behavior, regulatory changes, or anything that's currently shaping the industry.  Example: \"The latest trend in [topic] is transforming the way businesses operate. Here’s how you can stay ahead.\"  Success Stories and Case Studies: Highlight a success story or case study related to [topic]. Focus on challenges faced, solutions implemented, and results achieved.  Example: \"How Company X revolutionized their approach to [topic] and saw a 300% growth in 12 months.\"  Interactive Polls: Create polls asking for opinions on specific aspects of [topic]. Use the results to spark further discussion or follow-up with a deeper analysis in a subsequent post.  Example: \"What do you think is the biggest challenge in [topic] today? Vote below and let's discuss!\"  Expert Interviews: Conduct and share interviews with experts in [topic]. These can be in text, video, or even live format.  Example: \"Join us this Friday for a live interview with [Expert Name], as we dive deep into [topic].\"  Thought-Provoking Questions: Pose open-ended, thought-provoking questions related to [topic] to encourage comments and discussions.  Example: \"If you could change one thing about [topic], what would it be and why?\"  Tips and How-To Guides: Provide practical tips, strategies, or how-to guides on aspects of [topic]. Aim to help your audience overcome common challenges or improve their practices.  Example: \"5 actionable tips to excel in [topic] that you can implement today.\"  Behind-the-Scenes Content: Share behind-the-scenes insights into how your company or industry leaders are addressing [topic], highlighting unique approaches or innovations.  Example: \"A behind-the-scenes look at how we’re tackling [topic] at our company.\"  Interactive Q&A Sessions: Announce a Q&A session where you or an expert will answer questions about [topic] live or through comments.  Example: \"Have questions about [topic]? Drop them below for our Q&A session next week!\"  Infographics and Visual Content: Share infographics or visual content that breaks down complex information about [topic] into digestible and shareable pieces.  Example: \"Check out our latest infographic on the top 5 trends in [topic].\"  Personal Stories and Experiences: Share personal stories or experiences related to [topic], focusing on lessons learned and insights gained.  Example: \"My journey with [topic]: The good, the bad, and the unexpected.\"  #INFORMATION ABOUT ME: -Topic: [TOPIC]  #OUTPUT: Each post idea should be engaging, tailored to a professional audience, and designed to boost visibility and interaction on LinkedIn. The content should be diverse, covering a range of formats from articles and polls to interactive sessions, and should position you or your brand as a thought leader in [topic].",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        140,
+        -280
+      ],
+      "id": "1730bcf3-f68e-4432-b075-a7067221e285",
+      "name": "Prompt Input"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "570098a7-c4d1-4d98-98f8-79859f69e021",
+              "name": "chatInput",
+              "value": "={{ $('Prompt Input').item.json.chatInput }}",
+              "type": "string"
+            },
+            {
+              "id": "9149b25d-279c-4625-982b-700497324cc0",
+              "name": "models",
+              "value": "={{ $json.models }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        560,
+        -280
+      ],
+      "id": "87ee2a37-07bd-4cf6-9f64-d480078700ec",
+      "name": "Combining all Inputs"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "[\n        \"models/gemini-1.0-pro\",\n        \"models/gemini-1.0-pro-001\",\n        \"models/gemini-1.0-pro-latest\",\n        \"models/gemini-1.0-pro-vision-latest\",\n        \"models/gemini-1.5-flash\",\n        \"models/gemini-1.5-flash-001\",\n        \"models/gemini-1.5-flash-001-tuning\",\n        \"models/gemini-1.5-flash-002\",\n        \"models/gemini-1.5-flash-8b\",\n        \"models/gemini-1.5-flash-8b-001\",\n        \"models/gemini-1.5-flash-8b-exp-0827\",\n        \"models/gemini-1.5-flash-8b-exp-0924\",\n        \"models/gemini-1.5-flash-8b-latest\",\n        \"models/gemini-1.5-flash-exp-0827\",\n        \"models/gemini-1.5-flash-latest\",\n        \"models/gemini-1.5-pro\",\n        \"models/gemini-1.5-pro-001\",\n        \"models/gemini-1.5-pro-002\",\n        \"models/gemini-1.5-pro-exp-0801\",\n        \"models/gemini-1.5-pro-exp-0827\",\n        \"models/gemini-1.5-pro-latest\",\n        \"models/gemini-2.0-flash-exp\",\n        \"models/gemini-2.0-flash-thinking-exp\",\n        \"models/gemini-2.0-flash-thinking-exp-1219\",\n        \"models/gemini-exp-1114\",\n        \"models/gemini-exp-1121\",\n        \"models/gemini-exp-1206\",\n        \"models/gemini-pro\",\n        \"models/gemini-pro-vision\",\n        \"models/learnlm-1.5-pro-experimental\",\n        \"models/text-bison-001\"\n    ]\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -500,
+        -220
+      ],
+      "id": "7fe33219-835f-41c8-8015-9b9405ed9ce5",
+      "name": "Model Inputs",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -220,
+        -260
+      ],
+      "id": "5ee2ccac-85c7-4b20-8689-5629c90e45ea",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n        \"models/gemini-1.0-pro\",\n        \"models/gemini-1.0-pro-001\",\n        \"models/gemini-1.0-pro-latest\",\n        \"models/gemini-1.0-pro-vision-latest\",\n        \"models/gemini-1.5-flash\",\n        \"models/gemini-1.5-flash-001\",\n        \"models/gemini-1.5-flash-001-tuning\",\n        \"models/gemini-1.5-flash-002\",\n        \"models/gemini-1.5-flash-8b\",\n        \"models/gemini-1.5-flash-8b-001\",\n        \"models/gemini-1.5-flash-8b-exp-0827\",\n        \"models/gemini-1.5-flash-8b-exp-0924\",\n        \"models/gemini-1.5-flash-8b-latest\",\n        \"models/gemini-1.5-flash-exp-0827\",\n        \"models/gemini-1.5-flash-latest\",\n        \"models/gemini-1.5-pro\",\n        \"models/gemini-1.5-pro-001\",\n        \"models/gemini-1.5-pro-002\",\n        \"models/gemini-1.5-pro-exp-0801\",\n        \"models/gemini-1.5-pro-exp-0827\",\n        \"models/gemini-1.5-pro-latest\",\n        \"models/gemini-2.0-flash-exp\",\n        \"models/gemini-2.0-flash-thinking-exp\",\n        \"models/gemini-2.0-flash-thinking-exp-1219\",\n        \"models/gemini-exp-1114\",\n        \"models/gemini-exp-1121\",\n        \"models/gemini-exp-1206\",\n        \"models/gemini-pro\",\n        \"models/gemini-pro-vision\",\n        \"models/learnlm-1.5-pro-experimental\",\n        \"models/text-bison-001\"\n    ]\n       "
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        240
+      ],
+      "id": "040ef84d-bd77-4030-bde9-64212102e22c",
+      "name": "Code"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:20:20.071Z",
+      "updatedAt": "2024-12-01T14:21:40.229Z",
+      "id": "hvphHbQ14WJzrgp9",
+      "name": "My Learning"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-25T16:20:29.000Z",
+  "versionId": "875f85b0-067a-4f46-814d-306b77754819"
+}
