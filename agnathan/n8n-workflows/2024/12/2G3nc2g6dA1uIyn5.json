@@ -116,8 +116,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.7,
       "position": [
-        980,
-        -220
+        740,
+        -280
       ],
       "id": "15504269-884c-4295-ba2f-7e87a53fee26",
       "name": "AI Agent"
@@ -130,7 +130,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        880,
+        580,
         0
       ],
       "id": "d9e0f1d3-5950-47f4-bd9c-bc0a00756509",
@@ -181,7 +181,7 @@
       "type": "n8n-nodes-base.notion",
       "typeVersion": 2.2,
       "position": [
-        1360,
+        1220,
         -220
       ],
       "id": "f3ac7bb6-c79e-4bc9-9e6a-f1a74e3e58ca",
@@ -210,8 +210,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        140,
-        -280
+        40,
+        -240
       ],
       "id": "1730bcf3-f68e-4432-b075-a7067221e285",
       "name": "Prompt Input"
@@ -239,7 +239,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        560,
+        380,
         -280
       ],
       "id": "87ee2a37-07bd-4cf6-9f64-d480078700ec",
@@ -273,19 +273,6 @@
       ],
       "id": "5ee2ccac-85c7-4b20-8689-5629c90e45ea",
       "name": "Loop Over Items"
-    },
-    {
-      "parameters": {
-        "jsCode": "return [\n        \"models/gemini-1.0-pro\",\n        \"models/gemini-1.0-pro-001\",\n        \"models/gemini-1.0-pro-latest\",\n        \"models/gemini-1.0-pro-vision-latest\",\n        \"models/gemini-1.5-flash\",\n        \"models/gemini-1.5-flash-001\",\n        \"models/gemini-1.5-flash-001-tuning\",\n        \"models/gemini-1.5-flash-002\",\n        \"models/gemini-1.5-flash-8b\",\n        \"models/gemini-1.5-flash-8b-001\",\n        \"models/gemini-1.5-flash-8b-exp-0827\",\n        \"models/gemini-1.5-flash-8b-exp-0924\",\n        \"models/gemini-1.5-flash-8b-latest\",\n        \"models/gemini-1.5-flash-exp-0827\",\n        \"models/gemini-1.5-flash-latest\",\n        \"models/gemini-1.5-pro\",\n        \"models/gemini-1.5-pro-001\",\n        \"models/gemini-1.5-pro-002\",\n        \"models/gemini-1.5-pro-exp-0801\",\n        \"models/gemini-1.5-pro-exp-0827\",\n        \"models/gemini-1.5-pro-latest\",\n        \"models/gemini-2.0-flash-exp\",\n        \"models/gemini-2.0-flash-thinking-exp\",\n        \"models/gemini-2.0-flash-thinking-exp-1219\",\n        \"models/gemini-exp-1114\",\n        \"models/gemini-exp-1121\",\n        \"models/gemini-exp-1206\",\n        \"models/gemini-pro\",\n        \"models/gemini-pro-vision\",\n        \"models/learnlm-1.5-pro-experimental\",\n        \"models/text-bison-001\"\n    ]\n       "
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        440,
-        240
-      ],
-      "id": "040ef84d-bd77-4030-bde9-64212102e22c",
-      "name": "Code"
     }
   ],
   "pinData": {},
@@ -305,6 +292,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-12-25T16:20:29.000Z",
-  "versionId": "875f85b0-067a-4f46-814d-306b77754819"
+  "updatedAt": "2024-12-31T01:13:13.000Z",
+  "versionId": "e9689983-3db4-49b7-89c7-932f5deec601"
 }
