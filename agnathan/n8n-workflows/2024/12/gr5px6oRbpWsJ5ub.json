@@ -1,0 +1,70 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Notion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-31T01:15:26.919Z",
+  "id": "gr5px6oRbpWsJ5ub",
+  "meta": null,
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "089ecac3-7454-467d-a949-7ad285565b41",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "get",
+        "pageId": {
+          "__rl": true,
+          "value": "https://www.notion.so/Create-Compelling-Website-Copy-14c321415464816496b9d92ad956ad0d",
+          "mode": "url"
+        }
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "77896752-4aa8-4bd2-8bf5-4a92c3c2d0bf",
+      "name": "Notion",
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion GYBWAI"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-31T01:15:26.919Z",
+  "versionId": "010ab6a1-56b4-4ae0-a7f8-596896b0f6eb"
+}
