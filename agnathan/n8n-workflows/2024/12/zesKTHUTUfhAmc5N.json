@@ -1,0 +1,290 @@
+{
+  "active": true,
+  "connections": {
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Write Prompt Text",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "JSON Parse": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase": {
+      "main": [
+        []
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Write Prompt Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Prompt Text": {
+      "main": [
+        [
+          {
+            "node": "JSON Parse",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-31T17:40:44.421Z",
+  "id": "zesKTHUTUfhAmc5N",
+  "meta": null,
+  "name": "Prompt WorkBench: Create Prompt Text",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "prompts",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('Webhook').item.json.body.record.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "text",
+              "fieldValue": "={{ $json.text }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        -180
+      ],
+      "id": "81ebf322-93c7-42f3-9421-dd2aee09f8f3",
+      "name": "Supabase",
+      "credentials": {
+        "supabaseApi": {
+          "id": "EJBghdZFR6thMjzx",
+          "name": "Prompt Workbench"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-1.5-pro",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        540,
+        0
+      ],
+      "id": "6aa66329-181b-460b-9da4-da99f72e4090",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "eUkvc1cv7n7zwa7I",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "return JSON.parse($input.first().json.output)\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        -200
+      ],
+      "id": "e4015ea3-a233-443c-971b-344b54842535",
+      "name": "JSON Parse"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "11e3ad18-545e-4133-b5fc-e61573351587",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -40,
+        -200
+      ],
+      "id": "76e4b5f2-7695-47f4-ad30-06720d7228d4",
+      "name": "Webhook",
+      "webhookId": "11e3ad18-545e-4133-b5fc-e61573351587"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d7ce02ad-a188-4fbe-b71f-15697b82f2fc",
+              "leftValue": "={{ $json.body.old_record.status }}",
+              "rightValue": "inactive",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "442776d2-e04e-42f3-88b8-73356850771e",
+              "leftValue": "={{ $json.body.record.status }}",
+              "rightValue": "active",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        160,
+        -200
+      ],
+      "id": "836fbd5a-ff3a-4803-a04d-fe27cf3c5ffc",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7082751d-b746-4c64-a4b8-d187c53fda9d",
+              "name": "name",
+              "value": "={{ $json.body.record.name }}",
+              "type": "string"
+            },
+            {
+              "id": "022cc456-e7a5-4423-819c-cefb89169bfe",
+              "name": "description",
+              "value": "={{ $json.body.record.description }}",
+              "type": "string"
+            },
+            {
+              "id": "e1003ad8-c9d5-40d0-bf8b-a1f6465bf77e",
+              "name": "profession",
+              "value": "={{ $json.body.record.profession }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        380,
+        -220
+      ],
+      "id": "0c0a8abe-fd86-4557-9c2c-3e381e48fdfc",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "agent": "conversationalAgent",
+        "promptType": "define",
+        "text": "=# CONTEXT\nYou are a Grand Master in Prompt Engineering, an elite expert whose sole purpose is to craft highly effective GPT prompts tailored to any given role and task or objective. Your prompts must be clear, precise, and optimized for maximum clarity and utility, ensuring they empower GPTs to perform their tasks with accuracy, consistency, and creativity. Each prompt should include well-defined instructions, contextual clarity, and strategic formatting, leaving no ambiguity for interpretation. Your expertise lies in understanding the nuances of different roles and tasks, allowing you to design prompts that deliver exceptional results across a wide range of applications.\n\n# GOAL\nThink through the task that as a human with the role that was given and write a precise and highly effective prompt that accomplishes the task or objective given.\n\n# INSTRUCTIONS\n- The prompt should have several sections including a context, goal, detailed step by step instructions, information and response formatting. Each section should have a markdown header that states the name of the section. Each section should be separated by an empty line.\n- In the context section, you are an incredible writer of prompt contexts. You are able to write a prompt context that is clear, concise, and easy to understand. You are able to write a prompt context that is engaging, persuasive, and persuasive. You are able to write a prompt context that is grammatically correct. You are able to write a prompt context that is tailored to the company's target audience. You are able to write a prompt context that is optimized for conversions. Analyze the needs of this context prompt and choose the part of the prompt that you should ask the user to fill in. You must write a prompt context that is clear, concise, and easy to understand. You must write a prompt context that is engaging, persuasive, and persuasive. You must write a prompt context that is grammatically correct. You must write a prompt context that is tailored to the company's target audience. You must write a prompt context that is optimized for conversions.\n- In the goal section, think though the goal as a human with the given role and write one or more objectives that need to be completed to complete the overall goal.\n- In the instructions section, write a detailed step by step series of instructions that the prompt should accomplish.\n- In the information section, think about the inputs that the prompt will need to accomplish the task or objective. Write a short description of the input needed, followed by a colon, then the name of the input in brackets like \"[\" and \"]\"\n- In the Response Formatting section, describe the format that the prompt should generate. These might be Plain Text, Markdown, Code Blocks, HTML, JSON, YAML, XML, CSV, TSV, LaTeX, Math Notation, Pseudo-Graphical ASCII Art, Tabular Text or something different. \n\n# Input\nPrompt Name: {{ $json.name }}\nProfession: {{ $json.profession }}\nDescription: {{ $json.description }}\n\n# Output Format\nReturn the results as a JSON Object in format of { \"name\": name, \"text\": text, \"description\": description }. Only return the JSON. Do not return anything except valid JSON",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        600,
+        -240
+      ],
+      "id": "77a0cb97-6577-431b-af25-92c2a3edb1a8",
+      "name": "Write Prompt Text"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:23:56.869Z",
+      "updatedAt": "2024-12-01T14:23:56.869Z",
+      "id": "Paq9K6w31GZ583JD",
+      "name": "My Drafts"
+    },
+    {
+      "createdAt": "2024-12-31T16:34:44.822Z",
+      "updatedAt": "2024-12-31T16:34:44.822Z",
+      "id": "unguyoJzdstsTMD2",
+      "name": "Prompt Workbench"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-12-31T18:52:30.000Z",
+  "versionId": "9079657d-27f4-4c5c-8a0d-deb6fbc9bae6"
+}
