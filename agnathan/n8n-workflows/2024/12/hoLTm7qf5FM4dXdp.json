@@ -1,0 +1,311 @@
+{
+  "active": true,
+  "connections": {
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Prompt Ideate",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "JSON Parse": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prompt Ideate": {
+      "main": [
+        [
+          {
+            "node": "JSON Parse",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Prompt Ideate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2024-12-31T16:35:23.023Z",
+  "id": "hoLTm7qf5FM4dXdp",
+  "meta": null,
+  "name": "Prompt WorkBench: Create Prompt Ideas from Job",
+  "nodes": [
+    {
+      "parameters": {
+        "tableId": "prompts",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "name",
+              "fieldValue": "={{ $json.name }}"
+            },
+            {
+              "fieldId": "profession",
+              "fieldValue": "={{ $json.profession }}"
+            },
+            {
+              "fieldId": "description",
+              "fieldValue": "={{ $json.description }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1700,
+        -20
+      ],
+      "id": "601ce146-a73e-452b-a734-710e71bed6d7",
+      "name": "Supabase",
+      "credentials": {
+        "supabaseApi": {
+          "id": "EJBghdZFR6thMjzx",
+          "name": "Prompt Workbench"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-1.5-pro",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        640,
+        320
+      ],
+      "id": "b88333d8-7b68-4a8a-ba0a-80386b43419d",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "eUkvc1cv7n7zwa7I",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1360,
+        -80
+      ],
+      "id": "072b55fa-bf92-473c-8dc4-05f1100d8384",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "jsCode": "return JSON.parse($input.first().json.output)\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1140,
+        -40
+      ],
+      "id": "2e48615f-6217-4f93-97b4-17057cf469e9",
+      "name": "JSON Parse"
+    },
+    {
+      "parameters": {
+        "agent": "conversationalAgent",
+        "promptType": "define",
+        "text": "=# Context\nAdopt the role of a Prompt Ideation Specialist skilled in generating creative and actionable prompt ideas. Your task is to develop tailored prompts based on a given profession, task, or objective, ensuring each suggestion is clear, engaging, and results driven. The prompts must be versatile and adaptable, catering to a wide range of user needs while maintaining clarity, relevance, and practicality. Focus on maximizing user productivity and creativity, providing prompts that are easy to understand and aligned with the intended goal.\n\n# Goal\nIf given a specific task create a GPT prompt name, the profession that will use it, and a short description of the GPT prompt goal. If given a professional or a category then create 5 or the number asked for of GPT prompt names, the profession that will use it, and a short description of the GPT prompt goals. Each prompt should solve a unique problem for that profession or category. Each problem should be a pain point for that profession or category.\n\n# Instructions\n- The description should follow this format. The short description starts will what the prompt does and then it tells what the result it enables is. The sentence should be strong actionable statement with clear results\n- The profession should be a comma separated list\n\n# Input\nProfession: {{ $json.chatInput }}\n\n# Output Format\nReturn the results as a JSON Object in format of { [{\"name\": prompt, \"profession\": profession, \"description\": description}, {\"name\": prompt, \"profession\": profession, \"description\": description}, ...] }. Only return the JSON. Do not return anything except valid JSON",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        660,
+        -40
+      ],
+      "id": "81a15b69-bbfb-4ab1-8966-4ae304769362",
+      "name": "Prompt Ideate"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "jobactive",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        60,
+        -20
+      ],
+      "id": "7c3dedbe-dc52-4652-8c94-c91971093dc8",
+      "name": "Webhook",
+      "webhookId": "d9e797ab-3105-4eb8-9dac-225b05dd6d5c"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d7ce02ad-a188-4fbe-b71f-15697b82f2fc",
+              "leftValue": "={{ $json.body.old_record.status }}",
+              "rightValue": "inactive",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "442776d2-e04e-42f3-88b8-73356850771e",
+              "leftValue": "={{ $json.body.record.status }}",
+              "rightValue": "active",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        240,
+        -40
+      ],
+      "id": "a244b660-e6ab-4898-a1f4-c96270f9cdd9",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7082751d-b746-4c64-a4b8-d187c53fda9d",
+              "name": "chatInput",
+              "value": "={{ $json.body.record.name }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        460,
+        -40
+      ],
+      "id": "0a507ad6-2838-4e8d-a293-ad97a2238edf",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"output\": [\n    {\n      \"name\": \"Worldbuilding Weaver\",\n      \"profession\": \"Novelist\",\n      \"description\": \"Creates intricate and immersive world settings, enabling novelists to craft believable and engaging narratives.\"\n    },\n    {\n      \"name\": \"Character Crafter\",\n      \"profession\": \"Novelist\",\n      \"description\": \"Develops compelling and relatable character profiles complete with backstories, motivations, and arcs, enabling novelists to breathe life into their stories.\"\n    },\n    {\n      \"name\": \"Plot Architect\",\n      \"profession\": \"Novelist\",\n      \"description\": \"Generates dynamic and captivating plot outlines with twists, turns, and satisfying resolutions, enabling novelists to structure their stories effectively.\"\n    },\n    {\n      \"name\": \"Dialogue Dynamo\",\n      \"profession\": \"Novelist\",\n      \"description\": \"Creates realistic and engaging dialogue between characters, enabling novelists to enhance the authenticity and impact of their conversations.\"\n    },\n    {\n      \"name\": \"SceneSculptor\",\n      \"profession\": \"Novelist\",\n      \"description\": \"Generates detailed and atmospheric scene descriptions with rich sensory elements, enabling novelists to paint vivid pictures in the readers' minds.\"\n    }\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        1040,
+        280
+      ],
+      "id": "7f6262eb-29b3-4e66-ae4b-15ae976c7ae2",
+      "name": "Structured Output Parser"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-12-31T18:44:42.000Z",
+  "versionId": "8707ac8f-ea2a-46d0-be38-7796c00a744e"
+}
