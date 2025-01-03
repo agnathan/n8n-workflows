@@ -1,0 +1,247 @@
+{
+  "active": true,
+  "connections": {
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "X",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get Next AIC Meeting",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "X": {
+      "main": [
+        [
+          {
+            "node": "Write X Message to DB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Next AIC Meeting": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-03T02:21:53.999Z",
+  "id": "8dsCorx94A2siPBi",
+  "meta": null,
+  "name": "Twitter AIC Invite Bot",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Write a X (Twitter) message that invites people to come the Alternative Investing Club Friday noon Pacific time Speaker event with {{ $json.speaker }}. \n\nGive a short sentence on the topic no colons: {{ $json.description }} \n\nHere's the link to the registration page: https://alternativeinvestingclub.com/live\n\nAlways put a newline before the link\n\nDo not write words in all caps",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        460,
+        0
+      ],
+      "id": "bfefef81-925c-4e90-8b4a-1e13421b3ec8",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-1.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        420,
+        200
+      ],
+      "id": "52259f4c-5315-4982-8775-fa3119cb4f49",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "eUkvc1cv7n7zwa7I",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.output }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.twitter",
+      "typeVersion": 2,
+      "position": [
+        820,
+        0
+      ],
+      "id": "76fb4fc3-37aa-45be-9dbf-0438d7a5e2d5",
+      "name": "X",
+      "credentials": {
+        "twitterOAuth2Api": {
+          "id": "gnP4W43zIPbVci3B",
+          "name": "AltInvestClub"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "=0 9 * * 1,5"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -20,
+        0
+      ],
+      "id": "585b765d-b9d8-4d58-b7ee-06dba77671c3",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "content": "## Invite People to Attend the AIC Friday Meeting\nhttps://x.com/AltInvestClub",
+        "height": 500,
+        "width": 1320,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        -140
+      ],
+      "id": "b4feaab6-06b9-4b09-a9b4-0fcaef92eb8b",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "tableId": "xmessages",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "text",
+              "fieldValue": "={{ $json.text }}"
+            },
+            {
+              "fieldId": "account",
+              "fieldValue": "AltInvestClub"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        0
+      ],
+      "id": "765b61e9-91e5-4d8d-a892-ddaca2ec6d78",
+      "name": "Write X Message to DB",
+      "credentials": {
+        "supabaseApi": {
+          "id": "bX97yHQCD7Z1jFll",
+          "name": "aicweb_prod"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "Meeting",
+        "limit": 1,
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "date",
+              "condition": "gte",
+              "keyValue": "={{ new Date(new Date().setHours(0, 0, 0, 0)).toISOString()}}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "b48cf2ad-6016-427f-8267-029b99c09757",
+      "name": "Get Next AIC Meeting",
+      "credentials": {
+        "supabaseApi": {
+          "id": "bX97yHQCD7Z1jFll",
+          "name": "aicweb_prod"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2025-01-03T02:52:23.283Z",
+      "updatedAt": "2025-01-03T02:52:23.283Z",
+      "id": "PglCKMwU2y46uH2u",
+      "name": "X"
+    },
+    {
+      "createdAt": "2024-12-05T14:43:34.278Z",
+      "updatedAt": "2024-12-05T14:43:34.278Z",
+      "id": "YWL3bc4oYdzguiTJ",
+      "name": "Production"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-01-03T03:19:30.000Z",
+  "versionId": "98760e76-8037-4ef0-bae7-a23a74403aef"
+}
