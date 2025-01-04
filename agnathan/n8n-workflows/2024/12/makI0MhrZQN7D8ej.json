@@ -1,17 +1,6 @@
 {
   "active": false,
   "connections": {
-    "Check Every 30 Min": {
-      "main": [
-        [
-          {
-            "node": "Fetch Latest Videos",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Fetch Latest Videos": {
       "main": [
         [
@@ -44,6 +33,39 @@
           }
         ]
       ]
+    },
+    "Post to X": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Every Morning at 9am": {
+      "main": [
+        [
+          {
+            "node": "Fetch Latest Videos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-12-01T04:45:25.962Z",
@@ -51,7 +73,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Youtube Videos to Twitter",
+  "name": "Message X about the Latest YouTube Video",
   "nodes": [
     {
       "parameters": {
@@ -69,7 +91,7 @@
       "credentials": {
         "twitterOAuth2Api": {
           "id": "gnP4W43zIPbVci3B",
-          "name": "X account"
+          "name": "AltInvestClub"
         }
       }
     },
@@ -116,26 +138,6 @@
       }
     },
     {
-      "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "field": "minutes",
-              "minutesInterval": 30
-            }
-          ]
-        }
-      },
-      "id": "01216625-423b-46e5-9d84-15c1128e573f",
-      "name": "Check Every 30 Min",
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "position": [
-        520,
-        580
-      ],
-      "typeVersion": 1.2
-    },
-    {
       "parameters": {},
       "id": "897ffc14-9079-46d1-8c31-a56f6642cc64",
       "name": "When clicking ‘Test workflow’",
@@ -157,7 +159,7 @@
         "messages": {
           "values": [
             {
-              "content": "=Write an engaging post about my latest YouTube video for X (Twitter) of no more than 140 characters in length. Link to the video at https://youtu.be/{{ $json.id.videoId }} use this title and description:  {{ $json.snippet.title }}  {{ $json.snippet.description }}"
+              "content": "=Write an engaging post about my latest YouTube video for X (Twitter) of no more than 400 characters in length. Link to the video at https://youtu.be/{{ $json.id.videoId }} use this title and description:  {{ $json.snippet.title }}  {{ $json.snippet.description }}\n\nEnd with an engaging question. \nInclude relavant hashtags\n\n\nThe video link is formatted as such: https://youtu.be/{{ $json.id.videoId }}\nDo not use the words \"Check out\" or \"lastest video\"\nIf you do not have a videoId then don't write a link."
             }
           ]
         },
@@ -190,8 +192,87 @@
       "typeVersion": 1,
       "position": [
         1020,
-        760
+        780
       ]
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C087B6YF4JG",
+          "mode": "list",
+          "cachedResultName": "automations"
+        },
+        "text": "={{$workflow.name}}: {{ $json.text }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        1820,
+        580
+      ],
+      "id": "ef0a8d3f-fe15-4953-ad77-78467ff0d07d",
+      "name": "Slack",
+      "webhookId": "f2b612b4-2012-4e77-b5b9-b3843ab36e4c",
+      "credentials": {
+        "slackApi": {
+          "id": "sqZE51AkSy0bWsNt",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 9,
+              "triggerAtMinute": "={{ Math.floor(Math.random() * 42) + 2; }}"
+            }
+          ]
+        }
+      },
+      "id": "01216625-423b-46e5-9d84-15c1128e573f",
+      "name": "Every Morning at 9am",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        520,
+        580
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "tableId": "xmessages",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "text",
+              "fieldValue": "={{ $json.text }}"
+            },
+            {
+              "fieldId": "account",
+              "fieldValue": "AltInvestClub"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        580
+      ],
+      "id": "31761f43-5b6f-44e4-9b7a-cfbdcd535fd9",
+      "name": "Supabase",
+      "credentials": {
+        "supabaseApi": {
+          "id": "IJvAp1W6mQXyy8TB",
+          "name": "Content"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -201,16 +282,32 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "staticData": null,
+  "staticData": {
+    "node:Every Morning at 9am": {
+      "recurrenceRules": []
+    }
+  },
   "tags": [
     {
-      "createdAt": "2024-12-01T14:21:25.482Z",
-      "updatedAt": "2024-12-01T14:21:25.482Z",
-      "id": "SIJWhQ43whBotfGd",
-      "name": "Community Examples"
+      "createdAt": "2025-01-03T02:52:23.283Z",
+      "updatedAt": "2025-01-03T02:52:23.283Z",
+      "id": "PglCKMwU2y46uH2u",
+      "name": "X"
+    },
+    {
+      "createdAt": "2024-12-05T14:43:34.278Z",
+      "updatedAt": "2024-12-05T14:43:34.278Z",
+      "id": "YWL3bc4oYdzguiTJ",
+      "name": "Production"
+    },
+    {
+      "createdAt": "2024-12-12T14:07:08.085Z",
+      "updatedAt": "2024-12-12T14:07:08.085Z",
+      "id": "d1FYrk5saECGEima",
+      "name": "Social Media"
     }
   ],
-  "triggerCount": 0,
-  "updatedAt": "2024-12-18T03:47:24.000Z",
-  "versionId": "5d3b13ad-2558-441c-8707-4c2cdccdf229"
+  "triggerCount": 1,
+  "updatedAt": "2025-01-04T01:52:22.000Z",
+  "versionId": "b8981ae5-1770-4b60-9428-b7f32943147f"
 }
