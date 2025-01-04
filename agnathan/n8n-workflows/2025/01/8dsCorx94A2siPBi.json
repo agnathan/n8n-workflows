@@ -23,17 +23,6 @@
         ]
       ]
     },
-    "Schedule Trigger": {
-      "main": [
-        [
-          {
-            "node": "Get Next AIC Meeting",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "X": {
       "main": [
         [
@@ -50,6 +39,28 @@
         [
           {
             "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Monday & Friday at 9am": {
+      "main": [
+        [
+          {
+            "node": "Get Next AIC Meeting",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write X Message to DB": {
+      "main": [
+        [
+          {
+            "node": "Slack",
             "type": "main",
             "index": 0
           }
@@ -119,36 +130,16 @@
     },
     {
       "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "field": "cronExpression",
-              "expression": "=0 9 * * 1,5"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.2,
-      "position": [
-        -20,
-        0
-      ],
-      "id": "585b765d-b9d8-4d58-b7ee-06dba77671c3",
-      "name": "Schedule Trigger"
-    },
-    {
-      "parameters": {
         "content": "## Invite People to Attend the AIC Friday Meeting\nhttps://x.com/AltInvestClub",
-        "height": 500,
-        "width": 1320,
+        "height": 440,
+        "width": 1540,
         "color": 5
       },
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -60,
-        -140
+        -80,
+        -80
       ],
       "id": "b4feaab6-06b9-4b09-a9b4-0fcaef92eb8b",
       "name": "Sticky Note"
@@ -179,8 +170,8 @@
       "name": "Write X Message to DB",
       "credentials": {
         "supabaseApi": {
-          "id": "bX97yHQCD7Z1jFll",
-          "name": "aicweb_prod"
+          "id": "IJvAp1W6mQXyy8TB",
+          "name": "Content"
         }
       }
     },
@@ -213,6 +204,70 @@
           "name": "aicweb_prod"
         }
       }
+    },
+    {
+      "parameters": {
+        "content": "![Grow Your Business With AI Logo](https://aicf-email-resources.s3.us-west-2.amazonaws.com/logo5.jpg)",
+        "height": 248.79008596435733,
+        "width": 235.46163540640913,
+        "color": 5
+      },
+      "id": "f7861e74-b554-44e5-9b2d-da232fdf88f1",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "=0 9 * * 1,5"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -20,
+        0
+      ],
+      "id": "585b765d-b9d8-4d58-b7ee-06dba77671c3",
+      "name": "Monday & Friday at 9am"
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C087B6YF4JG",
+          "mode": "list",
+          "cachedResultName": "automations"
+        },
+        "text": "={{ $workflow.name }}: ",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        1260,
+        0
+      ],
+      "id": "ae718b41-f2f0-4c2b-bfb4-876acba42d4b",
+      "name": "Slack",
+      "webhookId": "2545c523-96a2-4997-ac01-a6bd1a257b24",
+      "credentials": {
+        "slackApi": {
+          "id": "sqZE51AkSy0bWsNt",
+          "name": "Slack account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -224,6 +279,9 @@
   },
   "staticData": {
     "node:Schedule Trigger": {
+      "recurrenceRules": []
+    },
+    "node:Monday & Friday at 9am": {
       "recurrenceRules": []
     }
   },
@@ -242,6 +300,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-01-03T03:19:30.000Z",
-  "versionId": "98760e76-8037-4ef0-bae7-a23a74403aef"
+  "updatedAt": "2025-01-04T01:35:14.000Z",
+  "versionId": "9124b521-8f1c-4cd6-8bf5-f524f2ac920e"
 }
