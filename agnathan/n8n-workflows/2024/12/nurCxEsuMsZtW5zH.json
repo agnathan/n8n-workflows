@@ -300,8 +300,8 @@
     {
       "parameters": {
         "content": "## Tool to Add a Google Drive File to Vector DB",
-        "height": 671.8877842322804,
-        "width": 2070.8894079025763,
+        "height": 672,
+        "width": 2271,
         "color": 5
       },
       "id": "9c192372-db93-49a0-937e-56f1ea3fcaaf",
@@ -500,7 +500,7 @@
       "credentials": {
         "supabaseApi": {
           "id": "HwcsUCmO5EkOB3Rg",
-          "name": "Supabase account"
+          "name": "aicweb_development"
         }
       }
     },
@@ -530,8 +530,8 @@
     {
       "parameters": {
         "content": "## RAG AI Agent with Chat Interface",
-        "height": 464.8027193303974,
-        "width": 692.7866482806627
+        "height": 525,
+        "width": 693
       },
       "id": "aa200119-e321-4d13-b210-2ecad5303c60",
       "name": "Sticky Note2",
@@ -539,7 +539,7 @@
       "typeVersion": 1,
       "position": [
         -240,
-        520
+        480
       ]
     },
     {
@@ -597,7 +597,7 @@
       "credentials": {
         "supabaseApi": {
           "id": "HwcsUCmO5EkOB3Rg",
-          "name": "Supabase account"
+          "name": "aicweb_development"
         }
       }
     },
@@ -625,7 +625,7 @@
       "credentials": {
         "supabaseApi": {
           "id": "HwcsUCmO5EkOB3Rg",
-          "name": "Supabase account"
+          "name": "aicweb_development"
         }
       }
     }
@@ -639,10 +639,10 @@
   },
   "staticData": {
     "node:File Created": {
-      "lastTimeChecked": "2024-12-22T07:02:14Z"
+      "lastTimeChecked": "2025-01-04T02:48:40Z"
     },
     "node:File Updated": {
-      "lastTimeChecked": "2024-12-22T07:02:12Z"
+      "lastTimeChecked": "2025-01-04T02:48:40Z"
     }
   },
   "tags": [
@@ -654,6 +654,6 @@
     }
   ],
   "triggerCount": 4,
-  "updatedAt": "2024-12-21T03:37:40.000Z",
-  "versionId": "fddcc3e6-bb93-4800-9286-025473a9fd9b"
+  "updatedAt": "2025-01-04T01:56:11.000Z",
+  "versionId": "12149fc7-a577-4cd7-b373-2aef59b380ed"
 }
