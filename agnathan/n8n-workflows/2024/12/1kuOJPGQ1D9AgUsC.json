@@ -354,8 +354,21 @@
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2025-01-04T01:53:24.586Z",
+      "updatedAt": "2025-01-04T01:53:24.586Z",
+      "id": "H2JjN2jpayENEyRh",
+      "name": "Data Enrichment"
+    },
+    {
+      "createdAt": "2024-12-01T14:23:56.869Z",
+      "updatedAt": "2024-12-01T14:23:56.869Z",
+      "id": "Paq9K6w31GZ583JD",
+      "name": "My Drafts"
+    }
+  ],
   "triggerCount": 1,
-  "updatedAt": "2024-12-24T04:53:02.000Z",
-  "versionId": "899811ce-8d05-4164-999d-29b14187fb7a"
+  "updatedAt": "2025-01-04T01:53:29.000Z",
+  "versionId": "1086932a-69e5-4276-b774-d556919d447e"
 }
