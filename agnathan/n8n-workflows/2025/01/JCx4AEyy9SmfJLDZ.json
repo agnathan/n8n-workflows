@@ -1,0 +1,1500 @@
+{
+  "active": false,
+  "connections": {
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Prompts",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Extract JSON",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Do Nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Article": {
+      "main": [
+        [
+          {
+            "node": "If Article",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Id": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If HTML": {
+      "main": [
+        [
+          {
+            "node": "Contents",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Do Nothing3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prompts": {
+      "main": [
+        [
+          {
+            "node": "Perplexity",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Id1": {
+      "main": [
+        [
+          {
+            "node": "Slack1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Contents": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Topic": {
+      "main": [
+        [
+          {
+            "node": "Perplexity Topic Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Do Nothing4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Topic": {
+      "main": [
+        [
+          {
+            "node": "If Topic Exists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Article": {
+      "main": [
+        [
+          {
+            "node": "Create HTML Article",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Do Nothing2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Perplexity": {
+      "main": [
+        [
+          {
+            "node": "Success Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "gpt-4o-mini": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Create HTML Article",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract JSON": {
+      "main": [
+        [
+          {
+            "node": "Article",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "gpt-4o-mini1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Perplexity Topic Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "gpt-4o-mini2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Extract JSON",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "gpt-4o-mini3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Improve Users Topic",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "gpt-4o-mini5": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Slack2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Topic Exists": {
+      "main": [
+        [
+          {
+            "node": "Improve Users Topic",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Do Nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create HTML Article": {
+      "main": [
+        [
+          {
+            "node": "If HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Improve Users Topic": {
+      "main": [
+        [
+          {
+            "node": "If Topic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Perplexity Topic Agent": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Chat Id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Chat Id1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        [
+          {
+            "node": "Error Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Extract JSON",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call Perplexity Researcher": {
+      "ai_tool": [
+        [
+          {
+            "node": "Perplexity Topic Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Get Topic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slack1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slack2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-04T04:53:38.684Z",
+  "id": "JCx4AEyy9SmfJLDZ",
+  "meta": null,
+  "name": "Perplexity Research to HTML: AI-Powered Content Creation",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Create Article from Perplexity Research",
+        "height": 465.2493344282225,
+        "width": 625.851492623043,
+        "color": 3
+      },
+      "id": "49101b10-c83b-4cc1-a532-59db9fd55611",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1660,
+        1580
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Convert Article into HTML",
+        "height": 464.14912719677955,
+        "width": 479.02028317328745,
+        "color": 4
+      },
+      "id": "ecc28b5d-3df9-4674-b725-d24ce9d17736",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2580,
+        1580
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini-2024-07-18",
+        "options": {
+          "responseFormat": "text"
+        }
+      },
+      "id": "8a53df9e-aa5a-41a3-9823-aeca942a2cbc",
+      "name": "gpt-4o-mini",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        2720,
+        1880
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "openAiApi": {
+          "id": "FXa5oPwfEyVR0oL0",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "frequencyPenalty": 0,
+          "maxTokens": -1,
+          "responseFormat": "text",
+          "presencePenalty": 0,
+          "temperature": 0,
+          "timeout": 60000,
+          "maxRetries": 2,
+          "topP": 1
+        }
+      },
+      "id": "eb4bc65d-4b6c-484f-9618-88da4768422f",
+      "name": "gpt-4o-mini1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        2900,
+        1260
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "openAiApi": {
+          "id": "FXa5oPwfEyVR0oL0",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"article\": {\n      \"type\": \"object\",\n      \"required\": [\"category\", \"title\", \"metadata\", \"content\", \"hashtags\"],\n      \"properties\": {\n        \"category\": {\n          \"type\": \"string\",\n          \"description\": \"Article category\"\n        },\n        \"title\": {\n          \"type\": \"string\",\n          \"description\": \"Article title\"\n        },\n        \"metadata\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"timePosted\": {\n              \"type\": \"string\",\n              \"description\": \"Time since article was posted\"\n            },\n            \"author\": {\n              \"type\": \"string\",\n              \"description\": \"Article author name\"\n            },\n            \"tag\": {\n              \"type\": \"string\",\n              \"description\": \"Article primary tag\"\n            }\n          },\n          \"required\": [\"timePosted\", \"author\", \"tag\"]\n        },\n        \"content\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"mainText\": {\n              \"type\": \"string\",\n              \"description\": \"Main article content\"\n            },\n            \"sections\": {\n              \"type\": \"array\",\n              \"items\": {\n                \"type\": \"object\",\n                \"properties\": {\n                  \"title\": {\n                    \"type\": \"string\",\n                    \"description\": \"Section title\"\n                  },\n                  \"text\": {\n                    \"type\": \"string\",\n                    \"description\": \"Section content\"\n                  },\n                  \"quote\": {\n                    \"type\": \"string\",\n                    \"description\": \"Blockquote text\"\n                  }\n                },\n                \"required\": [\"title\", \"text\", \"quote\"]\n              }\n            }\n          },\n          \"required\": [\"mainText\", \"sections\"]\n        },\n        \"hashtags\": {\n          \"type\": \"array\",\n          \"items\": {\n            \"type\": \"string\"\n          },\n          \"description\": \"Article hashtags\"\n        }\n      }\n    }\n  }\n}"
+      },
+      "id": "52239dfd-03ee-4d8f-a33d-7c01b355ab36",
+      "name": "Structured Output Parser1",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "position": [
+        1980,
+        1880
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "options": {
+          "frequencyPenalty": 0,
+          "maxTokens": -1,
+          "responseFormat": "json_object",
+          "presencePenalty": 0,
+          "temperature": 0,
+          "timeout": 60000,
+          "maxRetries": 2,
+          "topP": 1
+        }
+      },
+      "id": "1529dbf4-9027-47f5-b89f-42f1e43e4e6f",
+      "name": "gpt-4o-mini2",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        1760,
+        1880
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "openAiApi": {
+          "id": "FXa5oPwfEyVR0oL0",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.text }}",
+        "options": {}
+      },
+      "id": "b37b2d83-d6c1-421e-9cbc-c5943f83da31",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        4380,
+        1700
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.telegram_chat_id }}",
+        "text": "={{ $('Perplexity Topic Agent').item.json.output.slice(0, 300) }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "id": "bec85ef4-e632-42cc-80d4-a12b585ec3e7",
+      "name": "Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "position": [
+        3980,
+        1300
+      ],
+      "typeVersion": 1.2,
+      "credentials": {
+        "telegramApi": {
+          "id": "OYNsltqOYUS2MqFP",
+          "name": "gybwai_bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "frequencyPenalty": 0,
+          "maxTokens": -1,
+          "responseFormat": "text",
+          "presencePenalty": 0,
+          "temperature": 0,
+          "timeout": 60000,
+          "maxRetries": 2,
+          "topP": 1
+        }
+      },
+      "id": "78a79280-54b1-4d29-9f74-b8dc12542145",
+      "name": "gpt-4o-mini5",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        3820,
+        1880
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "openAiApi": {
+          "id": "FXa5oPwfEyVR0oL0",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Create a modern, responsive single-line HTML document. Convert any markdown to Tailwind CSS classes. Replace markdown lists with proper HTML list elements. Remove all newline characters while preserving </br> tags in content. Enhance the layout with Tailwind CSS cards where appropriate. Use the following base structure, but improve the styling and responsiveness:\n\n<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Comprehensive Overview of DeepSeek V3</title>\n    <link href=\"https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css\" rel=\"stylesheet\">\n</head>\n\n<body class=\"bg-gray-100 font-sans\">\n    <div class=\"relative p-4\">\n        <div class=\"max-w-3xl mx-auto text-sm\">\n            <div class=\"mt-3 bg-white rounded-lg shadow-lg flex flex-col justify-between leading-normal\">\n                <div class=\"p-6\">\n                    <h1 class=\"text-gray-900 font-bold text-4xl mb-4\">Comprehensive Overview of DeepSeek V3</h1>\n                    <div class=\"mb-4\">\n                        <p class=\"leading-8\"><strong>Time Posted:</strong> Just now</p>\n                        <p class=\"leading-8\"><strong>Author:</strong> AI Research Team</p>\n                        <p class=\"leading-8\"><strong>Tag:</strong> AI Models</p>\n                    </div>\n                    <p class=\"leading-8 my-4\"><strong>DeepSeek V3</strong> is a state-of-the-art AI model that leverages\n                        advanced architectures and techniques to deliver high performance across various applications.\n                        This overview covers its key concepts, practical applications, advantages, limitations, and best\n                        practices for implementation.</p>\n                    <section class=\"mb-6\">\n                        <h2 class=\"text-2xl font-bold my-3\">Key Concepts and Core Components</h2>\n                        <p class=\"leading-8 my-3\"><strong>1. Mixture-of-Experts (MoE) Architecture:</strong> DeepSeek V3\n                            employs a Mixture-of-Experts (MoE) architecture, which consists of multiple neural networks,\n                            each optimized for different tasks. This architecture allows for efficient processing by\n                            activating only a portion of the network for each task, reducing hardware costs.</p>\n                        <p class=\"leading-8 my-3\"><strong>2. Parameters:</strong> The model boasts a total of 671\n                            billion\n                            parameters, with 37 billion active parameters for each token during processing. The addition\n                            of\n                            the Multi-Token Prediction (MTP) module increases the total parameters to 685 billion,\n                            making it\n                            significantly larger than other models like Meta's Llama 3.1 (405B).</p>\n                        <p class=\"leading-8 my-3\"><strong>3. Multi-head Latent Attention (MLA):</strong> DeepSeek V3\n                            uses\n                            Multi-head Latent Attention (MLA) to extract key details from text multiple times, improving\n                            its\n                            accuracy.</p>\n                        <p class=\"leading-8 my-3\"><strong>4. Multi-Token Prediction (MTP):</strong> The model utilizes\n                            Multi-Token Prediction to generate several tokens at once, speeding up inference and\n                            enabling\n                            speculative decoding.</p>\n                        <blockquote\n                            class=\"italic leading-8 my-3 p-5 text-indigo-600 font-semibold bg-indigo-50 rounded-lg border-l-4 border-indigo-600\">\n                            DeepSeek V3 employs a Mixture-of-Experts architecture for efficient processing.</blockquote>\n                    </section>\n                    <section class=\"mb-6\">\n                        <h2 class=\"text-2xl font-bold my-3\">Practical Applications</h2>\n                        <ol class=\"list-decimal pl-5\">\n                            <li class=\"leading-8 my-3\"><strong>Translation, Coding, and Content Generation:</strong>\n                                DeepSeek V3 is designed for a wide range of tasks including translation, coding, content\n                                generation, and reasoning. It excels in English, Chinese, coding, and mathematics,\n                                rivaling leading commercial models like OpenAI's GPT-4.</li>\n                            <li class=\"leading-8 my-3\"><strong>Research and Development:</strong> The open-source nature\n                                of DeepSeek V3 fuels innovation, allowing researchers to experiment with and build upon\n                                its technology.</li>\n                            <li class=\"leading-8 my-3\"><strong>Commercial Applications:</strong> The licensing of\n                                DeepSeek V3 makes it permissible for commercial use, opening it up to numerous\n                                applications across different industries.</li>\n                            <li class=\"leading-8 my-3\"><strong>Democratization of AI:</strong> By making powerful AI\n                                accessible, DeepSeek V3 levels the playing field, allowing smaller organizations to\n                                compete with larger ones.</li>\n                        </ol>\n                        <blockquote\n                            class=\"italic leading-8 my-3 p-5 text-indigo-600 font-semibold bg-indigo-50 rounded-lg border-l-4 border-indigo-600\">\n                            DeepSeek V3 democratizes AI access for smaller organizations.</blockquote>\n                    </section>\n                    <section class=\"mb-6\">\n                        <h2 class=\"text-2xl font-bold my-3\">Advantages</h2>\n                        <ol class=\"list-decimal pl-5\">\n                            <li class=\"leading-8 my-3\"><strong>Speed and Efficiency:</strong> DeepSeek V3 processes\n                                information at a blistering 60 tokens per second, a threefold increase over its\n                                predecessor. It uses advanced inference capabilities, deploying 32 H800 GPUs for prefill\n                                and 320 H800 GPUs for decoding.</li>\n                            <li class=\"leading-8 my-3\"><strong>Cost-Effectiveness:</strong> The model was trained for a\n                                mere $5.5 million, a fraction of the estimated over $100 million invested by OpenAI in\n                                GPT-4. DeepSeek V3 offers significantly lower prices for its online services, with 1\n                                million tokens priced at just $1.1, currently offered at a promotional rate of $0.28.\n                            </li>\n                            <li class=\"leading-8 my-3\"><strong>Innovation in Inference:</strong> The model's advanced\n                                inference capabilities set the standard for future model deployment, making it a\n                                powerful tool in the digital realm.</li>\n                        </ol>\n                        <blockquote\n                            class=\"italic leading-8 my-3 p-5 text-indigo-600 font-semibold bg-indigo-50 rounded-lg border-l-4 border-indigo-600\">\n                            DeepSeek V3 processes information at 60 tokens per second.</blockquote>\n                    </section>\n                    <section class=\"mb-6\">\n                        <h2 class=\"text-2xl font-bold my-3\">Limitations</h2>\n                        <ol class=\"list-decimal pl-5\">\n                            <li class=\"leading-8 my-3\"><strong>Deployment Complexity:</strong> Deploying DeepSeek V3\n                                requires advanced hardware and a deployment strategy that separates the prefilling and\n                                decoding stages, which might be unachievable for small companies due to a lack of\n                                resources. The recommended deployment unit for DeepSeek V3 is relatively large, posing a\n                                burden for small-sized teams.</li>\n                            <li class=\"leading-8 my-3\"><strong>Potential for Further Enhancement:</strong> Although\n                                DeepSeek V3 has achieved an end-to-end generation speed of more than two times that of\n                                DeepSeek V2, there still remains potential for further enhancement with the development\n                                of more advanced hardware.</li>\n                        </ol>\n                        <blockquote\n                            class=\"italic leading-8 my-3 p-5 text-indigo-600 font-semibold bg-indigo-50 rounded-lg border-l-4 border-indigo-600\">\n                            Deployment of DeepSeek V3 may be complex for small companies.</blockquote>\n                    </section>\n                    <section class=\"mb-6\">\n                        <h2 class=\"text-2xl font-bold my-3\">Best Practices for Implementation</h2>\n                        <ol class=\"list-decimal pl-5\">\n                            <li class=\"leading-8 my-3\"><strong>Hardware Requirements:</strong> Ensure that the\n                                deployment environment has the necessary advanced hardware to handle the model's\n                                requirements, including multiple GPUs for prefill and decoding.</li>\n                            <li class=\"leading-8 my-3\"><strong>Deployment Strategy:</strong> Implement a deployment\n                                strategy that separates the prefilling and decoding stages to optimize performance and\n                                efficiency.</li>\n                            <li class=\"leading-8 my-3\"><strong>Monitoring and Optimization:</strong> Continuously\n                                monitor the model's performance and optimize it as needed to address any limitations and\n                                improve efficiency.</li>\n                            <li class=\"leading-8 my-3\"><strong>Community Engagement:</strong> Engage with the\n                                open-source community to leverage the collective knowledge and resources available,\n                                which can help in addressing any challenges and improving the model further.</li>\n                        </ol>\n                        <blockquote\n                            class=\"italic leading-8 my-3 p-5 text-indigo-600 font-semibold bg-indigo-50 rounded-lg border-l-4 border-indigo-600\">\n                            Engage with the open-source community for better implementation.</blockquote>\n                    </section>\n                    <p class=\"leading-8 my-6\"><strong>Hashtags:</strong> <span\n                            class=\"text-indigo-600\">#DeepSeekV3</span> <span class=\"text-indigo-600\">#AI</span> <span\n                            class=\"text-indigo-600\">#MachineLearning</span> <span\n                            class=\"text-indigo-600\">#OpenSource</span></p>\n                </div>\n            </div>\n        </div>\n    </div>\n</body>\n\n</html>\n\n-------\n\nRequirements:\n- Output must be a single line of HTML\n- Enhanced with modern Tailwind CSS styling\n- Proper HTML list structures\n- Responsive design\n- No newlines except </br> in content\n- No markdown formatting\n- Clean, readable layout\n- Properly formatted hashtags\n- No explanation or additional text in output\n- No code block markers or escape characters\n- Wnsure Metadata, Title and Content are included in HTML\n\nMetadata: {{ $('Article').item.json.article.metadata.toJsonString() }}\nTitle: {{ $json.title }}\nContent: {{ $json.html }}\n"
+      },
+      "id": "b2248d9b-31c3-4e7b-a86a-a925c745895e",
+      "name": "Basic LLM Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "position": [
+        3680,
+        1700
+      ],
+      "typeVersion": 1.4
+    },
+    {
+      "parameters": {},
+      "id": "110f32a7-b4c6-4244-a147-1b612b380a8c",
+      "name": "Do Nothing1",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        1900,
+        1300
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {
+          "frequencyPenalty": 0,
+          "maxTokens": -1,
+          "responseFormat": "text",
+          "presencePenalty": 0,
+          "temperature": 0,
+          "timeout": 60000,
+          "maxRetries": 2,
+          "topP": 1
+        }
+      },
+      "id": "aaeaa7ee-2784-4ee1-952a-a6808d6d758f",
+      "name": "gpt-4o-mini3",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        2360,
+        1260
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "openAiApi": {
+          "id": "FXa5oPwfEyVR0oL0",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Create HTML Page with TailwindCSS Styling",
+        "height": 465,
+        "width": 531,
+        "color": 6
+      },
+      "id": "3b662766-30bc-48a6-abc8-44d41b7eb3a8",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3540,
+        1580
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Parse Topic from Get Request",
+        "height": 489.5271576259337,
+        "width": 450.54438902818094
+      },
+      "id": "011ce016-00f5-473d-94d1-183bc1dce7b3",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1660,
+        980
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Improve the Users Topic",
+        "height": 488,
+        "width": 380,
+        "color": 5
+      },
+      "id": "37e49ab6-e2a4-4e7a-8d2f-52d2d6dd0c5c",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2160,
+        980
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "8e35de0a-ac16-4555-94f4-24e97bdf4b33",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              },
+              "leftValue": "{{ $json.output }}",
+              "rightValue": ""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2719a349-2c74-434c-8dce-a5af10199b6b",
+      "name": "If2",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        3460,
+        1360
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "efbe7563-8502-407e-bfa0-a4a26d8cddd4",
+              "name": "user",
+              "type": "string",
+              "value": "=Analyze the key concepts and definitions of AI in business, focusing on essential components, practical applications, and their relationships, while evaluating advantages, limitations, and best practices for effective implementation. Provide insights into real-world use cases and critical workflows that enhance business growth through AI technologies."
+            },
+            {
+              "id": "05e0b629-bb9f-4010-96a8-10872764705a",
+              "name": "system",
+              "type": "string",
+              "value": "Assistant is a large language model.  Assistant is designed to be able to assist with a wide range of tasks, from answering simple questions to providing in-depth explanations and discussions on a wide range of topics. As a language model, Assistant is able to generate human-like text based on the input it receives, allowing it to engage in natural-sounding conversations and provide responses that are coherent and relevant to the topic at hand.  Assistant is constantly learning and improving, and its capabilities are constantly evolving. It is able to process and understand large amounts of text, and can use this knowledge to provide accurate and informative responses to a wide range of questions. Additionally, Assistant is able to generate its own text based on the input it receives, allowing it to engage in discussions and provide explanations and descriptions on a wide range of topics.  Overall, Assistant is a powerful system that can help with a wide range of tasks and provide valuable insights and information on a wide range of topics. Whether you need help with a specific question or just want to have a conversation about a particular topic, Assistant is here to assist.  "
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c408f2ea-4046-4754-868a-37b42a7b657d",
+      "name": "Prompts",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        2860,
+        2300
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {},
+      "id": "c5a12e78-e5c0-425b-9a28-a49127d5f7de",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        1760,
+        2400
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "7e2679dc-c898-415d-a693-c2c1e7259b6a",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              },
+              "leftValue": "Analyze the key concepts and definitions of AI in business, focusing on essential components, practical applications, and their relationships, while evaluating advantages, limitations, and best practices for effective implementation. Provide insights into real-world use cases and critical workflows that enhance business growth through AI technologies.",
+              "rightValue": "undefined"
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "d43424ac-b898-410f-9032-166a57f58b31",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        2500,
+        2400
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {},
+      "id": "0c225dea-158d-4208-b421-b29a5e5ca698",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        2860,
+        2520
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## 🛠️perplexity_research_tool\n\n",
+        "height": 623,
+        "width": 1614,
+        "color": 5
+      },
+      "id": "42a801aa-0881-4e1b-81ff-3c680438efe9",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1660,
+        2160
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Topic: {{ $json.text }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "Use the perplexity_research_tool to provide research on the users topic.\n\n"
+        }
+      },
+      "id": "4d8eadd1-3b68-4a9f-a156-3231ddcc92c2",
+      "name": "Perplexity Topic Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        2920,
+        1080
+      ],
+      "typeVersion": 1.6
+    },
+    {
+      "parameters": {
+        "name": "perplexity_research_tool",
+        "description": "Call this tool to perform Perplexity research.",
+        "workflowId": {
+          "__rl": true,
+          "value": "UV3HUWjMhzvPzp91",
+          "mode": "id"
+        },
+        "fields": {
+          "values": [
+            {
+              "name": "topic",
+              "stringValue": "= {{ $json.text }}"
+            }
+          ]
+        },
+        "jsonSchemaExample": "{\n  \"topic\": \"\"\n}"
+      },
+      "id": "9f800eb7-4853-4fa9-badc-084b52991d77",
+      "name": "Call Perplexity Researcher",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "position": [
+        3120,
+        1260
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {},
+      "id": "5a171efb-d84d-4a8b-bf0d-953e58dc4f51",
+      "name": "Do Nothing",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        3660,
+        1360
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "da48127c-3b96-463a-b4b3-6d132720305c",
+      "name": "Do Nothing2",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        2360,
+        1920
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "41d9d2a4-66bb-434a-9b0e-f7bb711558ef",
+      "name": "Do Nothing3",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        3340,
+        1920
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "e8ce731d-25aa-4905-8eda-3b0637d521b7",
+      "name": "Do Nothing4",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        2600,
+        1300
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## 🤖Perform Perplexity Research",
+        "height": 488,
+        "width": 480,
+        "color": 3
+      },
+      "id": "6c960a63-0b63-4681-8b44-63368a751175",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2800,
+        980
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "57f0eab2-ef1b-408c-82d5-a8c54c4084a6",
+              "name": "topic",
+              "type": "string",
+              "value": "={{ $json.query.topic }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2c3a4208-c979-4a23-8ae7-12181d1b7722",
+      "name": "Get Topic",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1720,
+        1080
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "2c565aa5-0d11-47fb-8621-6db592579fa8",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              },
+              "leftValue": "={{ $json.topic }}",
+              "rightValue": ""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0350b597-c815-4a0b-89c5-adbda7b32c4b",
+      "name": "If Topic Exists",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1900,
+        1080
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=How would you improve the following prompt as of {{ $now }}, focusing on:\n\n1. Key Concepts & Definitions\n   - Main terminology and foundational concepts\n   - Technical background and context\n\n2. Core Components\n   - Essential elements and their relationships\n   - Critical processes and workflows\n\n3. Practical Applications\n   - Real-world use cases\n   - Implementation considerations\n\n4. Analysis & Insights\n   - Advantages and limitations\n   - Best practices and recommendations\n\nThe final output should be a maximum 2 sentence pure text prompt without any preamble or further explanation.  The final output will be providced to Perplexity as a research prompt.\n\nPrompt to analyze: {{ $json.topic }}"
+      },
+      "id": "272a926d-2c7a-4e2a-a281-77589fa5b953",
+      "name": "Improve Users Topic",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "position": [
+        2220,
+        1080
+      ],
+      "typeVersion": 1.4
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "329653d4-330f-4b41-96e7-4652c1448902",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              },
+              "leftValue": "={{ $json.text }}",
+              "rightValue": ""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "36f40605-c661-4e4c-ab06-030f7e09f4bc",
+      "name": "If Topic",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        2600,
+        1080
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0aa8fcc9-26f4-485c-8fc1-a5c13d0dd279",
+              "name": "telegram_chat_id",
+              "type": "number",
+              "value": 7901719909
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e577d072-4455-4354-a3ab-f574b44d23cd",
+      "name": "Chat Id",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        3460,
+        1100
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0eb5952b-c133-4b63-8102-d4b8ec7b9b5a",
+              "name": "article",
+              "type": "object",
+              "value": "={{ $json.output.article }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "de5ee237-8402-40c0-9357-efe6e8a26ed4",
+      "name": "Article",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        2120,
+        1700
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Extract a JSON object from this content: {{ $json.output }}",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "id": "a946f363-b47c-4a8f-a7f3-625ba2db6d1d",
+      "name": "Extract JSON",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        1780,
+        1700
+      ],
+      "retryOnFail": true,
+      "typeVersion": 1.6
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "329653d4-330f-4b41-96e7-4652c1448902",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              },
+              "leftValue": "{{ $json.article }}",
+              "rightValue": ""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cbe6f693-3bb1-4462-85d2-6118b4273896",
+      "name": "If Article",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        2360,
+        1700
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "agent": "conversationalAgent",
+        "promptType": "define",
+        "text": "=Convert this verbatim into HTML: {{ $json.article.toJsonString() }}\n\n## Formatting Guidelines\n- HTML document must be single line document without tabs or line breaks\n- Use proper HTML tags throughout\n- Do not use these tags:  <html> <body> <style> <head>\n- Use <h1> tag for main title\n- Use <h2> tags for secondary titles\n- Structure with <p> tags for paragraphs\n- Include appropriate spacing\n- Use <blockquote> for direct quotes\n- Maintain consistent formatting\n- Write in clear, professional tone\n- Break up long paragraphs\n- Use engaging subheadings\n- Include transitional phrases\n\nThe final JSON response should contain only the title and content fields, with the content including all HTML formatting.\n{\n\t\"title\": \"the title\",\n\t\"content\": \"the HTML\"\n}",
+        "options": {}
+      },
+      "id": "cbf4430f-0e35-4ca1-94fb-b2bffad7b3ff",
+      "name": "Create HTML Article",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        2700,
+        1700
+      ],
+      "retryOnFail": true,
+      "typeVersion": 1.6
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "329653d4-330f-4b41-96e7-4652c1448902",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              },
+              "leftValue": "={{ $json.output.parseJson().title }}",
+              "rightValue": ""
+            },
+            {
+              "id": "0a05f73a-2901-4157-8194-cb81d259ce71",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              },
+              "leftValue": "={{ $json.output.parseJson().content }}",
+              "rightValue": ""
+            },
+            {
+              "id": "b61c1d25-a010-42d3-9f9d-fa927c483bae",
+              "operator": {
+                "name": "filter.operator.equals",
+                "type": "string",
+                "operation": "equals"
+              },
+              "leftValue": "",
+              "rightValue": ""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "48effe33-e1a4-4e34-b0ba-c2d54fb8c8be",
+      "name": "If HTML",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        3120,
+        1700
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "af335333-acb8-4c9e-8184-d20cd03e08f6",
+              "name": "title",
+              "type": "string",
+              "value": "={{ $json.output.parseJson().title }}"
+            },
+            {
+              "id": "7fbd2264-c0e1-4bdc-b754-b0faa538879c",
+              "name": "content",
+              "type": "string",
+              "value": "={{ $json.output.parseJson().content }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "275f3c72-2e5b-45db-b6a5-2930bdf808e1",
+      "name": "Contents",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        3340,
+        1700
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0aa8fcc9-26f4-485c-8fc1-a5c13d0dd279",
+              "name": "telegram_chat_id",
+              "type": "number",
+              "value": 1234567890
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d73a1b0b-7ebc-4b42-85c3-3bad8622926c",
+      "name": "Chat Id1",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        2000,
+        2400
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "content": "## Optional",
+        "height": 340,
+        "width": 420
+      },
+      "id": "ac3d2d82-4d2e-4627-9d7b-a901b52e5f6f",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1940,
+        2300
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Optional",
+        "height": 340,
+        "width": 420
+      },
+      "id": "06466c2d-9069-41f9-88c8-cbe1cc589775",
+      "name": "Sticky Note8",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3400,
+        980
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "eb89464a-5919-4962-880c-3f5903e267de",
+              "name": "response",
+              "type": "string",
+              "value": "={{ $('Perplexity').item.json.choices[0].message.content }}"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "de355a4f-371b-4492-9171-2b9f137b1041",
+      "name": "Success Response",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        3260,
+        2300
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "eb89464a-5919-4962-880c-3f5903e267de",
+              "name": "response",
+              "type": "string",
+              "value": "=Error.  No topic provided."
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "783f8f40-d5e9-4d56-b3f5-c91920705043",
+      "name": "Error Response",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        3260,
+        2520
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.perplexity.ai/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"llama-3.1-sonar-small-128k-online\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"{{ $json.system }}\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"{{ $json.user }}\"\n    }\n  ],\n  \"max_tokens\": \"4000\",\n  \"temperature\": 0.2,\n  \"top_p\": 0.9,\n  \"return_citations\": true,\n  \"search_domain_filter\": [\n    \"perplexity.ai\"\n  ],\n  \"return_images\": false,\n  \"return_related_questions\": false,\n  \"search_recency_filter\": \"month\",\n  \"top_k\": 0,\n  \"stream\": false,\n  \"presence_penalty\": 0,\n  \"frequency_penalty\": 1\n}",
+        "options": {}
+      },
+      "id": "831f0a93-61ba-4f09-b7a9-bfdb44a51f58",
+      "name": "Perplexity",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        3060,
+        2300
+      ],
+      "typeVersion": 4.2,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Lhx6beUhwsqN6CDk",
+          "name": "Perplexity"
+        },
+        "httpBasicAuth": {
+          "id": "j2oVbVSUBNuq2djw",
+          "name": "Unnamed credential"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        940
+      ],
+      "id": "ba35b275-813c-45bb-b5dd-a0302268510d",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "feda4530-caa8-41b2-85d7-be9d93b2eb57",
+              "name": "query.topic",
+              "value": "Grow Your Business with AI",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1440,
+        940
+      ],
+      "id": "a025c419-7fdf-43e6-a530-7ac87cbe7505",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C087B6YF4JG",
+          "mode": "list",
+          "cachedResultName": "automations"
+        },
+        "text": "={{ $('Perplexity Topic Agent').item.json.output.slice(0, 300) }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        3720,
+        1120
+      ],
+      "id": "ea41b934-ddbe-4037-839b-389f5d532d95",
+      "name": "Slack",
+      "webhookId": "8bb47498-0c4a-48bc-9eb7-6d7797dbdd96",
+      "credentials": {
+        "slackApi": {
+          "id": "sqZE51AkSy0bWsNt",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C087B6YF4JG",
+          "mode": "list",
+          "cachedResultName": "automations"
+        },
+        "text": "<i>Analyze the key concepts and definitions of AI in business, focusing on essential components, practical applications, and their relationships, while evaluating advantages, limitations, and best practices for effective implementation. Provide insights into real-world use cases and critical workflows that enhance business growth through AI technologies.\n</i>",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        2220,
+        2400
+      ],
+      "id": "e4c20623-4188-4f03-a04f-757b37039116",
+      "name": "Slack1",
+      "webhookId": "baed972f-0b75-402d-831f-ccbbf30dc27c",
+      "credentials": {
+        "slackApi": {
+          "id": "sqZE51AkSy0bWsNt",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C087B6YF4JG",
+          "mode": "list",
+          "cachedResultName": "automations"
+        },
+        "text": "={{ $json.text }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        4160,
+        1700
+      ],
+      "id": "4ff272fb-86d6-4159-84f1-3e0d55c86751",
+      "name": "Slack2",
+      "webhookId": "e84e5808-6126-4f57-827a-92628062091e",
+      "credentials": {
+        "slackApi": {
+          "id": "sqZE51AkSy0bWsNt",
+          "name": "Slack account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:21:25.482Z",
+      "updatedAt": "2024-12-01T14:21:25.482Z",
+      "id": "SIJWhQ43whBotfGd",
+      "name": "Community Examples"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-04T07:38:06.000Z",
+  "versionId": "9c09d0c7-5699-40ac-9632-1ec2ba96b7b8"
+}
