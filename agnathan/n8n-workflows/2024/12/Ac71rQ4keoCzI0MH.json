@@ -1,17 +1,6 @@
 {
   "active": true,
   "connections": {
-    "Google Gemini Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Prompt Ideate",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Google Gemini Chat Model1": {
       "ai_languageModel": [
         [
@@ -68,11 +57,6 @@
         ]
       ]
     },
-    "Prompt Ideate": {
-      "main": [
-        []
-      ]
-    },
     "Job Ideate": {
       "main": [
         [
@@ -109,8 +93,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        1200,
-        -40
+        940,
+        -160
       ],
       "id": "9fd487ef-9c75-4e02-851c-7df4c9d2676b",
       "name": "Supabase",
@@ -129,29 +113,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        -480,
-        -300
-      ],
-      "id": "1ea65e46-5e84-4d81-a027-5e1e3885e916",
-      "name": "Google Gemini Chat Model",
-      "credentials": {
-        "googlePalmApi": {
-          "id": "eUkvc1cv7n7zwa7I",
-          "name": "Google Gemini(PaLM) Api account"
-        }
-      },
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "modelName": "models/gemini-1.5-flash",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
-      "typeVersion": 1,
-      "position": [
-        100,
-        100
+        120,
+        40
       ],
       "id": "3c6f9c64-12b6-4783-949f-32792ec6a59b",
       "name": "Google Gemini Chat Model1",
@@ -169,8 +132,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        860,
-        -100
+        720,
+        -180
       ],
       "id": "eab80010-befb-4a2b-aec5-5628510d54b4",
       "name": "Loop Over Items"
@@ -182,8 +145,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        640,
-        -60
+        500,
+        -180
       ],
       "id": "829cc719-75a7-48f9-aa5c-31c528e59193",
       "name": "JSON Parse"
@@ -195,29 +158,12 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        -380,
-        -80
+        0,
+        -180
       ],
       "id": "eb98e692-5e0f-470a-b65e-c8fd4732778a",
       "name": "When chat message received",
       "webhookId": "610148b0-a408-4aea-bf2e-5a34f787a1eb"
-    },
-    {
-      "parameters": {
-        "agent": "conversationalAgent",
-        "promptType": "define",
-        "text": "=# Context\nAdopt the role of a Prompt Ideation Specialist skilled in generating creative and actionable prompt ideas. Your task is to develop tailored prompts based on a given profession, task, or objective, ensuring each suggestion is clear, engaging, and results driven. The prompts must be versatile and adaptable, catering to a wide range of user needs while maintaining clarity, relevance, and practicality. Focus on maximizing user productivity and creativity, providing prompts that are easy to understand and aligned with the intended goal.\n\n# Goal\nIf given a specific task create a GPT prompt name, the profession that will use it, and a short description of the GPT prompt goal. If given a professional or a category then create 5 or the number asked for of GPT prompt names, the profession that will use it, and a short description of the GPT prompt goals. Each prompt should solve a unique problem for that profession or category. Each problem should be a pain point for that profession or category.\n\n# Instructions\n- The description should follow this format. The short description starts will what the prompt does and then it tells what the result it enables is. The sentence should be strong actionable statement with clear results\n- The profession should be a comma separated list\n\n# Input\nProfession: {{ $json.chatInput }}\n\n# Output Format\nReturn the results in a JSON Object",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.7,
-      "position": [
-        -400,
-        -500
-      ],
-      "id": "14a25a5c-d56e-4cd7-b662-0d8d605fc8a3",
-      "name": "Prompt Ideate",
-      "disabled": true
     },
     {
       "parameters": {
@@ -234,6 +180,22 @@
       ],
       "id": "db612069-a35a-4626-8e8c-81024f3a0c49",
       "name": "Job Ideate"
+    },
+    {
+      "parameters": {
+        "content": "## Given a profession or business type generate 10 jobs that work in that field and store them in Supabase",
+        "height": 480,
+        "width": 1280,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        -280
+      ],
+      "id": "dae567b2-1591-4a70-8816-053a7c4add0b",
+      "name": "Sticky Note"
     }
   ],
   "pinData": {},
@@ -259,6 +221,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2024-12-31T18:44:47.000Z",
-  "versionId": "ab9d0fba-9405-4ebc-9ad4-cd323eec9d07"
+  "updatedAt": "2025-01-05T22:55:17.000Z",
+  "versionId": "9b4d932c-b28c-4f6f-994f-c33b2753ff57"
 }
