@@ -96,7 +96,7 @@
           "fieldValues": [
             {
               "fieldId": "text",
-              "fieldValue": "={{ $json.text }}"
+              "fieldValue": "={{ $json.output.text }}"
             }
           ]
         }
@@ -104,8 +104,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        1340,
-        -180
+        1560,
+        -240
       ],
       "id": "81ebf322-93c7-42f3-9421-dd2aee09f8f3",
       "name": "Supabase",
@@ -118,7 +118,7 @@
     },
     {
       "parameters": {
-        "modelName": "models/gemini-1.5-pro",
+        "modelName": "models/gemini-2.0-flash-exp",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
@@ -138,13 +138,13 @@
     },
     {
       "parameters": {
-        "jsCode": "return JSON.parse($input.first().json.output)\n"
+        "jsCode": "let b = $input.first().json.output.replace(/^```json(\\n)?|\\n```$/g, '')\n$input.first().json.output = JSON.parse(b)\nreturn $input.all()\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1000,
-        -200
+        1020,
+        -240
       ],
       "id": "e4015ea3-a233-443c-971b-344b54842535",
       "name": "JSON Parse"
@@ -224,12 +224,6 @@
               "name": "description",
               "value": "={{ $json.body.record.description }}",
               "type": "string"
-            },
-            {
-              "id": "e1003ad8-c9d5-40d0-bf8b-a1f6465bf77e",
-              "name": "profession",
-              "value": "={{ $json.body.record.profession }}",
-              "type": "string"
             }
           ]
         },
@@ -248,7 +242,7 @@
       "parameters": {
         "agent": "conversationalAgent",
         "promptType": "define",
-        "text": "=# CONTEXT\nYou are a Grand Master in Prompt Engineering, an elite expert whose sole purpose is to craft highly effective GPT prompts tailored to any given role and task or objective. Your prompts must be clear, precise, and optimized for maximum clarity and utility, ensuring they empower GPTs to perform their tasks with accuracy, consistency, and creativity. Each prompt should include well-defined instructions, contextual clarity, and strategic formatting, leaving no ambiguity for interpretation. Your expertise lies in understanding the nuances of different roles and tasks, allowing you to design prompts that deliver exceptional results across a wide range of applications.\n\n# GOAL\nThink through the task that as a human with the role that was given and write a precise and highly effective prompt that accomplishes the task or objective given.\n\n# INSTRUCTIONS\n- The prompt should have several sections including a context, goal, detailed step by step instructions, information and response formatting. Each section should have a markdown header that states the name of the section. Each section should be separated by an empty line.\n- In the context section, you are an incredible writer of prompt contexts. You are able to write a prompt context that is clear, concise, and easy to understand. You are able to write a prompt context that is engaging, persuasive, and persuasive. You are able to write a prompt context that is grammatically correct. You are able to write a prompt context that is tailored to the company's target audience. You are able to write a prompt context that is optimized for conversions. Analyze the needs of this context prompt and choose the part of the prompt that you should ask the user to fill in. You must write a prompt context that is clear, concise, and easy to understand. You must write a prompt context that is engaging, persuasive, and persuasive. You must write a prompt context that is grammatically correct. You must write a prompt context that is tailored to the company's target audience. You must write a prompt context that is optimized for conversions.\n- In the goal section, think though the goal as a human with the given role and write one or more objectives that need to be completed to complete the overall goal.\n- In the instructions section, write a detailed step by step series of instructions that the prompt should accomplish.\n- In the information section, think about the inputs that the prompt will need to accomplish the task or objective. Write a short description of the input needed, followed by a colon, then the name of the input in brackets like \"[\" and \"]\"\n- In the Response Formatting section, describe the format that the prompt should generate. These might be Plain Text, Markdown, Code Blocks, HTML, JSON, YAML, XML, CSV, TSV, LaTeX, Math Notation, Pseudo-Graphical ASCII Art, Tabular Text or something different. \n\n# Input\nPrompt Name: {{ $json.name }}\nProfession: {{ $json.profession }}\nDescription: {{ $json.description }}\n\n# Output Format\nReturn the results as a JSON Object in format of { \"name\": name, \"text\": text, \"description\": description }. Only return the JSON. Do not return anything except valid JSON",
+        "text": "=# CONTEXT\nYou are a Grand Master in Prompt Engineering, an elite expert whose sole purpose is to craft highly effective GPT prompts tailored to any given role and task or objective. Your prompts must be clear, precise, and optimized for maximum clarity and utility, ensuring they empower GPTs to perform their tasks with accuracy, consistency, and creativity. Each prompt should include well-defined instructions, contextual clarity, and strategic formatting, leaving no ambiguity for interpretation. Your expertise lies in understanding the nuances of different roles and tasks, allowing you to design prompts that deliver exceptional results across a wide range of applications.\n\n# GOAL\nThink through the task that as a human with the role that was given and write a precise and highly effective prompt that accomplishes the task or objective given.\n\n# INSTRUCTIONS\n- The prompt should have several sections including a context, goal, detailed step by step instructions, information and response formatting. Each section should have a markdown header that states the name of the section. Each section should be separated by an empty line.\n- In the context section, you are an incredible writer of prompt contexts. You are able to write a prompt context that is clear, concise, and easy to understand. You are able to write a prompt context that is engaging, persuasive, and persuasive. You are able to write a prompt context that is grammatically correct. You are able to write a prompt context that is tailored to the company's target audience. You are able to write a prompt context that is optimized for conversions. Analyze the needs of this context prompt and choose the part of the prompt that you should ask the user to fill in. You must write a prompt context that is clear, concise, and easy to understand. You must write a prompt context that is engaging, persuasive, and persuasive. You must write a prompt context that is grammatically correct. You must write a prompt context that is tailored to the company's target audience. You must write a prompt context that is optimized for conversions.\n- In the goal section, think though the goal as a human with the given role and write one or more objectives that need to be completed to complete the overall goal.\n- In the instructions section, write a detailed step by step series of instructions that the prompt should accomplish.\n- In the information section, think about the inputs that the prompt will need to accomplish the task or objective. Write a short description of the input needed, followed by a colon, then the name of the input in brackets like \"[\" and \"]\"\n- In the Response Formatting section, describe the format as text, not as JSON\n- Don't use these characters `, \"```\n\n# Input\nPrompt Name: {{ $json.name }}\nDescription: {{ $json.description }}\n\n# Output Format\nReturn the results as a JSON Object in format of { \"name\": name, \"text\": text, \"description\": description }. Do not return any other properties except \"name\", \"text\" and \"description\". Only return the JSON. Do not return anything except valid JSON",
         "hasOutputParser": true,
         "options": {}
       },
@@ -260,9 +254,70 @@
       ],
       "id": "77a0cb97-6577-431b-af25-92c2a3edb1a8",
       "name": "Write Prompt Text"
+    },
+    {
+      "parameters": {
+        "content": "## Generate the Prompt Text when the Prompt Idea is set to ACTIVE\n\n- Supabase prompts table\n- When the status field is set to ACTIVE\n- Then generate the prompt",
+        "height": 180,
+        "width": 1620,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        -500
+      ],
+      "id": "67291198-f7fe-49e2-b831-2d42a9d9de8e",
+      "name": "Sticky Note"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.growyourbusinesswithai.com",
+            "user-agent": "pg_net/0.14.0",
+            "content-length": "666",
+            "accept": "*/*",
+            "content-type": "application/json",
+            "x-forwarded-for": "54.176.16.86",
+            "x-forwarded-host": "n8n.growyourbusinesswithai.com",
+            "x-forwarded-proto": "https",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "type": "UPDATE",
+            "table": "prompts",
+            "record": {
+              "id": 50,
+              "name": "Deal Closer",
+              "text": "",
+              "model": null,
+              "status": "active",
+              "created_at": "2025-01-05T23:43:47.752417+00:00",
+              "description": "Generates persuasive negotiation strategies based on property data and comparable sales enabling the investor to make data backed decisions."
+            },
+            "schema": "public",
+            "old_record": {
+              "id": 50,
+              "name": "Deal Closer",
+              "text": "",
+              "model": null,
+              "status": "inactive",
+              "created_at": "2025-01-05T23:43:47.752417+00:00",
+              "description": "Generates persuasive negotiation strategies based on property data and comparable sales enabling the investor to make data backed decisions."
+            }
+          },
+          "webhookUrl": "https://n8n.growyourbusinesswithai.com/webhook/11e3ad18-545e-4133-b5fc-e61573351587",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
   "repo_name": "n8n-workflows",
   "repo_owner": "agnathan",
   "repo_path": "agnathan/n8n-workflows",
@@ -285,6 +340,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-12-31T18:52:30.000Z",
-  "versionId": "9079657d-27f4-4c5c-8a0d-deb6fbc9bae6"
+  "updatedAt": "2025-01-06T06:47:40.000Z",
+  "versionId": "b5a11ec3-f86c-4680-bfb8-4e7528cd559b"
 }
