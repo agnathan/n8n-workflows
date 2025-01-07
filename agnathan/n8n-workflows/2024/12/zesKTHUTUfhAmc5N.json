@@ -16,7 +16,7 @@
       "main": [
         [
           {
-            "node": "Supabase",
+            "node": "DocumentGenerator",
             "type": "main",
             "index": 0
           }
@@ -71,6 +71,17 @@
           }
         ]
       ]
+    },
+    "DocumentGenerator": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-12-31T17:40:44.421Z",
@@ -104,7 +115,7 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        1560,
+        1420,
         -240
       ],
       "id": "81ebf322-93c7-42f3-9421-dd2aee09f8f3",
@@ -143,7 +154,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1020,
+        960,
         -240
       ],
       "id": "e4015ea3-a233-443c-971b-344b54842535",
@@ -258,18 +269,31 @@
     {
       "parameters": {
         "content": "## Generate the Prompt Text when the Prompt Idea is set to ACTIVE\n\n- Supabase prompts table\n- When the status field is set to ACTIVE\n- Then generate the prompt",
-        "height": 180,
-        "width": 1620,
+        "height": 520,
+        "width": 1700,
         "color": 5
       },
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -60,
-        -500
+        -80,
+        -380
       ],
       "id": "67291198-f7fe-49e2-b831-2d42a9d9de8e",
       "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "template": "={{ $json.output.name }}\n\nHello\n{{ $json.output.text }}"
+      },
+      "type": "n8n-nodes-document-generator.documentGenerator",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        -240
+      ],
+      "id": "cc717295-a716-4b5a-801e-c56cf67252d1",
+      "name": "DocumentGenerator"
     }
   ],
   "pinData": {
@@ -340,6 +364,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-01-06T06:47:40.000Z",
-  "versionId": "b5a11ec3-f86c-4680-bfb8-4e7528cd559b"
+  "updatedAt": "2025-01-06T15:28:46.000Z",
+  "versionId": "89f883e2-6a76-4931-a69f-8aea62d42ac7"
 }
