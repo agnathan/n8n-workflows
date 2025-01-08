@@ -752,9 +752,15 @@
       "updatedAt": "2024-12-12T14:07:08.085Z",
       "id": "d1FYrk5saECGEima",
       "name": "Social Media"
+    },
+    {
+      "createdAt": "2025-01-07T17:22:46.418Z",
+      "updatedAt": "2025-01-07T17:22:46.418Z",
+      "id": "l6u1KHXEGv9kNYY1",
+      "name": "GYBWAI"
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-01-04T07:38:31.000Z",
-  "versionId": "df035024-acb9-4f46-874a-326e0e6ddd7d"
+  "updatedAt": "2025-01-07T17:22:47.000Z",
+  "versionId": "6db11697-0dd3-4cf4-8c45-033c7cad9429"
 }
