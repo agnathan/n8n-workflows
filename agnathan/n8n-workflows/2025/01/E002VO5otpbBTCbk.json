@@ -1,0 +1,271 @@
+{
+  "active": true,
+  "connections": {
+    "Google Drive Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive": {
+      "main": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recursive Character Text Splitter": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-07T16:25:38.788Z",
+  "id": "E002VO5otpbBTCbk",
+  "meta": null,
+  "name": "Google Drive to Pinecone Vector Storage",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "1JOTA2VTMhbzN2V9DlMZUaZBhESUecFi-",
+          "mode": "list",
+          "cachedResultName": "Investor Deal Rooms",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1JOTA2VTMhbzN2V9DlMZUaZBhESUecFi-"
+        },
+        "event": "fileCreated",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a751377c-338d-4cfa-90b3-d6f3c39dc67d",
+      "name": "Google Drive Trigger",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "NE3XouVlOLwoF2Jz",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        220,
+        0
+      ],
+      "id": "ce678b13-44ef-4655-a6ab-eb823f3e08c4",
+      "name": "Google Drive",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "NE3XouVlOLwoF2Jz",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "investordealroom",
+          "mode": "list",
+          "cachedResultName": "investordealroom"
+        },
+        "options": {
+          "pineconeNamespace": "emerson"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1,
+      "position": [
+        440,
+        0
+      ],
+      "id": "a9a9c9d0-419d-4440-94f6-6a252af410a9",
+      "name": "Pinecone Vector Store",
+      "credentials": {
+        "pineconeApi": {
+          "id": "7axSRbdyUZYJBM3f",
+          "name": "PineconeApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        360,
+        220
+      ],
+      "id": "87c73bd1-62bb-4fc2-87fd-6a220d40dd38",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "FXa5oPwfEyVR0oL0",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataType": "binary",
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "file",
+                "value": "={{ $json.name }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1,
+      "position": [
+        580,
+        220
+      ],
+      "id": "f5b0d1bb-762a-41de-8363-77985cbecba4",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "chunkOverlap": 100,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        680,
+        440
+      ],
+      "id": "484fe405-20cd-42e7-a286-35d5967d58ff",
+      "name": "Recursive Character Text Splitter"
+    },
+    {
+      "parameters": {
+        "content": "## Google Drive to Pinecone Vector Storage\n\n- Triggers when a Documents is added to a Google Drive folder\n- Add the document to a Pinecone Vector Storage so that it can be queried by a chatbot\n",
+        "height": 220,
+        "width": 360,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -420,
+        0
+      ],
+      "id": "19a0cb10-e38c-4005-a988-a20655995ea1",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "![Grow Your Business With AI Logo](https://aicf-email-resources.s3.us-west-2.amazonaws.com/logo5.jpg)",
+        "height": 320,
+        "width": 300,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        200
+      ],
+      "id": "231bf209-b89b-4e7d-ad9a-421fa69b9cd1",
+      "name": "Sticky Note1"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Google Drive Trigger": {
+      "lastTimeChecked": "2025-01-07T17:50:03Z"
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-12-05T14:43:34.278Z",
+      "updatedAt": "2024-12-05T14:43:34.278Z",
+      "id": "YWL3bc4oYdzguiTJ",
+      "name": "Production"
+    },
+    {
+      "createdAt": "2025-01-07T17:22:46.418Z",
+      "updatedAt": "2025-01-07T17:22:46.418Z",
+      "id": "l6u1KHXEGv9kNYY1",
+      "name": "GYBWAI"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-01-07T17:50:02.000Z",
+  "versionId": "b3885b04-db3b-4abf-b524-bf16be6e3360"
+}
