@@ -1,0 +1,114 @@
+{
+  "active": false,
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-09T19:45:42.895Z",
+  "id": "Bbk4pxPLR0WJE1Qn",
+  "meta": null,
+  "name": "Image Editing Playground",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        580,
+        360
+      ],
+      "typeVersion": 1,
+      "id": "eec0a8f3-8778-472c-b316-ddc8f6dd3565"
+    },
+    {
+      "parameters": {
+        "operation": "multiStep",
+        "operations": {
+          "operations": [
+            {
+              "operation": "draw",
+              "color": "#0000003f",
+              "startPositionX": 20,
+              "startPositionY": 440,
+              "endPositionX": 490,
+              "endPositionY": 490,
+              "cornerRadius": 10
+            },
+            {
+              "operation": "text",
+              "text": "Daniel Holmlund",
+              "fontSize": 36,
+              "fontColor": "#FFFFFF",
+              "positionX": 40,
+              "positionY": 478,
+              "font": "/usr/share/fonts/truetype/msttcorefonts/Times_New_Roman_Bold_Italic.ttf"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Edit Image",
+      "type": "n8n-nodes-base.editImage",
+      "position": [
+        980,
+        360
+      ],
+      "typeVersion": 1,
+      "id": "2216cea6-59af-43ab-9601-a2894e2a482f"
+    },
+    {
+      "parameters": {
+        "url": "https://altweb-speakers.s3.us-west-2.amazonaws.com/2024-11-01_Daniel-Holmlund_Using-AI-to-Evaluate-Real-Estate-Investments/profile_2024-11-01_Daniel-Holmlund_Using-AI-to-Evaluate-Real-Estate-Investments.jpg",
+        "responseFormat": "file",
+        "options": {}
+      },
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        780,
+        360
+      ],
+      "typeVersion": 1,
+      "id": "c7375527-57e3-4b8b-b58b-1052509d3e96"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:20:20.071Z",
+      "updatedAt": "2024-12-01T14:21:40.229Z",
+      "id": "hvphHbQ14WJzrgp9",
+      "name": "My Learning"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-09T21:54:29.000Z",
+  "versionId": "263bab68-5c8e-45c3-8d1d-1c1a0d28a930"
+}
