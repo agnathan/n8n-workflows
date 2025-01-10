@@ -1,0 +1,565 @@
+{
+  "active": false,
+  "connections": {
+    "Instagram params": {
+      "main": [
+        [
+          {
+            "node": "Instagram prepare media",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Instagram prepare media": {
+      "main": [
+        [
+          {
+            "node": "Instagram check status of media uploaded before",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Instagram publish media": {
+      "main": [
+        [
+          {
+            "node": "Instagram check status of media published before",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If media status is finished": {
+      "main": [
+        [
+          {
+            "node": "Instagram publish media",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If media status is finished1": {
+      "main": [
+        [
+          {
+            "node": "Send Email1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Email2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Instagram params",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Instagram check status of media uploaded before": {
+      "main": [
+        [
+          {
+            "node": "If media status is finished",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Instagram check status of media published before": {
+      "main": [
+        [
+          {
+            "node": "If media status is finished1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-09T21:58:03.726Z",
+  "id": "SSO89HxExc5PBbSA",
+  "meta": null,
+  "name": "Instagram Post",
+  "nodes": [
+    {
+      "parameters": {
+        "httpRequestMethod": "POST",
+        "graphApiVersion": "v20.0",
+        "node": "={{ $json.instagram_business_account_id }}",
+        "edge": "media",
+        "options": {
+          "queryParameters": {
+            "parameter": [
+              {
+                "name": "image_url",
+                "value": "={{ $json.image_url }}"
+              },
+              {
+                "name": "caption",
+                "value": "={{ $json.instagram_post_caption }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "fb9c69a2-0dc3-4abc-bf49-6461db00ee02",
+      "name": "Instagram prepare media",
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "position": [
+        920,
+        820
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "httpRequestMethod": "POST",
+        "graphApiVersion": "v20.0",
+        "node": "={{ $('Instagram params').item.json.instagram_business_account_id }}",
+        "edge": "media_publish",
+        "options": {
+          "queryParameters": {
+            "parameter": [
+              {
+                "name": "creation_id",
+                "value": "={{ $json.id }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "0191d7af-2205-45a7-9940-61f34e1ec3ae",
+      "name": "Instagram publish media",
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "position": [
+        1460,
+        740
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "a785a6c9-af74-4059-9373-f903a6cb8971",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        480,
+        820
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Choose the trigger you want for example trigger this workflow from another one",
+        "height": 249
+      },
+      "id": "c64b0a7e-f65e-4491-9fb4-917dd1c69b99",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        420,
+        740
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Add your credential",
+        "height": 430.4091991661993,
+        "width": 1329.8249455924943,
+        "color": 4
+      },
+      "id": "fe6c3746-ebb3-4ce8-8eef-b32b218cd225",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        880,
+        680
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "225df266-bf29-4415-b04c-2750cef4506a",
+              "name": "image_url",
+              "type": "string",
+              "value": "Your image url"
+            },
+            {
+              "id": "1e380c14-e908-4eeb-90e0-957a422829d0",
+              "name": "instagram_business_account_id",
+              "type": "string",
+              "value": "Your instagram business id"
+            },
+            {
+              "id": "f35e3093-1bff-4cc6-a6c4-909dca314cc7",
+              "name": "instagram_post_caption",
+              "type": "string",
+              "value": "Here your Text of instagram post"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "13eb3b4e-2692-4e62-96b8-92385094acb9",
+      "name": "Instagram params",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        720,
+        820
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "graphApiVersion": "v20.0",
+        "node": "=me",
+        "options": {
+          "fields": {
+            "field": [
+              {
+                "name": "name"
+              },
+              {
+                "name": "connected_instagram_account"
+              }
+            ]
+          }
+        }
+      },
+      "id": "c24fa5b0-a054-407f-8319-201f2fb861c0",
+      "name": "Node just for retrive id of instagram page",
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "position": [
+        680,
+        460
+      ],
+      "typeVersion": 1,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "You can use this node if you want to retrieve the instagram id. \n\nAdd it to the workflow ore use manually",
+        "height": 289,
+        "width": 318,
+        "color": 5
+      },
+      "id": "e65a48e3-a5aa-438c-b45b-fe649e4d0ffa",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        580,
+        360
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Here we have all parameters for posting in instagram image url, caption and instagram business profile id",
+        "height": 310,
+        "width": 188,
+        "color": 3
+      },
+      "id": "8a36e917-189c-4a8c-8ed8-1c8a626f2e99",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        680,
+        680
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Permissions\nPublishing relies on a combination of the following permissions. The exact combination depends on which endpoints your app uses. Refer to our endpoint references to determine which permissions each endpoint requires.\n\nads_management\nbusiness_management\ninstagram_basic\ninstagram_content_publish\npages_read_engagement\nIf your app will be used by app users who do not have a role on your app or a role in a Business that has claimed your app, you must request approval for each permission via App Review before non-role app users can grant them to your app.\n\n## Limitations\nJPEG is the only image format supported. Extended JPEG formats such as MPO and JPS are not supported.\nShopping tags are not supported.\nBranded content tags are not supported.\nFilters are not supported.\nPublishing to Instagram TV is not supported.\nFor additional limitations, refer to each endpoint's reference.\n\n## Rate Limit\nInstagram accounts are limited to 50 API-published posts within a rolling 24-hour period. Carousels count as a single post. This limit is enforced on the POST /{ig-user-id}/media_publish endpoint when attempting to publish a media container. We recommend that your app also enforce the publishing rate limit, especially if your app allows app users to schedule posts to be published in the future.\n\nTo check an Instagram Professional account's current rate limit usage, query the GET /{ig-user-id}/content_publishing_limit endpoint.",
+        "height": 792,
+        "width": 439.10253951549294,
+        "color": 7
+      },
+      "id": "d9916b53-675c-4a59-8f1e-afc68fc368c1",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        420,
+        1000
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Instagram single image Post Workflow with Facebook API\n\nthis is a workflow for post a single image on instagram\n\n\nP.S: if you want use instagram API you need just change the default url in node with graph.instagram.com",
+        "height": 232.74275402436496,
+        "width": 365.0530681548117,
+        "color": 2
+      },
+      "id": "226cea5d-2b5f-482e-bbd3-5776b4f50c41",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        500
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "graphApiVersion": "v20.0",
+        "node": "={{ $json.id }}",
+        "options": {
+          "fields": {
+            "field": [
+              {
+                "name": "id"
+              },
+              {
+                "name": "status"
+              },
+              {
+                "name": "status_code"
+              }
+            ]
+          }
+        }
+      },
+      "id": "35b5b7c3-dfe1-492c-859f-786758450c69",
+      "name": "Instagram check status of media uploaded before",
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "position": [
+        1100,
+        820
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "0304efee-33b2-499e-bad1-9238c1fc2999",
+              "operator": {
+                "name": "filter.operator.equals",
+                "type": "string",
+                "operation": "equals"
+              },
+              "leftValue": "={{ $json.status_code }}",
+              "rightValue": "FINISHED"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "83d5a1cd-4a84-4be0-be8b-492e9baaf308",
+      "name": "If media status is finished",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1260,
+        820
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "graphApiVersion": "v20.0",
+        "node": "={{ $('Instagram check status of media uploaded before').item.json.id }}",
+        "options": {
+          "fields": {
+            "field": [
+              {
+                "name": "id"
+              },
+              {
+                "name": "status"
+              },
+              {
+                "name": "status_code"
+              }
+            ]
+          }
+        }
+      },
+      "id": "97854c34-50a4-4040-8bb1-c7a61d948a79",
+      "name": "Instagram check status of media published before",
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "position": [
+        1660,
+        740
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "0304efee-33b2-499e-bad1-9238c1fc2999",
+              "operator": {
+                "name": "filter.operator.equals",
+                "type": "string",
+                "operation": "equals"
+              },
+              "leftValue": "={{ $json.status_code }}",
+              "rightValue": "PUBLISHED"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b9c715a8-44cf-4764-bced-dc35444b2dac",
+      "name": "If media status is finished1",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1860,
+        740
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "405a633a-af87-4f32-ab79-523caff68f53",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "position": [
+        1460,
+        960
+      ],
+      "typeVersion": 2.1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "c8aad3de-f935-46ca-8f9c-cff32bf830f1",
+      "name": "Send Email1",
+      "type": "n8n-nodes-base.emailSend",
+      "position": [
+        2080,
+        700
+      ],
+      "typeVersion": 2.1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b3bd46a8-4e96-49fd-8766-290cf3bcb274",
+      "name": "Send Email2",
+      "type": "n8n-nodes-base.emailSend",
+      "position": [
+        2080,
+        860
+      ],
+      "typeVersion": 2.1
+    },
+    {
+      "parameters": {
+        "content": "You can send email for unsuccessful upload or what you want, you can trigger another workflow or another node",
+        "height": 122,
+        "color": 3
+      },
+      "id": "95fc227d-3ad9-422c-a869-8b0ba052b174",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1400,
+        1120
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "You can send email for unsuccessful publishing or what you want, you can trigger another workflow or another node",
+        "height": 112.31608359812239,
+        "color": 3
+      },
+      "id": "37da08ba-ceff-4dd7-a114-ad3543e30776",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2260,
+        860
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "You can send email for successfull publishing or what you want, you can trigger another workflow or another node",
+        "height": 112.31608359812239,
+        "color": 3
+      },
+      "id": "4738f370-4669-49b2-a349-25675d9c969e",
+      "name": "Sticky Note8",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2260,
+        700
+      ],
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-01T14:21:25.482Z",
+      "updatedAt": "2024-12-01T14:21:25.482Z",
+      "id": "SIJWhQ43whBotfGd",
+      "name": "Community Examples"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-09T21:58:21.000Z",
+  "versionId": "d2390763-dbd9-4870-847b-607ec9fdef3f"
+}
