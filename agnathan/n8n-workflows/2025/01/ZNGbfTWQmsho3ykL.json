@@ -1,0 +1,226 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        []
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Google Docs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Docs": {
+      "main": [
+        [
+          {
+            "node": "Google Docs1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-09T22:01:08.189Z",
+  "id": "ZNGbfTWQmsho3ykL",
+  "meta": null,
+  "name": "My workflow 4",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -440,
+        -240
+      ],
+      "id": "b05f00d0-4714-4abe-98c5-3607e1688f85",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "Meeting",
+        "limit": 1,
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "date",
+              "condition": "gt",
+              "keyValue": "={{ new Date().toISOString().slice(0, 19).replace('T', ' ') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -220,
+        -240
+      ],
+      "id": "bfb800a2-7b1e-4e1f-8f73-650ee4f12417",
+      "name": "Supabase",
+      "credentials": {
+        "supabaseApi": {
+          "id": "bX97yHQCD7Z1jFll",
+          "name": "aicweb_prod"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Write an announcement that the Alternative Investing Club Friday Speaker Meeting will feature\n\nSpeaker:  {{ $json.speaker }}\nTitle: {{ $json.title }}\nDescription: {{ $json.description }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        20,
+        -240
+      ],
+      "id": "732dc287-c6fc-4895-bf8c-7ca6c5b632d4",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash-exp",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -380,
+        60
+      ],
+      "id": "c3c51965-8f2b-4dc3-9454-5b1fe5d605b1",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "eUkvc1cv7n7zwa7I",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "folderId": "1U8xFUdHSFTfCRjmSYnYEyGqmDPsEuCjn",
+        "title": "={{ $('Supabase').first().json.date.slice(0, 10); }}_{{ $('Supabase').first().json.speaker.replace(\" \", \"-\") }}_{{ $('Supabase').first().json.title.replace(\" \", \"-\") }}"
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        380,
+        -240
+      ],
+      "id": "fac52194-9fb5-4bf6-a5bb-db1dfe9c69ea",
+      "name": "Google Docs",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "JfgTVEap5aqP33tu",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentURL": "={{ $json.id }}",
+        "actionsUi": {
+          "actionFields": [
+            {
+              "action": "insert",
+              "text": "={{ $('AI Agent').item.json.output }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        600,
+        -240
+      ],
+      "id": "6d8e5f02-974e-4852-95c4-0c705be6ea29",
+      "name": "Google Docs1",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "JfgTVEap5aqP33tu",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        -40,
+        -20
+      ],
+      "id": "18949272-65ca-4018-9d45-19bb8598bee3",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "FXa5oPwfEyVR0oL0",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-09T22:16:55.000Z",
+  "versionId": "bec69ced-19f1-4711-a84f-9b08008e864b"
+}
