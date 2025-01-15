@@ -58,13 +58,7 @@
     },
     "Google Drive Trigger": {
       "main": [
-        [
-          {
-            "node": "Google Drive",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Google Drive": {
@@ -132,6 +126,17 @@
           }
         ]
       ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-01-07T17:33:39.153Z",
@@ -157,7 +162,7 @@
     {
       "parameters": {
         "options": {
-          "systemMessage": "Your name is Max. Your tone should be friendly and helpful. When asked questions about the investor deal, use the provided context. If you don't know the answer, then simply respond with \"I don't know\"."
+          "systemMessage": "Your name is Max. Your tone should be friendly and helpful. When asked questions about the Bakersfield, use the provided context."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -191,7 +196,7 @@
     {
       "parameters": {
         "name": "Investor_Deal_Information",
-        "description": "Call this tool to answer questions about emerson"
+        "description": "Call this tool to answer questions about bakersfield"
       },
       "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
       "typeVersion": 1,
@@ -255,8 +260,8 @@
       "type": "n8n-nodes-base.googleDriveTrigger",
       "typeVersion": 1,
       "position": [
-        -1860,
-        180
+        -2120,
+        400
       ],
       "id": "10c858f1-188a-41cf-921a-0d83c3dc15be",
       "name": "Google Drive Trigger",
@@ -265,15 +270,18 @@
           "id": "NE3XouVlOLwoF2Jz",
           "name": "Google Drive account"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
         "operation": "download",
         "fileId": {
           "__rl": true,
-          "value": "={{ $json.id }}",
-          "mode": "id"
+          "value": "1riYG9UkwtEm8PTBTXT-0Rbux_zuaRpaY",
+          "mode": "list",
+          "cachedResultName": "2024 - Plaza at Riverlakes - Bakersfield.pdf",
+          "cachedResultUrl": "https://drive.google.com/file/d/1riYG9UkwtEm8PTBTXT-0Rbux_zuaRpaY/view?usp=drivesdk"
         },
         "options": {}
       },
@@ -414,7 +422,7 @@
           "cachedResultName": "investordealroom"
         },
         "options": {
-          "pineconeNamespace": "emerson"
+          "pineconeNamespace": "bakersfield"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
@@ -469,6 +477,17 @@
           "name": "OpenAi account"
         }
       }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1900,
+        180
+      ],
+      "id": "14db2123-f3bf-4048-b909-7ca43856f6a8",
+      "name": "When clicking ‘Test workflow’"
     }
   ],
   "pinData": {},
@@ -497,7 +516,7 @@
       "name": "GYBWAI"
     }
   ],
-  "triggerCount": 3,
-  "updatedAt": "2025-01-07T18:30:58.000Z",
-  "versionId": "a5d2f0b8-1ec1-4440-9175-6508d03e8de7"
+  "triggerCount": 2,
+  "updatedAt": "2025-01-14T16:02:37.000Z",
+  "versionId": "f2602877-af4e-451e-b8b4-ce4d13178538"
 }
