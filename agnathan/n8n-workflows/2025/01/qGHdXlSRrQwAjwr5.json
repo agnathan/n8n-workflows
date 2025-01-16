@@ -1,0 +1,221 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Set file URL in Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download file": {
+      "main": [
+        [
+          {
+            "node": "Add in metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set file URL in Google Drive": {
+      "main": [
+        [
+          {
+            "node": "Download file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add in metadata": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-15T20:58:21.664Z",
+  "id": "qGHdXlSRrQwAjwr5",
+  "meta": null,
+  "name": "Categories Broker OM Pages",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "72feb715-e257-4025-b39e-eed9a4a55ffc",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Add a new field called 'myNewField' to the JSON of the item\n$input.item.json.file_name = $input.item.binary.data.fileName;\n$input.item.json.file_ext = $input.item.binary.data.fileExtension;\n$input.item.json.file_url = $('Set file URL in Google Drive').item.json.file_url\n\nreturn $input.item;"
+      },
+      "id": "fe91463d-d73a-4c76-9487-1cadd4f40646",
+      "name": "Add in metadata",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        640,
+        0
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "https://drive.google.com/file/d/1QeJtuQeg71HRWIR0EJLncWdNHXk1ZpSi/view?usp=sharing",
+          "mode": "url"
+        },
+        "options": {}
+      },
+      "id": "75278ed2-0c0b-4ea7-a8c1-cc433ed6184f",
+      "name": "Download file",
+      "type": "n8n-nodes-base.googleDrive",
+      "position": [
+        420,
+        0
+      ],
+      "typeVersion": 3,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "NE3XouVlOLwoF2Jz",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "50025ff5-1b53-475f-b150-2aafef1c4c21",
+              "name": "file_url",
+              "type": "string",
+              "value": "https://drive.google.com/file/d/1QeJtuQeg71HRWIR0EJLncWdNHXk1ZpSi/view"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "78eba2d8-0b03-46ef-891f-ca56606a5704",
+      "name": "Set file URL in Google Drive",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        220,
+        0
+      ],
+      "typeVersion": 3.3
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        1080,
+        0
+      ],
+      "id": "f1fd150d-eb97-4670-b598-ffd451e8d4ef",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash-exp",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        960,
+        260
+      ],
+      "id": "fe6da2eb-5eb7-4929-8d20-9576fc3490f5",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "eUkvc1cv7n7zwa7I",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        860,
+        0
+      ],
+      "id": "7489f665-635d-4989-8af8-d9f08796339d",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-01-15T20:58:30.528Z",
+      "updatedAt": "2025-01-15T20:58:30.528Z",
+      "id": "3lCAJegaRd53e8By",
+      "name": "OM"
+    },
+    {
+      "createdAt": "2024-12-01T14:20:20.071Z",
+      "updatedAt": "2024-12-01T14:21:40.229Z",
+      "id": "hvphHbQ14WJzrgp9",
+      "name": "My Learning"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-15T21:05:23.000Z",
+  "versionId": "213373d9-7730-436b-9a37-99655d11b340"
+}
