@@ -1,0 +1,310 @@
+{
+  "active": false,
+  "connections": {
+    "Photo URLs": {
+      "main": [
+        [
+          {
+            "node": "Photos To List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resize For AI": {
+      "main": [
+        [
+          {
+            "node": "Image Info Extractor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Photos To List": {
+      "main": [
+        [
+          {
+            "node": "Download Photos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Photos": {
+      "main": [
+        [
+          {
+            "node": "Resize For AI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Image Info Extractor",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        []
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Photo URLs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-16T17:35:29.164Z",
+  "id": "i4oBmQUBDF4ANrkE",
+  "meta": null,
+  "name": "Image Table Extractor",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "7a113b50-35b3-461d-b49d-15a36469d31c",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        140,
+        420
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": ""
+      },
+      "id": "73ab4ea7-1256-42ca-8659-beebd987cd8d",
+      "name": "Structured Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "position": [
+        1640,
+        600
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6baa3e08-8957-454e-8ee9-d5414a0ff990",
+              "name": "data",
+              "type": "array",
+              "value": "={{\n[\n{\n  \"name\": \"portrait_1\",\n  \"url\": \"https://drive.google.com/file/d/100zrohzBBTZf87ABNWoTxT_ffmgjWctl/view?usp=sharing\"\n}\n]\n}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "401737e2-442b-4556-977b-a739ec6229e1",
+      "name": "Photo URLs",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        500,
+        380
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "id": "9be7d162-bcbd-422b-9153-2c6c768a85b9",
+      "name": "Photos To List",
+      "type": "n8n-nodes-base.splitOut",
+      "position": [
+        660,
+        380
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "mode": "url",
+          "value": "={{ $json.url }}"
+        },
+        "options": {}
+      },
+      "id": "2ae3ebf9-2fa3-461d-b398-cc9a5949cd9d",
+      "name": "Download Photos",
+      "type": "n8n-nodes-base.googleDrive",
+      "position": [
+        820,
+        380
+      ],
+      "typeVersion": 3,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "NE3XouVlOLwoF2Jz",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "resize",
+        "width": 1024,
+        "height": 1024,
+        "resizeOption": "onlyIfLarger",
+        "options": {}
+      },
+      "id": "4011b7fa-e0a3-4154-a93d-e171224a78d9",
+      "name": "Resize For AI",
+      "type": "n8n-nodes-base.editImage",
+      "position": [
+        1100,
+        440
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## 1. Import Photos for Feature Extraction\n",
+        "height": 318,
+        "width": 594,
+        "color": 7
+      },
+      "id": "d0fcbaa5-f5c3-4aef-aac2-36ecdea907ff",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        420,
+        280
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## 2. Query OpenAI or Gemini for specific features.\nStart with Gemini as API calls are currently zero cost.",
+        "height": 489,
+        "width": 774,
+        "color": 7
+      },
+      "id": "36c88cd8-e68b-40d5-90ff-9e00929fd4d4",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1040,
+        280
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Document Layout and Feature Extraction Tests",
+        "height": 330,
+        "width": 386
+      },
+      "id": "b6f55046-495a-4cf7-b7de-c98995442cbe",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        280
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-1.5-pro-latest",
+        "options": {}
+      },
+      "id": "6510694e-09d7-4cd8-b802-bbf34a5be32b",
+      "name": "Google Gemini Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "position": [
+        1360,
+        600
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "googlePalmApi": {
+          "id": "eUkvc1cv7n7zwa7I",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "Table Extractor",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=You are an expert at identifying data tables within images. You will identify the bounding box that contains the table, the title of the table if any, the headers of the columns and rows, and all of the data in the table. \n\nExtract this data and return it in CSV format."
+            },
+            {
+              "type": "HumanMessagePromptTemplate",
+              "messageType": "imageBinary"
+            }
+          ]
+        }
+      },
+      "id": "7126f202-1044-4666-8ef2-ab48fd1d00c0",
+      "name": "Image Info Extractor",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "position": [
+        1360,
+        420
+      ],
+      "typeVersion": 1.4
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-01-15T20:58:30.528Z",
+      "updatedAt": "2025-01-15T20:58:30.528Z",
+      "id": "3lCAJegaRd53e8By",
+      "name": "OM"
+    },
+    {
+      "createdAt": "2024-12-01T14:23:56.869Z",
+      "updatedAt": "2024-12-01T14:23:56.869Z",
+      "id": "Paq9K6w31GZ583JD",
+      "name": "My Drafts"
+    },
+    {
+      "createdAt": "2025-01-07T17:22:46.418Z",
+      "updatedAt": "2025-01-07T17:22:46.418Z",
+      "id": "l6u1KHXEGv9kNYY1",
+      "name": "GYBWAI"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-16T19:17:05.000Z",
+  "versionId": "45788bac-33bd-4889-8690-aa5f81647cbc"
+}
