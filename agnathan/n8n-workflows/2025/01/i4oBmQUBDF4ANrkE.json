@@ -16,7 +16,7 @@
       "main": [
         [
           {
-            "node": "Image Info Extractor",
+            "node": "OM slide information extractor",
             "type": "main",
             "index": 0
           }
@@ -49,7 +49,7 @@
       "ai_languageModel": [
         [
           {
-            "node": "Image Info Extractor",
+            "node": "OM slide information extractor",
             "type": "ai_languageModel",
             "index": 0
           }
@@ -267,7 +267,7 @@
         }
       },
       "id": "7126f202-1044-4666-8ef2-ab48fd1d00c0",
-      "name": "Image Info Extractor",
+      "name": "OM slide information extractor",
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "position": [
         1360,
@@ -305,6 +305,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-01-16T19:17:05.000Z",
-  "versionId": "45788bac-33bd-4889-8690-aa5f81647cbc"
+  "updatedAt": "2025-01-17T23:56:23.000Z",
+  "versionId": "f8dd5393-ad01-449a-953b-885268badee0"
 }
