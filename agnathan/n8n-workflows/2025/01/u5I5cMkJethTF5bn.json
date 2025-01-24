@@ -58,7 +58,13 @@
     },
     "Google Drive Trigger": {
       "main": [
-        []
+        [
+          {
+            "node": "Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Google Drive": {
@@ -260,8 +266,8 @@
       "type": "n8n-nodes-base.googleDriveTrigger",
       "typeVersion": 1,
       "position": [
-        -2120,
-        400
+        -1900,
+        380
       ],
       "id": "10c858f1-188a-41cf-921a-0d83c3dc15be",
       "name": "Google Drive Trigger",
@@ -517,6 +523,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2025-01-14T16:02:37.000Z",
-  "versionId": "f2602877-af4e-451e-b8b4-ce4d13178538"
+  "updatedAt": "2025-01-23T15:48:26.000Z",
+  "versionId": "12c74da2-2d02-44a5-89b5-fb8b0cb71b0a"
 }
