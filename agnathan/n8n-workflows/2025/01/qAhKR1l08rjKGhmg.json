@@ -1,0 +1,56 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Stripe",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-26T04:49:00.480Z",
+  "id": "qAhKR1l08rjKGhmg",
+  "meta": null,
+  "name": "My workflow 6",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a9726705-5172-4300-8e54-b776482c8091",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.stripe",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "b7b1a894-840a-4171-93d7-a200c3a8ec49",
+      "name": "Stripe"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-26T04:49:00.480Z",
+  "versionId": "226dd965-39de-4404-b665-ace854135a65"
+}
