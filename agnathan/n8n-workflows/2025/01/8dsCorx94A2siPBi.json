@@ -97,7 +97,7 @@
       "typeVersion": 1,
       "position": [
         420,
-        200
+        240
       ],
       "id": "52259f4c-5315-4982-8775-fa3119cb4f49",
       "name": "Google Gemini Chat Model",
@@ -116,8 +116,8 @@
       "type": "n8n-nodes-base.twitter",
       "typeVersion": 2,
       "position": [
-        820,
-        0
+        -20,
+        460
       ],
       "id": "76fb4fc3-37aa-45be-9dbf-0438d7a5e2d5",
       "name": "X",
@@ -127,22 +127,6 @@
           "name": "AltInvestClub"
         }
       }
-    },
-    {
-      "parameters": {
-        "content": "## Invite People to Attend the AIC Friday Meeting\nhttps://x.com/AltInvestClub",
-        "height": 440,
-        "width": 1540,
-        "color": 5
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        -80,
-        -80
-      ],
-      "id": "b4feaab6-06b9-4b09-a9b4-0fcaef92eb8b",
-      "name": "Sticky Note"
     },
     {
       "parameters": {
@@ -163,8 +147,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        1040,
-        0
+        260,
+        480
       ],
       "id": "765b61e9-91e5-4d8d-a892-ddaca2ec6d78",
       "name": "Write X Message to DB",
@@ -217,8 +201,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -320,
-        -80
+        -20,
+        200
       ]
     },
     {
@@ -256,8 +240,8 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.3,
       "position": [
-        1260,
-        0
+        500,
+        400
       ],
       "id": "ae718b41-f2f0-4c2b-bfb4-876acba42d4b",
       "name": "Slack",
@@ -300,6 +284,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-01-04T01:35:14.000Z",
-  "versionId": "9124b521-8f1c-4cd6-8bf5-f524f2ac920e"
+  "updatedAt": "2025-01-29T00:12:09.000Z",
+  "versionId": "25a3cd90-d427-452c-a8ad-39c806b6f18f"
 }
