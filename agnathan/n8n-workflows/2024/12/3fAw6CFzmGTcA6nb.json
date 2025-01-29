@@ -3,13 +3,7 @@
   "connections": {
     "Get Recent Articles Webhook": {
       "main": [
-        [
-          {
-            "node": "RSS Read",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Edit Fields": {
@@ -87,7 +81,7 @@
     },
     {
       "parameters": {
-        "url": "https://rss.app/feeds/thw00oE7IpnAtKgZ.xml",
+        "url": "https://financialpost.com/category/real-estate/property-post/feed.xml",
         "options": {
           "ignoreSSL": false
         }
@@ -97,15 +91,15 @@
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.1,
       "position": [
-        680,
-        100
+        760,
+        120
       ]
     },
     {
       "parameters": {
         "content": "## Fetches the Latest on an RSS feed\n",
-        "height": 314.5,
-        "width": 500,
+        "height": 315,
+        "width": 540,
         "color": 5
       },
       "id": "5e419657-59d5-4d47-bc79-9ba776a02287",
@@ -136,8 +130,8 @@
     {
       "parameters": {
         "content": "## Recent News Article Automator Fetches the Latest on an RSS feed\n\n[Link to the Custom GPT](https://chatgpt.com/share/675aed81-aaec-8002-a16b-ae2e84aee944)\n\n- Edit the RSS Feed Link to Change the Category of articles fetched\n- LinkedIn current only posts to Daniel Holmlund's LinkedIn account",
-        "height": 605.75,
-        "width": 513.25,
+        "height": 306,
+        "width": 513,
         "color": 2
       },
       "id": "41f89cce-c050-44b3-a21a-67adc4bd4ac6",
@@ -152,8 +146,8 @@
     {
       "parameters": {
         "content": "## Write AI Drafts and Post to My Knowledge Base",
-        "height": 253.6023622047244,
-        "width": 494.62369291946334,
+        "height": 254,
+        "width": 535,
         "color": 4
       },
       "id": "145bbd80-4521-4b41-b518-31e6ecd71e19",
@@ -202,8 +196,8 @@
       "type": "n8n-nodes-base.nocoDb",
       "typeVersion": 3,
       "position": [
-        660,
-        420
+        760,
+        440
       ],
       "credentials": {
         "nocoDbApiToken": {
@@ -224,8 +218,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        520,
-        100
+        500,
+        120
       ],
       "webhookId": "4d8d1c47-975d-435f-b4de-5d654d9656b9"
     },
@@ -245,7 +239,7 @@
       "type": "n8n-nodes-base.nocoDb",
       "typeVersion": 3,
       "position": [
-        680,
+        660,
         740
       ],
       "credentials": {
@@ -274,7 +268,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        840,
+        820,
         740
       ]
     },
@@ -291,7 +285,7 @@
       "typeVersion": 2,
       "position": [
         500,
-        420
+        440
       ],
       "webhookId": "db8396a6-bf4a-4ce0-a7f9-0de67a180300"
     },
@@ -302,8 +296,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        520,
-        740
+        40,
+        460
       ]
     }
   ],
@@ -342,6 +336,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2024-12-16T01:26:49.000Z",
-  "versionId": "05af3b13-4404-48e3-981d-5b53369224e7"
+  "updatedAt": "2025-01-29T00:20:30.000Z",
+  "versionId": "78c385ea-77d9-4ddf-b227-5939e463878e"
 }
