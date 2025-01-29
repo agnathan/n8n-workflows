@@ -208,7 +208,7 @@
           ]
         },
         "joinMode": "keepNonMatches",
-        "outputDataFrom": "input2",
+        "outputDataFrom": "input1",
         "options": {}
       },
       "id": "a4d332d9-8fe8-4aff-9f8f-6f88a7c83601",
@@ -222,7 +222,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// n8n Code node script\nconst text = $json.data;\n\n// Define the regex pattern\nconst regexPattern = /https:\\/\\/www\\.linkedin\\.com\\/advice\\/[^%&\\s\"']+/g;\n\n// Execute the regex pattern on the text\nconst matches = text.match(regexPattern);\n\n// Output the matches\nreturn {\n  matches: matches || []\n};\n\n\n"
+        "jsCode": "// n8n Code node script\nconst text = $('Get advice articles from a Google search').data\n\nconsole.log(text)\n// // Define the regex pattern\n// const regexPattern = /https:\\/\\/www\\.linkedin\\.com\\/advice\\/[^%&\\s\"']+/g;\n\n// // Execute the regex pattern on the text\n// const matches = text.match(regexPattern);\n\n// // Output the matches\n// return {\n//   matches: matches || []\n// };\n\n"
       },
       "id": "eeeaf747-7cf4-4bd7-92e3-8c73096a0e21",
       "name": "Extract Article links for LinkedIn advice articles",
@@ -589,7 +589,7 @@
         "messages": {
           "values": [
             {
-              "content": "=# Instructions\nRead the following collaborative article and provide your own helpful collaboration. The article has various topics that each need to be answered. Write a paragraph of helpful advice for each topic and format your response as outlined in the template below.\n\n-------------\nARTICLE TITLE  \n{{ $json.ArticleTitle }}\n\nTOPICS WITHIN THE LINKEDIN ARTICLE:  \n{{ $json.ArticleTopics }}\n\nOTHER CONTRIBUTIONS TO THE LINKEDIN ARTICLE:  \n{{ $json.ArticleContributions }}\n-------------\n\nBegin with a engaging question or fact that will draw the reader in. Then, provide your advice for each of the topics listed in the article.\n\nYour advice must be unique and something that no one else has recommended before on the article, or in any of the topics. The response needs to be raw and genuine to elicit conversation and engagement.\n\nEncourage the reader to engage with your response by asking a question or asking for their opinion. Ask them to put their response in the comments.\n\n### Output Template\n\n1. [Article #1 Topic]  \n[Topic Advice]\n\n2. [Article #2 Topic]  \n[Topic Advice]\n\n3. [Article #3 Topic]  \n[Topic Advice]\n\n4. [Article #4 Topic]  \n[Topic Advice]\n\n5. [Article #5 Topic]  \n[Topic Advice]\n\n6. [Article #6 Topic]  \n[Topic Advice]\n"
+              "content": "=# Instructions\nRead the following collaborative article and provide your own helpful collaboration. The article has various topics that each need to be answered. Write me a paragraph of helpful advice for each topic and format your response as outlined in the template below.\n\n-------------\nARTICLE TITLE  \n{{ $json.ArticleTitle }}\n\nTOPICS WITHIN THE LINKEDIN ARTICLE:  \n{{ $json.ArticleTopics }}\n\nOTHER CONTRIBUTIONS TO THE LINKEDIN ARTICLE:  \n{{ $json.ArticleContributions }}\n-------------\n\nYour advice must be unique and something that no one else has recommended before on the article, or in any of the topics. The response needs to be raw and genuine to elicit conversation and engagement.\n\nFormat your output in text and follow the template below. Only populate the template with as many topics as were provided in the original request \n\ni.e: if there were only 4 topics in the original request then only provide 4 pieces of advice:\n\n### Output Template\n\n1. [Article #1 Topic]  \n[Topic Advice]\n\n2. [Article #2 Topic]  \n[Topic Advice]\n\n3. [Article #3 Topic]  \n[Topic Advice]\n\n4. [Article #4 Topic]  \n[Topic Advice]\n\n5. [Article #5 Topic]  \n[Topic Advice]\n\n6. [Article #6 Topic]  \n[Topic Advice]\n"
             }
           ]
         },
@@ -700,7 +700,7 @@
               "id": "cf3ef4d0-2688-4fe1-9801-a8519bd293f7",
               "name": "Topic",
               "type": "string",
-              "value": "Investing in Multifamily Apartment Properties"
+              "value": "Investing in Syndications"
             }
           ]
         },
@@ -835,6 +835,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-01-10T19:09:20.000Z",
-  "versionId": "30123391-931d-43c6-9fe0-5fefbd68be6d"
+  "updatedAt": "2025-01-28T20:34:58.000Z",
+  "versionId": "8234bbb0-1dbe-4707-b36c-b5c3201739e0"
 }
