@@ -58,7 +58,13 @@
     },
     "Structured Output Parser": {
       "ai_outputParser": [
-        []
+        [
+          {
+            "node": "OM slide information extractor",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
       ]
     },
     "When clicking ‘Test workflow’": {
@@ -98,7 +104,7 @@
       "name": "Structured Output Parser",
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "position": [
-        1640,
+        1580,
         600
       ],
       "typeVersion": 1.2
@@ -121,7 +127,7 @@
       "name": "Photo URLs",
       "type": "n8n-nodes-base.set",
       "position": [
-        500,
+        480,
         380
       ],
       "typeVersion": 3.4
@@ -305,6 +311,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-01-17T23:56:23.000Z",
-  "versionId": "f8dd5393-ad01-449a-953b-885268badee0"
+  "updatedAt": "2025-01-28T23:53:21.000Z",
+  "versionId": "32caa267-0c3d-4167-99d9-a61dcda58d1e"
 }
