@@ -67,11 +67,6 @@
         ]
       ]
     },
-    "OpenAI": {
-      "main": [
-        []
-      ]
-    },
     "When clicking ‘Test workflow’": {
       "main": [
         [
@@ -471,39 +466,6 @@
       ]
     },
     {
-      "parameters": {
-        "modelId": {
-          "__rl": true,
-          "value": "gpt-4o-mini",
-          "mode": "list",
-          "cachedResultName": "GPT-4O-MINI"
-        },
-        "messages": {
-          "values": [
-            {
-              "content": "=#Role\nAdopt the role of a YouTube Video Summarizer specializing in extracting key insights and essential details. \n\n#Goal\nYour task is to watch or analyze a provided video link and create a clear, concise, and engaging one to two sentence summary that highlights the main points, actionable takeaways, and overall message. The summary must be easy to understand, well-structured, and optimized for quick consumption. Tailor the content to the target audience, ensuring it provides value without unnecessary details while retaining the essence of the video. You will also find the major points and create a chapter index for the video. \n\n#Standard Operating Procedure\n1. Start the output with two lines \"The Alternative Investing Club presents\" and \"https://AlternativeInvestingClub.com\". Put two newlines between these and the next step.\n1. Write a one sentence summary of this transcript that states what the guest speaker talks about. Do not say \"guest speaker\" or \"transcript\". Just use the person's name. Just write the summary do not put a heading on it.\n2. Write a chapter index. Each line should start with the time index in the video and then a short summary of the topic. The format of each line is \"<time index> <five or six word description of the topic>. Do not give any extra information.\n\n{{ $json.transcript }}\n\n"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "f70a845e-e5d8-4727-a51b-2c2c75c40093",
-      "name": "OpenAI",
-      "type": "@n8n/n8n-nodes-langchain.openAi",
-      "typeVersion": 1.7,
-      "position": [
-        4300,
-        860
-      ],
-      "credentials": {
-        "openAiApi": {
-          "id": "FXa5oPwfEyVR0oL0",
-          "name": "OpenAi account"
-        }
-      },
-      "disabled": true
-    },
-    {
       "parameters": {},
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
@@ -761,6 +723,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-01-09T21:59:48.000Z",
-  "versionId": "6db11697-0dd3-4cf4-8c45-033c7cad9429"
+  "updatedAt": "2025-02-04T17:41:57.000Z",
+  "versionId": "c80f3728-9283-495c-91c6-b754a84f2705"
 }
