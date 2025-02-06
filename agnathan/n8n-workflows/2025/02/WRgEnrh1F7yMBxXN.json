@@ -1,0 +1,479 @@
+{
+  "active": false,
+  "connections": {
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "X",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Publish on LinkedIn",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Facebook Graph API",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "WhatsApp Business Cloud",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download image": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Format the post": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Filter the table for the day's post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Publish on LinkedIn": {
+      "main": [
+        [
+          {
+            "node": "Update post status in notion database",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate the Notion blocks": {
+      "main": [
+        [
+          {
+            "node": "Format the post",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Download image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch the content on the page": {
+      "main": [
+        [
+          {
+            "node": "Aggregate the Notion blocks",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter the table for the day's post": {
+      "main": [
+        [
+          {
+            "node": "Fetch the content on the page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "X": {
+      "main": [
+        [
+          {
+            "node": "Update post status in notion database",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Facebook Graph API": {
+      "main": [
+        [
+          {
+            "node": "Update post status in notion database",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp Business Cloud": {
+      "main": [
+        [
+          {
+            "node": "Update post status in notion database",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-05T20:32:49.674Z",
+  "id": "WRgEnrh1F7yMBxXN",
+  "meta": null,
+  "name": "My workflow 9",
+  "nodes": [
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "87721bd4-9087-4be5-8db7-6796772badbe",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        980,
+        340
+      ],
+      "typeVersion": 2.1
+    },
+    {
+      "parameters": {
+        "content": "## Start the flow every day at the same time",
+        "height": 141.4092845296238,
+        "color": 4
+      },
+      "id": "6eadd483-22bc-4cbd-ae47-b5e09a3b4d49",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -380,
+        320
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Fetch the day's post from my Notion database",
+        "height": 382.294335406698,
+        "width": 367.12018536439575,
+        "color": 6
+      },
+      "id": "28dee909-8ab0-431c-a5f5-f2be28cd8b27",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        80,
+        200
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Process and format the post",
+        "height": 380.3367219655605,
+        "width": 627.4768047417825,
+        "color": 6
+      },
+      "id": "6a1cf6c5-1444-4155-8036-296fa0d2eae4",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        500,
+        200
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 15
+            }
+          ]
+        }
+      },
+      "id": "61503890-4177-4151-a2d1-910647c563ef",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        -100,
+        340
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "f09dc21b-1070-4d5a-bf7f-a9ab3dbb69fb",
+          "cachedResultUrl": "https://www.notion.so/f09dc21b10704d5abf7fa9ab3dbb69fb",
+          "cachedResultName": "Postagens"
+        },
+        "filterType": "manual",
+        "filters": {
+          "conditions": [
+            {
+              "key": "Date|date",
+              "condition": "equals",
+              "date": "={{ $today.format(\"yyyy/mM/dd\") }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cd8e5bcd-ae01-4f85-9f8b-a3d399040780",
+      "name": "Filter the table for the day's post",
+      "type": "n8n-nodes-base.notion",
+      "position": [
+        120,
+        340
+      ],
+      "typeVersion": 2.2,
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion GYBWAI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "block",
+        "operation": "getAll",
+        "blockId": {
+          "__rl": true,
+          "mode": "url",
+          "value": "={{ $json.url }}"
+        },
+        "returnAll": true
+      },
+      "id": "6cb56034-14ac-4967-a056-515883af39a5",
+      "name": "Fetch the content on the page",
+      "type": "n8n-nodes-base.notion",
+      "position": [
+        320,
+        340
+      ],
+      "typeVersion": 2.2,
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion GYBWAI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "content"
+            },
+            {
+              "fieldToAggregate": "image.file.url"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f5f6dc3e-67b2-4e9d-ac05-2bcd017854d3",
+      "name": "Aggregate the Notion blocks",
+      "type": "n8n-nodes-base.aggregate",
+      "position": [
+        520,
+        340
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "jsCode": "const notionData = items[0].json.content;\n\nlet formattedText = notionData[0] \n\nfor (let i = 1; i < notionData.length; i++) {\n    if (notionData[i].startsWith('-')) {\n        formattedText += '\\n\\n' + notionData[i];\n    } else {\n        formattedText += '\\n' + notionData[i];\n    }\n}\n\nreturn [{ formattedText: formattedText }];\n"
+      },
+      "id": "acefec87-8c5a-4005-8775-ab6742cfcb77",
+      "name": "Format the post",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        740,
+        240
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url[0] }}",
+        "options": {}
+      },
+      "id": "1912a1bd-e235-460d-8220-66a58384c38d",
+      "name": "Download image",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        740,
+        440
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "person": "CcS-_lLyzG",
+        "text": "={{ $json.formattedText }}",
+        "shareMediaCategory": "IMAGE",
+        "additionalFields": {}
+      },
+      "id": "3adba9bb-bfca-4e10-80ca-ccca453731d4",
+      "name": "Publish on LinkedIn",
+      "type": "n8n-nodes-base.linkedIn",
+      "position": [
+        1220,
+        240
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "xRDEDUl1Pqg60kBr",
+          "name": "LinkedIn AIC Company Page"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "update",
+        "pageId": {
+          "__rl": true,
+          "mode": "url",
+          "value": "={{ $('Filter the table for the day\\'s post').item.json.url }}"
+        },
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Status|select",
+              "selectValue": "Published"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8e08ff1e-226f-4191-a8fa-050b85697c60",
+      "name": "Update post status in notion database",
+      "type": "n8n-nodes-base.notion",
+      "position": [
+        1480,
+        340
+      ],
+      "typeVersion": 2.2,
+      "credentials": {
+        "notionApi": {
+          "id": "49notbV64PrLsGN4",
+          "name": "Notion GYBWAI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## 1. Setup\nSet up your Notion and LinkedIn credentials.\nAttention to the LinkedIn credential: to post on your personal or company profile, you need to have a company page assigned to your profile. After that, you can choose where you want to post.",
+        "height": 137.6834217043934,
+        "width": 567.6073693795047,
+        "color": 3
+      },
+      "id": "67fe390d-472e-415c-978c-613e4d9db2f9",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -400,
+        0
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "text": "Test",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.twitter",
+      "typeVersion": 2,
+      "position": [
+        1220,
+        40
+      ],
+      "id": "a241a1fb-0f24-406b-a349-8eee866f6071",
+      "name": "X",
+      "credentials": {
+        "twitterOAuth2Api": {
+          "id": "gnP4W43zIPbVci3B",
+          "name": "AltInvestClub"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        440
+      ],
+      "id": "3a11b505-b64c-4edd-988c-0e431083ac8b",
+      "name": "Facebook Graph API"
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "additionalFields": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        640
+      ],
+      "id": "beade025-ec52-487f-aeec-061098f6968c",
+      "name": "WhatsApp Business Cloud"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-05T20:32:49.674Z",
+  "versionId": "502fa277-cf7e-495a-ac54-c3f77aa6d8b8"
+}
