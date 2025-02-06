@@ -213,7 +213,7 @@
       "credentials": {
         "supabaseApi": {
           "id": "HwcsUCmO5EkOB3Rg",
-          "name": "Supabase account"
+          "name": "aicweb_development"
         }
       }
     },
@@ -413,7 +413,7 @@
       "credentials": {
         "supabaseApi": {
           "id": "HwcsUCmO5EkOB3Rg",
-          "name": "Supabase account"
+          "name": "aicweb_development"
         }
       }
     },
@@ -567,6 +567,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-12-15T15:50:03.000Z",
-  "versionId": "bebee2f2-9580-4ca6-89a7-47147c647d98"
+  "updatedAt": "2025-02-06T00:45:44.000Z",
+  "versionId": "e1b99e93-441f-48d3-99a8-47c625817698"
 }
