@@ -68,13 +68,7 @@
     },
     "Post new LinkedIn contributions to Slack channel": {
       "main": [
-        [
-          {
-            "node": "Post new LinkedIn contributions to NocoDB (CreateRows)",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Split Out all links for LinkedIn advice articles": {
@@ -117,6 +111,21 @@
             "node": "LinkedIn Contribution Writer",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "X (Twitter) Contribution Writer",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Facebook Contribution Writer",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "WhatsApp Contribution Writer",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -125,7 +134,7 @@
       "main": [
         [
           {
-            "node": "Post new LinkedIn contributions to Slack channel",
+            "node": "Post new LinkedIn contributions to NocoDB (CreateRows)",
             "type": "main",
             "index": 0
           }
@@ -137,6 +146,127 @@
         [
           {
             "node": "Get advice articles from a Google search",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Publish on LinkedIn": {
+      "main": [
+        [
+          {
+            "node": "Post new LinkedIn contributions to Slack channel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "X": {
+      "main": [
+        [
+          {
+            "node": "Post new LinkedIn contributions to Slack channel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Facebook Graph API": {
+      "main": [
+        [
+          {
+            "node": "Post new LinkedIn contributions to Slack channel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp Business Cloud": {
+      "main": [
+        [
+          {
+            "node": "Post new LinkedIn contributions to Slack channel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp Contribution Writer": {
+      "main": [
+        [
+          {
+            "node": "Post new LinkedIn contributions to NocoDB (CreateRows)2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Facebook Contribution Writer": {
+      "main": [
+        [
+          {
+            "node": "Post new LinkedIn contributions to NocoDB (CreateRows)3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "X (Twitter) Contribution Writer": {
+      "main": [
+        [
+          {
+            "node": "Post new LinkedIn contributions to NocoDB (CreateRows)1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Post new LinkedIn contributions to NocoDB (CreateRows)": {
+      "main": [
+        [
+          {
+            "node": "Publish on LinkedIn",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Post new LinkedIn contributions to NocoDB (CreateRows)2": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp Business Cloud",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Post new LinkedIn contributions to NocoDB (CreateRows)3": {
+      "main": [
+        [
+          {
+            "node": "Facebook Graph API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Post new LinkedIn contributions to NocoDB (CreateRows)1": {
+      "main": [
+        [
+          {
+            "node": "X",
             "type": "main",
             "index": 0
           }
@@ -306,8 +436,8 @@
       "name": "Post new LinkedIn contributions to NocoDB (CreateRows)",
       "type": "n8n-nodes-base.nocoDb",
       "position": [
-        5200,
-        520
+        4540,
+        880
       ],
       "typeVersion": 3,
       "credentials": {
@@ -337,8 +467,8 @@
       "name": "Post new LinkedIn contributions to Slack channel",
       "type": "n8n-nodes-base.slack",
       "position": [
-        4600,
-        680
+        5940,
+        1240
       ],
       "typeVersion": 2.2,
       "webhookId": "3899d822-94fe-4f25-ab04-8e3e7f66dd8d",
@@ -462,7 +592,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         -500,
-        100
+        80
       ],
       "typeVersion": 1
     },
@@ -517,7 +647,7 @@
     {
       "parameters": {
         "content": "# Workflow Audit Log\n\n## Detailed and user-friendly audit log template that tracks all activities, updates, and changes within a workflow system. The log must be clear, concise, and structured, including fields for timestamps, user IDs, actions performed, affected records, and relevant notes. Ensure the design is intuitive for users, compliant with industry regulations, and optimized for easy filtering and reporting. The purpose is to enhance accountability, improve traceability, and support audits or investigations when needed.",
-        "height": 772,
+        "height": 1892,
         "width": 602,
         "color": 3
       },
@@ -525,7 +655,7 @@
       "name": "Sticky Note5",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        4320,
+        5700,
         120
       ],
       "typeVersion": 1
@@ -533,7 +663,7 @@
     {
       "parameters": {
         "content": "# Human Touch Point\n\n## All AI generated content is written back the knowledge base and a flag is set that it is ready for human editing and review",
-        "height": 770,
+        "height": 1810,
         "width": 521,
         "color": 4
       },
@@ -541,7 +671,7 @@
       "name": "Sticky Note6",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        5000,
+        4360,
         120
       ],
       "typeVersion": 1
@@ -549,7 +679,7 @@
     {
       "parameters": {
         "content": "# LinkedIn Advice \n# Summarizer\n\n\n## Adopt the role of a LinkedIn Top Voice Advice Writer specializing in providing actionable and inspiring career and personal development advice. Your task is to craft a concise, engaging post for LinkedIn that captures attention, sparks meaningful conversation, and offers value to professionals across industries. Write in a tone that is authentic, motivational, and approachable, ensuring the content resonates with LinkedIn's diverse professional audience. Focus on addressing common career challenges or life lessons while offering practical, relatable solutions. The content must be grammatically flawless, aligned with LinkedIn's professional ethos, and optimized to drive likes, shares, and thoughtful comments.\n",
-        "height": 1108,
+        "height": 1788,
         "width": 549,
         "color": 6
       },
@@ -558,7 +688,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         3700,
-        120
+        140
       ],
       "typeVersion": 1
     },
@@ -601,7 +731,7 @@
       "name": "LinkedIn Contribution Writer",
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "position": [
-        3860,
+        3840,
         940
       ],
       "typeVersion": 1.4,
@@ -757,8 +887,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        4800,
-        40
+        6200,
+        20
       ],
       "id": "2c41e6bc-10d1-4a1b-a43d-8d92a0b622d0",
       "name": "Sticky Note23"
@@ -773,8 +903,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        5440,
-        40
+        4800,
+        20
       ],
       "id": "ac212bf4-c05c-458b-81f2-879234608599",
       "name": "Sticky Note24"
@@ -810,6 +940,351 @@
       ],
       "id": "a842aee3-61e8-41fe-a3c6-59c8bcf7c4b3",
       "name": "Sticky Note25"
+    },
+    {
+      "parameters": {
+        "person": "CcS-_lLyzG",
+        "text": "={{ $json.formattedText }}",
+        "shareMediaCategory": "IMAGE",
+        "additionalFields": {}
+      },
+      "id": "ddc09ccd-f5b8-404d-879c-7da227659d31",
+      "name": "Publish on LinkedIn",
+      "type": "n8n-nodes-base.linkedIn",
+      "position": [
+        5260,
+        880
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "xRDEDUl1Pqg60kBr",
+          "name": "LinkedIn AIC Company Page"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "text": "Test",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.twitter",
+      "typeVersion": 2,
+      "position": [
+        5260,
+        1200
+      ],
+      "id": "35fbb777-8b9a-46e3-af29-9be5c60e9053",
+      "name": "X",
+      "credentials": {
+        "twitterOAuth2Api": {
+          "id": "gnP4W43zIPbVci3B",
+          "name": "AltInvestClub"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "typeVersion": 1,
+      "position": [
+        5260,
+        1460
+      ],
+      "id": "7adb9d4b-10c7-4c46-a885-211e83e90f36",
+      "name": "Facebook Graph API"
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "additionalFields": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        5260,
+        1700
+      ],
+      "id": "fb672fe6-9689-4ba9-adc2-414d4cea8273",
+      "name": "WhatsApp Business Cloud"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=# Instructions\nRead the following collaborative article and provide your own helpful collaboration. The article has various topics that each need to be answered. Write me a paragraph of helpful advice for each topic and format your response as outlined in the template below.\n\n-------------\nARTICLE TITLE  \n{{ $json.ArticleTitle }}\n\nTOPICS WITHIN THE LINKEDIN ARTICLE:  \n{{ $json.ArticleTopics }}\n\nOTHER CONTRIBUTIONS TO THE LINKEDIN ARTICLE:  \n{{ $json.ArticleContributions }}\n-------------\n\nYour advice must be unique and something that no one else has recommended before on the article, or in any of the topics. The response needs to be raw and genuine to elicit conversation and engagement.\n\nFormat your output in text and follow the template below. Only populate the template with as many topics as were provided in the original request \n\ni.e: if there were only 4 topics in the original request then only provide 4 pieces of advice:\n\n### Output Template\n\n1. [Article #1 Topic]  \n[Topic Advice]\n\n2. [Article #2 Topic]  \n[Topic Advice]\n\n3. [Article #3 Topic]  \n[Topic Advice]\n\n4. [Article #4 Topic]  \n[Topic Advice]\n\n5. [Article #5 Topic]  \n[Topic Advice]\n\n6. [Article #6 Topic]  \n[Topic Advice]\n"
+            }
+          ]
+        },
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "id": "c0a94a98-b767-419e-b1f0-abe80a822557",
+      "name": "X (Twitter) Contribution Writer",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "position": [
+        3840,
+        1180
+      ],
+      "typeVersion": 1.4,
+      "credentials": {
+        "openAiApi": {
+          "id": "FXa5oPwfEyVR0oL0",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=# Instructions\nRead the following collaborative article and provide your own helpful collaboration. The article has various topics that each need to be answered. Write me a paragraph of helpful advice for each topic and format your response as outlined in the template below.\n\n-------------\nARTICLE TITLE  \n{{ $json.ArticleTitle }}\n\nTOPICS WITHIN THE LINKEDIN ARTICLE:  \n{{ $json.ArticleTopics }}\n\nOTHER CONTRIBUTIONS TO THE LINKEDIN ARTICLE:  \n{{ $json.ArticleContributions }}\n-------------\n\nYour advice must be unique and something that no one else has recommended before on the article, or in any of the topics. The response needs to be raw and genuine to elicit conversation and engagement.\n\nFormat your output in text and follow the template below. Only populate the template with as many topics as were provided in the original request \n\ni.e: if there were only 4 topics in the original request then only provide 4 pieces of advice:\n\n### Output Template\n\n1. [Article #1 Topic]  \n[Topic Advice]\n\n2. [Article #2 Topic]  \n[Topic Advice]\n\n3. [Article #3 Topic]  \n[Topic Advice]\n\n4. [Article #4 Topic]  \n[Topic Advice]\n\n5. [Article #5 Topic]  \n[Topic Advice]\n\n6. [Article #6 Topic]  \n[Topic Advice]\n"
+            }
+          ]
+        },
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "id": "fe880716-3a3a-4d96-9cd8-da19f6f7a06e",
+      "name": "Facebook Contribution Writer",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "position": [
+        3840,
+        1400
+      ],
+      "typeVersion": 1.4,
+      "credentials": {
+        "openAiApi": {
+          "id": "FXa5oPwfEyVR0oL0",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=# Instructions\nRead the following collaborative article and provide your own helpful collaboration. The article has various topics that each need to be answered. Write me a paragraph of helpful advice for each topic and format your response as outlined in the template below.\n\n-------------\nARTICLE TITLE  \n{{ $json.ArticleTitle }}\n\nTOPICS WITHIN THE LINKEDIN ARTICLE:  \n{{ $json.ArticleTopics }}\n\nOTHER CONTRIBUTIONS TO THE LINKEDIN ARTICLE:  \n{{ $json.ArticleContributions }}\n-------------\n\nYour advice must be unique and something that no one else has recommended before on the article, or in any of the topics. The response needs to be raw and genuine to elicit conversation and engagement.\n\nFormat your output in text and follow the template below. Only populate the template with as many topics as were provided in the original request \n\ni.e: if there were only 4 topics in the original request then only provide 4 pieces of advice:\n\n### Output Template\n\n1. [Article #1 Topic]  \n[Topic Advice]\n\n2. [Article #2 Topic]  \n[Topic Advice]\n\n3. [Article #3 Topic]  \n[Topic Advice]\n\n4. [Article #4 Topic]  \n[Topic Advice]\n\n5. [Article #5 Topic]  \n[Topic Advice]\n\n6. [Article #6 Topic]  \n[Topic Advice]\n"
+            }
+          ]
+        },
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "id": "8ab01e71-c58c-4e08-9e8e-def940c80cdf",
+      "name": "WhatsApp Contribution Writer",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "position": [
+        3840,
+        1640
+      ],
+      "typeVersion": 1.4,
+      "credentials": {
+        "openAiApi": {
+          "id": "FXa5oPwfEyVR0oL0",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "workspaceId": "w0dgkv8w",
+        "projectId": "p5ttha2qnhsdymd",
+        "table": "mobczt19cajtnmm",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Post Title",
+              "fieldValue": "={{ $('HTML extract LinkedIn article & other users contributions').item.json.ArticleTitle }}"
+            },
+            {
+              "fieldName": "URL",
+              "fieldValue": "={{ $('Merge data and keep unique google search results').item.json.matches }}"
+            },
+            {
+              "fieldName": "Contribution",
+              "fieldValue": "={{ $('LinkedIn Contribution Writer').item.json.message.content }}"
+            },
+            {
+              "fieldName": "Topic",
+              "fieldValue": "Lead Generation"
+            },
+            {
+              "fieldName": "Person",
+              "fieldValue": "Cassie"
+            }
+          ]
+        }
+      },
+      "id": "73d63b91-29dc-4789-a1d5-eeb4d12ed543",
+      "name": "Post new LinkedIn contributions to NocoDB (CreateRows)1",
+      "type": "n8n-nodes-base.nocoDb",
+      "position": [
+        4540,
+        1180
+      ],
+      "typeVersion": 3,
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "DahiteaxE7qHp5k3",
+          "name": "NocoDB Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "workspaceId": "w0dgkv8w",
+        "projectId": "p5ttha2qnhsdymd",
+        "table": "mobczt19cajtnmm",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Post Title",
+              "fieldValue": "={{ $('HTML extract LinkedIn article & other users contributions').item.json.ArticleTitle }}"
+            },
+            {
+              "fieldName": "URL",
+              "fieldValue": "={{ $('Merge data and keep unique google search results').item.json.matches }}"
+            },
+            {
+              "fieldName": "Contribution",
+              "fieldValue": "={{ $('LinkedIn Contribution Writer').item.json.message.content }}"
+            },
+            {
+              "fieldName": "Topic",
+              "fieldValue": "Lead Generation"
+            },
+            {
+              "fieldName": "Person",
+              "fieldValue": "Cassie"
+            }
+          ]
+        }
+      },
+      "id": "6daad66f-a3f4-4b69-8675-912da3c88ec9",
+      "name": "Post new LinkedIn contributions to NocoDB (CreateRows)2",
+      "type": "n8n-nodes-base.nocoDb",
+      "position": [
+        4560,
+        1660
+      ],
+      "typeVersion": 3,
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "DahiteaxE7qHp5k3",
+          "name": "NocoDB Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "workspaceId": "w0dgkv8w",
+        "projectId": "p5ttha2qnhsdymd",
+        "table": "mobczt19cajtnmm",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Post Title",
+              "fieldValue": "={{ $('HTML extract LinkedIn article & other users contributions').item.json.ArticleTitle }}"
+            },
+            {
+              "fieldName": "URL",
+              "fieldValue": "={{ $('Merge data and keep unique google search results').item.json.matches }}"
+            },
+            {
+              "fieldName": "Contribution",
+              "fieldValue": "={{ $('LinkedIn Contribution Writer').item.json.message.content }}"
+            },
+            {
+              "fieldName": "Topic",
+              "fieldValue": "Lead Generation"
+            },
+            {
+              "fieldName": "Person",
+              "fieldValue": "Cassie"
+            }
+          ]
+        }
+      },
+      "id": "0bff1ac8-9589-4369-af49-ce3dfde51c11",
+      "name": "Post new LinkedIn contributions to NocoDB (CreateRows)3",
+      "type": "n8n-nodes-base.nocoDb",
+      "position": [
+        4560,
+        1400
+      ],
+      "typeVersion": 3,
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "DahiteaxE7qHp5k3",
+          "name": "NocoDB Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# Post to Social Media\n\n## After the advice is customized for each platform and approved by a human then post it on social media",
+        "height": 1900,
+        "width": 560,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        5000,
+        120
+      ],
+      "id": "eeda8e0f-c01a-4c4c-b222-1f624745b44d",
+      "name": "Sticky Note12"
+    },
+    {
+      "parameters": {
+        "content": "![Database](https://hosted-images-holmlund.s3.us-west-2.amazonaws.com/n8n/knowledgebase.webp)",
+        "height": 180,
+        "width": 160,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        5460,
+        20
+      ],
+      "id": "786de5d2-ad4f-499c-8623-6b7cd6e7bf8d",
+      "name": "Sticky Note20"
     }
   ],
   "pinData": {},
@@ -835,6 +1310,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-01-28T20:34:58.000Z",
-  "versionId": "8234bbb0-1dbe-4707-b36c-b5c3201739e0"
+  "updatedAt": "2025-02-05T20:48:41.000Z",
+  "versionId": "854ea083-500a-4cd8-a675-62168361e369"
 }
