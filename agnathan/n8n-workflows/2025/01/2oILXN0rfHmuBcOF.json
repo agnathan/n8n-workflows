@@ -38,7 +38,7 @@
   "createdAt": "2025-01-14T16:29:36.521Z",
   "id": "2oILXN0rfHmuBcOF",
   "meta": null,
-  "name": "My workflow 5",
+  "name": "Festival Calendar Scheduling and Telegram Announcer",
   "nodes": [
     {
       "parameters": {},
@@ -254,6 +254,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-01-14T17:04:41.000Z",
-  "versionId": "2ffd9997-4e05-48e4-b89d-522a77a93997"
+  "updatedAt": "2025-02-07T15:33:56.000Z",
+  "versionId": "22ddfe5f-0302-46b1-8026-bafc85007d46"
 }
