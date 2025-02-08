@@ -82,7 +82,7 @@
   "createdAt": "2025-01-16T17:35:29.164Z",
   "id": "i4oBmQUBDF4ANrkE",
   "meta": null,
-  "name": "Image Table Extractor",
+  "name": "Extract Text from an Image of a Table",
   "nodes": [
     {
       "parameters": {},
@@ -311,6 +311,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-01-28T23:53:21.000Z",
-  "versionId": "32caa267-0c3d-4167-99d9-a61dcda58d1e"
+  "updatedAt": "2025-02-07T15:32:57.000Z",
+  "versionId": "4b5cb5e4-59f8-4894-ae77-ab89134dc8e3"
 }
