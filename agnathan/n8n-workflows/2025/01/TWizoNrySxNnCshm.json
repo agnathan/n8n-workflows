@@ -147,7 +147,7 @@
   "createdAt": "2025-01-28T20:35:28.939Z",
   "id": "TWizoNrySxNnCshm",
   "meta": null,
-  "name": "My workflow 7",
+  "name": "Become A LinkedIn Top Voice with AI",
   "nodes": [
     {
       "parameters": {
@@ -798,6 +798,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-01-28T20:35:28.939Z",
-  "versionId": "09152401-b3e9-48a0-93d0-71d81c4b51a0"
+  "updatedAt": "2025-02-07T15:32:31.000Z",
+  "versionId": "180811b9-087c-4a06-87fe-26b90d1c9557"
 }
