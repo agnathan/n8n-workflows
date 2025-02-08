@@ -154,7 +154,7 @@
   "createdAt": "2025-01-28T21:14:24.884Z",
   "id": "yj6B1A4ayOQY9emT",
   "meta": null,
-  "name": "My workflow 8",
+  "name": "Research a List of Companies from a Spreadsheet",
   "nodes": [
     {
       "parameters": {},
@@ -753,6 +753,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-01-28T23:51:16.000Z",
-  "versionId": "d8f51f5b-c612-4b35-9f83-a9db0529fa01"
+  "updatedAt": "2025-02-07T15:32:15.000Z",
+  "versionId": "051ce906-9b82-4a73-962e-08135603b7e4"
 }
