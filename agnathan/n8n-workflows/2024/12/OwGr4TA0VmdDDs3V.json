@@ -604,7 +604,7 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.3,
       "position": [
-        4500,
+        4480,
         480
       ],
       "id": "f0984f55-7201-4120-860f-749c423651bf",
@@ -723,6 +723,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-02-04T17:41:57.000Z",
-  "versionId": "c80f3728-9283-495c-91c6-b754a84f2705"
+  "updatedAt": "2025-02-07T16:08:37.000Z",
+  "versionId": "3e829eab-299a-4615-9ffa-58af2181e702"
 }
