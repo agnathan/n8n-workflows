@@ -1,0 +1,45 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-02-21T15:35:55.394Z",
+  "id": "soRqs8tdMnZdYcqK",
+  "meta": null,
+  "name": "My workflow 5",
+  "nodes": [
+    {
+      "parameters": {
+        "events": [
+          "BOOKING_CREATED"
+        ],
+        "options": {}
+      },
+      "type": "n8n-nodes-base.calTrigger",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "cc8c44e6-1ce0-45ed-a203-eb247dbb2b52",
+      "name": "Cal.com Trigger",
+      "webhookId": "bc77c35b-3730-4db0-ba97-a99d48091aef",
+      "credentials": {
+        "calApi": {
+          "id": "pKkWh7vr9SWf8EKB",
+          "name": "Cal account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-21T15:35:55.394Z",
+  "versionId": "af30e6bb-0a5c-409f-9ea5-bfbaef1d601b"
+}
