@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "Find caption ID by language": {
       "main": [
@@ -133,7 +133,7 @@
         ]
       ]
     },
-    "Every 5 Minutes": {
+    "Every 2 Days": {
       "main": [
         [
           {
@@ -658,13 +658,13 @@
         "rule": {
           "interval": [
             {
-              "field": "minutes"
+              "daysInterval": 2
             }
           ]
         }
       },
       "id": "2af4ed4b-05bd-4fd1-acd8-225dc0490c62",
-      "name": "Every 5 Minutes",
+      "name": "Every 2 Days",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
@@ -693,6 +693,9 @@
       "recurrenceRules": []
     },
     "node:Every 5 Minutes": {
+      "recurrenceRules": []
+    },
+    "node:Every 2 Days": {
       "recurrenceRules": []
     }
   },
@@ -723,6 +726,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-02-07T16:08:37.000Z",
-  "versionId": "3e829eab-299a-4615-9ffa-58af2181e702"
+  "updatedAt": "2025-03-10T14:49:44.000Z",
+  "versionId": "bac8dae6-bf83-4032-884c-f4ec2c565a44"
 }
