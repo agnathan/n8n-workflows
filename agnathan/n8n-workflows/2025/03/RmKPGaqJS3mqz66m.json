@@ -1,0 +1,720 @@
+{
+  "active": false,
+  "connections": {
+    "Find caption ID by language": {
+      "main": [
+        [
+          {
+            "node": "Download caption",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List captions for video": {
+      "main": [
+        [
+          {
+            "node": "Find caption ID by language",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download caption": {
+      "main": [
+        [
+          {
+            "node": "Convert Captions from Binary to Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Knowledge Base": {
+      "main": [
+        [
+          {
+            "node": "Extract Video ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Video ID": {
+      "main": [
+        [
+          {
+            "node": "List captions for video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write to Knowledge Base": {
+      "main": [
+        [
+          {
+            "node": "Update YouTube Video Description",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Knowledge Base",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert Captions from Binary to Text": {
+      "main": [
+        [
+          {
+            "node": "Select Only the Fields We Need",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select Only the Fields We Need": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update YouTube Video Description": {
+      "main": [
+        [
+          {
+            "node": "Log Activity to Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Write to Knowledge Base",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Every 2 Days": {
+      "main": [
+        [
+          {
+            "node": "Knowledge Base",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-11T18:21:14.965Z",
+  "id": "RmKPGaqJS3mqz66m",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "LinkedIn Event Promotion Post",
+  "nodes": [
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "caption",
+              "value": "={{ $jmespath( $json.items, \"[?snippet.language == 'en'] | [0]\" ) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4aad5926-3db7-47c9-a905-dce978612dc7",
+      "name": "Find caption ID by language",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        3440,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1D3C00PX5sXsc5I6uz6UoaIU55nkyApad8AFvgYHmX_Y",
+          "mode": "list",
+          "cachedResultName": "n8n debug",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1D3C00PX5sXsc5I6uz6UoaIU55nkyApad8AFvgYHmX_Y/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1D3C00PX5sXsc5I6uz6UoaIU55nkyApad8AFvgYHmX_Y/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "youtubeurl": "={{ $json.youtubeurl }}",
+            "id": "={{ $json.id }}",
+            "title": "={{ $json.title }}",
+            "speaker": "={{ $json.speaker }}",
+            "videoId": "={{ $json.videoId }}"
+          },
+          "matchingColumns": [
+            "youtubeurl"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "title",
+              "displayName": "title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "speaker",
+              "displayName": "speaker",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "videoId",
+              "displayName": "videoId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "youtubeurl",
+              "displayName": "youtubeurl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "transcript",
+              "displayName": "transcript",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "72dfc557-68d6-4ed0-8fe0-05986e07af56",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        980,
+        1260
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "9YFxgWcYXZDQ2dtk",
+          "name": "Google Sheets account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "url": "https://www.googleapis.com/youtube/v3/captions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "youTubeOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "videoId",
+              "value": "={{ $json.videoId }}"
+            },
+            {
+              "name": "part",
+              "value": "snippet"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "05959d2d-2722-4d2b-90a5-ab967e57ebfd",
+      "name": "List captions for video",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        3260,
+        260
+      ],
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "trOpthyPE3OjXWYC",
+          "name": "YouTube account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://www.googleapis.com/youtube/v3/captions/{{ $json.caption.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "youTubeOAuth2Api",
+        "options": {}
+      },
+      "id": "dc928edd-d82f-47ea-9f7b-86c63b5d6865",
+      "name": "Download caption",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        2900,
+        480
+      ],
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "trOpthyPE3OjXWYC",
+          "name": "YouTube account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "Meeting",
+        "limit": 1,
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "date",
+              "condition": "gte",
+              "keyValue": "="
+            }
+          ]
+        }
+      },
+      "id": "6c067f59-5b77-4aa7-90bf-d2a00ae8f835",
+      "name": "Knowledge Base",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2880,
+        260
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "bX97yHQCD7Z1jFll",
+          "name": "aicweb_prod"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// console.log($jmespath(obj, \"json.url\"))\n// console.log(urlParams)\n// console.log(videoId)\n\n\n// console.log($('Loop Over Items1'))\nobj = $input.first()\n// console.log(obj)\nurl = $jmespath(obj, \"json.youtubeurl\")\n// console.log(url)\nurlParams = url.split(\"v=\")\nconsole.log(urlParams)\nif (urlParams.length > 1){\n  videoId = urlParams[1] || \"\"\n  items[0].json.videoId = videoId\n}\nurlParams = url.split(\"live/\")\nconsole.log(urlParams)\nif (urlParams.length > 1){\n  videoId = urlParams[1] || \"\"\n  items[0].json.videoId = videoId\n}\n\n\n// console.log(items)\nreturn $input.all();"
+      },
+      "id": "9da8363c-a602-43cc-92c8-f6c4c1faa7fa",
+      "name": "Extract Video ID",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3060,
+        260
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "Meeting",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $('Knowledge Base').item.json.id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "transcript",
+              "fieldValue": "={{ $('Select Only the Fields We Need').item.json.transcript }}"
+            },
+            {
+              "fieldId": "description",
+              "fieldValue": "={{ $json.output }}"
+            }
+          ]
+        }
+      },
+      "id": "54e3cb2b-bfe5-495b-b813-ddb6adf87925",
+      "name": "Write to Knowledge Base",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        4040,
+        480
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "bX97yHQCD7Z1jFll",
+          "name": "aicweb_prod"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## LinkedIn Event Promotion Post\n\"Ready to explore innovative ways to build wealth? Join us this Friday, March 14th at 1 PM PST for our FREE Friday Live Event with Aram Sarkissian, who will share his success with modular prefab-built homes. Whether you're new to investing or a seasoned pro, this session will inspire you to think differently about real estate. Register now: [Link to registration] #AlternativeInvesting #RealEstate #FinancialEducation\"",
+        "height": 115,
+        "width": 970,
+        "color": 5
+      },
+      "id": "1424ea03-4269-4d8a-9f69-1e4d65882f46",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2580,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "content": "![Grow Your Business With AI Logo](https://aicf-email-resources.s3.us-west-2.amazonaws.com/logo5.jpg)",
+        "height": 248.79008596435733,
+        "width": 235.46163540640913,
+        "color": 5
+      },
+      "id": "3b0de395-9c57-4131-97ce-67065b77f012",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3640,
+        180
+      ]
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        2580,
+        440
+      ],
+      "id": "0a52acd4-7e45-4de0-ad97-b6d538a3d41c",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "setAllData": false,
+        "destinationKey": "content",
+        "options": {}
+      },
+      "id": "37156950-e6cd-4d5f-a370-28c588439b16",
+      "name": "Convert Captions from Binary to Text",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "typeVersion": 1,
+      "position": [
+        3120,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4a92eb3d-1e03-46d6-8d34-2ab84cb900c1",
+              "name": "id",
+              "value": "={{ $('Extract Video ID').item.json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "e1c23864-d77d-49ea-acb8-58fc54d2c614",
+              "name": "title",
+              "value": "={{ $('Extract Video ID').item.json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "373c9bbd-df6d-4284-b1cf-b900d7af3a3d",
+              "name": "speaker",
+              "value": "={{ $('Extract Video ID').item.json.speaker }}",
+              "type": "string"
+            },
+            {
+              "id": "2684180f-4915-426e-a590-7fe6430b12f2",
+              "name": "videoId",
+              "value": "={{ $('Extract Video ID').item.json.videoId }}",
+              "type": "string"
+            },
+            {
+              "id": "b3863ab2-ccee-4426-8787-b16880e58562",
+              "name": "youtubeurl",
+              "value": "={{ $('Extract Video ID').item.json.youtubeurl }}",
+              "type": "string"
+            },
+            {
+              "id": "b7b33085-46d8-423c-94f2-ee1f20f46672",
+              "name": "transcript",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": "=",
+        "options": {}
+      },
+      "id": "7b182b24-9ce9-4b57-a8de-9585140ab484",
+      "name": "Select Only the Fields We Need",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3340,
+        480
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "content": "OpenAI summarizes the video in one sentence, provides a link to the AIC website and creates the chapter index",
+        "height": 80,
+        "width": 300,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3700,
+        700
+      ],
+      "id": "43cdea4c-27cc-45e0-a74b-63e9a18464b9",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "resource": "video",
+        "operation": "update",
+        "videoId": "={{ $('Extract Video ID').item.json.videoId }}",
+        "title": "={{ $('Extract Video ID').item.json.title }}",
+        "regionCode": "US",
+        "categoryId": "27",
+        "updateFields": {
+          "description": "={{ $('AI Agent').item.json.output }}"
+        }
+      },
+      "id": "1989c48a-a639-4ee2-bf84-c66849e75085",
+      "name": "Update YouTube Video Description",
+      "type": "n8n-nodes-base.youTube",
+      "typeVersion": 1,
+      "position": [
+        4280,
+        480
+      ],
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "SfhVN9AwnCkG5FWl",
+          "name": "GSC YouTube account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C087B6YF4JG",
+          "mode": "list",
+          "cachedResultName": "automations"
+        },
+        "text": "={{ $workflow.name }}: {{ $('Select Only the Fields We Need').item.json.speaker }} {{ $('Select Only the Fields We Need').item.json.title }} {{ $('Select Only the Fields We Need').item.json.youtubeurl }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        4500,
+        480
+      ],
+      "id": "1ca1488c-4590-4f30-96d6-9a9f091fb35b",
+      "name": "Log Activity to Slack",
+      "webhookId": "b2f01a52-0f1f-43c2-b836-ea5d82888ca2",
+      "credentials": {
+        "slackApi": {
+          "id": "sqZE51AkSy0bWsNt",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "agent": "conversationalAgent",
+        "promptType": "define",
+        "text": "=#Role\nAdopt the role of a YouTube Video Summarizer specializing in extracting key insights and essential details. \n\n#Goal\nYour task is to watch or analyze a provided video link and create a clear, concise, and engaging two to three sentence summary that highlights the main points, actionable takeaways, and overall message. The summary must be easy to understand, well-structured, and optimized for quick consumption. Tailor the content to the target audience, ensuring it provides value without unnecessary details while retaining the essence of the video. You will also find the major points and create a chapter index for the video. \n\n#Standard Operating Procedure\n1. Start the output with two lines \"The Alternative Investing Club presents\" and \"https://AlternativeInvestingClub.com\". Put two newlines between these and the next step.\n2. Write a two to three sentence summary of this transcript that states what the guest speaker talks about. Do not say \"guest speaker\" or \"transcript\". Just use the person's name. Just write the summary do not put a heading on it.\n3. Write a chapter index. Each line should start with the time index in the video and then a short summary of the topic. The format of each line is \"<time index> <five or six word description of the topic>. Do not give any extra information.\n4. Time index should have an hour, minute, second format like 0:00:42\n\n{{ $json.transcript }}\n\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        3640,
+        480
+      ],
+      "id": "908c534a-24f5-4cea-ac05-77331440500f",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-1.5-pro",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        3540,
+        700
+      ],
+      "id": "a5e8c136-6b2b-42af-90d5-991d1a77d5d0",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "eUkvc1cv7n7zwa7I",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "daysInterval": 2
+            }
+          ]
+        }
+      },
+      "id": "fa7eb2b9-e050-4ede-9d1e-e273b779c318",
+      "name": "Every 2 Days",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        2580,
+        260
+      ]
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n-workflows",
+  "repo_owner": "agnathan",
+  "repo_path": "agnathan/n8n-workflows",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    },
+    "node:Schedule Trigger1": {
+      "recurrenceRules": [
+        12
+      ]
+    },
+    "node:Every 6 Hours": {
+      "recurrenceRules": []
+    },
+    "node:Every 5 Minutes": {
+      "recurrenceRules": []
+    },
+    "node:Every 2 Days": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-12-07T06:11:13.857Z",
+      "updatedAt": "2024-12-07T06:11:13.857Z",
+      "id": "bt1t5V5KUyuErc7s",
+      "name": "AIC Speaker Workflow"
+    },
+    {
+      "createdAt": "2024-12-12T14:07:08.085Z",
+      "updatedAt": "2024-12-12T14:07:08.085Z",
+      "id": "d1FYrk5saECGEima",
+      "name": "Social Media"
+    },
+    {
+      "createdAt": "2025-01-07T17:22:46.418Z",
+      "updatedAt": "2025-01-07T17:22:46.418Z",
+      "id": "l6u1KHXEGv9kNYY1",
+      "name": "GYBWAI"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-03-11T18:27:54.000Z",
+  "versionId": "8fcb8339-1f79-4ae1-a2c9-e09c81c48984"
+}
