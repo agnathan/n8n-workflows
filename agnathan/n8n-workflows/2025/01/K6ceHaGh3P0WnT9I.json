@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "Google Drive": {
       "main": [
@@ -165,8 +165,8 @@
       "name": "Recursive Character Text Splitter",
       "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
       "position": [
-        740,
-        500
+        760,
+        540
       ],
       "typeVersion": 1
     },
@@ -178,7 +178,7 @@
       "name": "Embeddings OpenAI",
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "position": [
-        580,
+        440,
         320
       ],
       "typeVersion": 1,
@@ -192,15 +192,15 @@
     {
       "parameters": {
         "content": "### Load data into database\nFetch file from Google Drive, split it into chunks and insert into Pinecone index",
-        "height": 806.6556079800943,
-        "width": 978.0454109366399,
+        "height": 807,
+        "width": 998,
         "color": 7
       },
       "id": "0a9f7ffa-32c9-4274-8360-e4bcd653a0ca",
       "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        0,
+        -20,
         0
       ],
       "typeVersion": 1
@@ -230,7 +230,7 @@
       "name": "Default Data Loader",
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "position": [
-        740,
+        600,
         320
       ],
       "typeVersion": 1
@@ -354,7 +354,7 @@
       "name": "Insert into Pinecone vector store",
       "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
       "position": [
-        600,
+        500,
         100
       ],
       "typeVersion": 1,
@@ -428,7 +428,7 @@
       "name": "My Learning"
     }
   ],
-  "triggerCount": 0,
-  "updatedAt": "2025-01-14T15:45:30.000Z",
-  "versionId": "50565a88-e24a-4a2d-92cd-07a2162f63b7"
+  "triggerCount": 2,
+  "updatedAt": "2025-03-20T16:14:12.000Z",
+  "versionId": "b6922359-c9c0-4690-89c4-0b880b66e456"
 }
