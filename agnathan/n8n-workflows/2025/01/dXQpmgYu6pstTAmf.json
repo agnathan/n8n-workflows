@@ -212,6 +212,7 @@
   },
   "createdAt": "2025-01-07T14:31:55.402Z",
   "id": "dXQpmgYu6pstTAmf",
+  "isArchived": false,
   "meta": null,
   "name": "My workflow 3",
   "nodes": [
