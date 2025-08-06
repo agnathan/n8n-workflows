@@ -125,6 +125,7 @@
   },
   "createdAt": "2025-01-14T15:27:29.151Z",
   "id": "K6ceHaGh3P0WnT9I",
+  "isArchived": false,
   "meta": null,
   "name": "Chat with PDF",
   "nodes": [
@@ -428,7 +429,7 @@
       "name": "My Learning"
     }
   ],
-  "triggerCount": 2,
+  "triggerCount": 1,
   "updatedAt": "2025-03-20T16:14:12.000Z",
   "versionId": "b6922359-c9c0-4690-89c4-0b880b66e456"
 }
