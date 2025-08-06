@@ -329,6 +329,7 @@
   },
   "createdAt": "2024-12-21T16:40:55.337Z",
   "id": "hYqAskoGJJhEBey8",
+  "isArchived": false,
   "meta": null,
   "name": "Enrich FAQ sections on your website pages at scale with AI",
   "nodes": [
