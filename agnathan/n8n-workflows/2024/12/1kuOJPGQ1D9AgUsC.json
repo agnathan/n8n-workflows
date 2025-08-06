@@ -95,6 +95,7 @@
   },
   "createdAt": "2024-12-24T01:23:46.580Z",
   "id": "1kuOJPGQ1D9AgUsC",
+  "isArchived": false,
   "meta": null,
   "name": "Company Data Enrichment",
   "nodes": [
