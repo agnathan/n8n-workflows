@@ -180,6 +180,7 @@
   },
   "createdAt": "2024-12-20T22:53:55.022Z",
   "id": "nurCxEsuMsZtW5zH",
+  "isArchived": false,
   "meta": {
     "templateCredsSetupCompleted": true
   },
@@ -639,10 +640,10 @@
   },
   "staticData": {
     "node:File Created": {
-      "lastTimeChecked": "2025-01-07T14:35:18Z"
+      "lastTimeChecked": "2025-08-05T17:05:51Z"
     },
     "node:File Updated": {
-      "lastTimeChecked": "2025-01-07T14:34:59Z"
+      "lastTimeChecked": "2025-08-05T17:05:51Z"
     }
   },
   "tags": [
@@ -653,7 +654,7 @@
       "name": "Community Examples"
     }
   ],
-  "triggerCount": 4,
+  "triggerCount": 3,
   "updatedAt": "2025-01-04T01:56:11.000Z",
   "versionId": "12149fc7-a577-4cd7-b373-2aef59b380ed"
 }
