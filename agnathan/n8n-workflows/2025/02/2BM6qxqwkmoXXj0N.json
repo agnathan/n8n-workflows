@@ -136,6 +136,7 @@
   },
   "createdAt": "2025-02-07T15:30:58.586Z",
   "id": "2BM6qxqwkmoXXj0N",
+  "isArchived": false,
   "meta": null,
   "name": "Social Media Analysis and Automated Email Generation",
   "nodes": [
