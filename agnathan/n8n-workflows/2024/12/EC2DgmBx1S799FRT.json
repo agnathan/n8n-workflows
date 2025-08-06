@@ -122,6 +122,7 @@
   },
   "createdAt": "2024-12-04T04:53:51.505Z",
   "id": "EC2DgmBx1S799FRT",
+  "isArchived": false,
   "meta": null,
   "name": "Send labeled email to Notion",
   "nodes": [
