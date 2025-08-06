@@ -143,6 +143,7 @@
   },
   "createdAt": "2024-12-11T12:34:32.237Z",
   "id": "H8K1Cgt25WgkvqI4",
+  "isArchived": false,
   "meta": {
     "templateCredsSetupCompleted": true
   },
