@@ -147,6 +147,7 @@
   },
   "createdAt": "2024-12-17T20:37:55.549Z",
   "id": "OwGr4TA0VmdDDs3V",
+  "isArchived": false,
   "meta": {
     "templateCredsSetupCompleted": true
   },
@@ -696,7 +697,9 @@
       "recurrenceRules": []
     },
     "node:Every 2 Days": {
-      "recurrenceRules": []
+      "recurrenceRules": [
+        218
+      ]
     }
   },
   "tags": [
