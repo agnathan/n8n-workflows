@@ -86,6 +86,7 @@
   },
   "createdAt": "2024-12-31T17:40:44.421Z",
   "id": "zesKTHUTUfhAmc5N",
+  "isArchived": false,
   "meta": null,
   "name": "Prompt WorkBench: Create Prompt Text",
   "nodes": [
