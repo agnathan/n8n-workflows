@@ -93,6 +93,7 @@
   },
   "createdAt": "2024-12-25T15:39:38.865Z",
   "id": "2G3nc2g6dA1uIyn5",
+  "isArchived": false,
   "meta": null,
   "name": "Prompt Analysis",
   "nodes": [
