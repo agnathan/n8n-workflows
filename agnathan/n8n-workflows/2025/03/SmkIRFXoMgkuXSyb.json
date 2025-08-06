@@ -176,6 +176,7 @@
   },
   "createdAt": "2025-03-20T15:51:54.113Z",
   "id": "SmkIRFXoMgkuXSyb",
+  "isArchived": false,
   "meta": null,
   "name": "My workflow 5",
   "nodes": [
