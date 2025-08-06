@@ -71,6 +71,7 @@
   },
   "createdAt": "2024-12-31T15:31:43.485Z",
   "id": "Ac71rQ4keoCzI0MH",
+  "isArchived": false,
   "meta": null,
   "name": "Prompt Workbench: Create Jobs",
   "nodes": [
@@ -220,7 +221,7 @@
       "name": "Prompt Workbench"
     }
   ],
-  "triggerCount": 2,
+  "triggerCount": 1,
   "updatedAt": "2025-01-05T22:55:17.000Z",
   "versionId": "9b4d932c-b28c-4f6f-994f-c33b2753ff57"
 }
