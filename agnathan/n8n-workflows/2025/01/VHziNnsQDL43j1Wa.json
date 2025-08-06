@@ -242,6 +242,7 @@
   },
   "createdAt": "2025-01-08T23:50:08.556Z",
   "id": "VHziNnsQDL43j1Wa",
+  "isArchived": false,
   "meta": null,
   "name": "Appointment Scheduling ChatBot",
   "nodes": [
