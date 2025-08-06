@@ -320,6 +320,7 @@
   },
   "createdAt": "2025-01-08T23:54:52.940Z",
   "id": "tSBh3DZe4CvGajfN",
+  "isArchived": false,
   "meta": null,
   "name": "Tax Code RAG Chatbot",
   "nodes": [
