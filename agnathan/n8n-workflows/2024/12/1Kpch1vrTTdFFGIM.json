@@ -425,6 +425,7 @@
   },
   "createdAt": "2024-12-05T19:33:29.804Z",
   "id": "1Kpch1vrTTdFFGIM",
+  "isArchived": false,
   "meta": null,
   "name": "ChatGPT email reply to Google Sheets",
   "nodes": [
