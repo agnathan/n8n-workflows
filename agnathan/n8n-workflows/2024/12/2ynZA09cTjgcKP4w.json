@@ -77,6 +77,7 @@
   },
   "createdAt": "2024-12-02T23:55:01.816Z",
   "id": "2ynZA09cTjgcKP4w",
+  "isArchived": false,
   "meta": {
     "templateCredsSetupCompleted": true
   },
@@ -681,7 +682,7 @@
   },
   "staticData": {
     "node:Cal.com Trigger": {
-      "webhookId": "592c886b-4d07-44cb-9bcf-0b782fdff958"
+      "webhookId": "a9fe59d6-2f64-431d-a975-a98e8377fc4b"
     }
   },
   "tags": [
