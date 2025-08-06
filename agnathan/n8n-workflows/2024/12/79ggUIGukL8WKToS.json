@@ -284,6 +284,7 @@
   },
   "createdAt": "2024-12-02T18:47:26.433Z",
   "id": "79ggUIGukL8WKToS",
+  "isArchived": false,
   "meta": null,
   "name": "Autonomous AI crawler",
   "nodes": [
