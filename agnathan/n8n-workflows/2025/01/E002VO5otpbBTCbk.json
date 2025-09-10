@@ -247,9 +247,18 @@
   "settings": {
     "executionOrder": "v1"
   },
+  "shared": [
+    {
+      "createdAt": "2025-01-07T16:25:38.794Z",
+      "updatedAt": "2025-01-07T16:25:38.794Z",
+      "role": "workflow:owner",
+      "workflowId": "E002VO5otpbBTCbk",
+      "projectId": "59BKPVOARQ8LBpzh"
+    }
+  ],
   "staticData": {
     "node:Google Drive Trigger": {
-      "lastTimeChecked": "2025-08-05T17:05:52Z"
+      "lastTimeChecked": "2025-09-09T15:04:47Z"
     }
   },
   "tags": [
