@@ -283,6 +283,15 @@
   "settings": {
     "executionOrder": "v1"
   },
+  "shared": [
+    {
+      "createdAt": "2024-12-01T04:45:25.973Z",
+      "updatedAt": "2024-12-01T04:45:25.973Z",
+      "role": "workflow:owner",
+      "workflowId": "makI0MhrZQN7D8ej",
+      "projectId": "59BKPVOARQ8LBpzh"
+    }
+  ],
   "staticData": {
     "node:Every Morning at 9am": {
       "recurrenceRules": []
