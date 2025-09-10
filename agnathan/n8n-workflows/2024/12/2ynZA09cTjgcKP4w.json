@@ -680,6 +680,15 @@
   "settings": {
     "executionOrder": "v1"
   },
+  "shared": [
+    {
+      "createdAt": "2024-12-02T23:55:01.833Z",
+      "updatedAt": "2024-12-02T23:55:01.833Z",
+      "role": "workflow:owner",
+      "workflowId": "2ynZA09cTjgcKP4w",
+      "projectId": "59BKPVOARQ8LBpzh"
+    }
+  ],
   "staticData": {
     "node:Cal.com Trigger": {
       "webhookId": "a9fe59d6-2f64-431d-a975-a98e8377fc4b"
