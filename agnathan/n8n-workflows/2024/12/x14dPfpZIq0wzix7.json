@@ -1936,6 +1936,15 @@
   "settings": {
     "executionOrder": "v1"
   },
+  "shared": [
+    {
+      "createdAt": "2024-12-10T06:57:08.999Z",
+      "updatedAt": "2024-12-10T06:57:08.999Z",
+      "role": "workflow:owner",
+      "workflowId": "x14dPfpZIq0wzix7",
+      "projectId": "59BKPVOARQ8LBpzh"
+    }
+  ],
   "staticData": null,
   "tags": [
     {
