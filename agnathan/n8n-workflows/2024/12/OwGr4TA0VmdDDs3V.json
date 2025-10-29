@@ -707,7 +707,7 @@
     },
     "node:Every 2 Days": {
       "recurrenceRules": [
-        300
+        302
       ]
     }
   },
