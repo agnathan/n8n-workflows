@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Supabase": {
       "main": [
@@ -134,8 +136,8 @@
   },
   "shared": [
     {
-      "createdAt": "2024-12-05T13:07:02.621Z",
       "updatedAt": "2024-12-05T13:07:02.621Z",
+      "createdAt": "2024-12-05T13:07:02.621Z",
       "role": "workflow:owner",
       "workflowId": "rZkOsxLiC1CKjLsh",
       "projectId": "59BKPVOARQ8LBpzh"
@@ -144,8 +146,8 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2024-12-05T14:43:34.278Z",
       "updatedAt": "2024-12-05T14:43:34.278Z",
+      "createdAt": "2024-12-05T14:43:34.278Z",
       "id": "YWL3bc4oYdzguiTJ",
       "name": "Production"
     }
