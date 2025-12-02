@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Get n8n Workflow": {
       "main": [
@@ -209,8 +211,8 @@
   },
   "shared": [
     {
-      "createdAt": "2024-12-24T04:53:24.145Z",
       "updatedAt": "2024-12-24T04:53:24.145Z",
+      "createdAt": "2024-12-24T04:53:24.145Z",
       "role": "workflow:owner",
       "workflowId": "1u2TY0lKxsLigYOD",
       "projectId": "59BKPVOARQ8LBpzh"
