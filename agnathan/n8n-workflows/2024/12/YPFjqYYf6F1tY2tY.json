@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "If": {
       "main": [
@@ -871,8 +873,8 @@
   },
   "shared": [
     {
-      "createdAt": "2024-12-20T18:34:43.226Z",
       "updatedAt": "2024-12-20T18:34:43.226Z",
+      "createdAt": "2024-12-20T18:34:43.226Z",
       "role": "workflow:owner",
       "workflowId": "YPFjqYYf6F1tY2tY",
       "projectId": "59BKPVOARQ8LBpzh"
@@ -881,8 +883,8 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2024-12-01T14:21:25.482Z",
       "updatedAt": "2024-12-01T14:21:25.482Z",
+      "createdAt": "2024-12-01T14:21:25.482Z",
       "id": "SIJWhQ43whBotfGd",
       "name": "Community Examples"
     }
