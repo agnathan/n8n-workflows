@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Split Out": {
       "main": [
@@ -394,8 +396,8 @@
   },
   "shared": [
     {
-      "createdAt": "2024-11-27T06:05:08.080Z",
       "updatedAt": "2024-11-27T06:05:08.080Z",
+      "createdAt": "2024-11-27T06:05:08.080Z",
       "role": "workflow:owner",
       "workflowId": "UnuGIdPSOg9e1cAt",
       "projectId": "59BKPVOARQ8LBpzh"
@@ -404,8 +406,8 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2024-12-01T14:21:25.482Z",
       "updatedAt": "2024-12-01T14:21:25.482Z",
+      "createdAt": "2024-12-01T14:21:25.482Z",
       "id": "SIJWhQ43whBotfGd",
       "name": "Community Examples"
     }
