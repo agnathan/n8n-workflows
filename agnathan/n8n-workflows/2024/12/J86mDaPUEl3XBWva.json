@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "AI Agent": {
       "main": [
@@ -995,8 +997,8 @@
   },
   "shared": [
     {
-      "createdAt": "2024-12-21T16:38:41.739Z",
       "updatedAt": "2024-12-21T16:38:41.739Z",
+      "createdAt": "2024-12-21T16:38:41.739Z",
       "role": "workflow:owner",
       "workflowId": "J86mDaPUEl3XBWva",
       "projectId": "59BKPVOARQ8LBpzh"
@@ -1005,8 +1007,8 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2024-12-01T14:21:25.482Z",
       "updatedAt": "2024-12-01T14:21:25.482Z",
+      "createdAt": "2024-12-01T14:21:25.482Z",
       "id": "SIJWhQ43whBotfGd",
       "name": "Community Examples"
     }
