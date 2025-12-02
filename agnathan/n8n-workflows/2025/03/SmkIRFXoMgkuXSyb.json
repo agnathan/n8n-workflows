@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Set: Fallback": {
       "main": [
@@ -888,8 +890,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-03-20T15:51:54.127Z",
       "updatedAt": "2025-03-20T15:51:54.127Z",
+      "createdAt": "2025-03-20T15:51:54.127Z",
       "role": "workflow:owner",
       "workflowId": "SmkIRFXoMgkuXSyb",
       "projectId": "59BKPVOARQ8LBpzh"
