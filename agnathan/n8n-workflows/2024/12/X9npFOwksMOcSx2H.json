@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Mock Data": {
       "main": [
@@ -191,8 +193,8 @@
   },
   "shared": [
     {
-      "createdAt": "2024-12-12T16:27:39.552Z",
       "updatedAt": "2024-12-12T16:27:39.552Z",
+      "createdAt": "2024-12-12T16:27:39.552Z",
       "role": "workflow:owner",
       "workflowId": "X9npFOwksMOcSx2H",
       "projectId": "59BKPVOARQ8LBpzh"
