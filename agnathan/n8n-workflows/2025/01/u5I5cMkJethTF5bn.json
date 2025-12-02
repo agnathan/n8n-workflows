@@ -1,5 +1,507 @@
 {
   "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-12-02T00:56:52.560Z",
+    "createdAt": "2025-12-02T00:56:52.560Z",
+    "versionId": "30cd8eca-b2a2-4cde-a701-72d49efec1c2",
+    "workflowId": "u5I5cMkJethTF5bn",
+    "nodes": [
+      {
+        "parameters": {
+          "public": true,
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+        "typeVersion": 1.1,
+        "position": [
+          -900,
+          520
+        ],
+        "id": "6a05a9bf-6b05-4612-b26d-6838f2132898",
+        "name": "When chat message received",
+        "webhookId": "f350f1d2-a7e0-4a3d-a874-ceda9e01a269"
+      },
+      {
+        "parameters": {
+          "options": {
+            "systemMessage": "Your name is Max. Your tone should be friendly and helpful. When asked questions about the Bakersfield, use the provided context."
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 1.7,
+        "position": [
+          -680,
+          520
+        ],
+        "id": "85f28f2f-86f2-41fe-8ef1-42376d2c9535",
+        "name": "AI Agent"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+        "typeVersion": 1,
+        "position": [
+          -760,
+          740
+        ],
+        "id": "01b4c478-8b2d-448b-99b6-62deb2e87ee7",
+        "name": "OpenAI Chat Model",
+        "credentials": {
+          "openAiApi": {
+            "id": "FXa5oPwfEyVR0oL0",
+            "name": "OpenAi account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "name": "Investor_Deal_Information",
+          "description": "Call this tool to answer questions about bakersfield"
+        },
+        "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+        "typeVersion": 1,
+        "position": [
+          -440,
+          760
+        ],
+        "id": "2d1c4dfd-8fca-4686-b079-820abb8f1623",
+        "name": "Vector Store Tool"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+        "typeVersion": 1,
+        "position": [
+          -200,
+          920
+        ],
+        "id": "c78bc2cb-1c7d-4b4d-9129-502ee5f81d6c",
+        "name": "OpenAI Chat Model1",
+        "credentials": {
+          "openAiApi": {
+            "id": "FXa5oPwfEyVR0oL0",
+            "name": "OpenAi account"
+          }
+        }
+      },
+      {
+        "parameters": {},
+        "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+        "typeVersion": 1.3,
+        "position": [
+          -580,
+          740
+        ],
+        "id": "0e64d454-fd72-4a21-aba5-4ce3a05af4fd",
+        "name": "Window Buffer Memory"
+      },
+      {
+        "parameters": {
+          "pollTimes": {
+            "item": [
+              {
+                "mode": "everyMinute"
+              }
+            ]
+          },
+          "triggerOn": "specificFolder",
+          "folderToWatch": {
+            "__rl": true,
+            "value": "1JOTA2VTMhbzN2V9DlMZUaZBhESUecFi-",
+            "mode": "list",
+            "cachedResultName": "Investor Deal Rooms",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1JOTA2VTMhbzN2V9DlMZUaZBhESUecFi-"
+          },
+          "event": "fileCreated",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleDriveTrigger",
+        "typeVersion": 1,
+        "position": [
+          -1900,
+          380
+        ],
+        "id": "10c858f1-188a-41cf-921a-0d83c3dc15be",
+        "name": "Google Drive Trigger",
+        "credentials": {
+          "googleDriveOAuth2Api": {
+            "id": "NE3XouVlOLwoF2Jz",
+            "name": "Google Drive account"
+          }
+        },
+        "disabled": true
+      },
+      {
+        "parameters": {
+          "operation": "download",
+          "fileId": {
+            "__rl": true,
+            "value": "1riYG9UkwtEm8PTBTXT-0Rbux_zuaRpaY",
+            "mode": "list",
+            "cachedResultName": "2024 - Plaza at Riverlakes - Bakersfield.pdf",
+            "cachedResultUrl": "https://drive.google.com/file/d/1riYG9UkwtEm8PTBTXT-0Rbux_zuaRpaY/view?usp=drivesdk"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleDrive",
+        "typeVersion": 3,
+        "position": [
+          -1640,
+          180
+        ],
+        "id": "da3e5605-e80b-47cc-a761-3234dcc43931",
+        "name": "Google Drive",
+        "credentials": {
+          "googleDriveOAuth2Api": {
+            "id": "NE3XouVlOLwoF2Jz",
+            "name": "Google Drive account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "dataType": "binary",
+          "options": {
+            "metadata": {
+              "metadataValues": [
+                {
+                  "name": "file",
+                  "value": "={{ $json.name }}"
+                }
+              ]
+            }
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+        "typeVersion": 1,
+        "position": [
+          -1280,
+          400
+        ],
+        "id": "b0546b93-a072-45a3-ae17-d7ef0cb38c07",
+        "name": "Default Data Loader"
+      },
+      {
+        "parameters": {
+          "chunkOverlap": 100,
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+        "typeVersion": 1,
+        "position": [
+          -1160,
+          600
+        ],
+        "id": "821f7da9-41ca-4679-bd88-1ec61ba0ae6e",
+        "name": "Recursive Character Text Splitter"
+      },
+      {
+        "parameters": {
+          "content": "## AI Company Knowledge Base and ChatBot Interface\n\n- Triggers when a Documents is added to a Google Drive folder\n- Add the document to a Pinecone Vector Storage so that it can be queried by a chatbot\n\n### Customize\n- API Keys needed include Google Drive, OpenAI and Pinecone.io\n- Documents can be stored in separate namespaces. So if you have more than one investment opportunity or client information that should only be available to a single client, you can separate knowledge by creating namespaces\n\n",
+          "height": 420,
+          "width": 540,
+          "color": 4
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -1520,
+          800
+        ],
+        "id": "3aad5c97-ead8-476b-8fd4-f9fddde3b0a1",
+        "name": "Sticky Note"
+      },
+      {
+        "parameters": {
+          "content": "![Grow Your Business With AI Logo](https://aicf-email-resources.s3.us-west-2.amazonaws.com/logo5.jpg)",
+          "height": 560,
+          "width": 540,
+          "color": 5
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -2080,
+          660
+        ],
+        "id": "1ef61cdc-f16f-457f-9d62-bee91b22ab6f",
+        "name": "Sticky Note2"
+      },
+      {
+        "parameters": {
+          "content": "## Costs\n\nGoogle Docs - Free\nOpenAI - $20/m\nPinecone.io - Free Tier will support most applications\n",
+          "height": 240,
+          "width": 280,
+          "color": 2
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -960,
+          980
+        ],
+        "id": "25737dad-46c9-418d-b5c1-48c9d49ffc32",
+        "name": "Sticky Note1"
+      },
+      {
+        "parameters": {
+          "mode": "insert",
+          "pineconeIndex": {
+            "__rl": true,
+            "value": "investordealroom",
+            "mode": "list",
+            "cachedResultName": "investordealroom"
+          },
+          "options": {
+            "pineconeNamespace": "emerson"
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+        "typeVersion": 1,
+        "position": [
+          -1420,
+          180
+        ],
+        "id": "3f4c7171-ca86-4ebb-bb67-4c42dc83bb94",
+        "name": "Company Knowledge Base",
+        "credentials": {
+          "pineconeApi": {
+            "id": "7axSRbdyUZYJBM3f",
+            "name": "PineconeApi account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "pineconeIndex": {
+            "__rl": true,
+            "value": "investordealroom",
+            "mode": "list",
+            "cachedResultName": "investordealroom"
+          },
+          "options": {
+            "pineconeNamespace": "bakersfield"
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+        "typeVersion": 1,
+        "position": [
+          -560,
+          940
+        ],
+        "id": "1f5ef7c4-f44b-4fb2-8b6e-494061b9f0e3",
+        "name": "Company Knowledge Base1",
+        "credentials": {
+          "pineconeApi": {
+            "id": "7axSRbdyUZYJBM3f",
+            "name": "PineconeApi account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+        "typeVersion": 1.1,
+        "position": [
+          -1500,
+          400
+        ],
+        "id": "d5efd634-3786-4d2f-aac0-e2503a82dd8d",
+        "name": "Input Embeddings OpenAI",
+        "credentials": {
+          "openAiApi": {
+            "id": "FXa5oPwfEyVR0oL0",
+            "name": "OpenAi account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+        "typeVersion": 1.1,
+        "position": [
+          -500,
+          1080
+        ],
+        "id": "d7378e5d-2ee1-4c21-91de-61dfb4add654",
+        "name": "Retrieval Embeddings OpenAI",
+        "credentials": {
+          "openAiApi": {
+            "id": "FXa5oPwfEyVR0oL0",
+            "name": "OpenAi account"
+          }
+        }
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          -1900,
+          180
+        ],
+        "id": "14db2123-f3bf-4048-b909-7ca43856f6a8",
+        "name": "When clicking ‘Test workflow’"
+      }
+    ],
+    "connections": {
+      "When chat message received": {
+        "main": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OpenAI Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Vector Store Tool": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OpenAI Chat Model1": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "Vector Store Tool",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Window Buffer Memory": {
+        "ai_memory": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_memory",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Google Drive Trigger": {
+        "main": [
+          [
+            {
+              "node": "Google Drive",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Google Drive": {
+        "main": [
+          [
+            {
+              "node": "Company Knowledge Base",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Default Data Loader": {
+        "ai_document": [
+          [
+            {
+              "node": "Company Knowledge Base",
+              "type": "ai_document",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Recursive Character Text Splitter": {
+        "ai_textSplitter": [
+          [
+            {
+              "node": "Default Data Loader",
+              "type": "ai_textSplitter",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Company Knowledge Base1": {
+        "ai_vectorStore": [
+          [
+            {
+              "node": "Vector Store Tool",
+              "type": "ai_vectorStore",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Input Embeddings OpenAI": {
+        "ai_embedding": [
+          [
+            {
+              "node": "Company Knowledge Base",
+              "type": "ai_embedding",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Retrieval Embeddings OpenAI": {
+        "ai_embedding": [
+          [
+            {
+              "node": "Company Knowledge Base1",
+              "type": "ai_embedding",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "When clicking ‘Test workflow’": {
+        "main": [
+          [
+            {
+              "node": "Google Drive",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "system migration",
+    "name": null,
+    "description": null
+  },
+  "activeVersionId": "30cd8eca-b2a2-4cde-a701-72d49efec1c2",
   "connections": {
     "When chat message received": {
       "main": [
@@ -506,8 +1008,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-01-07T17:33:39.156Z",
       "updatedAt": "2025-01-07T17:33:39.156Z",
+      "createdAt": "2025-01-07T17:33:39.156Z",
       "role": "workflow:owner",
       "workflowId": "u5I5cMkJethTF5bn",
       "projectId": "59BKPVOARQ8LBpzh"
@@ -520,14 +1022,14 @@
   },
   "tags": [
     {
-      "createdAt": "2024-12-05T14:43:34.278Z",
       "updatedAt": "2024-12-05T14:43:34.278Z",
+      "createdAt": "2024-12-05T14:43:34.278Z",
       "id": "YWL3bc4oYdzguiTJ",
       "name": "Production"
     },
     {
-      "createdAt": "2025-01-07T17:22:46.418Z",
       "updatedAt": "2025-01-07T17:22:46.418Z",
+      "createdAt": "2025-01-07T17:22:46.418Z",
       "id": "l6u1KHXEGv9kNYY1",
       "name": "GYBWAI"
     }
