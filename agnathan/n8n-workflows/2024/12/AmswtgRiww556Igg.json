@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Map fields": {
       "main": [
@@ -425,8 +427,8 @@
   },
   "shared": [
     {
-      "createdAt": "2024-12-02T14:51:46.560Z",
       "updatedAt": "2024-12-02T14:51:46.560Z",
+      "createdAt": "2024-12-02T14:51:46.560Z",
       "role": "workflow:owner",
       "workflowId": "AmswtgRiww556Igg",
       "projectId": "59BKPVOARQ8LBpzh"
@@ -435,8 +437,8 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2024-12-02T15:09:14.734Z",
       "updatedAt": "2024-12-02T15:09:14.734Z",
+      "createdAt": "2024-12-02T15:09:14.734Z",
       "id": "qCzhxDGa0g0ZaX09",
       "name": "sync-to-notion"
     }
