@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Chat Trigger": {
       "main": [
@@ -602,8 +604,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-01-14T15:33:28.419Z",
       "updatedAt": "2025-01-14T15:33:28.419Z",
+      "createdAt": "2025-01-14T15:33:28.419Z",
       "role": "workflow:owner",
       "workflowId": "45Dpoyh0Jg8hBMeu",
       "projectId": "59BKPVOARQ8LBpzh"
@@ -612,8 +614,8 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2024-12-01T14:23:56.869Z",
       "updatedAt": "2024-12-01T14:23:56.869Z",
+      "createdAt": "2024-12-01T14:23:56.869Z",
       "id": "Paq9K6w31GZ583JD",
       "name": "My Drafts"
     }
