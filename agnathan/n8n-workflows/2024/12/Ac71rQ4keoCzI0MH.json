@@ -1,5 +1,209 @@
 {
   "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-12-02T00:56:52.560Z",
+    "createdAt": "2025-12-02T00:56:52.560Z",
+    "versionId": "9b4d932c-b28c-4f6f-994f-c33b2753ff57",
+    "workflowId": "Ac71rQ4keoCzI0MH",
+    "nodes": [
+      {
+        "parameters": {
+          "tableId": "jobs",
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "name",
+                "fieldValue": "={{ $json.name }}"
+              },
+              {
+                "fieldId": "category",
+                "fieldValue": "={{ $('When chat message received').item.json.chatInput }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          940,
+          -160
+        ],
+        "id": "9fd487ef-9c75-4e02-851c-7df4c9d2676b",
+        "name": "Supabase",
+        "credentials": {
+          "supabaseApi": {
+            "id": "EJBghdZFR6thMjzx",
+            "name": "Prompt Workbench"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "modelName": "models/gemini-1.5-flash",
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+        "typeVersion": 1,
+        "position": [
+          120,
+          40
+        ],
+        "id": "3c6f9c64-12b6-4783-949f-32792ec6a59b",
+        "name": "Google Gemini Chat Model1",
+        "credentials": {
+          "googlePalmApi": {
+            "id": "eUkvc1cv7n7zwa7I",
+            "name": "Google Gemini(PaLM) Api account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          720,
+          -180
+        ],
+        "id": "eab80010-befb-4a2b-aec5-5628510d54b4",
+        "name": "Loop Over Items"
+      },
+      {
+        "parameters": {
+          "jsCode": "return JSON.parse($input.first().json.output)\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          500,
+          -180
+        ],
+        "id": "829cc719-75a7-48f9-aa5c-31c528e59193",
+        "name": "JSON Parse"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+        "typeVersion": 1.1,
+        "position": [
+          0,
+          -180
+        ],
+        "id": "eb98e692-5e0f-470a-b65e-c8fd4732778a",
+        "name": "When chat message received",
+        "webhookId": "610148b0-a408-4aea-bf2e-5a34f787a1eb"
+      },
+      {
+        "parameters": {
+          "agent": "conversationalAgent",
+          "promptType": "define",
+          "text": "=I will give you a profession or business type and you will list 10 job names that work in that field or business.\n\n{{ $json.chatInput }}\n\nReturn the results as a JSON Object in format of { [{\"name\": job}, {\"name\": job}, ...] }. Only return the JSON. Do not return anything except valid JSON",
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 1.7,
+        "position": [
+          180,
+          -180
+        ],
+        "id": "db612069-a35a-4626-8e8c-81024f3a0c49",
+        "name": "Job Ideate"
+      },
+      {
+        "parameters": {
+          "content": "## Given a profession or business type generate 10 jobs that work in that field and store them in Supabase",
+          "height": 480,
+          "width": 1280,
+          "color": 5
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -60,
+          -280
+        ],
+        "id": "dae567b2-1591-4a70-8816-053a7c4add0b",
+        "name": "Sticky Note"
+      }
+    ],
+    "connections": {
+      "Google Gemini Chat Model1": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "Job Ideate",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Items": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Supabase",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "JSON Parse": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Supabase": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "When chat message received": {
+        "main": [
+          [
+            {
+              "node": "Job Ideate",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Job Ideate": {
+        "main": [
+          [
+            {
+              "node": "JSON Parse",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "system migration",
+    "name": null,
+    "description": null
+  },
+  "activeVersionId": "9b4d932c-b28c-4f6f-994f-c33b2753ff57",
   "connections": {
     "Google Gemini Chat Model1": {
       "ai_languageModel": [
@@ -208,8 +412,8 @@
   },
   "shared": [
     {
-      "createdAt": "2024-12-31T15:31:43.498Z",
       "updatedAt": "2024-12-31T15:31:43.498Z",
+      "createdAt": "2024-12-31T15:31:43.498Z",
       "role": "workflow:owner",
       "workflowId": "Ac71rQ4keoCzI0MH",
       "projectId": "59BKPVOARQ8LBpzh"
@@ -218,14 +422,14 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2024-12-01T14:23:56.869Z",
       "updatedAt": "2024-12-01T14:23:56.869Z",
+      "createdAt": "2024-12-01T14:23:56.869Z",
       "id": "Paq9K6w31GZ583JD",
       "name": "My Drafts"
     },
     {
-      "createdAt": "2024-12-31T16:34:44.822Z",
       "updatedAt": "2024-12-31T16:34:44.822Z",
+      "createdAt": "2024-12-31T16:34:44.822Z",
       "id": "unguyoJzdstsTMD2",
       "name": "Prompt Workbench"
     }
