@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Get Blog": {
       "main": [
@@ -761,8 +763,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-01-07T14:31:55.408Z",
       "updatedAt": "2025-01-07T14:31:55.408Z",
+      "createdAt": "2025-01-07T14:31:55.408Z",
       "role": "workflow:owner",
       "workflowId": "dXQpmgYu6pstTAmf",
       "projectId": "59BKPVOARQ8LBpzh"
