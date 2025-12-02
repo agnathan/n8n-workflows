@@ -1,5 +1,337 @@
 {
   "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-12-02T00:56:52.560Z",
+    "createdAt": "2025-12-02T00:56:52.560Z",
+    "versionId": "e5d491d3-020a-4fa4-b80b-5880761b540d",
+    "workflowId": "hoLTm7qf5FM4dXdp",
+    "nodes": [
+      {
+        "parameters": {
+          "modelName": "models/gemini-1.5-pro",
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+        "typeVersion": 1,
+        "position": [
+          580,
+          220
+        ],
+        "id": "b88333d8-7b68-4a8a-ba0a-80386b43419d",
+        "name": "Google Gemini Chat Model1",
+        "credentials": {
+          "googlePalmApi": {
+            "id": "eUkvc1cv7n7zwa7I",
+            "name": "Google Gemini(PaLM) Api account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          1340,
+          -40
+        ],
+        "id": "072b55fa-bf92-473c-8dc4-05f1100d8384",
+        "name": "Loop Over Items"
+      },
+      {
+        "parameters": {
+          "jsCode": "return JSON.parse($input.first().json.output)\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          1080,
+          -40
+        ],
+        "id": "2e48615f-6217-4f93-97b4-17057cf469e9",
+        "name": "JSON Parse"
+      },
+      {
+        "parameters": {
+          "agent": "conversationalAgent",
+          "promptType": "define",
+          "text": "=# Context\nAdopt the role of a Prompt Ideation Specialist skilled in generating creative and actionable prompt ideas. Your task is to develop tailored prompts based on a given profession, task, or objective, ensuring each suggestion is clear, engaging, and results driven. The prompts must be versatile and adaptable, catering to a wide range of user needs while maintaining clarity, relevance, and practicality. Focus on maximizing user productivity and creativity, providing prompts that are easy to understand and aligned with the intended goal.\n\n# Goal\nIf given a specific task create a GPT prompt name and a short description of the GPT prompt goal. If given a professional or a category then create 5 or the number asked for of GPT prompt names, the profession that will use it, and a short description of the GPT prompt goals. Each prompt should solve a unique problem for that profession or category. Each problem should be a pain point for that profession or category.\n\n# Instructions\n- The description should follow this format. The short description starts will what the prompt does and then it tells what the result it enables is. The sentence should be strong actionable statement with clear results\n\n# Input\nProfession: {{ $json.chatInput }}\n\n# Output Format\nReturn the results as a JSON Object in format of { [{\"name\": prompt, \"description\": description}, {\"name\": prompt, \"description\": description}, ...] }. Only return the JSON. Do not return anything except valid JSON",
+          "hasOutputParser": true,
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 1.7,
+        "position": [
+          720,
+          -40
+        ],
+        "id": "81a15b69-bbfb-4ab1-8966-4ae304769362",
+        "name": "Prompt Ideate"
+      },
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "jobactive",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2,
+        "position": [
+          80,
+          -40
+        ],
+        "id": "7c3dedbe-dc52-4652-8c94-c91971093dc8",
+        "name": "Webhook",
+        "webhookId": "d9e797ab-3105-4eb8-9dac-225b05dd6d5c"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "d7ce02ad-a188-4fbe-b71f-15697b82f2fc",
+                "leftValue": "={{ $json.body.old_record.status }}",
+                "rightValue": "inactive",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              },
+              {
+                "id": "442776d2-e04e-42f3-88b8-73356850771e",
+                "leftValue": "={{ $json.body.record.status }}",
+                "rightValue": "active",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          280,
+          -40
+        ],
+        "id": "a244b660-e6ab-4898-a1f4-c96270f9cdd9",
+        "name": "If"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "7082751d-b746-4c64-a4b8-d187c53fda9d",
+                "name": "chatInput",
+                "value": "={{ $json.body.record.name }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          500,
+          -40
+        ],
+        "id": "0a507ad6-2838-4e8d-a293-ad97a2238edf",
+        "name": "Edit Fields"
+      },
+      {
+        "parameters": {
+          "content": "## When a job is set to ACTIVE generate 5 prompt ideas and save them to Supabase",
+          "height": 480,
+          "width": 1960,
+          "color": 5
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          80,
+          -120
+        ],
+        "id": "0e980b51-f72d-4cd1-b00b-158a7fd23ba8",
+        "name": "Sticky Note"
+      },
+      {
+        "parameters": {
+          "tableId": "prompts",
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "name",
+                "fieldValue": "={{ $json.name }}"
+              },
+              {
+                "fieldId": "description",
+                "fieldValue": "={{ $json.description }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          1580,
+          -20
+        ],
+        "id": "601ce146-a73e-452b-a734-710e71bed6d7",
+        "name": "Create Prompt Idea",
+        "credentials": {
+          "supabaseApi": {
+            "id": "EJBghdZFR6thMjzx",
+            "name": "Prompt Workbench"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "tableId": "jobs_prompts",
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "job_id",
+                "fieldValue": "={{ $('If').item.json.body.record.id }}"
+              },
+              {
+                "fieldId": "prompt_id",
+                "fieldValue": "={{ $json.id }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          1800,
+          -20
+        ],
+        "id": "a6f44674-39b2-4297-b4a1-0860e799c6db",
+        "name": "Join jobs_prompts",
+        "credentials": {
+          "supabaseApi": {
+            "id": "EJBghdZFR6thMjzx",
+            "name": "Prompt Workbench"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "Google Gemini Chat Model1": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "Prompt Ideate",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Items": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Create Prompt Idea",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "JSON Parse": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Prompt Ideate": {
+        "main": [
+          [
+            {
+              "node": "JSON Parse",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Webhook": {
+        "main": [
+          [
+            {
+              "node": "If",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields": {
+        "main": [
+          [
+            {
+              "node": "Prompt Ideate",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Create Prompt Idea": {
+        "main": [
+          [
+            {
+              "node": "Join jobs_prompts",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Join jobs_prompts": {
+        "main": [
+          []
+        ]
+      }
+    },
+    "authors": "system migration",
+    "name": null,
+    "description": null
+  },
+  "activeVersionId": "e5d491d3-020a-4fa4-b80b-5880761b540d",
   "connections": {
     "Google Gemini Chat Model1": {
       "ai_languageModel": [
@@ -377,8 +709,8 @@
   },
   "shared": [
     {
-      "createdAt": "2024-12-31T16:35:23.030Z",
       "updatedAt": "2024-12-31T16:35:23.030Z",
+      "createdAt": "2024-12-31T16:35:23.030Z",
       "role": "workflow:owner",
       "workflowId": "hoLTm7qf5FM4dXdp",
       "projectId": "59BKPVOARQ8LBpzh"
@@ -387,8 +719,8 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2024-12-31T16:34:44.822Z",
       "updatedAt": "2024-12-31T16:34:44.822Z",
+      "createdAt": "2024-12-31T16:34:44.822Z",
       "id": "unguyoJzdstsTMD2",
       "name": "Prompt Workbench"
     }
