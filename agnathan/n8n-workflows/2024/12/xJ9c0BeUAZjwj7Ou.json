@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "When clicking ‘Test workflow’": {
       "main": [
@@ -390,8 +392,8 @@
   },
   "shared": [
     {
-      "createdAt": "2024-12-18T19:01:24.018Z",
       "updatedAt": "2024-12-18T19:01:24.018Z",
+      "createdAt": "2024-12-18T19:01:24.018Z",
       "role": "workflow:owner",
       "workflowId": "xJ9c0BeUAZjwj7Ou",
       "projectId": "59BKPVOARQ8LBpzh"
@@ -400,8 +402,8 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2024-12-01T14:23:56.869Z",
       "updatedAt": "2024-12-01T14:23:56.869Z",
+      "createdAt": "2024-12-01T14:23:56.869Z",
       "id": "Paq9K6w31GZ583JD",
       "name": "My Drafts"
     }
