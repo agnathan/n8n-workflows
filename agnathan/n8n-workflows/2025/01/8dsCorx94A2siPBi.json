@@ -1,5 +1,265 @@
 {
   "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-12-02T00:56:52.560Z",
+    "createdAt": "2025-12-02T00:56:52.560Z",
+    "versionId": "25a3cd90-d427-452c-a8ad-39c806b6f18f",
+    "workflowId": "8dsCorx94A2siPBi",
+    "nodes": [
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "=Write a X (Twitter) message that invites people to come the Alternative Investing Club Friday noon Pacific time Speaker event with {{ $json.speaker }}. \n\nGive a short sentence on the topic no colons: {{ $json.description }} \n\nHere's the link to the registration page: https://alternativeinvestingclub.com/live\n\nAlways put a newline before the link\n\nDo not write words in all caps",
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 1.7,
+        "position": [
+          460,
+          0
+        ],
+        "id": "bfefef81-925c-4e90-8b4a-1e13421b3ec8",
+        "name": "AI Agent"
+      },
+      {
+        "parameters": {
+          "modelName": "models/gemini-1.5-flash",
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+        "typeVersion": 1,
+        "position": [
+          420,
+          240
+        ],
+        "id": "52259f4c-5315-4982-8775-fa3119cb4f49",
+        "name": "Google Gemini Chat Model",
+        "credentials": {
+          "googlePalmApi": {
+            "id": "eUkvc1cv7n7zwa7I",
+            "name": "Google Gemini(PaLM) Api account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "text": "={{ $json.output }}",
+          "additionalFields": {}
+        },
+        "type": "n8n-nodes-base.twitter",
+        "typeVersion": 2,
+        "position": [
+          -20,
+          460
+        ],
+        "id": "76fb4fc3-37aa-45be-9dbf-0438d7a5e2d5",
+        "name": "X",
+        "credentials": {
+          "twitterOAuth2Api": {
+            "id": "gnP4W43zIPbVci3B",
+            "name": "AltInvestClub"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "tableId": "xmessages",
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "text",
+                "fieldValue": "={{ $json.text }}"
+              },
+              {
+                "fieldId": "account",
+                "fieldValue": "AltInvestClub"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          260,
+          480
+        ],
+        "id": "765b61e9-91e5-4d8d-a892-ddaca2ec6d78",
+        "name": "Write X Message to DB",
+        "credentials": {
+          "supabaseApi": {
+            "id": "IJvAp1W6mQXyy8TB",
+            "name": "Content"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "getAll",
+          "tableId": "Meeting",
+          "limit": 1,
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "date",
+                "condition": "gte",
+                "keyValue": "={{ new Date(new Date().setHours(0, 0, 0, 0)).toISOString()}}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          220,
+          0
+        ],
+        "id": "b48cf2ad-6016-427f-8267-029b99c09757",
+        "name": "Get Next AIC Meeting",
+        "credentials": {
+          "supabaseApi": {
+            "id": "bX97yHQCD7Z1jFll",
+            "name": "aicweb_prod"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "content": "![Grow Your Business With AI Logo](https://aicf-email-resources.s3.us-west-2.amazonaws.com/logo5.jpg)",
+          "height": 248.79008596435733,
+          "width": 235.46163540640913,
+          "color": 5
+        },
+        "id": "f7861e74-b554-44e5-9b2d-da232fdf88f1",
+        "name": "Sticky Note1",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -20,
+          200
+        ]
+      },
+      {
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "field": "cronExpression",
+                "expression": "=0 9 * * 1,5"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1.2,
+        "position": [
+          -20,
+          0
+        ],
+        "id": "585b765d-b9d8-4d58-b7ee-06dba77671c3",
+        "name": "Monday & Friday at 9am"
+      },
+      {
+        "parameters": {
+          "select": "channel",
+          "channelId": {
+            "__rl": true,
+            "value": "C087B6YF4JG",
+            "mode": "list",
+            "cachedResultName": "automations"
+          },
+          "text": "={{ $workflow.name }}: ",
+          "otherOptions": {}
+        },
+        "type": "n8n-nodes-base.slack",
+        "typeVersion": 2.3,
+        "position": [
+          500,
+          400
+        ],
+        "id": "ae718b41-f2f0-4c2b-bfb4-876acba42d4b",
+        "name": "Slack",
+        "webhookId": "2545c523-96a2-4997-ac01-a6bd1a257b24",
+        "credentials": {
+          "slackApi": {
+            "id": "sqZE51AkSy0bWsNt",
+            "name": "Slack account"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "Google Gemini Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "AI Agent": {
+        "main": [
+          [
+            {
+              "node": "X",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "X": {
+        "main": [
+          [
+            {
+              "node": "Write X Message to DB",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get Next AIC Meeting": {
+        "main": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Monday & Friday at 9am": {
+        "main": [
+          [
+            {
+              "node": "Get Next AIC Meeting",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Write X Message to DB": {
+        "main": [
+          [
+            {
+              "node": "Slack",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "system migration",
+    "name": null,
+    "description": null
+  },
+  "activeVersionId": "25a3cd90-d427-452c-a8ad-39c806b6f18f",
   "connections": {
     "Google Gemini Chat Model": {
       "ai_languageModel": [
@@ -264,8 +524,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-01-03T02:21:54.007Z",
       "updatedAt": "2025-01-03T02:21:54.007Z",
+      "createdAt": "2025-01-03T02:21:54.007Z",
       "role": "workflow:owner",
       "workflowId": "8dsCorx94A2siPBi",
       "projectId": "59BKPVOARQ8LBpzh"
@@ -281,14 +541,14 @@
   },
   "tags": [
     {
-      "createdAt": "2025-01-03T02:52:23.283Z",
       "updatedAt": "2025-01-03T02:52:23.283Z",
+      "createdAt": "2025-01-03T02:52:23.283Z",
       "id": "PglCKMwU2y46uH2u",
       "name": "X"
     },
     {
-      "createdAt": "2024-12-05T14:43:34.278Z",
       "updatedAt": "2024-12-05T14:43:34.278Z",
+      "createdAt": "2024-12-05T14:43:34.278Z",
       "id": "YWL3bc4oYdzguiTJ",
       "name": "Production"
     }
