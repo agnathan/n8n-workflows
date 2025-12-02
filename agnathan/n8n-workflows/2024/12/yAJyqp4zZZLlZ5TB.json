@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "When clicking ‘Test workflow’": {
       "main": [
@@ -175,8 +177,8 @@
   },
   "shared": [
     {
-      "createdAt": "2024-12-07T05:25:46.094Z",
       "updatedAt": "2024-12-07T05:25:46.094Z",
+      "createdAt": "2024-12-07T05:25:46.094Z",
       "role": "workflow:owner",
       "workflowId": "yAJyqp4zZZLlZ5TB",
       "projectId": "59BKPVOARQ8LBpzh"
@@ -185,14 +187,14 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2024-12-05T14:43:34.278Z",
       "updatedAt": "2024-12-05T14:43:34.278Z",
+      "createdAt": "2024-12-05T14:43:34.278Z",
       "id": "YWL3bc4oYdzguiTJ",
       "name": "Production"
     },
     {
-      "createdAt": "2024-12-07T06:11:13.857Z",
       "updatedAt": "2024-12-07T06:11:13.857Z",
+      "createdAt": "2024-12-07T06:11:13.857Z",
       "id": "bt1t5V5KUyuErc7s",
       "name": "AIC Speaker Workflow"
     }
