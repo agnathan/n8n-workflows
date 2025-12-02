@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "When chat message received": {
       "main": [
@@ -585,8 +587,8 @@
   },
   "shared": [
     {
-      "createdAt": "2024-12-15T15:58:47.792Z",
       "updatedAt": "2024-12-15T15:58:47.792Z",
+      "createdAt": "2024-12-15T15:58:47.792Z",
       "role": "workflow:owner",
       "workflowId": "FDKB1KmIpryzWotE",
       "projectId": "59BKPVOARQ8LBpzh"
@@ -595,8 +597,8 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2024-12-01T14:23:56.869Z",
       "updatedAt": "2024-12-01T14:23:56.869Z",
+      "createdAt": "2024-12-01T14:23:56.869Z",
       "id": "Paq9K6w31GZ583JD",
       "name": "My Drafts"
     }
